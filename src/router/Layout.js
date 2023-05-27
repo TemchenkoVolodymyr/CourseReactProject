@@ -1,13 +1,14 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 import Navigations from "./Navigations";
+import style from "./Layout.module..scss"
 
 
 const Layout = () => {
   return (
     <>
       <div>
-        <div>
+        <div className={style.header}>
           <Navigations />
         </div>
         <div>
