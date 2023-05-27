@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-
+import style from "./Navigations.module.scss"
 const Navigations = () => {
   return (
-    <div>
+   <>
       <NavLink to="/">Home</NavLink>
       <NavLink to='/discovery'>Discovery</NavLink>
-    </div>
+   </>
   );
 };
 
