@@ -11,6 +11,7 @@ function App() {
       <p>Thi is paragraph from Yevhenii Petrushenko</p>
       <p>Thi is paragraph from Yevhenii Petrushenko</p>
       <h3>This message for Pull Request testing</h3>
+      <p>This message for Pull Request testing with Requirements</p>
     </div>
   );
 }
