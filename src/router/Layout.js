@@ -1,13 +1,15 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
+import Navigations from "./Navigations";
 
 const Layout = () => {
   return (
     <>
       <div>
-        <header>HEADER</header>
-
-        <div className="wrapper__outlet">
+        <header>
+          <Navigations />
+        </header>
+        <div>
           <Outlet/>
         </div>
         <footer>FOOTER</footer>
