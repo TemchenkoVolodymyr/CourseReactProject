@@ -6,6 +6,7 @@ import Layout from "./router/Layout";
 function App() {
   return (
     <>
+
       <Routes>
         <Route path="/" element={<Layout/>}/>
         <Route path="discovery" element={<Header/>}></Route>
