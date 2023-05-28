@@ -3,8 +3,7 @@ import Header from "./Components/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import Layout from "./router/Layout";
 import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
-import axios from "axios";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
 
@@ -20,7 +19,6 @@ function App() {
   },[data])
 
 
-  let x = useSelector((store) => store.jsonDataMedia)
   return (
     <>
       <Routes>
