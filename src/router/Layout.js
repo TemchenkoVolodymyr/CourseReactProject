@@ -10,17 +10,18 @@ const Layout = () => {
     <>
       <div className={style.container}>
         <div className={style.nav}>
-          <Navigations />
-        </div>
-
-        <div className={style.navRightSide}>
-          <p>Right side bar</p>
+          <Navigations/>
         </div>
 
         <div className={style.containerOutlet}>
           <Outlet/>
         </div>
+
+        <div className={style.navRightSide}>
+          <p>Right mock side bar</p>
+        </div>
       </div>
+      <footer className={"footer"}>2023 - mock footer for course react</footer>
     </>
   )
 };
