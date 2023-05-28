@@ -2,16 +2,27 @@
 .container {
   height: 150px;
   width: 450px;
+  display: flex;
+  align-items: center;
 }
 
 .window {
   height: 100%;
   width: 100%;
   overflow: hidden;
+
 }
 
 .items {
   height: 100%;
   display: flex;
 
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.arrow {
+  cursor: pointer;
 }
