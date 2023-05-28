@@ -7,16 +7,13 @@ import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
 function App() {
   return (
     <>
-
       <Routes>
-        <Route path="/" element={<Layout/>}/>
-        <Route path="discovery" element={<Header/>}></Route>
-        <Route path="redux" element={<ReduxTestCounter/>}/>
+        <Route path="/" element={<Layout/>}>
+          <Route path="discovery" element={<Header/>}/>
+          <Route path="redux" element={<ReduxTestCounter/>}/>
+        </Route>
       </Routes>
     </>
-
-
   );
 }
-
 export default App;
