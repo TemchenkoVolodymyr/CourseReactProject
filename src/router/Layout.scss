@@ -20,7 +20,7 @@ $sidBarWidth: $size * 25;
 
 .containerNav{
   width: $navWidth;
-  height: calc(100vh - $heightFooter - $footerPaddingTop - $footerWidthBorder) ;
+  min-height: calc(100vh - $heightFooter - $footerPaddingTop - $footerWidthBorder) ;
   display: flex;
   flex-direction: column;
   border-right: 1px solid darken($colorDefault, 25%);
