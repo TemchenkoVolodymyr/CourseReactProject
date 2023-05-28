@@ -8,6 +8,7 @@ import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
 
 import data from "./redux/json/Data.json"
+import Home from "./Components/Home/Home";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="discovery" element={<Header/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
         </Route>
       </Routes>
