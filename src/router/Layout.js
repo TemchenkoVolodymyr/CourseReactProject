@@ -1,27 +1,28 @@
 import React from 'react';
 
 import Navigations from "./Navigations";
-import style from "./Layout.module.scss"
+import style from "./Layout.scss"
 import {Outlet} from "react-router";
 
 
 const Layout = () => {
   return (
     <>
-      <div className={style.container}>
-        <div className={style.nav}>
+      <div>
+        <div>
           <Navigations/>
         </div>
 
-        <div className={style.containerOutlet}>
+        <div>
+          что то
           <Outlet/>
         </div>
 
-        <div className={style.navRightSide}>
+        <div>
           <p>Right mock side bar</p>
         </div>
       </div>
-      <footer className={"footer"}>2023 - mock footer for course react</footer>
+      <footer>2023 - mock footer for course react</footer>
     </>
   )
 };
