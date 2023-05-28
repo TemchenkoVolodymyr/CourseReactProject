@@ -8,21 +8,20 @@ import {Outlet} from "react-router";
 const Layout = () => {
   return (
     <>
-      <div>
-        <div>
+      <div className={"containerTopLayout"}>
+        <div className={"containerNav"}>
           <Navigations/>
         </div>
 
-        <div>
-          что то
+        <div className={"containerMain"}>
           <Outlet/>
         </div>
 
-        <div>
+        <div className={"containerSideBar"}>
           <p>Right mock side bar</p>
         </div>
       </div>
-      <footer>2023 - mock footer for course react</footer>
+      <footer className={"footer"}>2023 - mock footer for course react</footer>
     </>
   )
 };

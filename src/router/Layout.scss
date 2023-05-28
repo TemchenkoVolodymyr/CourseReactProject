@@ -1,29 +1,68 @@
-//
-//.container {
-//  display: grid;
-//  grid-template-columns: 200px 1fr 200px;
-//  padding: 20px;
-//}
-//
-//
-//.nav {
-//  grid-column: 1;
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//.navRightSide {
-//  grid-column: 3;
-//}
-//
-//.containerOutlet {
-//  margin: 0 auto;
-//  grid-column: 2;
-//  text-align: center;
-//}
+@import "../index";
 
+$heightFooter: $size * 6;
+$footerPaddingTop: $size * 2.5;
+$footerWidthBorder: $size * 0.1;
+$navWidth: $size * 25;
+$sidBarWidth: $size * 25;
 
+* {
+  padding: 0;
+  margin: 0;
+}
 
+.containerTopLayout{
+  display: flex;
+  justify-content: space-between;
+  background-color: $colorBg;
+  color: $colorDefault;
+}
 
+.containerNav{
+  width: $navWidth;
+  height: calc(100vh - $heightFooter - $footerPaddingTop - $footerWidthBorder) ;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid darken($colorDefault, 25%);
 
+  & > a {
+    color: $colorDefault;
+    margin: $size;
+    font-size: $size * 2;
+    text-decoration: none;
+    font-weight: bold;
 
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & > .active {
+    color: $colorActive;
+    cursor: default;
+  }
+}
+
+.containerMain{
+  width: calc(100% - $navWidth - $sidBarWidth);
+  padding: $size;
+}
+
+.containerSideBar{
+  width: $sidBarWidth;
+  display: flex;
+  flex-direction: column;
+  border-left:1px solid darken($colorDefault, 25%);
+  padding-top: $size;
+  padding-left: $size;
+}
+
+.footer {
+  height: $heightFooter;
+  padding-top: $footerPaddingTop;
+  background-color: $colorBg;
+  text-align: center;
+  color: $colorDefault;
+  font-size: $size * 2;
+  border-top: $footerWidthBorder solid darken($colorDefault, 25%);
+}
