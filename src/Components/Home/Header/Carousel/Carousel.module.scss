@@ -1,0 +1,17 @@
+
+.container {
+  height: 150px;
+  width: 450px;
+}
+
+.window {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.items {
+  height: 100%;
+  display: flex;
+
+}

@@ -1,0 +1,29 @@
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.item-1 {
+  background-color: #9abf12;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.item-2 {
+  background-color: #3a3d34;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.item-3 {
+  background-color: #ae12bf;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+/*# sourceMappingURL=ItemCarousel.css.map */

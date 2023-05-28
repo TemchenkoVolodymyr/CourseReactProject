@@ -1,0 +1,28 @@
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.item-1 {
+//background-image: url("https://ernoticias.com/wp-content/uploads/2021/08/Screenshot_163-735x400.jpg");
+  background-color: #9abf12;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+.item-2 {
+  //background-image: url("https://i.ytimg.com/vi/jv07MTOq_pE/maxresdefault.jpg");
+  background-color: #3a3d34;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+.item-3 {
+  //background-image: url("https://i.pinimg.com/736x/1f/c9/9a/1fc99a8f239827dd37faa13b94c44f62.jpg");
+  background-color: #ae12bf;
+  height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
