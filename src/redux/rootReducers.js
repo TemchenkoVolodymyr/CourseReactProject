@@ -3,6 +3,7 @@ import {headerReducer} from "../Components/Header/headerReducer";
 import {reduxTestCounterReducer} from '../Components/reduxTestCounter/reduxTestCounterReducer';
 import {jsonReducer} from "./json/jsonReducer";
 import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
+import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBestActors";
 
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     reduxTestCounter: reduxTestCounterReducer,
     jsonDataMedia: jsonReducer,
     headerMovies: reducerHomeHeader,
+    bestActors: reducerBestActors,
   },
 );
