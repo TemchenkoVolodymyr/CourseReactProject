@@ -1,0 +1,13 @@
+.notFound {
+  color: #E30914;
+  padding: 20px;
+  text-align: center;
+}
+.notFound h1 {
+  margin: 40px 0;
+}
+.notFound h1 a {
+  color: white;
+}
+
+/*# sourceMappingURL=NotfoundPage.module.css.map */
