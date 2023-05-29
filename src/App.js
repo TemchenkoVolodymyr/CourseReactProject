@@ -10,6 +10,7 @@ import {jsonAC} from "./redux/json/jsonActions";
 import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
+import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
+          <Route path="/:id" element={<MovieCarousel />}></Route>
         </Route>
       </Routes>
     </>

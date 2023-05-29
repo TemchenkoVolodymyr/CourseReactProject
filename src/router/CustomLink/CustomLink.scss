@@ -1,0 +1,32 @@
+@import "src/index";
+
+.link-active{
+    color: #c01145;
+    font-size: 18px;
+    text-decoration: none;
+    padding:  10px;
+}
+.link{
+    text-decoration: none;
+    padding:  10px;
+    font-size: 20px;
+    background-color: $colorBtnBg;
+    border-radius: 15px;
+    color:$colorBtn;
+}
+.link:hover {
+    background-color: $colorBgActiveBtn;
+}
+
+.link-white{
+    color: #000000;
+    padding:  10px;
+    text-decoration: none;
+    font-size: 20px;
+}
+.link-dark{
+    color: #ffffff;
+    padding:  10px;
+    text-decoration: none;
+    font-size: 20px;
+}
