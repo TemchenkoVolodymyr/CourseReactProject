@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from "./Carousel/Carousel";
 import ItemCarousel from "./Carousel/ItemCarousel";
 import style from "./HomeHeader.module.scss"
+import TrendingMovies from "./TrendingMovies/TrendingMovies";
 
 
 const HomeHeader = () => {
@@ -26,6 +27,16 @@ const HomeHeader = () => {
           <ItemCarousel name={"Film 5"} category={"Tt"} bg={fifthUrl}/>
           <ItemCarousel name={"Film 6"} category={"ADsssasds"} bg={sixtyUrl}/>
         </Carousel>
+        <div className={style.header}>
+          <h3>Trending now </h3>
+        </div>
+        <div className={style.trendMovies}>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+        </div>
       </div>
     </>
 
