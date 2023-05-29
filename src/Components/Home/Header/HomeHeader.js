@@ -19,6 +19,13 @@ const HomeHeader = () => {
     }
   }
 
+  let styleCarouselTrending = {
+    container: {
+      height:" 220px",
+      display: "flex",
+      alignItems: "center",
+    }
+  }
   let movies = moviesHeaderCarousel.map(movie => <ItemCarousel name={movie.name} category = {movie.category} bg={movie.url} id={movie.id}></ItemCarousel>)
 
   return (
@@ -33,7 +40,11 @@ const HomeHeader = () => {
         <div className={style.header}>
           <h3>Trending now </h3>
         </div>
-        <Carousel widthBox = "165"  styleCss = {styleCarouselContainer}>
+        <Carousel widthBox = "263"  styleCss = {styleCarouselTrending} maxWidth = "-495">
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
+          <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
           <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
           <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
           <TrendingMovies image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
