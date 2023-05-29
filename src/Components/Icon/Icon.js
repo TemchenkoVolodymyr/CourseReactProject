@@ -8,14 +8,19 @@ export const Icon = (props) => {
   }
 
   const {className, color, size, ...rest } = props;
-  const style = {fill:color, fontSize: size};
+
+  let styles = null;
+  if(color && size){
+    styles = {fill: color, fontSize: size};
+  }
+
   return (
     <svg
       className={icon.className}
       height={icon.height}
       width={icon.width}
       viewBox={icon.viewBox}
-      style={style}
+      style={styles}
       {...rest}
     >
       {icon.body}
