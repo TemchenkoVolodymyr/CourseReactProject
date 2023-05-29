@@ -9,6 +9,7 @@ import {jsonAC} from "./redux/json/jsonActions";
 
 import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
+import NotfoundPage from "./pages/NotfoundPage";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
   let dispatch = useDispatch()
   useEffect(() => {
     dispatch(jsonAC(data))
-  },[data])
+  }, [data])
 
 
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="discovery" element={<Header/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
+          <Route path="*" element={<NotfoundPage/>}/>
         </Route>
       </Routes>
     </>
