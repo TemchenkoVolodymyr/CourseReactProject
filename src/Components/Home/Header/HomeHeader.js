@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from "./Carousel/Carousel";
 import ItemCarousel from "./Carousel/ItemCarousel";
+import style from "./HomeHeader.module.scss"
 
 
 const HomeHeader = () => {
@@ -12,16 +13,21 @@ const HomeHeader = () => {
   let fifthUrl = "https://th.bing.com/th/id/OIP.ZFKirpwtCfe-MNltd-Qv8QHaD4?pid=ImgDet&rs=1"
   let sixtyUrl = "https://th.bing.com/th/id/R.52f598581d76467d61a7609f5292e15c?rik=%2fHSyADgOGDroPw&riu=http%3a%2f%2fwww.filmofilia.com%2fwp-content%2fuploads%2f2011%2f08%2fHobbit-Wallpaper_h1.jpg&ehk=i5TlSBt7Q2CvPUcEG2SwM3%2b86UDy2S%2bGNeQ4KjaKcGA%3d&risl=&pid=ImgRaw&r=0"
   return (
-
-    <Carousel>
-      <ItemCarousel name={"ENCANTO"} category={"Cartoons Comedy"}  bg={firstUrl}/>
-      <ItemCarousel name={"Film 2"} category={"Affff"}  bg={secondUrl}/>
-      <ItemCarousel name={"Film 3"} category={"ADssss"}  bg = {thirdUrl}/>
-      <ItemCarousel name={"Film 4"} category={"ADsqqqsss"}  bg = {fourthUrl}/>
-      <ItemCarousel name={"Film 5"} category={"Tt"}  bg = {fifthUrl}/>
-      <ItemCarousel name={"Film 6"} category={"ADsssasds"} bg = {sixtyUrl}/>
-    </Carousel>
-
+    <>
+      <div className={style.container}>
+        <div className={style.header}>
+          <h3>Watch movies online</h3>
+        </div>
+        <Carousel>
+          <ItemCarousel name={"ENCANTO"} category={"Cartoons Comedy"} bg={firstUrl}/>
+          <ItemCarousel name={"Film 2"} category={"Affff"} bg={secondUrl}/>
+          <ItemCarousel name={"Film 3"} category={"ADssss"} bg={thirdUrl}/>
+          <ItemCarousel name={"Film 4"} category={"ADsqqqsss"} bg={fourthUrl}/>
+          <ItemCarousel name={"Film 5"} category={"Tt"} bg={fifthUrl}/>
+          <ItemCarousel name={"Film 6"} category={"ADsssasds"} bg={sixtyUrl}/>
+        </Carousel>
+      </div>
+    </>
 
 
   );
