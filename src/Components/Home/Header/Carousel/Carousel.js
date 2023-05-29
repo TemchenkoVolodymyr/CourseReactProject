@@ -2,37 +2,32 @@ import React, {useState} from 'react';
 import style from "./Carousel.module.scss"
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
-const Carousel = ({children}) => {
+const Carousel = ({children, ...props}) => {
 
-  let widthItem = 870
+  let {widthBox, styleCss} = props
 
   const [offset, setOffset] = useState(0)
 
 
   const handleRightClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset - widthItem
-      const maxOffset = -(widthItem * (children.length - 1))
+        const newOffset = currentOffset - widthBox
+        const maxOffset = -(widthBox * (children.length - 1))
 
-      return Math.max(newOffset, maxOffset)
+        return Math.max(newOffset, maxOffset)
       }
     )
   }
 
   const handleLeftClick = () => {
     setOffset((currentOffset) => {
-
-      const newOffset = currentOffset + widthItem
-
-
-
+      const newOffset = +currentOffset + +widthBox
       return Math.min(newOffset, 0)
     })
   }
 
-
   return (
-    <div className={style.container}>
+    <div style={styleCss.container}>
       <FaChevronLeft className={style.arrow} onClick={handleLeftClick}></FaChevronLeft>
 
       <div className={style.window}>

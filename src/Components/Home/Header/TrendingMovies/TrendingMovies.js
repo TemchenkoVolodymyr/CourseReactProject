@@ -3,8 +3,8 @@ import  style from  "./TrendingMovies.module.scss"
 
 const TrendingMovies = (props) => {
   return (
-    <div >
-      <img className={style.image} src={props.image} alt="trending movies" />
+    <div className={style.container}>
+      <div className={style.images} style={{backgroundImage:`url(${props.image})`}}></div>
     </div>
   );
 };
