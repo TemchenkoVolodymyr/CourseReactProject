@@ -24,10 +24,7 @@ const MovieCarousel = () => {
 
 
   const goBack = () => (navigate(-1))
-
-
-
-
+  
   return (
     <>
     <div>

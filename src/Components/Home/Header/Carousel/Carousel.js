@@ -4,7 +4,7 @@ import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
 const Carousel = ({children, ...props}) => {
 
-  let {widthBox, styleCss} = props
+  let {widthBox, styleCss, maxWidth} = props
 
   const [offset, setOffset] = useState(0)
 
