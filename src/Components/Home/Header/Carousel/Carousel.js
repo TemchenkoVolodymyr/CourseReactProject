@@ -11,19 +11,22 @@ const Carousel = ({children}) => {
 
   const handleRightClick = () => {
     setOffset((currentOffset) => {
-        const newOffset = currentOffset + widthItem
+      const newOffset = currentOffset - widthItem
+      const maxOffset = -(widthItem * (children.length - 1))
 
-        return Math.min(newOffset, 0)
+      return Math.max(newOffset, maxOffset)
       }
     )
   }
 
   const handleLeftClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset - widthItem
-      const maxOffset = -(widthItem * (children.length - 1))
 
-      return Math.max(newOffset, maxOffset)
+      const newOffset = currentOffset + widthItem
+
+
+
+      return Math.min(newOffset, 0)
     })
   }
 
