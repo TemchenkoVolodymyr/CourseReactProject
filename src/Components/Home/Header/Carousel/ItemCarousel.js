@@ -1,5 +1,6 @@
 import React from 'react';
-import  "./ItemCarousel.scss"
+import style from  "./ItemCarousel.module.scss"
+import {Button} from "@mui/material";
 
 const ItemCarousel = (props) => {
 
@@ -8,11 +9,10 @@ const ItemCarousel = (props) => {
   let url = props.bg
 
   return (
-    <div style={{backgroundImage:`url(${url})`}} className={`item` }>
-      <h2>{name}</h2>
-      <h4>{category}</h4>
-      <button>Watch</button>
-
+    <div style={{backgroundImage:`url(${url})`}} className={style.item }>
+      <h2 className={style.name}>{name}</h2>
+      <h4 className={style.category}>{category}</h4>
+      <button className={style.button}>Watch</button>
     </div>
   );
 };

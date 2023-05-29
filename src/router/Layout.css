@@ -43,7 +43,7 @@
 .containerNav > .active {
   color: white;
   cursor: default;
-  border-right: 3px solid #E30914;
+  border-right: 3px solid #f8f8f8;
 }
 .containerNav p {
   margin-left: 20px;
