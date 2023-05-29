@@ -1,15 +1,18 @@
 import React from 'react';
-import  "./ItemCarousel.scss"
+import style from  "./ItemCarousel.module.scss"
+import {Button} from "@mui/material";
 
 const ItemCarousel = (props) => {
 
-  let {name,category,styleName} = props
+  let {name,category} = props
+
+  let url = props.bg
 
   return (
-    <div className={`item ${styleName}`}>
-      <h3>{name}</h3>
-      <h4>{category}</h4>
-      <button>Watch</button>
+    <div style={{backgroundImage:`url(${url})`}} className={style.item }>
+      <h2 className={style.name}>{name}</h2>
+      <h4 className={style.category}>{category}</h4>
+      <button className={style.button}>Watch</button>
     </div>
   );
 };
