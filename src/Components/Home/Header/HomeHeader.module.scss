@@ -4,11 +4,28 @@
 .header {
   padding: 15px;
   font-size: $sizeHeader;
+  letter-spacing: 1px;
 }
 
 .trendMovies {
   display: flex;
-
   margin: 5px;
+}
 
+.wrapper {
+  display: flex;
+  margin: 5px;
+}
+
+.item {
+  background-size: cover;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  border-radius: 15px;
+  margin: 5px;
+}
+.wrapperActors{
+  max-width: 150px;
+  max-height: 200px;
 }
