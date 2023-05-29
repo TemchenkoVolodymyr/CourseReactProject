@@ -1,7 +1,7 @@
 .item {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: baseline;
   user-select: none;
   height: 100%;
   max-width: 100%;

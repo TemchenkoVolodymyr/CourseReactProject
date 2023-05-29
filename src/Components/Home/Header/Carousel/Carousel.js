@@ -1,4 +1,4 @@
-import React, {Children, cloneElement, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import style from "./Carousel.module.scss"
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
@@ -6,7 +6,6 @@ const Carousel = ({children}) => {
 
   let widthItem = 870
 
-  const [pages, setPages] = useState([])
   const [offset, setOffset] = useState(0)
 
 

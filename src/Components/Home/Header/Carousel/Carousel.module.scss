@@ -1,18 +1,16 @@
 
 .container {
-  height: 200px;
-  width: 850px;
+  height: 220px;
+  width: 860px;
   display: flex;
   align-items: center;
 }
-
 .window {
   height: 100%;
   width: 100%;
   overflow: hidden;
   border-radius: 20px;
 }
-
 .items {
   height: 100%;
   display: flex;
@@ -20,9 +18,7 @@
   transition-property: transform;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-
 }
-
 .arrow {
   cursor: pointer;
 }

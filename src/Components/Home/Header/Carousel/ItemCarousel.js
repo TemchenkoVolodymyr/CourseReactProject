@@ -9,9 +9,10 @@ const ItemCarousel = (props) => {
 
   return (
     <div style={{backgroundImage:`url(${url})`}} className={`item` }>
-      <h3>{name}</h3>
+      <h2>{name}</h2>
       <h4>{category}</h4>
       <button>Watch</button>
+
     </div>
   );
 };
