@@ -1,10 +1,14 @@
 @import "src/index";
 
-.container{
 
-
-}
-.header{
+.header {
   padding: 15px;
   font-size: $sizeHeader;
+}
+
+.trendMovies {
+  display: flex;
+
+  margin: 5px;
+
 }

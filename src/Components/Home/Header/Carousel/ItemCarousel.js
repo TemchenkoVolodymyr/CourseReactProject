@@ -1,6 +1,5 @@
 import React from 'react';
 import style from  "./ItemCarousel.module.scss"
-import {Button} from "@mui/material";
 
 const ItemCarousel = (props) => {
 
