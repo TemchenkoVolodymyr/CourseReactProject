@@ -9,6 +9,14 @@ export const iconsDefs = {
     body: (<path
       d="M0 4v24h32v-24h-32zM6 26h-4v-4h4v4zM6 18h-4v-4h4v4zM6 10h-4v-4h4v4zM24 26h-16v-20h16v20zM30 26h-4v-4h4v4zM30 18h-4v-4h4v4zM30 10h-4v-4h4v4zM12 10v12l8-6z"></path>),
   },
+  home: {
+    className: 'icon icon-home2',
+    viewBox: '0 0 32 32',
+    width: '1em',
+    height: '1em',
+    body: (<path
+      d="M16 1l-16 16 3 3 3-3v13h8v-6h4v6h8v-13l3 3 3-3-16-16zM16 14c-1.105 0-2-0.895-2-2s0.895-2 2-2c1.105 0 2 0.895 2 2s-0.895 2-2 2z"></path>)  //<g fill="red" stroke="none">
+  },
   compass: {
     className: 'icon icon-compass2',
     viewBox: '0 0 32 32',

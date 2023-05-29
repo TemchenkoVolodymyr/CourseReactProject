@@ -1,5 +1,6 @@
 export const iconTypes = {
   "film": 'film',
+  "home": 'home',
   "compass": 'compass',
   "spinner": 'spinner',
   "fire": 'fire',
