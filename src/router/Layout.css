@@ -30,18 +30,18 @@
 }
 .containerNav > a h1 {
   font-size: 20px;
-  color: white;
+  color: #f50101;
 }
 .containerNav > a:hover {
   text-decoration: underline;
-  color: white;
+  color: #f50101;
   transition: 0.2s;
 }
 .containerNav > a svg {
   margin-right: 10px;
 }
 .containerNav > .active {
-  color: white;
+  color: #f50101;
   cursor: default;
   border-right: 3px solid #f8f8f8;
 }

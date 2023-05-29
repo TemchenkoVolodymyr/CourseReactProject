@@ -1,6 +1,10 @@
+@import "src/index";
 
-.main {
-  color: rgb(0, 0, 0);
-  text-align: left;
-  margin: 30px;
+.container{
+
+
+}
+.header{
+  padding: 15px;
+  font-size: $sizeHeader;
 }
