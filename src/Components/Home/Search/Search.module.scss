@@ -18,11 +18,13 @@
   position: absolute;
 
   top: 50px;
-  width: 100%;
+  width: 220px;
   background-color: #f8f8f8;
+  list-style: none;
 }
 
 .autocompletedItem {
-
+  font-size: 20px;
+  padding: 2px;
 }
 
