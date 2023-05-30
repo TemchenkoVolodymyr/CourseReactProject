@@ -3,6 +3,7 @@ import React from 'react';
 import Navigations from "./Navigations";
 import style from "./Layout.scss"
 import {Outlet} from "react-router";
+import Search from "../Components/Home/Search/Search";
 
 
 const Layout = () => {
@@ -18,6 +19,7 @@ const Layout = () => {
         </div>
 
         <div className={"containerSideBar"}>
+          <Search />
           <p>Right mock side bar</p>
         </div>
       </div>
