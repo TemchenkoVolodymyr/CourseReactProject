@@ -1,0 +1,14 @@
+.search {
+  border-radius: 15px;
+  border: 1px solid grey;
+  padding: 8px 27px;
+  background-color: #1f2126;
+}
+
+.icon {
+  position: absolute;
+  top: 16px;
+  right: 210px;
+}
+
+/*# sourceMappingURL=Search.module.css.map */

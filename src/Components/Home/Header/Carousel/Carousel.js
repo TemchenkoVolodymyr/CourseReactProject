@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import style from "./Carousel.module.scss"
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
+
 const Carousel = ({children, ...props}) => {
 
   let {widthBox, styleCss} = props
