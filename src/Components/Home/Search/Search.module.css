@@ -11,4 +11,11 @@
   right: 210px;
 }
 
+.autocompleted {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+
 /*# sourceMappingURL=Search.module.css.map */

@@ -30,6 +30,13 @@ const Search = () => {
       <BiSearch className={style.icon}></BiSearch>
       <input className={style.search} type="search" placeholder={`Search`} value={search}
              onChange={(e) => changeSearch(e)}></input>
+      <ul className={style.autocompleted}>
+        <li className={style.autocompletedItem}>item 1</li>
+        <li className={style.autocompletedItem}>item 1</li>
+        <li className={style.autocompletedItem}>item 1</li>
+        <li className={style.autocompletedItem}>item 1</li>
+        <li className={style.autocompletedItem}>item 1</li>
+      </ul>
       <div>
         <div>
           {findMovie && findMovie.map(item => <p>{item}</p>)}
