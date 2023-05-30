@@ -4,7 +4,7 @@ import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
 const Carousel = ({children, ...props}) => {
 
-  let {widthBox, styleCss, maxWidth} = props
+  let {widthBox, styleCss} = props
 
   const [offset, setOffset] = useState(0)
 
@@ -14,7 +14,13 @@ const Carousel = ({children, ...props}) => {
         const newOffset = currentOffset - widthBox
         const maxOffset = -(widthBox * (children.length - 1))
 
-        return Math.max(newOffset, maxOffset)
+
+        let result = Math.max(newOffset, maxOffset)
+        if (result === Number(-1169)) {  // я не смог тут сделать без хард кода , думаю можно будет потом зарефакторить , это что бы в section Trending now слайдер когда доходил на крайней правей картинки останавливался
+          return currentOffset
+        }
+
+        return result
       }
     )
   }

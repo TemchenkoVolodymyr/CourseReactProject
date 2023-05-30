@@ -50,7 +50,7 @@ const HomeHeader = (props) => {
         <div className={style.header}>
           <h3>Trending now </h3>
         </div>
-        <Carousel widthBox="263" styleCss={styleCarouselTrending} maxWidth="-495">
+        <Carousel widthBox="167" styleCss={styleCarouselTrending}>
           <TrendingMovies
             image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
           <TrendingMovies
