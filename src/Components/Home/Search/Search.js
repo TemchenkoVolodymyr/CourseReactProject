@@ -9,30 +9,21 @@ const Search = () => {
 
   let mediaData = useSelector((store) => store.jsonDataMedia);
 
-  let [findMovie,setFindMovie] = useState([])
+  let [findMovie, setFindMovie] = useState([])
 
-
-  // title
 
   const changeSearch = (e) => {
     setSearch(e.target.value)
 
   }
-
-  const  searchMovie = () => search && mediaData.videos.map(item => {
-    let wrote = item.title.toLowerCase().includes(search.toLowerCase())
-
-    if(wrote) {
-      setFindMovie([...findMovie,item.title])   // тут надо проверить массив на наличие фильма который вводим,если он есть то не надо добавлять его в массив
-    }
-
-  })
+  const searchMovie = () => search && mediaData.videos.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
 
 
-useEffect(() => {
- searchMovie()
-},[search])
+  useEffect(() => {
+    const x = searchMovie()
+    setFindMovie(x && x.map(film => film.title))
 
+  }, [search])
 
   return (
     <div>
@@ -42,8 +33,6 @@ useEffect(() => {
       <div>
         <div>
           {findMovie && findMovie.map(item => <p>{item}</p>)}
-          {/*{search}*/}
-
         </div>
       </div>
     </div>
