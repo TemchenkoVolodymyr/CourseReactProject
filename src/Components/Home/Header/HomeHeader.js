@@ -32,8 +32,8 @@ const HomeHeader = (props) => {
   let movies = moviesHeaderCarousel.map(movie => <ItemCarousel name={movie.name} category={movie.category}
                                                                bg={movie.url} id={movie.id}></ItemCarousel>)
 
-  let actors = bestActors.map(actor => <div className={style.wrapperActors}>
-    <img className={style.item} src={actor.url} alt="best-actor"/>
+  let actors = bestActors.map(actor => <div className={style.wrapperActors}
+                                            style={{backgroundImage: `url(${actor.url})`}}>
     <p>{actor.name}</p>
     <p>{actor.countOfFilms}</p>
   </div>)
@@ -79,15 +79,6 @@ const HomeHeader = (props) => {
         </div>
         <div className={style.wrapper}>
           {actors}
-          {/*<div className={style.item}>*/}
-          {/*  <img src={} alt="best-actor"/>*/}
-          {/*</div>*/}
-          {/*<div className={style.item}></div>*/}
-          {/*<div className={style.item}></div>*/}
-          {/*<div className={style.item}></div>*/}
-          {/*<div className={style.item}></div>*/}
-          {/*<div className={style.item}></div>*/}
-          {/*<div className={style.item}></div>*/}
         </div>
 
 
