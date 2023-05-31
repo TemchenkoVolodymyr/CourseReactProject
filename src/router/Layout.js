@@ -4,6 +4,7 @@ import Navigations from "./Navigations";
 import style from "./Layout.scss"
 import {Outlet} from "react-router";
 import Search from "../Components/Home/Search/Search";
+import PopularMovies from "../Components/Home/Popular Movies/PopularMovies";
 
 
 const Layout = () => {
@@ -20,7 +21,7 @@ const Layout = () => {
 
         <div className={"containerSideBar"}>
           <Search />
-          <p>Right mock side bar</p>
+          <PopularMovies/>
         </div>
       </div>
       <footer className={"footer"}>2023 - mock footer for course react</footer>

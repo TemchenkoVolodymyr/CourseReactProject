@@ -1,4 +1,4 @@
-
+@import "src/index";
 .search {
   border-radius: 15px;
   border: 1px solid grey;
@@ -6,10 +6,35 @@
   background-color: #1f2126;
 
 }
-.icon{
+
+.icon {
   position: absolute;
   top: 16px;
   right: 210px;
 
+}
+
+.autocompleted {
+  position: absolute;
+
+  top: 50px;
+  width: 220px;
+  background-color: #f8f8f8;
+  list-style: none;
+  box-shadow: 1px 1px 5px #ffffff;
+  height: auto;
+  overflow: auto;
+  max-height: 240px;
+}
+
+.autocompletedItem {
+  font-size: 20px;
+  padding: 15px;
+  &:hover{
+    background-color:$colorActive;
+    color: #ffffff;
+    cursor: pointer;
+    transition: cubic-bezier(1,0,0,1) .3s all;
+  }
 }
 

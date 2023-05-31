@@ -1,0 +1,33 @@
+.container{
+  max-height: 350px;
+  overflow: hidden;
+  margin-top: 93px;
+}
+
+.wrapper {
+  box-shadow:0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  justify-content: end;
+  flex-direction: column;
+  &:hover{
+    transform: scale(1.05) ;
+    cursor: pointer;
+    box-shadow:0 0 0 128px rgba(159, 55, 55, 0.33) inset;
+  }
+}
+.item{
+  padding: 5px;
+  color: #ffffff;
+}
+.mark{
+  width: 20px;
+}
+.wrapperMark{
+  display: flex;
+}
