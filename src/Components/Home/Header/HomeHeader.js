@@ -29,11 +29,19 @@ const HomeHeader = (props) => {
       alignItems: "center",
     }
   }
-  let movies = moviesHeaderCarousel.map(movie => <ItemCarousel name={movie.name} category={movie.category}
-                                                               bg={movie.url} id={movie.id}></ItemCarousel>)
+  let movies = moviesHeaderCarousel.map(movie =>
+    <ItemCarousel
+      key={movie.id}
+      name={movie.name}
+      category={movie.category}
+      bg={movie.url}
+      id={movie.id}></ItemCarousel>)
 
-  let actors = bestActors.map(actor => <div className={style.wrapperActors}
-                                            style={{backgroundImage: `url(${actor.url})`}}>
+  let actors = bestActors.map(actor =>
+    <div
+      key={actor.url}
+      className={style.wrapperActors}
+      style={{backgroundImage: `url(${actor.url})`}}>
     <p>{actor.name}</p>
     <p>{actor.countOfFilms}</p>
   </div>)

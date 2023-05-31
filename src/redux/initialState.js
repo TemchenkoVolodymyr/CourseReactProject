@@ -1,9 +1,9 @@
 export const initialStore = {
   header: 'Hello, i`m from initialStore',
   reduxTestCounter: 0,
-  mediaJSON: null,
+  jsonDataMedia: null,
 
-  headerHomeMovies: [
+  headerMovies: [
     {
       name: "ENCANTO",
       category: "Cartoons Comedy",
