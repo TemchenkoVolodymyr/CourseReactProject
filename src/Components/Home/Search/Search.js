@@ -31,17 +31,8 @@ const Search = () => {
       <input className={style.search} type="search" placeholder={`Search`} value={search}
              onChange={(e) => changeSearch(e)}></input>
       <ul className={style.autocompleted}>
-        <li className={style.autocompletedItem}>item 1</li>
-        <li className={style.autocompletedItem}>item 1</li>
-        <li className={style.autocompletedItem}>item 1</li>
-        <li className={style.autocompletedItem}>item 1</li>
-        <li className={style.autocompletedItem}>item 1</li>
+        {findMovie && findMovie.map(item => <li className={style.autocompletedItem}>{item}</li>)}
       </ul>
-      <div>
-        <div>
-          {findMovie && findMovie.map(item => <p>{item}</p>)}
-        </div>
-      </div>
     </div>
   );
 };

@@ -12,5 +12,6 @@ export const iconTypes = {
   "hipster2": 'hipster2',
   "enter": 'enter',
   "exit": 'exit',
+  "star" : 'star',
 
 }

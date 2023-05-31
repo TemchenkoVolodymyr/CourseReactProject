@@ -8,36 +8,42 @@ export const initialStore = {
       name: "ENCANTO",
       category: "Cartoons Comedy",
       id: 1,
+      mark:3.5,
       url: "https://ernoticias.com/wp-content/uploads/2021/08/Screenshot_163-735x400.jpg"
     },
     {
       name: "MAD-MAX",
       category: "Thriller",
       id: 2,
+      mark:4.5,
       url: "https://i.ytimg.com/vi/DJgq33-4QbQ/maxresdefault.jpg"
     },
     {
       name: "AVATAR 2",
       category: "Fantasy",
       id: 3,
+      mark:5,
       url: "https://th.bing.com/th/id/R.159ce384dbca5ec67f82fbecb34d79da?rik=uf4XgukBaMr2mQ&pid=ImgRaw&r=0"
     },
     {
       name: "Hobbit",
       category: "Fantasy",
       id: 4,
+      mark:3.5,
       url: "https://th.bing.com/th/id/OIP.98cXjhTd3sXNUEpf4ds3nAHaEo?pid=ImgDet&rs=1"
     },
     {
       name: "SPIDER-MAN",
       category: "Fantasy",
       id: 5,
+      mark:3.5,
       url: "https://th.bing.com/th/id/R.082aa85eadb387dc978e8e8b6106eeb1?rik=Zs5S67H60QOF6g&pid=ImgRaw&r=0"
     },
     {
       name: "JOHN WICK",
       category: "Thriller",
       id: 6,
+      mark:3.5,
       url: "https://th.bing.com/th/id/R.20b1561366dc8453d3d02900cd6c1832?rik=tD36mxYKYrvAsw&pid=ImgRaw&r=0"
     }
   ],
