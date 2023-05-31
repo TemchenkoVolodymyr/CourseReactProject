@@ -1,27 +1,17 @@
-.search {
-  border-radius: 15px;
-  border: 1px solid grey;
-  padding: 8px 27px;
-  background-color: #1f2126;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import "src/index";
+ *   |         ^^^^^^^^^^^
+ *   '
+ *   Search.module.scss 1:9  root stylesheet */
 
-.icon {
-  position: absolute;
-  top: 16px;
-  right: 210px;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"src/index\";\d\a   \2502          ^^^^^^^^^^^\a   \2575 \a   Search.module.scss 1:9  root stylesheet";
 }
-
-.autocompleted {
-  position: absolute;
-  top: 50px;
-  width: 220px;
-  background-color: #f8f8f8;
-  list-style: none;
-}
-
-.autocompletedItem {
-  font-size: 20px;
-  padding: 2px;
-}
-
-/*# sourceMappingURL=Search.module.css.map */
