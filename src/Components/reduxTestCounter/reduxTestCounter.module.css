@@ -1,0 +1,23 @@
+.wrapper {
+  width: 300px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #bce52f;
+  background-color: #9abf12;
+  font-size: 16px;
+}
+.wrapper h3 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.buttons {
+  display: flex;
+}
+.buttons button {
+  padding: 3px;
+  background-color: #12bf6e;
+}
+
+/*# sourceMappingURL=reduxTestCounter.module.css.map */

@@ -1,0 +1,106 @@
+@import "../index";
+
+$heightFooter: $size * 6;
+$footerPaddingTop: $size * 2.5;
+$footerWidthBorder: $size * 0.1;
+$navWidth: $size * 25;
+$sidBarWidth: $size * 25;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.containerTopLayout {
+  display: flex;
+  justify-content: space-between;
+  background-color: $colorBg;
+  color: $colorDefault;
+}
+
+.containerNav {
+  width: $navWidth;
+  min-height: calc(100vh - $heightFooter - $footerPaddingTop - $footerWidthBorder);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid darken($colorDefault, 25%);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  user-select: none;
+
+  & > a {
+    color: $colorDefault;
+    margin-left: $size * 2;
+    margin-top: $size * 2;
+    font-size: $size * 1.4;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: $size * 2;
+      color: $colorBtn;
+      letter-spacing: $size * 0.1;
+
+      span {
+        color: $colorBtnBg;
+      }
+    }
+
+    &:hover {
+      color: $colorBtn;
+      transition: 0.2s;
+    }
+
+    & svg {
+      margin-right: 10px;
+      font-size: 20px;
+      fill: $colorDefault;
+    }
+  }
+
+  & > .active {
+    color: $colorBtn;
+    cursor: default;
+    border-right: 3px solid $colorBtnBg;
+
+    &:first-child {
+      border: none;
+    }
+
+    & > svg {
+      fill: $colorBtnBg;
+    }
+  }
+
+  p {
+    margin-left: $size * 2;
+    margin-top: $size * 4;
+    text-transform: uppercase;
+    font-size: $size * 1.4;
+  }
+}
+
+.containerMain {
+  width: calc(100% - $navWidth - $sidBarWidth);
+  padding: $size;
+}
+
+.containerSideBar {
+  width: $sidBarWidth;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid darken($colorDefault, 25%);
+  padding-top: $size;
+  padding-left: $size;
+}
+
+.footer {
+  height: $heightFooter;
+  padding-top: $footerPaddingTop;
+  background-color: $colorBg;
+  text-align: center;
+  color: $colorDefault;
+  font-size: $size * 2;
+  border-top: $footerWidthBorder solid darken($colorDefault, 25%);
+}

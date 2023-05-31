@@ -1,0 +1,15 @@
+@import "../index";
+
+.notFound {
+  color: $colorBtn;
+  padding: $size * 2;
+  text-align: center;
+
+  h1 {
+    margin: $size * 4 0;
+
+    a {
+      color: $colorActive;
+    }
+  }
+}

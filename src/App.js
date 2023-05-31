@@ -1,22 +1,43 @@
 import './App.css';
+import Header from "./Components/Header/Header";
+import {Route, Routes} from "react-router-dom";
+import Layout from "./router/Layout";
+import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
+import {useDispatch,} from "react-redux";
+import {useEffect} from "react";
+import {jsonAC} from "./redux/json/jsonActions";
+
+import data from "./redux/json/Data.json"
+import Home from "./Components/Home/Home";
+import NotfoundPage from "./pages/NotfoundPage";
+import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
+import AuthPage from "./pages/AuthPage";
+
 
 function App() {
+
+
+  let dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(jsonAC(data))
+  }, [data])
+
+
   return (
-    <div>
-      <p>We will check the work here </p>
-      <p>something not useful))</p>
-      <p>something realy useful))</p>
-      <p>something very useful)))))</p>
-      <p>We will check the work here </p>
-      <p>add paragraph from Serhii Hats with branch hats2</p>
-      <p>We will check the work here </p>
-      <button>Click Here</button>
-      <p>Thi is paragraph from Yevhenii Petrushenko</p>
-      <p>Thi is paragraph from Yevhenii Petrushenko</p>
-      <h3>This message for Pull Request testing</h3>
-      <p>This message for Pull Request testing with Requirements</p>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route path="discovery" element={<Header/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="auth" element={<AuthPage/>}/>
+          <Route path="redux" element={<ReduxTestCounter/>}/>
+          <Route path="*" element={<NotfoundPage/>}/>
+          <Route path="/:id" element={<MovieCarousel />}></Route>
+        </Route>
+      </Routes>
+    </>
   );
 }
+
 
 export default App;
