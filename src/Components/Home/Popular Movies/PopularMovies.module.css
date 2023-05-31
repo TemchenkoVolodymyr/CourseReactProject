@@ -19,7 +19,10 @@
 .wrapper:hover {
   transform: scale(1.05);
   cursor: pointer;
-  box-shadow: 0 0 0 128px rgba(159, 55, 55, 0.33) inset;
+  box-shadow: 0 0 0 128px rgba(159, 55, 55, 0.15) inset;
+}
+.wrapper:hover .wrapperAbout {
+  opacity: 1;
 }
 
 .item {
@@ -33,6 +36,14 @@
 
 .wrapperMark {
   display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.wrapperAbout {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
 }
 
 /*# sourceMappingURL=PopularMovies.module.css.map */
