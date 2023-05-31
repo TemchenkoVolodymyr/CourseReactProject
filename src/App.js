@@ -12,6 +12,8 @@ import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
 import AuthPage from "./pages/AuthPage";
+import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
+import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 
 
 function App() {
@@ -33,6 +35,9 @@ function App() {
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}></Route>
+          <Route path="/movie/:id" element={<CurrentMovie />}></Route>
+          <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
+
         </Route>
       </Routes>
     </>
