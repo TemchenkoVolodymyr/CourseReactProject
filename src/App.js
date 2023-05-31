@@ -11,6 +11,7 @@ import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
+import AuthPage from "./pages/AuthPage";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route path="discovery" element={<Header/>}/>
           <Route path="/" element={<Home/>}/>
+          <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}></Route>
