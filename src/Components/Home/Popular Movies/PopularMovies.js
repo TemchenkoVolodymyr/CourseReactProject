@@ -10,11 +10,13 @@ const PopularMovies = () => {
   let popularMovies = useSelector((store) => store.headerMovies);
 
   let movie = popularMovies.map(movie => <div style={{backgroundImage:`url(${movie.url})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}} className={style.wrapper}>
+    <div className={style.wrapperAbout}>
     <h3 className={style.item}>{movie.name}</h3>
     <p className={style.item}>{movie.category}</p>
     <div className={style.wrapperMark}>
       <img className={style.mark} src={star} alt="mark" />
       <p className={style.item}> {movie.mark}</p>
+    </div>
     </div>
 
   </div>)
