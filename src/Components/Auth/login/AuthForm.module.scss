@@ -36,6 +36,7 @@
       color: white;
       opacity: .8;
     }
+
     .btnContainer{
       display: flex;
       justify-content: center;
@@ -65,9 +66,13 @@
 
       .active{
         background-color: $colorBtnBg;
-
       }
     }
 
+    .errorMessage{
+      color: #E30914;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
@@ -12,6 +12,7 @@ const AuthForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const [error, setError] = useState('')
 
   const {
     register,
@@ -38,7 +39,7 @@ const AuthForm = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        alert(errorMessage);
       });
     reset()
   }
@@ -57,9 +58,13 @@ const AuthForm = () => {
         console.table(user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        let errorMessage = error.message;
+        if (error.code === 'auth/email-already-in-use') {
+          errorMessage = 'This email is already in use. Please try another one.'
+        } else {
+          errorMessage = error.message
+        }
+        setError(errorMessage);
       });
     reset()
   }
@@ -85,21 +90,22 @@ const AuthForm = () => {
           type="text"
           placeholder='Enter your email'
         />
-        {errors.email && <div style={{color: 'red'}}>{errors.email.message}</div>}
+        {errors.email && <div className={styles.errorMessage}>{errors.email.message}</div>}
         <label htmlFor="userName">password</label>
         <input
           {...register('password', {
               required: 'Password is required',
               minLength: {
                 value: 6,
-                message: 'password should contain more then 6 characters '
+                message: 'Password should contain more then 6 characters '
               },
             }
           )}
           type="password"
           placeholder='Enter your password'
         />
-        {errors.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
+        {errors.password && <div className={styles.errorMessage}>{errors.password.message}</div>}
+        {error && <div className={styles.errorMessage}>{error}</div>}
         <div className={styles.btnContainer}>
           <button
             className={styles.active}
