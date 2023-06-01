@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
+import {useSelector} from "react-redux";
 
 const AuthForm = () => {
+
+
+  let isAuth = useSelector((store) => store.isAuth);
 
   const {
     register,
@@ -17,6 +21,8 @@ const AuthForm = () => {
     alert(`${data.email}`)
     reset()
   }
+
+
 
   return (
     <section className={styles.wrapper}>

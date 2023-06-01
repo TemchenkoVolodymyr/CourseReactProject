@@ -89,7 +89,5 @@ export const initialStore = {
       countOfFilms: +5,
     }
   ],
-  isAuth:false,
-
-
+  isAuth:true,
 };
