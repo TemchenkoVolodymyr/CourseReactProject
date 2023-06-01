@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import {removeUser} from "../redux/store/user/userSlice";
 import {useAuth} from "../hooks/useAuth";
 import styles from './Navigations.module.scss'
+import {getAuth, signOut} from "firebase/auth";
 
 const Navigations = () => {
 
@@ -23,6 +24,17 @@ const Navigations = () => {
   //   return "";
   // }
 
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      dispatch(removeUser());
+    }).catch((error) => {
+      // An error happened.
+      console.error(error);
+    });
+  };
+
   return (
     <>
       <NavLink to="/"><Icon type={iconTypes.film} size={"30px"} color={"#E30914"}/>
@@ -39,16 +51,17 @@ const Navigations = () => {
       <NavLink to='/fantasy'><Icon type={iconTypes.magicWand}/>Fantasy</NavLink>
       <NavLink to='/biography'><Icon type={iconTypes.hipster2}/>Biography</NavLink>
       <p>general</p>
-      {isAuth
-        ? <NavLink
-          to='/auth'
-          onClick={() => dispatch(removeUser())}
-          className={styles.activeLink}
-          ><Icon type={iconTypes.exit}/>Logout</NavLink> :
-        <NavLink
-          to='/auth'
-          className={styles.activeLink}
-
+      {
+        isAuth ?
+          <NavLink
+            to='/auth'
+            onClick={logout}
+            className={styles.activeLink}
+          ><Icon type={iconTypes.exit}/>Logout</NavLink>
+          :
+          <NavLink
+            to='/auth'
+            className={styles.activeLink}
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
 
