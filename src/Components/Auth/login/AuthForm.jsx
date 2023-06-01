@@ -8,7 +8,7 @@ import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
 
 const AuthForm = () => {
- const {isAuth} = useAuth()
+  const {isAuth} = useAuth()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -99,6 +99,10 @@ const AuthForm = () => {
                 value: 6,
                 message: 'Password should contain more then 6 characters '
               },
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                message: 'Password should contain at least one letter and one number'
+              }
             }
           )}
           type="password"
