@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {iconTypes} from "../constants/constantsIcons";
 import {Icon} from "../Components/Icon/Icon";
+import {useSelector} from "react-redux";
 
 const Navigations = () => {
 
   const [login, setLogin] = useState(false);
+
+  const isAuth = useSelector((store) => store.isAuth)
 
   const isLogin = ({isActive}) => {
     if (isActive) {
@@ -35,6 +38,8 @@ const Navigations = () => {
       {login ? <NavLink className={isLogin} to='/auth'><Icon type={iconTypes.exit}/>Logout</NavLink> :
         <NavLink className={isLogin} to='/auth'><Icon type={iconTypes.enter}/>Login</NavLink>
       }
+      {isAuth ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
+
     </>
   );
 };

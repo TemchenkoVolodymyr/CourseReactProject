@@ -14,6 +14,7 @@ import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/M
 import AuthPage from "./pages/AuthPage";
 import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
+import AdminPanel from "./Components/AdminPanel/AdminPanel";
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
           <Route path="/:id" element={<MovieCarousel />}></Route>
           <Route path="/movie/:id" element={<CurrentMovie />}></Route>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
+          <Route path="adminPanel" element={<AdminPanel />}>
+          </Route>
 
         </Route>
       </Routes>

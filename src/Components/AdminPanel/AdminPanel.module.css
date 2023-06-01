@@ -1,0 +1,26 @@
+.linkItems {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  color: grey;
+  padding: 25px;
+  text-decoration: none;
+}
+.item:hover {
+  color: #f1f;
+}
+
+.container {
+  text-align: center;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  background-color: #1f2126;
+  border-radius: 15px;
+}
+
+/*# sourceMappingURL=AdminPanel.module.css.map */
