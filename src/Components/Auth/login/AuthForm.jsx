@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
-import {useAuthRedirect} from "../useAuthRedirect";
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../../redux/store/user/userSlice";
+import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
 
 const AuthForm = () => {
-  useAuthRedirect()
+ const {isAuth} = useAuth()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const {isLoading} = useAuth()
-  const [ type, setType] = useState('login')
 
   const {
     register,
@@ -19,17 +22,49 @@ const AuthForm = () => {
     mode: "onChange"
   })
 
-  const login = (data) => {
-    console.table(data)
+  const loginHandler = ({email, password}) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({user}) => {
+        dispatch(setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken
+        }))
+        navigate('/')
+
+        console.table(isAuth);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+    reset()
   }
 
-  const registration = (data) => {
-    console.table(data)
+  const registerHandler = ({email, password}) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({user}) => {
+        dispatch(setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken
+        }))
+        navigate('/')
+
+        console.table(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+    reset()
   }
 
-  const onSubmit = (data) => {
-    if (type === 'login') login(data)
-    else if (type === 'register') registration(data)
+  const onSubmit = () => {
     reset()
   }
 
@@ -67,16 +102,15 @@ const AuthForm = () => {
         {errors.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
         <div className={styles.btnContainer}>
           <button
-            onClick={() => setType('login')}
-            disabled={isLoading}
             className={styles.active}
-            type='submit'
+            type='button'
+            onClick={handleSubmit(loginHandler)}
           >Login
           </button>
           <button
-            onClick={() => setType('register')}
-            disabled={isLoading}
-            type='submit'>Register</button>
+            onClick={handleSubmit(registerHandler)}
+            type='button'>Register
+          </button>
         </div>
       </form>
     </section>

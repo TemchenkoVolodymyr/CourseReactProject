@@ -1,11 +1,10 @@
-.container{
+.container {
   max-height: 350px;
   overflow: hidden;
   margin-top: 93px;
 }
 
 .wrapper {
-  box-shadow:0 0 0 128px rgba(0, 0, 0, 0.33) inset;
   width: 200px;
   height: 100px;
   margin: 10px;
@@ -15,19 +14,44 @@
   font-size: 12px;
   justify-content: end;
   flex-direction: column;
-  &:hover{
-    transform: scale(1.05) ;
+
+  &:hover {
+    transform: scale(1.05);
     cursor: pointer;
-    box-shadow:0 0 0 128px rgba(159, 55, 55, 0.33) inset;
+    box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+
+  }
+
+  &:hover .wrapperAbout {
+    opacity: 1;
+
   }
 }
-.item{
+
+.item {
   padding: 5px;
   color: #ffffff;
 }
-.mark{
+
+.mark {
   width: 20px;
 }
-.wrapperMark{
+
+.wrapperMark {
   display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.wrapperAbout {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
+}
+
+.btn {
+  width: 234px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

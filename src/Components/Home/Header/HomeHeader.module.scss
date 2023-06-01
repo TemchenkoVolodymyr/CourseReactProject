@@ -18,7 +18,7 @@
 
 }
 
-.wrapperActors{
+.wrapperActors {
   width: 165px;
   height: 200px;
   background-size: cover;
@@ -29,4 +29,18 @@
   align-items: center;
   justify-content: end;
   flex-direction: column;
+
+  &:hover{
+    box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+    transform: scale(1.05);
+  }
+  p{
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  &:hover p{
+    opacity: 1;
+
+  }
 }
+

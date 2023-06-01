@@ -1,20 +1,27 @@
 import React, {useState} from 'react';
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {iconTypes} from "../constants/constantsIcons";
 import {Icon} from "../Components/Icon/Icon";
+import {useDispatch} from "react-redux";
+import {removeUser} from "../redux/store/user/userSlice";
+import {useAuth} from "../hooks/useAuth";
+import styles from './Navigations.module.scss'
 
 const Navigations = () => {
 
+  const dispatch = useDispatch()
+  const {isAuth} = useAuth()
+
   const [login, setLogin] = useState(false);
 
-  const isLogin = ({isActive}) => {
-    if (isActive) {
-      setLogin(true);
-      return "active";
-    }
-    setLogin(false);
-    return "";
-  }
+  // const isLogin = ({isActive}) => {
+  //   if (isActive) {
+  //     setLogin(true);
+  //     return "active";
+  //   }
+  //   setLogin(false);
+  //   return "";
+  // }
 
   return (
     <>
@@ -32,9 +39,17 @@ const Navigations = () => {
       <NavLink to='/fantasy'><Icon type={iconTypes.magicWand}/>Fantasy</NavLink>
       <NavLink to='/biography'><Icon type={iconTypes.hipster2}/>Biography</NavLink>
       <p>general</p>
-      {login ? <NavLink className={isLogin} to='/auth'><Icon type={iconTypes.exit}/>Logout</NavLink> :
-        <NavLink className={isLogin} to='/auth'><Icon type={iconTypes.enter}/>Login</NavLink>
+      {isAuth
+        ? <Link
+          to='/auth'
+          onClick={() => dispatch(removeUser())}
+          className='active'
+          ><Icon type={iconTypes.exit}/>Logout</Link> :
+        <NavLink
+          to='/auth'
+          ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
+
     </>
   );
 };
