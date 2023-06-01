@@ -5,7 +5,7 @@ import {Icon} from "../Components/Icon/Icon";
 import {useDispatch} from "react-redux";
 import {removeUser} from "../redux/store/user/userSlice";
 import {useAuth} from "../hooks/useAuth";
-import styles from './Navigations.module.scss'
+
 
 const Navigations = () => {
 
@@ -47,6 +47,7 @@ const Navigations = () => {
           ><Icon type={iconTypes.exit}/>Logout</Link> :
         <NavLink
           to='/auth'
+          className='active'
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
 
