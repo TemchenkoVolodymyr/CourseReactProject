@@ -11,13 +11,15 @@ import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import AuthPage from "./pages/AuthPage";
+
 import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import {removeUser, setUser} from "./redux/store/user/userSlice";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import Statistics from "./Components/AdminPanel/NavComponents/Statistics";
 
 function App() {
 
@@ -63,7 +65,8 @@ function App() {
           <Route path="/:id" element={<MovieCarousel />}></Route>
           <Route path="/movie/:id" element={<CurrentMovie />}></Route>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
-          <Route path="adminPanel" element={<AdminPanel />}>
+          <Route path="/adminPanel" element={<AdminPanel />}>
+            <Route path="static" element={<Statistics />}/>
           </Route>
 
         </Route>

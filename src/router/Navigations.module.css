@@ -1,3 +1,5 @@
-
+.activeLink svg {
+  fill: #E30914 !important;
+}
 
 /*# sourceMappingURL=Navigations.module.css.map */

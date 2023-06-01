@@ -14,9 +14,7 @@ const Navigations = () => {
   const dispatch = useDispatch()
   const {isAuth} = useAuth()
 
-  const [login, setLogin] = useState(false);
-
-  const isAuth = useSelector((store) => store.isAuth)
+  const isAuth2 = useSelector((store) => store.isAuth)
   const logout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
@@ -57,7 +55,7 @@ const Navigations = () => {
             className={styles.activeLink}
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
-      {isAuth ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
+      {isAuth2 ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
 
     </>
   );
