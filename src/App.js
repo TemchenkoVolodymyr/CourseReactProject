@@ -16,11 +16,36 @@ import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import {removeUser, setUser} from "./redux/store/user/userSlice";
 
 function App() {
 
+  const dispatch = useDispatch()
 
-  let dispatch = useDispatch()
+  useEffect(() => {
+
+    const auth = getAuth();
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in.
+        dispatch(setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.refreshToken
+        }));
+      } else {
+        // User is signed out.
+        dispatch(removeUser());
+      }
+
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(jsonAC(data))
   }, [data])

@@ -4,6 +4,7 @@ import {reduxTestCounterReducer} from '../Components/reduxTestCounter/reduxTestC
 import {jsonReducer} from "./json/jsonReducer";
 import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
 import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBestActors";
+import user from './store/user/userSlice'
 import {authReducer} from "../Components/AuthForm/AuthReducer";
 
 
@@ -13,6 +14,9 @@ export default combineReducers({
     jsonDataMedia: jsonReducer,
     headerMovies: reducerHomeHeader,
     bestActors: reducerBestActors,
+    user
+
+
     isAuth:authReducer,
   },
 );
