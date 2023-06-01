@@ -88,6 +88,8 @@ export const initialStore = {
       url:"https://th.bing.com/th/id/OIP.8eUgasxJn4Pp8LnaE8E3OQHaLH?w=197&h=296&c=7&r=0&o=5&pid=1.7",
       countOfFilms: +5,
     }
-  ]
+  ],
+  isAuth:false,
+
 
 };
