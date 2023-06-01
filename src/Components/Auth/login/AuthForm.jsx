@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
+import {useAuthRedirect} from "../useAuthRedirect";
+import {useAuth} from "../../../hooks/useAuth";
 
 const AuthForm = () => {
+  useAuthRedirect()
+
+  const {isLoading} = useAuth()
+  const [ type, setType] = useState('login')
 
   const {
     register,
@@ -13,8 +19,17 @@ const AuthForm = () => {
     mode: "onChange"
   })
 
+  const login = (data) => {
+    console.table(data)
+  }
+
+  const registration = (data) => {
+    console.table(data)
+  }
+
   const onSubmit = (data) => {
-    alert(`${data.email}`)
+    if (type === 'login') login(data)
+    else if (type === 'register') registration(data)
     reset()
   }
 
@@ -27,25 +42,23 @@ const AuthForm = () => {
           {...register('email', {
               required: 'Email is required',
               pattern: {
-                value: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                 message: 'Please enter a valid email '
               }
             }
           )}
           type="text"
           placeholder='Enter your email'
-          name='userName'
         />
         {errors.email && <div style={{color: 'red'}}>{errors.email.message}</div>}
         <label htmlFor="userName">password</label>
         <input
           {...register('password', {
               required: 'Password is required',
-            pattern: {
-              minLength: 6,
-
-              message: 'password should contain more then 6 characters '
-            }
+              minLength: {
+                value: 6,
+                message: 'password should contain more then 6 characters '
+              },
             }
           )}
           type="password"
@@ -53,13 +66,18 @@ const AuthForm = () => {
         />
         {errors.password && <div style={{color: 'red'}}>{errors.password.message}</div>}
         <div className={styles.btnContainer}>
-          <button className={styles.active}
+          <button
+            onClick={() => setType('login')}
+            disabled={isLoading}
+            className={styles.active}
             type='submit'
           >Login
           </button>
-          <button type='submit'>Register</button>
+          <button
+            onClick={() => setType('register')}
+            disabled={isLoading}
+            type='submit'>Register</button>
         </div>
-
       </form>
     </section>
   );

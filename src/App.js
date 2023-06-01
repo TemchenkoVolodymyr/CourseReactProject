@@ -6,16 +6,14 @@ import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
 import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
-
 import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./pages/AuthPage/AuthPage";
 
 
 function App() {
-
 
   let dispatch = useDispatch()
   useEffect(() => {
