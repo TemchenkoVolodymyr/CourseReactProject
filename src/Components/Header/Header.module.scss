@@ -1,13 +1,24 @@
+@import "/src/index";
+
+.titleDiscovery {
+  color: $colorBtn;
+  margin: $size $size * 3;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.descriptionDiscovery {
+  color: $colorBtn;
+  margin-left: $size * 3;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: $size * 1.3;
+}
+
 .containerListVideos {
   //max-width: 1500px;
   width: 100%;
-  margin: 50px auto 0px auto;
+  margin: 0 auto 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* font-family: 'Caveat', cursive; */
-  /* font-family: 'Delicious Handrawn', cursive; */
-  /* font-family: 'Roboto', sans-serif; */
-  /* font-family: 'Shantell Sans', cursive; */
   font-family: 'Source Sans Pro', sans-serif;
 }

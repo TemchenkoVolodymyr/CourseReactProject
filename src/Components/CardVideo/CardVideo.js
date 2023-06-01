@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router";
+import styles from "./CardVideo.module.scss"
 
 const CardVideo = (props) => {
 
@@ -10,12 +11,11 @@ const CardVideo = (props) => {
   const {description, sources, subtitle, thumb, title} = props;
 
   return (
-    <div className={"cardVideo"}>
-      CardVideo
-      <div className={"wrapVideo"}>
-        <img className={"thumbVideo"} src={`${urlImg + thumb}`} alt={title} title={description}/>
-        <h2 className={"titleVideo"}>{title}</h2>
-        <h3 className={"subtitleVideo"}>{subtitle}</h3>
+    <div className={styles.cardVideo}>
+      <div className={styles.wrapVideo}>
+        <img className={styles.thumbVideo} src={`${urlImg + thumb}`} alt={title} title={description}/>
+        <h2 className={styles.titleVideo}>{title}</h2>
+        <h3 className={styles.subtitleVideo}>{subtitle}</h3>
       </div>
     </div>
   );

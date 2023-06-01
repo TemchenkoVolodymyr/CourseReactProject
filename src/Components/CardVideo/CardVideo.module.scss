@@ -1,28 +1,43 @@
-//.containerListVideos {
-//  max-width: 1500px;
-//  margin: 50px auto 0px auto;
-//  display: flex;
-//  flex-wrap: wrap;
-//  justify-content: space-around;
-//  /* font-family: 'Caveat', cursive; */
-//  /* font-family: 'Delicious Handrawn', cursive; */
-//  /* font-family: 'Roboto', sans-serif; */
-//  /* font-family: 'Shantell Sans', cursive; */
-//  font-family: 'Source Sans Pro', sans-serif;
-//}
+@import "/src/index";
+
 .cardVideo {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: $size * 1.5 0 $size * 2.5 0;
+  max-width: $size * 30;
 
+  .wrapVideo {
+    & > img {
+      width: 100%;
+      border-radius: $size;
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 0 $size $size * 0.1 lightgray;
+        scale: 1.05;
+      }
+    }
+
+    .thumbVideo {
+
+    }
+
+    .titleVideo {
+      max-width: $size * 30;
+      margin: $size * 0.5 0 $size * 0.5 0;
+
+    }
+
+    .subtitleVideo {
+      max-width: $size * 30;
+      margin: $size * 0.2 0 $size * 0.2 0;
+      font-size: $size * 1.4;
+      font-weight: 500;
+
+    }
+  }
 }
 
-.wrapVideo{
 
-}
-.thumbVideo{
 
-}
-.titleVideo{
-
-}
-.subtitleVideo{
-
-}
