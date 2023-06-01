@@ -5,7 +5,7 @@ import {Icon} from "../Components/Icon/Icon";
 import {useDispatch} from "react-redux";
 import {removeUser} from "../redux/store/user/userSlice";
 import {useAuth} from "../hooks/useAuth";
-
+import styles from './Navigations.module.scss'
 
 const Navigations = () => {
 
@@ -40,14 +40,15 @@ const Navigations = () => {
       <NavLink to='/biography'><Icon type={iconTypes.hipster2}/>Biography</NavLink>
       <p>general</p>
       {isAuth
-        ? <Link
+        ? <NavLink
           to='/auth'
           onClick={() => dispatch(removeUser())}
-          className='active'
-          ><Icon type={iconTypes.exit}/>Logout</Link> :
+          className={styles.activeLink}
+          ><Icon type={iconTypes.exit}/>Logout</NavLink> :
         <NavLink
           to='/auth'
-          className='active'
+          className={styles.activeLink}
+
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
 
