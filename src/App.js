@@ -70,7 +70,8 @@ function App() {
           <Route path="/movie/:id" element={<CurrentMovie />}></Route>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route path="static" element={<StatisticsAP />}/>
+            <Route index  element={<StatisticsAP />}/>
+            <Route path="static"  element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>
             <Route path="movies" element={<MoviesAP />}/>
             <Route path="actors" element={<ActorsAP />}/>
