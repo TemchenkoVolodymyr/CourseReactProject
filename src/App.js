@@ -20,7 +20,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
-import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP";
+import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
 import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
@@ -70,7 +70,8 @@ function App() {
           <Route path="/movie/:id" element={<CurrentMovie />}></Route>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route path="static" element={<StatisticsAP />}/>
+            <Route index  element={<StatisticsAP />}/>
+            <Route path="static"  element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>
             <Route path="movies" element={<MoviesAP />}/>
             <Route path="actors" element={<ActorsAP />}/>

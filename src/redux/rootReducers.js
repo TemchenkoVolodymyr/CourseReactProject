@@ -8,6 +8,7 @@ import user from './slices/userSlice'
 import movies from './slices/movieSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";
 import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
+import {usersReducerAp} from "../Components/AdminPanel/NavComponents/UsersAP/usersReducerAP";
 
 
 export default combineReducers({
@@ -19,6 +20,7 @@ export default combineReducers({
     user,
     isAuth: authReducer,
     statistics: statisticsReducer,
-    movies
+    movies,
+  usersAp: usersReducerAp,
   },
 );

@@ -99,5 +99,23 @@ export const initialStore = {
       description: "Opened 28 times",
       image: "https://th.bing.com/th/id/OIP.eKsFhSm2OUU9uVt-0qUBHwHaEK?pid=ImgDet&rs=1",
     }
+  ],
+  searchMovie: [],
+  usersAp: [{
+    user: "Vova",
+    email: "temdsad@gmail.com",
+    date:"02-06-2023",
+  },
+    {
+      user: "Katya",
+      email: "Kadsadsd@gmail.com",
+      date:"01-03-2023"
+
+    },
+    {
+      user: "Sergey",
+      email: "sega@gmail.com",
+      date:"12-06-2093"
+    }
   ]
 };
