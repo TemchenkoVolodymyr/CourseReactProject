@@ -20,7 +20,7 @@ const AdminPanel = () => {
             <NavLink to='genres' className={navData => navData.isActive ? style.activeLink : style.item}>Genres</NavLink>
           </ul>
         </div>
-        <div>
+        <div className={style.containerOutlet}>
           <Outlet/>
         </div>
       </div>

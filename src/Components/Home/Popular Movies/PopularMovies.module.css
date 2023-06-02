@@ -4,7 +4,7 @@
   margin-top: 93px;
 }
 
-.wrapper {
+.wrapperBox {
   width: 200px;
   height: 100px;
   margin: 10px;
@@ -15,12 +15,12 @@
   justify-content: end;
   flex-direction: column;
 }
-.wrapper:hover {
+.wrapperBox:hover {
   transform: scale(1.05);
   cursor: pointer;
   box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
 }
-.wrapper:hover .wrapperAbout {
+.wrapperBox:hover .wrapperAbout {
   opacity: 1;
 }
 

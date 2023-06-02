@@ -6,6 +6,7 @@ import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
 import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBestActors";
 import user from './store/user/userSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";
+import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
 
 
 
@@ -16,8 +17,7 @@ export default combineReducers({
     headerMovies: reducerHomeHeader,
     bestActors: reducerBestActors,
     user,
-
-
     isAuth:authReducer,
+    statistics:statisticsReducer,
   },
 );
