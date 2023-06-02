@@ -79,7 +79,7 @@ const AuthForm = () => {
       // Создайте новый документ в коллекции 'users'
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
-        date: new Date()
+        date: new Date().toLocaleDateString()
         // другая информация о пользователе
       });
 
@@ -102,28 +102,6 @@ const AuthForm = () => {
     }
     reset();
   }
-
-  const [users, setUsers] = useState([]);
-
-  const fetchUsers = async () => {
-    const db = getFirestore();
-
-    // Получите все документы из коллекции 'users'
-    const userSnapshot = await getDocs(collection(db, "users"));
-
-    // Преобразуйте каждый документ в данные пользователя и верните их
-    const users = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-    return users;
-  }
-
-  useEffect(() => {
-    fetchUsers()
-      .then(fetchedUsers => setUsers(fetchedUsers))
-      .catch(error => console.error(error));
-  }, []);
-
-console.log(users)
 
   const onSubmit = () => {
     reset()
