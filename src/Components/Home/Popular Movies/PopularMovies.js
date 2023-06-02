@@ -17,7 +17,7 @@ const PopularMovies = () => {
     <NavLink to={`/movie/${movie.id}`}>
       <div key={movie.id}
            style={{backgroundImage: `url(${movie.url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}
-           className={style.wrapper}>
+           className={style.wrapperBox}>
         <div className={style.wrapperAbout}>
           <h3 className={style.item}>{movie.name}</h3>
           <p className={style.item}>{movie.category}</p>

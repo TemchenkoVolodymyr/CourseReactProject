@@ -85,7 +85,7 @@ const HomeHeader = (props) => {
         <div className={style.header}>
           <h3>Best Actors</h3>
         </div>
-        <div className={style.wrapper}>
+        <div className={style.wrapperBox}>
           {actors}
         </div>
 

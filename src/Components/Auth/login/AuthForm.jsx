@@ -74,7 +74,7 @@ const AuthForm = () => {
   }
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapperBox}>
       <h1>Auth</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="userName">e-mail</label>
