@@ -9,11 +9,16 @@ const PopularMoviesPage = () => {
 
   console.log(dataMovies)
 
-  let drawMovies = dataMovies.map(film => <div id={film.id} className={style.wrapperBox}>
-    <img src={film.url}  alt="film image" />
-    <p>{film.name}</p>
-    <p>{film.category}</p>
-  </div>)
+  let drawMovies = dataMovies.map(film =>
+    <div
+      key={film.id}
+      id={film.id}
+      className={style.wrapperBox}>
+      <img src={film.url} alt="film image"/>
+      <p>{film.name}</p>
+      <p>{film.category}</p>
+    </div>
+  )
   return (
     <div className={style.container}>
       {drawMovies}

@@ -53,9 +53,8 @@ const HomeHeader = (props) => {
           spaceBetween={10}>
 
           {discover?.map(movie =>
-            <SwiperSlide className={style.swiperSlideMain}>
+            <SwiperSlide  key={movie.id} className={style.swiperSlideMain}>
               <ItemCarousel
-                key={movie.id}
                 name={movie.title}
                 category={movie.category}
                 bg={movie.backdrop_path}

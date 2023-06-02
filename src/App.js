@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
 
     const auth = getAuth();
-
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in.
@@ -43,7 +42,6 @@ function App() {
         // User is signed out.
         dispatch(removeUser());
       }
-
     });
 
     // Cleanup subscription on unmount
@@ -53,7 +51,6 @@ function App() {
   useEffect(() => {
     dispatch(jsonAC(data))
   }, [data])
-
 
   return (
     <>

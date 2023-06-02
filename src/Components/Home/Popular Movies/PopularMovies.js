@@ -14,8 +14,8 @@ const PopularMovies = () => {
   let movie = popularMovies.map(movie => {
 
     return (
-    <NavLink to={`/movie/${movie.id}`}>
-      <div key={movie.id}
+    <NavLink key={movie.id} to={`/movie/${movie.id}`}>
+      <div
            style={{backgroundImage: `url(${movie.url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}
            className={style.wrapperBox}>
         <div className={style.wrapperAbout}>
