@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./Statistics.module.scss";
+import style from "./StatisticsAP.module.scss";
 
 const SectionFromStatistics = (props) => {
 

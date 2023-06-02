@@ -2,37 +2,22 @@ import React, {useEffect, useState} from 'react';
 import style from "./Search.module.scss"
 import {BiSearch} from "react-icons/bi";
 import {useSelector} from "react-redux";
+import UniversalSearch from "./UniversalSearch";
 
 const Search = () => {
-
-  let [search, setSearch] = useState("")
 
   let mediaData = useSelector((store) => store.jsonDataMedia);
 
   let [findMovie, setFindMovie] = useState([])
-
-
-  const changeSearch = (e) => {
-    setSearch(e.target.value)
-
-  }
-  const searchMovie = () => search && mediaData.videos.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
-
-
-  useEffect(() => {
-    const x = searchMovie()
-    setFindMovie(x && x.map(film => film.title))
-
-  }, [search])
+console.log(findMovie)
+  const searchMovie = (foundItem) => foundItem && mediaData.videos.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
 
   return (
     <div>
-      <BiSearch className={style.icon}></BiSearch>
-      <input className={style.search} type="search" placeholder={`Search`} value={search}
-             onChange={(e) => changeSearch(e)}></input>
       <ul className={style.autocompleted}>
-        {findMovie && findMovie.map(item => <li className={style.autocompletedItem}>{item}</li>)}
+        {findMovie && findMovie.map(item => <li className={style.autocompletedItem}>{item.title}</li>)}
       </ul>
+      <UniversalSearch callback={searchMovie} found = {findMovie} setFound = {setFindMovie}/>
     </div>
   );
 };

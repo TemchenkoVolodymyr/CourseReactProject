@@ -20,7 +20,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"
 import {removeUser, setUser} from "./redux/store/user/userSlice";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
-import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP";
+import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
 import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";

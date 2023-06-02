@@ -7,6 +7,7 @@ import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBes
 import user from './store/user/userSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";
 import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
+import {usersReducerAp} from "../Components/AdminPanel/NavComponents/UsersAP/usersReducerAP";
 
 
 
@@ -19,5 +20,6 @@ export default combineReducers({
     user,
     isAuth:authReducer,
     statistics:statisticsReducer,
+    usersAp: usersReducerAp,
   },
 );
