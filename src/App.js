@@ -14,14 +14,14 @@ import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-// import {removeUser, setUser} from "./redux/slices/userSlice";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
 import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
-import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
+import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
-import {removeUser, setUser} from "./redux/store/user/userSlice";
+import {removeUser, setUser} from "./redux/slices/userSlice";
+
 
 function App() {
 
