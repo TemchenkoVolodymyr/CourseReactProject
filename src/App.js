@@ -10,7 +10,7 @@ import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import CurrentMovie from "./Components/Home/Popular Movies/CurrentMovie";
+import MoviePage from "./pages/MoviePage/MoviePage";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
@@ -61,9 +61,9 @@ function App() {
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
-          <Route path="/:id" element={<MovieCarousel />}></Route>
-          <Route path="/movie/:id" element={<CurrentMovie />}></Route>
-          <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
+          <Route path="/:id" element={<MovieCarousel />}/>
+          <Route path="/movie/:id" element={<MoviePage />}/>
+          <Route path="/popMovies" element={<PopularMoviesPage />}/>
           <Route path="/adminPanel" element={<AdminPanel />}>
             <Route index  element={<StatisticsAP />}/>
             <Route path="static"  element={<StatisticsAP />}/>
