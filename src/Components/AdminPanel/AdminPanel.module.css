@@ -23,4 +23,10 @@
   border-radius: 15px;
 }
 
+.activeLink {
+  color: #215064;
+  padding: 25px;
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=AdminPanel.module.css.map */

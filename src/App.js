@@ -19,7 +19,11 @@ import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import {removeUser, setUser} from "./redux/store/user/userSlice";
 import AuthPage from "./pages/AuthPage/AuthPage";
-import Statistics from "./Components/AdminPanel/NavComponents/Statistics";
+import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP";
+import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP";
+import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
+import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
+import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 
 function App() {
 
@@ -66,7 +70,11 @@ function App() {
           <Route path="/movie/:id" element={<CurrentMovie />}></Route>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route path="static" element={<Statistics />}/>
+            <Route path="static" element={<StatisticsAP />}/>
+            <Route path="users" element={<UsersAP />}/>
+            <Route path="movies" element={<MoviesAP />}/>
+            <Route path="actors" element={<ActorsAP />}/>
+            <Route path="genres" element={<GenresAP />}/>
           </Route>
 
         </Route>

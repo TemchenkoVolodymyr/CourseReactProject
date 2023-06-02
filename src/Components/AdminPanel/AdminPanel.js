@@ -2,8 +2,6 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {NavLink, Route, Routes} from "react-router-dom";
 import style from "./AdminPanel.module.scss"
-import AdminLayout from "./AdminLayout";
-import Statistics from "./NavComponents/Statistics";
 import {Outlet} from "react-router";
 
 const AdminPanel = () => {
@@ -14,14 +12,15 @@ const AdminPanel = () => {
     return (
       <div className={style.container}>
         <div className={style.linkItems}>
-
           <ul className={style.items}>
-            <NavLink to='static' className={style.item}>Statistics</NavLink>
-            <NavLink to='users' className={style.item}>Users</NavLink>
-            <NavLink to='movies' className={style.item}>Movies</NavLink>
-            <NavLink to='actors' className={style.item}>Actors</NavLink>
-            <NavLink to='genres' className={style.item}>Genres</NavLink>
+            <NavLink to='static' className={navData => navData.isActive ? style.activeLink : style.item}>Statistics</NavLink>
+            <NavLink to='users' className={navData => navData.isActive ? style.activeLink : style.item}>Users</NavLink>
+            <NavLink to='movies' className={navData => navData.isActive ? style.activeLink : style.item}>Movies</NavLink>
+            <NavLink to='actors' className={navData => navData.isActive ? style.activeLink : style.item}>Actors</NavLink>
+            <NavLink to='genres' className={navData => navData.isActive ? style.activeLink : style.item}>Genres</NavLink>
           </ul>
+        </div>
+        <div>
           <Outlet/>
         </div>
       </div>
