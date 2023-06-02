@@ -1,9 +1,9 @@
 import React from 'react';
 import {useParams} from "react-router";
 import {useSelector} from "react-redux";
-import style from "../Header/Carousel/MovieCarouselLink/MovieCarousel.module.scss";
+import style from "../../Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel.module.scss";
 
-const CurrentMovie = () => {
+const MoviePage = () => {
   let {id} = useParams()
 
   let dataMovie = useSelector((store) => store.headerMovies);
@@ -17,7 +17,7 @@ const CurrentMovie = () => {
         <h3>{film.name}</h3>
         <p>{film.category}</p>
       </div>
-    }else{
+    }  else{
       return null
     }
 
@@ -30,4 +30,4 @@ const CurrentMovie = () => {
   );
 };
 
-export default CurrentMovie;
+export default MoviePage;

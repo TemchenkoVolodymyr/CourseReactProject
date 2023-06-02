@@ -47,6 +47,8 @@
 
 .swiperSlideMain {
 
+  text-decoration: none;
+
   & > div {
     background-size: cover;
     background-position: center;
@@ -103,6 +105,9 @@
 }
 
 .swiperSlide {
+
+  text-decoration: none;
+
   & > div {
     background-size: cover;
     height: 300px;

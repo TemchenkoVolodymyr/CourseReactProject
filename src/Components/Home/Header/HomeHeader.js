@@ -7,6 +7,7 @@ import Test from "../TestHome/Test";
 import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
+import {NavLink} from "react-router-dom";
 
 
 
@@ -53,13 +54,19 @@ const HomeHeader = (props) => {
           spaceBetween={10}>
 
           {discover?.map(movie =>
-            <SwiperSlide  key={movie.id} className={style.swiperSlideMain}>
+
+            <SwiperSlide  key={movie.id} >
+              <NavLink
+                to={`/movie/${movie.id}`}
+                className={style.swiperSlideMain} >
               <ItemCarousel
                 name={movie.title}
                 category={movie.category}
                 bg={movie.backdrop_path}
                 id={movie.id}></ItemCarousel>
+              </NavLink>
             </SwiperSlide>
+
           )}
         </Swiper>
 
@@ -74,11 +81,15 @@ const HomeHeader = (props) => {
           spaceBetween={10}>
           {
             trendingMovies?.map(movie =>
-              <SwiperSlide className={style.swiperSlide} key={movie.id}>
+              <SwiperSlide key={movie.id}>
+                <NavLink
+                  to={`/movie/${movie.id}`}
+                  className={style.swiperSlide} >
                 <Test
                   title={movie.title}
                   img={movie.poster_path}
                 />
+                </NavLink>
               </SwiperSlide>
             )
           }
@@ -95,7 +106,7 @@ const HomeHeader = (props) => {
           {
             popularActors?.map(actor =>
               <SwiperSlide className={style.swiperSlide} key={actor.id}>
-                <Test
+                  <Test
                   title={actor.name}
                   img={actor.profile_path}
                 />

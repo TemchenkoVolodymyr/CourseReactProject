@@ -33,7 +33,6 @@ const PopularMovies = () => {
 
   return (
     <>
-
       <div className={style.container}>
         <p>POPULAR MOVIES </p>
         {movie}
