@@ -12,7 +12,6 @@ import SwiperCore, {Navigation} from 'swiper';
 
 const HomeHeader = (props) => {
   SwiperCore.use([Navigation]);
-  let moviesHeaderCarousel = useSelector((store) => store.headerMovies);
 
   const dispatch = useDispatch()
   const trendingMovies = useSelector(state => state.movies.trendingMovies);
@@ -21,7 +20,7 @@ const HomeHeader = (props) => {
 
 
   useEffect(() => {
-    const getMovies = async () => {
+    const getTrending = async () => {
       dispatch(fetchMovies({type: 'trendingMovies'}))
     };
 
@@ -33,13 +32,11 @@ const HomeHeader = (props) => {
       dispatch(fetchMovies({type: 'discover'}))
     };
 
-    getMovies()
+    getTrending()
     getActors()
     getDiscover()
 
   }, []);
-
-  console.log('discover', discover)
 
   return (
     <>

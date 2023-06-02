@@ -52,7 +52,8 @@ export const movieSlice = createSlice({
       } else if (type === 'popularActors') {
         state.popularActors = responseData;
       } else if (type === 'discover') {
-        state.discover = responseData;}
+        state.discover = responseData;
+      }
 
       state.status = 'success';
     },

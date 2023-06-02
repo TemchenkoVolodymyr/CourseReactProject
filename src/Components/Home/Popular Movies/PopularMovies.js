@@ -26,7 +26,6 @@ const PopularMovies = () => {
             <p className={style.item}> {movie.mark}</p>
           </div>
         </div>
-
       </div>
     </NavLink>)
 
