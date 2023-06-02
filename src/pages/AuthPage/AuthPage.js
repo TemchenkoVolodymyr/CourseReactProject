@@ -6,7 +6,8 @@ const AuthPage = () => {
 
 
   return (
-    <AuthForm/>
+   <AuthForm/>
+
   );
 };
 

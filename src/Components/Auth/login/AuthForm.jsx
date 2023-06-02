@@ -3,7 +3,7 @@ import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
 import {useDispatch} from "react-redux";
-import {setUser} from "../../../redux/store/user/userSlice";
+import {setUser} from "../../../redux/slices/userSlice";
 import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
 

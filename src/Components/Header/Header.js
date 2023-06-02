@@ -21,10 +21,12 @@ const Header = () => {
       <p className={styles.descriptionDiscovery}>In this section you will find all genres on our site</p>
       <div className={styles.containerListVideos}>
         {/*<h1>{header}</h1>*/}
-        {filmDiscovery && jsonDataMedia.videos.map((film) => <CardVideo key={film.title} description={film.description}
-                                                                        sources={film.sources[0]}
-                                                                        subtitle={film.subtitle}
-                                                                        thumb={film.thumb} title={film.title}/>)}
+        {filmDiscovery
+          && jsonDataMedia.videos.map((film) =>
+            <CardVideo key={film.title} description={film.description}
+                       sources={film.sources[0]}
+                       subtitle={film.subtitle}
+                       thumb={film.thumb} title={film.title}/>)}
       </div>
     </>
   );

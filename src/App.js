@@ -17,7 +17,7 @@ import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPag
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-import {removeUser, setUser} from "./redux/store/user/userSlice";
+import {removeUser, setUser} from "./redux/slices/userSlice";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
 import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP";
@@ -76,9 +76,9 @@ function App() {
             <Route path="actors" element={<ActorsAP />}/>
             <Route path="genres" element={<GenresAP />}/>
           </Route>
-
         </Route>
       </Routes>
+
     </>
   );
 }
