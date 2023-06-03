@@ -1,0 +1,18 @@
+.container {
+  overflow: hidden;
+  max-height: 500px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+.wrapper ul {
+  list-style: none;
+}
+.wrapper ul li {
+  padding: 5px;
+}
+
+/*# sourceMappingURL=moviesAP.module.css.map */

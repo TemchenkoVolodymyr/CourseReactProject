@@ -1,0 +1,16 @@
+.container{
+  overflow: hidden;
+  max-height: 500px;
+}
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+
+  ul{
+    list-style: none;
+    li{
+      padding: 5px;
+    }
+  }
+}
