@@ -3,6 +3,7 @@ import UniversalSearch from "../../../Home/Search/UniversalSearch";
 import {useSelector} from "react-redux";
 import style from "./userAP.module.scss"
 import {collection, getDocs, getFirestore} from "firebase/firestore";
+import Loader from "../../../../Loader/Loader";
 
 const UsersAP = () => {
 
@@ -10,6 +11,7 @@ const UsersAP = () => {
   let [searchData, setSearchData] = useState([]);
 
   const [users, setUsers] = useState([]);
+
 
   const searchMovie = (foundItem) => foundItem && users.filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
 
@@ -84,6 +86,8 @@ const UsersAP = () => {
     }
   }
 
+  if(users.length < 1)
+    return <Loader></Loader>
 
   return (
     <>
