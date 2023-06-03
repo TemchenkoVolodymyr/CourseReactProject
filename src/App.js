@@ -22,6 +22,8 @@ import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import FreshMoviePage from "./pages/FreshMoviePage";
+import TrendingMovies from "./Components/Home/Header/TrendingMovies/TrendingMovies";
+import TrendingMovie from "./pages/TrendingMovie";
 
 
 function App() {
@@ -60,6 +62,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="discovery" element={<Header/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
+          <Route path="trending" element={<TrendingMovie/>}/>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
