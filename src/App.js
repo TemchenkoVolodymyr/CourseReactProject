@@ -24,6 +24,7 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import FreshMoviePage from "./pages/FreshMoviePage";
 import TrendingMovies from "./Components/Home/Header/TrendingMovies/TrendingMovies";
 import TrendingMovie from "./pages/TrendingMovie";
+import DiscoveryPage from "./pages/DiscoveryPage";
 
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="/" element={<Home/>}/>
-          <Route path="discovery" element={<Header/>}/>
+          <Route path="discovery" element={<DiscoveryPage/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
           <Route path="auth" element={<AuthPage/>}/>
