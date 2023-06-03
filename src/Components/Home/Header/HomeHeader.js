@@ -11,7 +11,7 @@ import {NavLink} from "react-router-dom";
 
 
 
-const HomeHeader = (props) => {
+const HomeHeader = () => {
   SwiperCore.use([Navigation]);
 
   const dispatch = useDispatch()
@@ -29,16 +29,23 @@ const HomeHeader = (props) => {
       dispatch(fetchMovies({type: 'popularActors'}))
     };
 
-    const getDiscover = async () => {
+    const getDiscover =  () => {
       dispatch(fetchMovies({type: 'discover'}))
     };
+    const getPopMovies = async () => {
+      dispatch(fetchMovies({type: "popularMovie"}))
+    }
+
 
     getTrending()
     getActors()
     getDiscover()
+    getPopMovies()
 
   }, []);
 
+
+console.log('home')
   return (
     <>
       <div>
