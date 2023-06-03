@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Test = ({img, title}) => {
+const SliderItem = ({img, title}) => {
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
   return (
@@ -12,4 +12,4 @@ const Test = ({img, title}) => {
   );
 };
 
-export default Test;
+export default SliderItem;

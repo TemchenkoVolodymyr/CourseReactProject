@@ -3,7 +3,7 @@ import ItemCarousel from "./Carousel/ItemCarousel";
 import style from "./HomeHeader.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../redux/slices/movieSlice";
-import Test from "../TestHome/Test";
+import SliderItem from "../../SliderItems/SliderItem";
 import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
@@ -41,11 +41,10 @@ const HomeHeader = (props) => {
 
   return (
     <>
-      <div>
+      <div className={style.wrapper}>
         <div className={style.header}>
-          <h3>Watch movies online</h3>
+          <h1>watch movies online</h1>
         </div>
-
         <Swiper
           id="main"
           tag="section"
@@ -54,7 +53,6 @@ const HomeHeader = (props) => {
           spaceBetween={10}>
 
           {discover?.map(movie =>
-
             <SwiperSlide  key={movie.id} >
               <NavLink
                 to={`/movie/${movie.id}`}
@@ -71,7 +69,7 @@ const HomeHeader = (props) => {
         </Swiper>
 
         <div className={style.header}>
-          <h3>Trending now </h3>
+          <h2>Trending Now </h2>
         </div>
         <Swiper
           id="main"
@@ -85,7 +83,7 @@ const HomeHeader = (props) => {
                 <NavLink
                   to={`/movie/${movie.id}`}
                   className={style.swiperSlide} >
-                <Test
+                <SliderItem
                   title={movie.title}
                   img={movie.poster_path}
                 />
@@ -95,7 +93,7 @@ const HomeHeader = (props) => {
           }
         </Swiper>
         <div className={style.header}>
-          <h3>Best Actors</h3>
+          <h2>Best Actors</h2>
         </div>
         <Swiper
           id="main"
@@ -106,7 +104,7 @@ const HomeHeader = (props) => {
           {
             popularActors?.map(actor =>
               <SwiperSlide className={style.swiperSlide} key={actor.id}>
-                  <Test
+                  <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
                 />

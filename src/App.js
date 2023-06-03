@@ -10,7 +10,6 @@ import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
 import NotfoundPage from "./pages/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import MoviePage from "./pages/MoviePage/MoviePage";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
@@ -21,6 +20,7 @@ import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
+import MoviePage from "./pages/MoviePage/MoviePage";
 
 
 function App() {
@@ -72,7 +72,6 @@ function App() {
             <Route path="actors" element={<ActorsAP />}/>
             <Route path="genres" element={<GenresAP />}/>
           </Route>
-
         </Route>
       </Routes>
     </>

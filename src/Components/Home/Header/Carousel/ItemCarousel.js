@@ -14,7 +14,6 @@ const ItemCarousel = (props) => {
         <h3>{category}</h3>
         <button><Link to={`/${id}`}>Watch</Link></button>
       </div>
-
     </div>
   );
 };

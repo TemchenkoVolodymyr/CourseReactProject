@@ -43,30 +43,6 @@ const AuthForm = () => {
     reset()
   }
 
-  // const registerHandler = ({email, password}) => {
-  //   const auth = getAuth();
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //     .then(({user}) => {
-  //       dispatch(setUser({
-  //         email: user.email,
-  //         id: user.uid,
-  //         token: user.accessToken
-  //       }))
-  //       navigate('/')
-  //
-  //       console.table(user);
-  //     })
-  //     .catch((error) => {
-  //       let errorMessage = error.message;
-  //       if (error.code === 'auth/email-already-in-use') {
-  //         errorMessage = 'This email is already in use. Please try another one.'
-  //       } else {
-  //         errorMessage = error.message
-  //       }
-  //       setError(errorMessage);
-  //     });
-  //   reset()
-  // }
 
   const registerHandler = async ({ email, password }) => {
     const auth = getAuth();
