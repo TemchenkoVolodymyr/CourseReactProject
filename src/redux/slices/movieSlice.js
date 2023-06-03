@@ -13,6 +13,8 @@ export const fetchMovies = createAsyncThunk(
       endpoint = 'person/popular';
     } else if (type === 'discover') {
       endpoint = 'discover/movie';
+    }else if(type === 'popularMovie') {
+      endpoint = 'movie/popular'
     }
 
     const {data} = await
@@ -25,7 +27,8 @@ const initialState = {
   discover: [],
   trendingMovies: [],
   popularActors: [],
-  status: 'loading'
+  status: 'loading',
+  popularMovie:[],
 }
 
 export const movieSlice = createSlice({
@@ -42,6 +45,7 @@ export const movieSlice = createSlice({
       state.trendingMovies = []
       state.popularActors = []
       state.discover = []
+      state.popularMovie = []
     },
     [fetchMovies.fulfilled]: (state, action) => {
       const { type } = action.meta.arg;
@@ -53,6 +57,8 @@ export const movieSlice = createSlice({
         state.popularActors = responseData;
       } else if (type === 'discover') {
         state.discover = responseData;
+      } else if (type === 'popularMovie') {
+        state.popularMovie = responseData
       }
 
       state.status = 'success';
@@ -62,6 +68,7 @@ export const movieSlice = createSlice({
       state.trendingMovies = []
       state.popularActors = []
       state.discover = []
+      state.popularMovie = []
     }
   }
 })

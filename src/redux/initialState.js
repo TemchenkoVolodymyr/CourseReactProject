@@ -90,10 +90,7 @@ export const initialStore = {
     }
   ],
   isAuth: true,
-  statistics: [{
-    title: "8",
-    description: "Users",
-  },
+  statistics: [
     {
       title: "The most popular movie",
       description: "Opened 28 times",

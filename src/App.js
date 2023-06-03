@@ -16,7 +16,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
 import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
-import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP";
+import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
@@ -63,10 +63,9 @@ function App() {
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}/>
           <Route path="/movie/:id" element={<MoviePage />}/>
-          <Route path="/popMovies" element={<PopularMoviesPage />}/>
+          <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route index  element={<StatisticsAP />}/>
-            <Route path="static"  element={<StatisticsAP />}/>
+            <Route path="static" element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>
             <Route path="movies" element={<MoviesAP />}/>
             <Route path="actors" element={<ActorsAP />}/>
