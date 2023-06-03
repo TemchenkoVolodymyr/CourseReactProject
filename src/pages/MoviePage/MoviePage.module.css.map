@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"MoviePage.module.css"}
+{"version":3,"sourceRoot":"","sources":["MoviePage.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;AAGA;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAIF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAOV;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE","file":"MoviePage.module.css"}

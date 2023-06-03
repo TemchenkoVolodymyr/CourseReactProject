@@ -17,6 +17,7 @@ export const fetchMovies = createAsyncThunk(
       endpoint = 'movie/popular'
     }
 
+
     const {data} = await
       axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
     return data.results
@@ -29,6 +30,7 @@ const initialState = {
   popularActors: [],
   status: 'loading',
   popularMovie:[],
+  movies:[],
 }
 
 export const movieSlice = createSlice({
@@ -57,9 +59,7 @@ export const movieSlice = createSlice({
         state.popularActors = responseData;
       } else if (type === 'discover') {
         state.discover = responseData;
-      } else if (type === 'popularMovie') {
-        state.popularMovie = responseData
-      }
+      } else if (type === 'popularMovie')
 
       state.status = 'success';
     },

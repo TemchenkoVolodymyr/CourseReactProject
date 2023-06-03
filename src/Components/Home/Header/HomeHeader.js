@@ -42,6 +42,7 @@ const HomeHeader = () => {
     getDiscover()
     getPopMovies()
 
+
   }, []);
 
 
