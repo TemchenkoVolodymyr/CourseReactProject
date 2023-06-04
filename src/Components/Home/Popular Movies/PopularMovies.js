@@ -1,11 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import style from "./PopularMovies.module.scss";
 import star from "../../../assets/star.svg"
 import CustomLink from "../../../router/CustomLink/CustomLink";
-import {Link, NavLink} from "react-router-dom";
-import {useParams} from "react-router";
-import {fetchMovies} from "../../../redux/slices/movieSlice";
+import {NavLink} from "react-router-dom";
+
 
 
 const PopularMovies = () => {

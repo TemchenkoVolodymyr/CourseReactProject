@@ -8,7 +8,7 @@ import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
 import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
-import NotfoundPage from "./pages/NotfoundPage";
+import NotfoundPage from "./pages/NotFoundPage/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
 import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
@@ -21,6 +21,9 @@ import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import MoviePage from "./pages/MoviePage/MoviePage";
+import FreshMoviePage from "./pages/FreshMoviePage";
+import TrendingMovies from "./Components/Home/Header/TrendingMovies/TrendingMovies";
+import TrendingMovie from "./pages/TrendingMovie";
 
 
 function App() {
@@ -56,8 +59,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route path="discovery" element={<Header/>}/>
           <Route path="/" element={<Home/>}/>
+          <Route path="discovery" element={<Header/>}/>
+          <Route path="fresh" element={<FreshMoviePage/>}/>
+          <Route path="trending" element={<TrendingMovie/>}/>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
