@@ -36,13 +36,6 @@ const MoviesAP = () => {
   let foundA = searchData && searchData.map(movie => <li>Delete</li>)
 
   const deleteMovie = (listId) => {
-    //   axios.delete(`https://api.themoviedb.org/3/list/1?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
-    //     .then(response => console.log(response))
-    // }
-    // const {data} = axios.delete(`https://api.themoviedb.org/3/list/1?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
-    // if (data) {
-    //   console.log(data)
-    // }
     const options = {
       method: 'DELETE',
       headers: {
@@ -51,7 +44,7 @@ const MoviesAP = () => {
       }
     };
 
-    fetch(`https://api.themoviedb.org/3/list/${listId}}`, options)
+    fetch(`https://api.themoviedb.org/3/list/${listId}}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`, options)
       .then(response => {
         // if (!response.ok) {
         //   throw new Error('Network response was not ok');
@@ -62,9 +55,6 @@ const MoviesAP = () => {
         console.error('Error deleting list:', error);
       });
   }
-
-
-  console.log(movies)
 
   return (
     <div className={style.container}>
