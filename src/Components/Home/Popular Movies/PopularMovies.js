@@ -12,6 +12,7 @@ const PopularMovies = () => {
   let popMovie = useSelector((state) => state.movies.popularMovie);
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
 
+  console.log(popMovie)
   return (
     <>
       <div className={style.container}>
@@ -32,7 +33,7 @@ const PopularMovies = () => {
                 <p className={style.item}>{movie.category}</p>
                 <div className={style.wrapperMark}>
                   <img className={style.mark} src={star} alt="mark"/>
-                  <p className={style.item}> {movie.mark}</p>
+                  <p className={style.item}> {movie.vote_average}</p>
 
                 </div>
               </div>
