@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React,  {useState} from 'react';
 import style from "./Search.module.scss"
-import {BiSearch} from "react-icons/bi";
 import {useSelector} from "react-redux";
 import UniversalSearch from "./UniversalSearch";
 
@@ -8,8 +7,12 @@ const Search = () => {
 
   let mediaData = useSelector((store) => store.jsonDataMedia);
 
+  let movies = useSelector((state) => state.movies.discover)
+
+  console.log(movies)
+
   let [findMovie, setFindMovie] = useState([])
-  const searchMovie = (foundItem) => foundItem && mediaData.videos.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
+  const searchMovie = (foundItem) => foundItem && movies.filter(item => item.original_title.toLowerCase().includes(foundItem.toLowerCase()))
 
   return (
     <div>
