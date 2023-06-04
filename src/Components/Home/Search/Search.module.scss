@@ -1,10 +1,14 @@
 @import "src/index";
+
 .search {
   border-radius: 15px;
   border: 1px solid grey;
   padding: 8px 27px;
   background-color: #1f2126;
 
+  &:blur {
+    opacity: 0;
+  }
 }
 
 .icon {
@@ -31,11 +35,12 @@
 .autocompletedItem {
   font-size: 20px;
   padding: 15px;
-  &:hover{
-    background-color:$colorActive;
+
+  &:hover {
+    background-color: $colorActive;
     color: #ffffff;
     cursor: pointer;
-    transition: cubic-bezier(1,0,0,1) .3s all;
+    transition: cubic-bezier(1, 0, 0, 1) .3s all;
   }
 }
 

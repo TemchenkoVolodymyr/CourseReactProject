@@ -5,11 +5,8 @@ import UniversalSearch from "./UniversalSearch";
 
 const Search = () => {
 
-  let mediaData = useSelector((store) => store.jsonDataMedia);
-
   let movies = useSelector((state) => state.movies.discover)
 
-  console.log(movies)
 
   let [findMovie, setFindMovie] = useState([])
   const searchMovie = (foundItem) => foundItem && movies.filter(item => item.original_title.toLowerCase().includes(foundItem.toLowerCase()))
@@ -19,7 +16,7 @@ const Search = () => {
       <ul className={style.autocompleted}>
         {findMovie && findMovie.map(item => <li className={style.autocompletedItem}>{item.title}</li>)}
       </ul>
-      <UniversalSearch callback={searchMovie} found = {findMovie} setFound = {setFindMovie}/>
+      <UniversalSearch callback={searchMovie} found = {findMovie} setFound = {setFindMovie} />
     </div>
   );
 };

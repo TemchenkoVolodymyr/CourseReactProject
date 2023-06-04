@@ -22,11 +22,13 @@ const Search = (props) => {
 
   }, [search])
 
+
+
   return (
     <div>
       <BiSearch className={style.icon}></BiSearch>
       <input className={style.search} type="search" placeholder={`Search`} value={search}
-             onChange={(e) => changeSearch(e)}></input>
+             onChange={(e) => changeSearch(e)} onBlur={() => setSearch("")}></input>
     </div>
   );
 };
