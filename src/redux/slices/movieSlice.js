@@ -5,6 +5,7 @@ export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
   async (params, thunkAPI) => {
     const {type} = params;
+
     let endpoint = '';
 
     if (type === 'trendingMovies') {
@@ -16,7 +17,6 @@ export const fetchMovies = createAsyncThunk(
     } else if (type === 'popularMovie') {
       endpoint = 'movie/popular'
     } else if (type === 'genre') {
-      console.log('s')
       endpoint = 'genre/movie/list'
     }
 

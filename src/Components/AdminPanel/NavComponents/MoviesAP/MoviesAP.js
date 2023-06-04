@@ -1,19 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../../redux/slices/movieSlice";
-import Loader from "../../../../Loader/Loader";
 import UniversalSearch from "../../../Home/Search/UniversalSearch";
 import style from "./moviesAP.module.scss"
+import axios from "axios";
 
 
 const MoviesAP = () => {
   let [searchData, setSearchData] = useState([]);
 
   const movies = useSelector((state) => state.movies.discover)
-  const genre = useSelector((state) => state.movies.genre);
-
-  const [foundGenre, setFoundGenre] = useState([])
-
 
   let dispatch = useDispatch()
 
@@ -32,39 +28,87 @@ const MoviesAP = () => {
 
   let titleMovie = movies.map(movie => <li>{movie.original_title}</li>)
   let ratingMovie = movies.map(movie => <li>{movie.vote_average}</li>)
+  let genres = movies.map(movie => <li>Fantasy,Action</li>)
 
-  for (const movie of movies) {
-    for (const genreId of movie.genre_ids) {
-      const matchingGenre = genre.find(genre => genre.id === genreId);
-      if (matchingGenre) {
-        console.log(matchingGenre.name);
+  let foundM = searchData && searchData.map(movie => <li>{movie.original_title}</li>)
+  let foundG = searchData && searchData.map(movie => <li>NO</li>)
+  let foundR = searchData && searchData.map(movie => <li>{movie.vote_average}</li>)
+  let foundA = searchData && searchData.map(movie => <li>Delete</li>)
+
+  const deleteMovie = (listId) => {
+    //   axios.delete(`https://api.themoviedb.org/3/list/1?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+    //     .then(response => console.log(response))
+    // }
+    // const {data} = axios.delete(`https://api.themoviedb.org/3/list/1?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+    // if (data) {
+    //   console.log(data)
+    // }
+    const options = {
+      method: 'DELETE',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${process.env.REACT_APP_TMDB_API_KEY}`
       }
-    }
+    };
+
+    fetch(`https://api.themoviedb.org/3/list/${listId}}`, options)
+      .then(response => {
+        // if (!response.ok) {
+        //   throw new Error('Network response was not ok');
+        // }
+        console.log(response);
+      })
+      .catch(error => {
+        console.error('Error deleting list:', error);
+      });
   }
-  console.log(genre)
+
+
   console.log(movies)
-  console.log(foundGenre)
-  let p = foundGenre.map(genre => <li>{genre}</li>)
+
   return (
     <div className={style.container}>
       <h3>Movies</h3>
       <UniversalSearch callback={searchMovie} found={searchData} setFound={setSearchData}/>
-      {/*{searchData ? searchData.map(foundMovie => <div>{foundMovie.title}</div>) : movies ? movies.map(movie =>*/}
-      {/*  <div>{movie.original_title}</div>) : <Loader></Loader>}*/}
-      <div className={style.wrapper}>
-        <ul>
-          <li>Title</li>
-          <li>{titleMovie}</li>
-        </ul>
-        <ul>
-          <li>Genre</li>
-          <li>{p}</li>
-        </ul>
-        <ul>
-          <li>Rating</li>
-          <li>{ratingMovie}</li>
-        </ul>
-      </div>
+      {searchData ? <div className={style.wrapper}>
+          <ul>
+            <li>Title</li>
+            <li>{foundM}</li>
+          </ul>
+          <ul>
+            <li>Genre</li>
+            <li>{foundG}</li>
+          </ul>
+          <ul>
+            <li>Rating</li>
+            <li>{foundR}</li>
+          </ul>
+          <ul>
+            <li>Action</li>
+            <li>{foundA}</li>
+          </ul>
+        </div> :
+        <div className={style.wrapper}>
+          <ul>
+            <li>Title</li>
+            <li>{titleMovie}</li>
+
+          </ul>
+          <ul>
+            <li>Genre</li>
+            <li>{genres}</li>
+          </ul>
+          <ul>
+            <li>Rating</li>
+            <li>{ratingMovie}</li>
+          </ul>
+          <ul>
+            <li>Action</li>
+            {movies.map(movie => <li className={style.deleteMovie} onClick={() => deleteMovie(603692)}>Delete</li>)}
+
+          </ul>
+        </div>}
+
     </div>
   );
 };

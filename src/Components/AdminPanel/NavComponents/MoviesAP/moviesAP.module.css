@@ -1,6 +1,6 @@
 .container {
-  overflow: hidden;
-  max-height: 500px;
+  overflow: scroll;
+  max-height: 600px;
 }
 
 .wrapper {
@@ -13,6 +13,10 @@
 }
 .wrapper ul li {
   padding: 5px;
+}
+
+.deleteMovie:hover {
+  color: #f1f;
 }
 
 /*# sourceMappingURL=moviesAP.module.css.map */
