@@ -10,6 +10,7 @@ import {NavLink} from "react-router-dom";
 const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
+  console.log(popMovie)
 
 
 

@@ -68,6 +68,8 @@ export const movieSlice = createSlice({
         state.discover = responseData;
       } else if (type === 'genre') {
         state.genre = responseData;
+      } else if(type ==='popularMovie') {
+        state.popularMovie = responseData
       }
 
 
