@@ -4,7 +4,6 @@
   border: 1px solid grey;
   padding: 8px 27px;
   background-color: #1f2126;
-
 }
 
 .icon {
@@ -16,15 +15,25 @@
 
 .autocompleted {
   position: absolute;
-
+  background-color: #1f2126;
   top: 50px;
   width: 220px;
-  background-color: #f8f8f8;
   list-style: none;
-  box-shadow: 1px 1px 5px #ffffff;
+  box-shadow: 11px 11px 55px #000000;
   height: auto;
   overflow: auto;
-  max-height: 240px;
+  //max-height: 240px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  .item{
+    text-decoration: none;
+    color: #fcfcfc;
+    padding: 15px;
+    width: 100%;
+    min-width: 100%;
+
+  }
 }
 
 .autocompletedItem {
@@ -36,5 +45,21 @@
     cursor: pointer;
     transition: cubic-bezier(1,0,0,1) .3s all;
   }
+}
+.wrapper{
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50px;
+  //width: 100%;
+  margin: 5px;
+  border: 2px solid black;
+  &:hover{
+    box-shadow: 11px 11px 55px #000000;
+    cursor: pointer;
+    transition: cubic-bezier(1,0,0,1) ;
+    transform: scale(1.05);
+
+  }
+
 }
 

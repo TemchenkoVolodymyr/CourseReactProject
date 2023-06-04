@@ -1,19 +1,44 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import style from "./PopularMoviesPage.module.scss"
+import {NavLink} from "react-router-dom";
+import {fetchMovies} from "../../../../redux/slices/movieSlice";
 
 const PopularMoviesPage = () => {
 
 
-  let dataMovies = useSelector((store) => store.headerMovies)
+  let dataMovies = useSelector((state) => state.movies.popularMovie);
 
-  console.log(dataMovies)
+  let dispatch = useDispatch()
+  useEffect(() => {
+    const getPopMovies = async () => {
+      dispatch(fetchMovies({type: "popularMovie"}))
+    }
+    if(dataMovies.length < 2){
+      getPopMovies()
+    }
+  },[dataMovies.length])
 
-  let drawMovies = dataMovies.map(film => <div id={film.id} className={style.wrapperBox}>
-    <img src={film.url}  alt="film image" />
-    <p>{film.name}</p>
-    <p>{film.category}</p>
-  </div>)
+
+
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
+
+  let drawMovies = dataMovies.map(film =>
+    <div className={style.wrapper}>
+      <NavLink to={`/${film.id}`} style={{textDecoration: "none", color: "white"}}>
+        <div
+          key={film.id}
+          id={film.id}
+          className={style.wrapperBox}
+          style={{
+            backgroundImage: `url(${imageBaseUrl}w500${film.poster_path})`, backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+          }}>
+          <p>{film.original_title}</p>
+        </div>
+      </NavLink>
+    </div>
+  )
   return (
     <div className={style.container}>
       {drawMovies}

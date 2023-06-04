@@ -1,93 +1,123 @@
-import React from 'react';
-import Carousel from "./Carousel/Carousel";
+import React, {useEffect} from 'react';
 import ItemCarousel from "./Carousel/ItemCarousel";
 import style from "./HomeHeader.module.scss"
-import TrendingMovies from "./TrendingMovies/TrendingMovies";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovies} from "../../../redux/slices/movieSlice";
+import SliderItem from "../../SliderItems/SliderItem";
+import 'swiper/swiper-bundle.css';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import SwiperCore, {Navigation} from 'swiper';
+import {NavLink} from "react-router-dom";
 
 
-const HomeHeader = (props) => {
 
-  let moviesHeaderCarousel = useSelector((store) => store.headerMovies);
+const HomeHeader = () => {
+  SwiperCore.use([Navigation]);
 
-  let bestActors = useSelector((store) => store.bestActors)
+  const dispatch = useDispatch()
+  const trendingMovies = useSelector(state => state.movies.trendingMovies);
+  const popularActors = useSelector(state => state.movies.popularActors);
+  const discover = useSelector(state => state.movies.discover);
 
-  let styleCarouselContainer = {
-    container: {
-      height: " 220px",
-      width: "860px",
-      display: "flex",
-      alignItems: "center",
+
+  useEffect(() => {
+    const getTrending = async () => {
+      dispatch(fetchMovies({type: 'trendingMovies'}))
+    };
+
+    const getActors = async () => {
+      dispatch(fetchMovies({type: 'popularActors'}))
+    };
+
+    const getDiscover =  () => {
+      dispatch(fetchMovies({type: 'discover'}))
+    };
+    const getPopMovies = async () => {
+      dispatch(fetchMovies({type: "popularMovie"}))
     }
-  }
 
-  let styleCarouselTrending = {
-    container: {
-      height: " 220px",
-      width: "860px",
-      display: "flex",
-      alignItems: "center",
-    }
-  }
-  let movies = moviesHeaderCarousel.map(movie =>
-    <ItemCarousel
-      key={movie.id}
-      name={movie.name}
-      category={movie.category}
-      bg={movie.url}
-      id={movie.id}></ItemCarousel>)
 
-  let actors = bestActors.map(actor =>
-    <div
-      key={actor.url}
-      className={style.wrapperActors}
-      style={{backgroundImage: `url(${actor.url})`}}>
-    <p>{actor.name}</p>
-    <p>{actor.countOfFilms}</p>
-  </div>)
+    getTrending()
+    getActors()
+    getDiscover()
+    getPopMovies()
+
+
+  }, []);
 
   return (
     <>
-      <div>
+      <div className={style.wrapper}>
         <div className={style.header}>
-          <h3>Watch movies online</h3>
+          <h1>watch movies online</h1>
         </div>
-        <Carousel widthBox="870" styleCss={styleCarouselContainer}>
-          {movies}
-        </Carousel>
+        <Swiper
+          id="main"
+          tag="section"
+          wrapperTag="ul"
+          navigation slidesPerView={1}
+          spaceBetween={10}>
+
+          {discover?.map(movie =>
+            <SwiperSlide  key={movie.id} >
+              <NavLink
+                to={`/movie/${movie.id}`}
+                className={style.swiperSlideMain} >
+              <ItemCarousel
+                name={movie.title}
+                category={movie.category}
+                bg={movie.backdrop_path}
+                id={movie.id}></ItemCarousel>
+              </NavLink>
+            </SwiperSlide>
+
+          )}
+        </Swiper>
+
         <div className={style.header}>
-          <h3>Trending now </h3>
+          <h2>Trending Now </h2>
         </div>
-        <Carousel widthBox="167" styleCss={styleCarouselTrending}>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-          <TrendingMovies
-            image={"https://th.bing.com/th/id/R.33fc73d4cecb55cfa418ddc25a332672?rik=lSuoz%2fUVfgB0QA&pid=ImgRaw&r=0"}/>
-        </Carousel>
+        <Swiper
+          id="main"
+          tag="section"
+          wrapperTag="ul"
+          navigation slidesPerView={7}
+          spaceBetween={10}>
+          {
+            trendingMovies?.map(movie =>
+              <SwiperSlide key={movie.id}>
+                <NavLink
+                  to={`/movie/${movie.id}`}
+                  className={style.swiperSlide} >
+                <SliderItem
+                  title={movie.title}
+                  img={movie.poster_path}
+                />
+                </NavLink>
+              </SwiperSlide>
+            )
+          }
+        </Swiper>
         <div className={style.header}>
-          <h3>Best Actors</h3>
+          <h2>Best Actors</h2>
         </div>
-        <div className={style.wrapperBox}>
-          {actors}
-        </div>
+        <Swiper
+          id="main"
+          tag="section"
+          wrapperTag="ul"
+          navigation slidesPerView={7}
+          spaceBetween={10}>
+          {
+            popularActors?.map(actor =>
+              <SwiperSlide className={style.swiperSlide} key={actor.id}>
+                  <SliderItem
+                  title={actor.name}
+                  img={actor.profile_path}
+                />
+              </SwiperSlide>
+            )
+          }
+        </Swiper>
 
 
       </div>

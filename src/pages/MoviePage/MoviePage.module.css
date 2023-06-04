@@ -1,0 +1,64 @@
+.wrapper {
+  font-family: Arial, sans-serif;
+  color: white;
+}
+.wrapper h2 {
+  padding: 25px 0;
+}
+.wrapper .banner {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  border-radius: 15px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+.wrapper .banner:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 15px;
+}
+.wrapper .banner .info {
+  margin-left: 30px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .banner .info h1 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.wrapper .banner .info p {
+  padding: 5px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.wrapper .banner .info p span {
+  opacity: 0.7;
+}
+.wrapper .overview {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+  line-height: 25px;
+  font-size: 18px;
+}
+.wrapper .overview .about {
+  width: 60%;
+}
+.wrapper .overview .data {
+  padding-right: 80px;
+}
+
+/*# sourceMappingURL=MoviePage.module.css.map */

@@ -1,46 +1,146 @@
 @import "src/index";
 
+.wrapper {
 
-.header {
-  padding: 15px;
-  font-size: $sizeHeader;
-  letter-spacing: 1px;
-}
-
-.trendMovies {
-  display: flex;
-  margin: 5px;
-}
-
-.wrapperBox {
-  display: flex;
-  margin: 0 15px;
-
-}
-
-.wrapperActors {
-  width: 165px;
-  height: 200px;
-  background-size: cover;
-  min-height: 100%;
-  border-radius: 15px;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  flex-direction: column;
-
-  &:hover{
-    box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
-    transform: scale(1.05);
+  h1, h2, h3 {
+    color: white;
+    opacity: .8;
+    text-transform: capitalize;
   }
-  p{
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  .header {
+    padding: 15px;
+    font-size: $sizeHeader;
+    letter-spacing: 1px;
   }
-  &:hover p{
-    opacity: 1;
+
+  .trendMovies {
+    display: flex;
+    margin: 5px;
+  }
+
+  .wrapperBox {
+    display: flex;
+    margin: 0 15px;
 
   }
+
+  .wrapperActors {
+    width: 165px;
+    height: 200px;
+    background-size: cover;
+    min-height: 100%;
+    border-radius: 15px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+
+    &:hover {
+      box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+      transform: scale(1.05);
+    }
+
+    p {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover p {
+      opacity: 1;
+    }
+  }
+
+  .swiperSlideMain {
+
+    text-decoration: none;
+
+    & > div {
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      border-radius: 15px;
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0));
+      }
+      & > div {
+
+        z-index: 1;
+        margin-left: 30px;
+        margin-bottom: 10px;
+
+
+        h2 {
+          color: white;
+          letter-spacing: 2px;
+        }
+
+        h3 {
+          color: white;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+
+        button {
+          background-color: rgb(210, 6, 6);
+          border-radius: 15px;
+          padding: 10px;
+          cursor: pointer;
+
+          a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .swiperSlide {
+
+    text-decoration: none;
+
+    & > div {
+      background-size: cover;
+      height: 300px;
+      border-radius: 15px;
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      &:hover {
+        box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+        transform: scale(1.05);
+      }
+
+      p {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        color: white;
+        padding: 10px;
+        font-size: 20px;
+      }
+
+      &:hover p {
+        opacity: 1;
+      }
+    }
+  }
+
 }
 

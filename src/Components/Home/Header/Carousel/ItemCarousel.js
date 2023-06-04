@@ -1,20 +1,17 @@
 import React from 'react';
-import style from  "./ItemCarousel.module.scss"
-import CustomLink from "../../../../router/CustomLink/CustomLink";
+import {Link} from "react-router-dom";
 
 const ItemCarousel = (props) => {
 
-  let {name,category,id} = props
-
-
-  let url = props.bg
+  let {name,category,id, bg} = props
 
   return (
-    <div style={{backgroundImage:`url(${url})`}} className={style.item }>
-      <h2 className={style.name}>{name}</h2>
-      <h4 className={style.category}>{category}</h4>
-      <CustomLink to={`/${id}`}>Watch</CustomLink>
-
+    <div style={{backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/w500${bg})`}} >
+      <div>
+        <h2>{name}</h2>
+        <h3>{category}</h3>
+        <button><Link to={`/${id}`}>Watch</Link></button>
+      </div>
     </div>
   );
 };

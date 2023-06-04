@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {iconTypes} from "../constants/constantsIcons";
 import {Icon} from "../Components/Icon/Icon";
 import {useDispatch} from "react-redux";
-import {removeUser} from "../redux/store/user/userSlice";
+import {removeUser} from "../redux/slices/userSlice";
 import {useAuth} from "../hooks/useAuth";
 import styles from './Navigations.module.scss'
 import {getAuth, signOut} from "firebase/auth";

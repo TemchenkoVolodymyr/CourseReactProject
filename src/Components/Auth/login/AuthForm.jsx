@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
 import {useDispatch} from "react-redux";
-import {setUser} from "../../../redux/store/user/userSlice";
+import {setUser} from "../../../redux/slices/userSlice";
 import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
+import {getFirestore, doc, setDoc, getDocs, collection} from "firebase/firestore";
 
 const AuthForm = () => {
   const {isAuth} = useAuth()
@@ -33,8 +34,6 @@ const AuthForm = () => {
           token: user.accessToken
         }))
         navigate('/')
-
-        console.table(isAuth);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -44,29 +43,40 @@ const AuthForm = () => {
     reset()
   }
 
-  const registerHandler = ({email, password}) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({user}) => {
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken
-        }))
-        navigate('/')
 
-        console.table(user);
-      })
-      .catch((error) => {
-        let errorMessage = error.message;
-        if (error.code === 'auth/email-already-in-use') {
-          errorMessage = 'This email is already in use. Please try another one.'
-        } else {
-          errorMessage = error.message
-        }
-        setError(errorMessage);
+  const registerHandler = async ({ email, password }) => {
+    const auth = getAuth();
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Получите экземпляр Firestore
+      const db = getFirestore();
+
+      // Создайте новый документ в коллекции 'users'
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        date: new Date().toLocaleDateString()
+        // другая информация о пользователе
       });
-    reset()
+
+      // Установите данные пользователя в Redux
+      dispatch(setUser({
+        email: user.email,
+        id: user.uid,
+        token: user.accessToken
+      }));
+
+      // Перенаправьте пользователя на главную страницу
+      navigate('/');
+    }
+    catch (error) {
+      let errorMessage = error.message;
+      if (error.code === 'auth/email-already-in-use') {
+        errorMessage = 'This email is already in use. Please try another one.'
+      }
+      setError(errorMessage);
+    }
+    reset();
   }
 
   const onSubmit = () => {

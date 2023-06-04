@@ -90,17 +90,14 @@ export const initialStore = {
     }
   ],
   isAuth: true,
-  statistics: [{
-    title: "8",
-    description: "Users",
-  },
+  statistics: [
     {
       title: "The most popular movie",
       description: "Opened 28 times",
       image: "https://th.bing.com/th/id/OIP.eKsFhSm2OUU9uVt-0qUBHwHaEK?pid=ImgDet&rs=1",
     }
   ],
-  searchMovie: [],
+  searchMovie: "",
   usersAp: [{
     user: "Vova",
     email: "temdsad@gmail.com",
