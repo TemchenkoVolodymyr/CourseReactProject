@@ -1,3 +1,6 @@
+
+
+
 <h1>MOVIE MAGIC CINEMA PROJECT</h1>
 <h2> Installation : </h2>
 
