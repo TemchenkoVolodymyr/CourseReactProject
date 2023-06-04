@@ -9,7 +9,6 @@ const Search = () => {
   let mediaData = useSelector((store) => store.jsonDataMedia);
 
   let [findMovie, setFindMovie] = useState([])
-console.log(findMovie)
   const searchMovie = (foundItem) => foundItem && mediaData.videos.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
 
   return (

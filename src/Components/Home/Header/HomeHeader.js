@@ -45,8 +45,6 @@ const HomeHeader = () => {
 
   }, []);
 
-
-console.log('home')
   return (
     <>
       <div className={style.wrapper}>

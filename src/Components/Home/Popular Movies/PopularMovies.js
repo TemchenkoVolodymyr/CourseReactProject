@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import style from "./PopularMovies.module.scss";
 import star from "../../../assets/star.svg"
@@ -10,11 +10,6 @@ import {NavLink} from "react-router-dom";
 const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
-  console.log(popMovie)
-
-
-
-
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
 
   return (

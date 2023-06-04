@@ -27,7 +27,6 @@ const StatisticsAP = () => {
       .catch(error => console.error(error));
   }, []);
 
-console.log(users)
   let statistic = statisticsData.map(item => <SectionFromStatistics title={item.title} description={item.description} image={ item.image &&item.image}/> )
   // let currentUser = users.map(user => <SectionFromStatistics>{users.length}</SectionFromStatistics>)
   return (
