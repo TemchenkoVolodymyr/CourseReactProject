@@ -20,7 +20,7 @@ const Search = () => {
   }
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
-  console.log(findMovie)
+
   return (
     <div>
       <ul className={style.autocompleted}>

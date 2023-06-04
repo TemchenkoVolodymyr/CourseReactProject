@@ -18,7 +18,6 @@ const TrendingMovie = () => {
     }
     fetchMovie();
   }, []);
-  console.log(movies);
 
   return (
     <div className={styles.container}>

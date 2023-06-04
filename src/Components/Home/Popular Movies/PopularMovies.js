@@ -12,7 +12,7 @@ const PopularMovies = () => {
   let popMovie = useSelector((state) => state.movies.popularMovie);
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
 
-  console.log(popMovie)
+
   return (
     <>
       <div className={style.container}>

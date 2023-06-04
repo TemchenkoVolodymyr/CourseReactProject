@@ -1,0 +1,24 @@
+.container{
+  h1 {
+    padding: 15px;
+  }
+
+  a {
+    text-decoration: none;
+    margin-bottom: 10px;
+
+    p {
+      padding: 15px;
+    }
+  }
+
+  p {
+    padding: 15px;
+    font-size: 18px;
+  }
+}
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}

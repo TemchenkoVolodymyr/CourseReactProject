@@ -4,7 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import Layout from "./router/Layout";
 import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
 import {useDispatch,} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
 import data from "./redux/json/Data.json"
 import Home from "./Components/Home/Home";
@@ -21,9 +21,9 @@ import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import MoviePage from "./pages/MoviePage/MoviePage";
-import FreshMoviePage from "./pages/FreshMoviePage";
-import TrendingMovies from "./Components/Home/Header/TrendingMovies/TrendingMovies";
 import TrendingMovie from "./pages/TrendingMovie";
+import FreshMoviePage from "./pages/FreshMoviePage";
+import CurrentGenre from "./pages/PopularGenders/CurrentGenre";
 
 
 function App() {
@@ -63,6 +63,7 @@ function App() {
           <Route path="discovery" element={<Header/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
+          <Route path='/:genre' element={<CurrentGenre/>}></Route>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
@@ -77,6 +78,7 @@ function App() {
             <Route path="genres" element={<GenresAP />}/>
           </Route>
         </Route>
+
       </Routes>
     </>
   );

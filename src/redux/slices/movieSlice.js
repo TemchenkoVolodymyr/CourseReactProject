@@ -24,8 +24,8 @@ export const fetchMovies = createAsyncThunk(
       axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
     if (data.results)
       return data.results
-    if (data.genres)
-      return data.genres
+     if (data.genres)
+      return data
   }
 )
 
