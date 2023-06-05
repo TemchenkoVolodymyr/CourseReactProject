@@ -42,10 +42,9 @@ const HomeHeader = () => {
     getDiscover()
     getPopMovies()
 
+
   }, []);
 
-
-console.log('home')
   return (
     <>
       <div className={style.wrapper}>

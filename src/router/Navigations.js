@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {NavLink} from "react-router-dom";
 import {iconTypes} from "../constants/constantsIcons";
 import {Icon} from "../Components/Icon/Icon";
@@ -8,6 +8,7 @@ import {useAuth} from "../hooks/useAuth";
 import styles from './Navigations.module.scss'
 import {getAuth, signOut} from "firebase/auth";
 import {useSelector} from "react-redux";
+
 
 const Navigations = () => {
 

@@ -1,19 +1,15 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import style from "./PopularMovies.module.scss";
 import star from "../../../assets/star.svg"
 import CustomLink from "../../../router/CustomLink/CustomLink";
 import {NavLink} from "react-router-dom";
-
+import {getAuth} from "firebase/auth";
 
 
 const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
-
-
-
-
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
 
   return (
@@ -36,7 +32,7 @@ const PopularMovies = () => {
                 <p className={style.item}>{movie.category}</p>
                 <div className={style.wrapperMark}>
                   <img className={style.mark} src={star} alt="mark"/>
-                  <p className={style.item}> {movie.mark}</p>
+                  <p className={style.item}> {movie.vote_average}</p>
 
                 </div>
               </div>

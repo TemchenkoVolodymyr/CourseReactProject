@@ -21,9 +21,9 @@ import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import MoviePage from "./pages/MoviePage/MoviePage";
-import FreshMoviePage from "./pages/FreshMoviePage";
-import TrendingMovies from "./Components/Home/Header/TrendingMovies/TrendingMovies";
 import TrendingMovie from "./pages/TrendingMovie";
+import FreshMoviePage from "./pages/FreshMoviePage";
+import CurrentGenre from "./pages/PopularGenders/CurrentGenre";
 import DiscoveryPage from "./pages/DiscoveryPage";
 
 
@@ -64,12 +64,14 @@ function App() {
           <Route path="discovery" element={<DiscoveryPage/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
+          <Route path='/:genre' element={<CurrentGenre/>}></Route>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}/>
           <Route path="/movie/:id" element={<MoviePage />}/>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
+          <Route path="/favoriteMovies" element={<FreshMoviePage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
             <Route path="static" element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>

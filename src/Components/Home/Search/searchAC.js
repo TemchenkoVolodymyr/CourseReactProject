@@ -1,9 +1,9 @@
 import {SET_FOUND_MOVIE} from "./SearchReducer";
 
 
-export const searchAC = (foundMovie) => {
+export const searchAC = (text) => {
   return{
     type:SET_FOUND_MOVIE,
-    movie:foundMovie
+    movie:text
   }
 }

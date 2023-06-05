@@ -4,7 +4,8 @@ import axios from "axios";
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
   async (params, thunkAPI) => {
-    const { type } = params;
+    const {type} = params;
+
     let endpoint = '';
 
     if (type === 'trendingMovies') {
@@ -13,13 +14,18 @@ export const fetchMovies = createAsyncThunk(
       endpoint = 'person/popular';
     } else if (type === 'discover') {
       endpoint = 'discover/movie';
-    }else if(type === 'popularMovie') {
+    } else if (type === 'popularMovie') {
       endpoint = 'movie/popular'
+    } else if (type === 'genre') {
+      endpoint = 'genre/movie/list'
     }
 
     const {data} = await
       axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
-    return data.results
+    if (data.results)
+      return data.results
+     if (data.genres)
+      return data
   }
 )
 
@@ -28,7 +34,9 @@ const initialState = {
   trendingMovies: [],
   popularActors: [],
   status: 'loading',
-  popularMovie:[],
+  popularMovie: [],
+  movies: [],
+  genre: [],
 }
 
 export const movieSlice = createSlice({
@@ -46,9 +54,10 @@ export const movieSlice = createSlice({
       state.popularActors = []
       state.discover = []
       state.popularMovie = []
+      state.genre = []
     },
     [fetchMovies.fulfilled]: (state, action) => {
-      const { type } = action.meta.arg;
+      const {type} = action.meta.arg;
       const responseData = action.payload;
 
       if (type === 'trendingMovies') {
@@ -57,9 +66,12 @@ export const movieSlice = createSlice({
         state.popularActors = responseData;
       } else if (type === 'discover') {
         state.discover = responseData;
-      } else if (type === 'popularMovie') {
+      } else if (type === 'genre') {
+        state.genre = responseData;
+      } else if(type ==='popularMovie') {
         state.popularMovie = responseData
       }
+
 
       state.status = 'success';
     },
@@ -69,6 +81,7 @@ export const movieSlice = createSlice({
       state.popularActors = []
       state.discover = []
       state.popularMovie = []
+      state.genre = []
     }
   }
 })

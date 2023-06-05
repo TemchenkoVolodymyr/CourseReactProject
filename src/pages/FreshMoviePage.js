@@ -18,7 +18,6 @@ const FreshMoviePage = () => {
     }
     fetchMovie();
   }, []);
-  console.log(movies);
 
   return (
     <div className={styles.container}>

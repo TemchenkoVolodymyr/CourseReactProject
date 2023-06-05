@@ -97,7 +97,7 @@ export const initialStore = {
       image: "https://th.bing.com/th/id/OIP.eKsFhSm2OUU9uVt-0qUBHwHaEK?pid=ImgDet&rs=1",
     }
   ],
-  searchMovie: [],
+  searchMovie: "",
   usersAp: [{
     user: "Vova",
     email: "temdsad@gmail.com",

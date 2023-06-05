@@ -6,6 +6,7 @@ import {Outlet} from "react-router";
 import Search from "../Components/Home/Search/Search";
 import PopularMovies from "../Components/Home/Popular Movies/PopularMovies";
 import {useSelector} from "react-redux";
+import FavoriteMovies from "../Components/Home/FavoriteMovies/FavoriteMovies";
 
 
 const Layout = () => {
@@ -25,6 +26,7 @@ const Layout = () => {
         <div className={"containerSideBar"}>
           <Search />
           <PopularMovies />
+          <FavoriteMovies />
         </div>
       </div>
       <footer className={"footer"}>2023 - mock footer for course react</footer>

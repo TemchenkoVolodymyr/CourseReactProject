@@ -1,0 +1,24 @@
+.container {
+  color: white;
+}
+.container h1 {
+  padding: 15px;
+}
+.container a {
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.container a p {
+  padding: 15px;
+}
+.container p {
+  padding: 15px;
+  font-size: 18px;
+}
+.container .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}
+
+/*# sourceMappingURL=Pages.module.css.map */
