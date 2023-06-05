@@ -4,14 +4,13 @@ import style from "./PopularMovies.module.scss";
 import star from "../../../assets/star.svg"
 import CustomLink from "../../../router/CustomLink/CustomLink";
 import {NavLink} from "react-router-dom";
-
+import {getAuth} from "firebase/auth";
 
 
 const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
-
 
   return (
     <>

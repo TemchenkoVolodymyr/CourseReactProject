@@ -70,6 +70,7 @@ function App() {
           <Route path="/:id" element={<MovieCarousel />}/>
           <Route path="/movie/:id" element={<MoviePage />}/>
           <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
+          <Route path="/favoriteMovies" element={<FreshMoviePage />}></Route>
           <Route path="/adminPanel" element={<AdminPanel />}>
             <Route path="static" element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>
