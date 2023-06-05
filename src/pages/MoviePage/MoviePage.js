@@ -9,7 +9,7 @@ const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
-
+  console.log(id);
   useEffect(() => {
     async function fetchMovie() {
       try {

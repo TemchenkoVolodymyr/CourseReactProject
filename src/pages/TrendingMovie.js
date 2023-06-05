@@ -18,7 +18,6 @@ const TrendingMovie = () => {
     }
     fetchMovie();
   }, []);
-  console.log(movies);
 
   return (
     <div className={styles.container}>
@@ -27,9 +26,11 @@ const TrendingMovie = () => {
       <div className={styles.wrapper}>
         {
           movies?.results.map(movie =>
-            <NavLink to={`/movie/${movie.id}`}>
+            <NavLink
+              to={`/movie/${movie.id}`}
+              key={movie.id}
+            >
               <PageBlock
-                key={movie.id}
                 image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 title={movie.title}
               />
