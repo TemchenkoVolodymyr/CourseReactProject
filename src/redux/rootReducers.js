@@ -3,7 +3,6 @@ import {headerReducer} from "../Components/Header/headerReducer";
 import {reduxTestCounterReducer} from '../Components/reduxTestCounter/reduxTestCounterReducer';
 import {jsonReducer} from "./json/jsonReducer";
 import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
-// import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBestActors";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";
@@ -17,12 +16,11 @@ export default combineReducers({
     reduxTestCounter: reduxTestCounterReducer,
     jsonDataMedia: jsonReducer,
     headerMovies: reducerHomeHeader,
-    // bestActors: reducerBestActors,
     user,
     isAuth: authReducer,
     statistics: statisticsReducer,
     movies,
     usersAp: usersReducerAp,
-    search: searchReducer,
+  searchMovie: searchReducer,
   },
 );

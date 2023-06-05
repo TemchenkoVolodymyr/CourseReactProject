@@ -24,10 +24,10 @@ const PopularMoviesPage = () => {
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
 
   let drawMovies = dataMovies.map(film =>
-    <div className={style.wrapper}>
+    <div className={style.wrapper} key={film.id}>
       <NavLink to={`/${film.id}`} style={{textDecoration: "none", color: "white"}}>
         <div
-          key={film.id}
+
           id={film.id}
           className={style.wrapperBox}
           style={{

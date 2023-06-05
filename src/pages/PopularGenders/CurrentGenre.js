@@ -42,10 +42,9 @@ const CurrentGenre = () => {
       <div className={style.wrapper}>
         {
           currGenre?.results.map(genre =>
-            <NavLink to={`/movie/${genre.id}`}>
+            <NavLink key={genre.id} to={`/movie/${genre.id}`}>
               <PageBlock
-                key={genre.id}
-                image={genre.poster_path}
+                image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
                 title={genre.title}
               />
             </NavLink>

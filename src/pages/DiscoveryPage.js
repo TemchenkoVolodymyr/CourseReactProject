@@ -43,8 +43,6 @@ const DiscoveryPage = () => {
     fetchMovie();
   }, []);
 
-  console.log(genres);
-
 
   return (
     <div className={styles.container}>
@@ -53,9 +51,12 @@ const DiscoveryPage = () => {
       <div className={styles.wrapper}>
         {
           genres?.genres.map(genre =>
-            <NavLink to={`/movie/${genre.id}`}>
+            <NavLink
+              to={`/movie/${genre.id}`}
+              key={genre.id}
+            >
               <PageBlock
-                key={genre.id}
+
                 image={genreImages[genre.id]}
                 title={genre.name}
               />

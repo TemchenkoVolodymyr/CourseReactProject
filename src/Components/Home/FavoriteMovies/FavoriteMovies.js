@@ -44,14 +44,13 @@ const FavoriteMovies = () => {
         <div className={style.wrapperMark}>
           <img className={style.mark} src={star} alt="mark"/>
           <p className={style.item}> {movie.vote_average}</p>
-
         </div>
       </div>
     </div>
   </NavLink>)
 
 
-if (auth &&!auth._currentUser.length > 1) {
+if (auth && auth._currentUser && auth._currentUser.length > 1) {
   return <p>To see your favorite movies just log in</p>
 }
 return (

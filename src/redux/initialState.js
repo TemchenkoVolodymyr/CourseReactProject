@@ -47,48 +47,48 @@ export const initialStore = {
       url: "https://th.bing.com/th/id/R.20b1561366dc8453d3d02900cd6c1832?rik=tD36mxYKYrvAsw&pid=ImgRaw&r=0"
     }
   ],
-  bestActors: [
-    {
-      name: "Thomas Holland",
-      url: "https://th.bing.com/th/id/OIP.EZTZWGbaPc38cZ0cz62cEwHaLI?pid=ImgDet&rs=1",
-      countOfFilms: +1,
-    },
-    {
-      name: "Stephan Holland",
-      url: "https://th.bing.com/th/id/OIP.I48m7hMXazcPbWOuVyXS-QHaLH?w=197&h=296&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +1,
-    },
-    {
-      name: "Simu Liu",
-      url: "https://th.bing.com/th/id/OIP.wV-rjW_RqWijEFe6dHF_zwHaJ4?w=197&h=263&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +1,
-    },
-    {
-      name: "Hao Nicko",
-      url: "https://th.bing.com/th/id/OIP.n1mDhoBDkx33V82O36fhUwHaK7?w=197&h=291&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +1,
-    },
-    {
-      name: "Queen Toq",
-      url: "https://th.bing.com/th/id/OIP.sgLx2nCvlG2Az3Hs6O99SgHaLJ?w=197&h=297&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +2,
-    },
-    {
-      name: "Prince Jack",
-      url: "https://th.bing.com/th/id/OIP.VNbQz3BEHQhsUTy7jsfvmQHaJ9?w=197&h=265&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +5,
-    },
-    {
-      name: "Prince Jack",
-      url: "https://th.bing.com/th/id/OIP.x3uEtm-gxUCcomKYwUp7NAHaKM?w=197&h=271&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +5,
-    },
-    {
-      name: "Prince Jack",
-      url: "https://th.bing.com/th/id/OIP.8eUgasxJn4Pp8LnaE8E3OQHaLH?w=197&h=296&c=7&r=0&o=5&pid=1.7",
-      countOfFilms: +5,
-    }
-  ],
+  // bestActors: [
+  //   {
+  //     name: "Thomas Holland",
+  //     url: "https://th.bing.com/th/id/OIP.EZTZWGbaPc38cZ0cz62cEwHaLI?pid=ImgDet&rs=1",
+  //     countOfFilms: +1,
+  //   },
+  //   {
+  //     name: "Stephan Holland",
+  //     url: "https://th.bing.com/th/id/OIP.I48m7hMXazcPbWOuVyXS-QHaLH?w=197&h=296&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +1,
+  //   },
+  //   {
+  //     name: "Simu Liu",
+  //     url: "https://th.bing.com/th/id/OIP.wV-rjW_RqWijEFe6dHF_zwHaJ4?w=197&h=263&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +1,
+  //   },
+  //   {
+  //     name: "Hao Nicko",
+  //     url: "https://th.bing.com/th/id/OIP.n1mDhoBDkx33V82O36fhUwHaK7?w=197&h=291&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +1,
+  //   },
+  //   {
+  //     name: "Queen Toq",
+  //     url: "https://th.bing.com/th/id/OIP.sgLx2nCvlG2Az3Hs6O99SgHaLJ?w=197&h=297&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +2,
+  //   },
+  //   {
+  //     name: "Prince Jack",
+  //     url: "https://th.bing.com/th/id/OIP.VNbQz3BEHQhsUTy7jsfvmQHaJ9?w=197&h=265&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +5,
+  //   },
+  //   {
+  //     name: "Prince Jack",
+  //     url: "https://th.bing.com/th/id/OIP.x3uEtm-gxUCcomKYwUp7NAHaKM?w=197&h=271&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +5,
+  //   },
+  //   {
+  //     name: "Prince Jack",
+  //     url: "https://th.bing.com/th/id/OIP.8eUgasxJn4Pp8LnaE8E3OQHaLH?w=197&h=296&c=7&r=0&o=5&pid=1.7",
+  //     countOfFilms: +5,
+  //   }
+  // ],
   isAuth: true,
   statistics: [
     {

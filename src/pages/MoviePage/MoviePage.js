@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useParams} from "react-router";
 import style from "./MoviePage.module.scss";
 import axios from "axios";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {NavLink} from "react-router-dom";
-
+import { Navigation } from 'swiper';
 const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
-  console.log(id);
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -20,8 +19,9 @@ const MoviePage = () => {
       }
     }
     fetchMovie();
+
   }, [id]);
-  console.log(movie);
+
   if (!movie) {
     return <>Loading....</>;
   }
@@ -30,7 +30,7 @@ const MoviePage = () => {
     <>
       <div className={style.wrapper}>
         <div
-          style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`}}
+          style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}
           className={style.banner}>
           <div className={style.info}>
             <h1>{movie.title}</h1>
@@ -55,20 +55,25 @@ const MoviePage = () => {
         <div>
           <h2>Top Billed Cast</h2>
           <Swiper
+            modules={[Navigation]}
             id="main"
             tag="section"
             wrapperTag="ul"
-            navigation slidesPerView={5}
+            navigation
+            slidesPerView={5}
             spaceBetween={10}>
 
-            {movie?.credits.cast.map(actor =>
-              <SwiperSlide key={actor.id}>
-                <div>
-                  <img src={`${imageBaseUrl}w200${actor.profile_path}`} alt={actor.name}/>
-                  <h3>{actor.name}</h3>
-                  <p>{actor.character}</p>
-                </div>
-              </SwiperSlide>
+            {movie?.credits.cast.slice(0,20).map(actor =>
+                  actor.profile_path &&
+                  <SwiperSlide key={actor.id}>
+                  <div className={style.actors}>
+                    <img
+                      src={`${imageBaseUrl}w200${actor.profile_path}`}
+                      alt={actor.name}/>
+                    <h3>{actor.name}</h3>
+                    <p>{actor.character}</p>
+                  </div>
+                  </SwiperSlide>
             )}
           </Swiper>
 
@@ -99,17 +104,19 @@ const MoviePage = () => {
         </div>
         <h2>Similar</h2>
         <Swiper
+          modules={[Navigation]}
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={5}
+          navigation slidesPerView={15}
           spaceBetween={10}>
 
           {movie?.similar.results.map(similar =>
+            similar.poster_path &&
             <SwiperSlide key={similar.id}>
               <NavLink to={`/movie/${similar.id}`}>
                 <div className={style.similar}>
-                  <img src={`${imageBaseUrl}w200${similar.poster_path}`} alt={similar.title}/>
+                  <img src={`https://image.tmdb.org/t/p/w200/${similar.poster_path}`} alt={similar.title}/>
                 </div>
               </NavLink>
             </SwiperSlide>
