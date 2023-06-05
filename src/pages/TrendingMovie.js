@@ -30,7 +30,7 @@ const TrendingMovie = () => {
             <NavLink to={`/movie/${movie.id}`}>
               <PageBlock
                 key={movie.id}
-                image={movie.poster_path}
+                image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 title={movie.title}
               />
             </NavLink>
