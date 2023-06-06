@@ -1,29 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import style from "./Search.module.scss"
 import {BiSearch} from "react-icons/bi";
-import {useDispatch, useSelector} from "react-redux";
-import {searchAC} from "./searchAC";
+
 
 const Search = (props) => {
 
-  let {callback, setFound} = props
-  let searchRedux = useSelector((store) => store.search);
-  let dispatch = useDispatch();
-
+  let {callback, setFound,value,setValue} = props
 
 
   useEffect(() => {
-    let includes = callback(searchRedux)
+    let includes = callback(value)
     setFound(includes && includes.map(item => item))
 
-  }, [searchRedux])
+  }, [value])
 
 
   return (
     <div>
       <BiSearch className={style.icon}></BiSearch>
-      <input className={style.search} type="search" placeholder={`Search`} value={searchRedux}
-             onChange={(e) => dispatch(searchAC(e.target.value))}></input>
+      <input className={style.search} type="search" placeholder={`Search`} value={value}
+             onChange={(e) => setValue(e.target.value) }></input>
     </div>
   );
 };

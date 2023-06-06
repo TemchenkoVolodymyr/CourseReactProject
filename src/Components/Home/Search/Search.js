@@ -9,6 +9,8 @@ const Search = () => {
 
   let movies = useSelector((state) => state.movies.discover);
 
+  let [searchForMovie,setSearchForMovie] = useState("")
+
   let dispatch = useDispatch()
 
 
@@ -27,7 +29,7 @@ const Search = () => {
         {findMovie && findMovie.map(item => <div className={style.wrapper}  style={{backgroundImage:`url(${imageBaseUrl}w500${item.backdrop_path})`,backgroundSize:"cover"}}><NavLink className={style.item}  onClick={resetSearchInput}
                                                      to={`/movie/${item.id}`}>{item.original_title}</NavLink></div>)}
       </ul>
-      <UniversalSearch callback={searchMovie} found={findMovie} setFound={setFindMovie}/>
+      <UniversalSearch callback={searchMovie} setFound={setFindMovie} value={searchForMovie} setValue={setSearchForMovie}/>
     </div>
   );
 };

@@ -12,6 +12,8 @@ const UsersAP = () => {
 
   const [users, setUsers] = useState([]);
 
+  const [searchForUser,setSearchForUser] = useState("")
+
 
   const searchMovie = (foundItem) => foundItem && users.filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
 
@@ -92,7 +94,7 @@ const UsersAP = () => {
   return (
     <>
     <div>
-      <UniversalSearch callback={searchMovie} found={searchData} setFound={setSearchData}/>
+      <UniversalSearch callback={searchMovie} setFound = {setSearchData} value={searchForUser}  setValue={setSearchForUser} />
     </div>
   {ifSearchActive()}
     </>

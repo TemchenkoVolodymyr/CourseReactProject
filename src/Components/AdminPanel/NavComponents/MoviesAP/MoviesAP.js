@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../../redux/slices/movieSlice";
 import UniversalSearch from "../../../Home/Search/UniversalSearch";
 import style from "./moviesAP.module.scss"
-import axios from "axios";
 
 
 const MoviesAP = () => {
   let [searchData, setSearchData] = useState([]);
+
+  let [searchForMoviesAP,setSearchForMoviesAP] = useState("")
 
   const movies = useSelector((state) => state.movies.discover)
 
@@ -59,7 +60,7 @@ const MoviesAP = () => {
   return (
     <div className={style.container}>
       <h3>Movies</h3>
-      <UniversalSearch callback={searchMovie} found={searchData} setFound={setSearchData}/>
+      <UniversalSearch callback={searchMovie} setFound={setSearchData} value = {searchForMoviesAP} setValue = {setSearchForMoviesAP}/>
       {searchData ? <div className={style.wrapper}>
           <ul>
             <li>Title</li>
