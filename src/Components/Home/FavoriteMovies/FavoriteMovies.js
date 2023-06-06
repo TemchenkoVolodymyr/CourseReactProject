@@ -51,7 +51,7 @@ const FavoriteMovies = () => {
   </NavLink>)
 
 
-if (auth &&!auth._currentUser.length > 1) {
+if (auth && auth._currentUser && auth._currentUser.length > 1) {
   return <p>To see your favorite movies just log in</p>
 }
 return (
