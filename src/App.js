@@ -64,14 +64,14 @@ function App() {
           <Route path="discovery" element={<DiscoveryPage/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
-          <Route path='/:genre' element={<CurrentGenre/>}></Route>
+          <Route path='/:genre' element={<CurrentGenre/>}/>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}/>
           <Route path="/movie/:id" element={<MoviePage />}/>
-          <Route path="/popMovies" element={<PopularMoviesPage />}></Route>
-          <Route path="/favoriteMovies" element={<FreshMoviePage />}></Route>
+          <Route path="/popMovies" element={<PopularMoviesPage />}/>
+          <Route path="/favoriteMovies" element={<FreshMoviePage />}/>
           <Route path="/adminPanel" element={<AdminPanel />}>
             <Route path="static" element={<StatisticsAP />}/>
             <Route path="users" element={<UsersAP />}/>

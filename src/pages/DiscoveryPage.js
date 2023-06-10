@@ -25,7 +25,6 @@ const genreImages = {
   53: "/images/genres/tv_movie.jpg",
   10752: "/images/genres/war.jpg",
   37: "/images/genres/western.jpg"
-
 };
 
 const DiscoveryPage = () => {
@@ -34,7 +33,8 @@ const DiscoveryPage = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const {data} = await axios
+          .get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setGenres(data);
       } catch (err) {
         alert('Error');
@@ -42,6 +42,8 @@ const DiscoveryPage = () => {
     }
     fetchMovie();
   }, []);
+
+  console.log(genres);
 
 
   return (
@@ -52,11 +54,10 @@ const DiscoveryPage = () => {
         {
           genres?.genres.map(genre =>
             <NavLink
-              to={`/movie/${genre.id}`}
+              to={`/${genre.name.toLowerCase().replace(/\s+/g, '-')}`}
               key={genre.id}
             >
               <PageBlock
-
                 image={genreImages[genre.id]}
                 title={genre.name}
               />

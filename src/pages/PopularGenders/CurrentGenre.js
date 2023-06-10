@@ -4,27 +4,42 @@ import PageBlock from "../../Components/PageBlock/PageBlock";
 import {useParams} from "react-router";
 import axios from "axios";
 import style from "./CurrentGenre.module.scss"
+import styles from "../Pages.module.scss";
 
+const genreIds = {
+  "comedy": 35,
+  "cartoons": 878,
+  "fantasy": 14,
+  "documentary": 99,
+  "adventure": 12,
+  "animation": 16,
+  "crime": 80,
+  "drama": 18,
+  "action": 28,
+  "family": 10751,
+  "history": 36,
+  "horror": 27,
+  "mystery": 10402,
+  "music": 9648,
+  "romance": 10749,
+  "science-fiction": 878,
+  "thriller": 10770,
+  "tv-movie": 53,
+  "war": 10752,
+  "western": 37,
+};
 const CurrentGenre = () => {
   const {genre} = useParams()
 
   const [currGenre, setCurrGenre] = useState()
 
-  let currentGenre = ""
-
   useEffect(() => {
-    if (genre === "comedy")
-      currentGenre = 35
-    if (genre === "cartoons")
-      currentGenre = 878
-    if (genre === "fantasy")
-      currentGenre = 14
-    if (genre === "biography")
-      currentGenre = 99
+    const currentGenre = genreIds[genre];
 
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
+        const {data} = await axios
+          .get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
         setCurrGenre(data);
       } catch (err) {
         alert('Error');
@@ -36,9 +51,9 @@ const CurrentGenre = () => {
   }, [genre])
 
   return (
-    <>
+    <div className={styles.container}>
       <h1>Popular genres: Everyone likes them</h1>
-      <p>Find your favorite genre.</p>
+      <h2>{genre}</h2>
       <div className={style.wrapper}>
         {
           currGenre?.results.map(genre =>
@@ -51,7 +66,7 @@ const CurrentGenre = () => {
           )
         }
       </div>
-    </>
+    </div>
   );
 };
 
