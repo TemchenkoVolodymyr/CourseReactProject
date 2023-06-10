@@ -48,8 +48,11 @@ const AuthForm = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
+        let errorMessage = error.message;
+        if (errorCode === 'auth/user-not-found') {
+          errorMessage = 'User not found. Please register.'
+        }
+        setError(errorMessage);
       });
     reset()
   }
