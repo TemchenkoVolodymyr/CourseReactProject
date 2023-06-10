@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './AuthForm.module.scss'
 import {useForm} from "react-hook-form";
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {setUser} from "../../../redux/slices/userSlice";
 import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
-import {getFirestore, doc, setDoc, getDocs, collection, getDoc} from "firebase/firestore";
+import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore";
 
 const AuthForm = () => {
   const {isAuth} = useAuth()
@@ -28,21 +28,21 @@ const AuthForm = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(async ({user}) => {
-        // Получите экземпляр Firestore
+        // Get an instance of Firestore
         const db = getFirestore();
 
-        // Получите документ пользователя
+        // Retrieve the user document
         const userDoc = await getDoc(doc(db, "users", user.uid));
 
-        // Получите данные пользователя
+        // Fetch user data
         const userData = userDoc.data();
 
-        // Установите данные пользователя в Redux
+        // УSet user data in Redux
         dispatch(setUser({
           email: user.email,
           id: user.uid,
           token: user.accessToken,
-          admin: userData.admin || false // Получите значение admin из Firestore, или установите false, если оно не установлено
+          admin: userData.admin || false
         }))
         navigate('/')
       })
@@ -63,19 +63,15 @@ const AuthForm = () => {
     try {
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-      // Получите экземпляр Firestore
       const db = getFirestore();
 
-      // Создайте новый документ в коллекции 'users'
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         date: new Date().toLocaleDateString(),
         admin: false,
 
-        // другая информация о пользователе
       });
 
-      // Установите данные пользователя в Redux
       dispatch(setUser({
         email: user.email,
         id: user.uid,
@@ -83,7 +79,6 @@ const AuthForm = () => {
         admin: false
       }));
 
-      // Перенаправьте пользователя на главную страницу
       navigate('/');
     }
     catch (error) {

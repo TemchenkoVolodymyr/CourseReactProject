@@ -27,7 +27,6 @@ const PopularMoviesPage = () => {
     <div className={style.wrapper} key={film.id}>
       <NavLink to={`/${film.id}`} style={{textDecoration: "none", color: "white"}}>
         <div
-
           id={film.id}
           className={style.wrapperBox}
           style={{
