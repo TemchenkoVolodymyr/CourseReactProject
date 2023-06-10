@@ -55,7 +55,8 @@ const AuthForm = () => {
       // Создайте новый документ в коллекции 'users'
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+
         // другая информация о пользователе
       });
 

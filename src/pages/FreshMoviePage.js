@@ -26,14 +26,14 @@ const FreshMoviePage = () => {
       <div className={styles.wrapper}>
         {
           movies?.results.map(movie =>
-              <NavLink to={`/movie/${movie.id}`} key={movie.id}>
-                <PageBlock
+            <NavLink to={`/movie/${movie.id}`} key={movie.id}>
+              <PageBlock
 
-                  image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                  title={movie.title}
-                />
-              </NavLink>
-             )
+                image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                title={movie.title}
+              />
+            </NavLink>
+          )
         }
       </div>
 

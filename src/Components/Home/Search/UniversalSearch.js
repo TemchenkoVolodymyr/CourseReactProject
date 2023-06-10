@@ -18,8 +18,12 @@ const Search = (props) => {
   return (
     <div>
       <BiSearch className={style.icon}></BiSearch>
-      <input className={style.search} type="search" placeholder={`Search`} value={value}
-             onChange={(e) => setValue(e.target.value) }></input>
+      <input
+        className={style.search}
+        type="search"
+        placeholder={`Search`}
+        value={value}
+        onChange={(e) => setValue(e.target.value) }></input>
     </div>
   );
 };

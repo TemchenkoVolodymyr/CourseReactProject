@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../../redux/slices/movieSlice";
 import UniversalSearch from "../../../Home/Search/UniversalSearch";
 import style from "./moviesAP.module.scss"
+import axios from "axios";
 
 
 const MoviesAP = () => {
@@ -36,26 +37,7 @@ const MoviesAP = () => {
   let foundR = searchData && searchData.map(movie => <li>{movie.vote_average}</li>)
   let foundA = searchData && searchData.map(movie => <li>Delete</li>)
 
-  const deleteMovie = (listId) => {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${process.env.REACT_APP_TMDB_API_KEY}`
-      }
-    };
 
-    fetch(`https://api.themoviedb.org/3/list/${listId}}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`, options)
-      .then(response => {
-        // if (!response.ok) {
-        //   throw new Error('Network response was not ok');
-        // }
-        console.log(response);
-      })
-      .catch(error => {
-        console.error('Error deleting list:', error);
-      });
-  }
 
   return (
     <div className={style.container}>
@@ -95,8 +77,9 @@ const MoviesAP = () => {
           </ul>
           <ul>
             <li>Action</li>
-            {movies.map(movie => <li className={style.deleteMovie} onClick={() => deleteMovie(603692)}>Delete</li>)}
-
+            {/*{movies.map(movie =>*/}
+            {/*  <li className={style.deleteMovie} onClick={() => deleteMovie(movie.id)}>*/}
+            {/*    Delete</li>)}*/}
           </ul>
         </div>}
 

@@ -56,7 +56,7 @@ const Navigations = () => {
             className={styles.activeLink}
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
-      {isAuth2 ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
+      {isAuth ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
 
     </>
   );

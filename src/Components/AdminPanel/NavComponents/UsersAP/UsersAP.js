@@ -15,7 +15,8 @@ const UsersAP = () => {
   const [searchForUser,setSearchForUser] = useState("")
 
 
-  const searchMovie = (foundItem) => foundItem && users.filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
+  const searchMovie = (foundItem) => foundItem && users
+    .filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
 
 
 // emails section
