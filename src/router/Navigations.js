@@ -13,9 +13,8 @@ import {useSelector} from "react-redux";
 const Navigations = () => {
 
   const dispatch = useDispatch()
-  const {isAuth} = useAuth()
+  const {isAuth, isAdmin} = useAuth()
 
-  const isAuth2 = useSelector((store) => store.isAuth)
   const logout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
@@ -56,7 +55,7 @@ const Navigations = () => {
             className={styles.activeLink}
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
-      {isAuth ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
+      {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
 
     </>
   );

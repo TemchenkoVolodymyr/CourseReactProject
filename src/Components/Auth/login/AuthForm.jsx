@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {setUser} from "../../../redux/slices/userSlice";
 import {useNavigate} from "react-router";
 import {useAuth} from "../../../hooks/useAuth";
-import {getFirestore, doc, setDoc, getDocs, collection} from "firebase/firestore";
+import {getFirestore, doc, setDoc, getDocs, collection, getDoc} from "firebase/firestore";
 
 const AuthForm = () => {
   const {isAuth} = useAuth()
@@ -27,11 +27,22 @@ const AuthForm = () => {
   const loginHandler = ({email, password}) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(({user}) => {
+      .then(async ({user}) => {
+        // Получите экземпляр Firestore
+        const db = getFirestore();
+
+        // Получите документ пользователя
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+
+        // Получите данные пользователя
+        const userData = userDoc.data();
+
+        // Установите данные пользователя в Redux
         dispatch(setUser({
           email: user.email,
           id: user.uid,
-          token: user.accessToken
+          token: user.accessToken,
+          admin: userData.admin || false // Получите значение admin из Firestore, или установите false, если оно не установлено
         }))
         navigate('/')
       })
@@ -56,6 +67,7 @@ const AuthForm = () => {
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         date: new Date().toLocaleDateString(),
+        admin: false,
 
         // другая информация о пользователе
       });
@@ -64,7 +76,8 @@ const AuthForm = () => {
       dispatch(setUser({
         email: user.email,
         id: user.uid,
-        token: user.accessToken
+        token: user.accessToken,
+        admin: false
       }));
 
       // Перенаправьте пользователя на главную страницу
