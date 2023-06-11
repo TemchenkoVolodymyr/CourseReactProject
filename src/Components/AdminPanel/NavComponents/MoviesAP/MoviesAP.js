@@ -3,14 +3,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../../redux/slices/movieSlice";
 import UniversalSearch from "../../../Home/Search/UniversalSearch";
 import style from "./moviesAP.module.scss"
-import {doc, getFirestore, setDoc} from "firebase/firestore";
+import {collection, doc, getDocs, getFirestore, setDoc} from "firebase/firestore";
+
+
 
 const MoviesAP = () => {
 
     let [searchData, setSearchData] = useState([]);
 
     let [copyMoviesData, setCopyMoviesData] = useState(null)
-    let [searchForMoviesAP, setSearchForMoviesAP] = useState("")
+
+    let [searchForMoviesAP, setSearchForMoviesAP] = useState("");
+
+    let [currentBlackLists,setCurrentBlackLists] = useState(null)
 
     const movies = useSelector((state) => state.movies.discover)
 
@@ -18,35 +23,51 @@ const MoviesAP = () => {
     const db = getFirestore();
 
     const searchMovie = (foundItem) => foundItem && movies.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
-    const setMoviesToDB = async (movies) => {
-
-        movies.map(async movie => {
-
-            await setDoc(doc(db, "movies", movie.id.toString()), {
-                title: movie.original_title,
-                path: movie.backdrop_path,
-                id: movie.id
-            })
+    const setMoviesToDB = async (movie) => {
+        await setDoc(doc(db, "blacklistMovies", movie.id.toString()), {
+            title: movie.original_title,
+            path: movie.backdrop_path,
+            id: movie.id
         })
     }
 
-
     useEffect(() => {
 
-        setCopyMoviesData(movies)
+        const getBlackListMovies = async (movies) => {
+            const blackListRef = collection(db, 'blacklistMovies');
+            const snapshot  = await getDocs(blackListRef)
+
+            let blackListDb = snapshot.docs.map(doc => doc.data())
+            setCurrentBlackLists(blackListDb)
+
+             movies.map(item => {
+                blackListDb.map(blacklist => {
+                    if(item.id === blacklist.id) {
+                        let index = movies.findIndex((el) => el.id === blacklist.id)
+                        if(index !== -1) {
+
+                            let copy = movies.filter(item => !blackListDb.some(blacklist => item.id === blacklist.id))
+                            setCopyMoviesData(copy)
+                        }
+                    }
+                })
+            })
+
+        };
+        getBlackListMovies(movies)
+            .catch(error => console.log(error))
+
+
         const getDiscover = async () => {
             dispatch(fetchMovies({type: 'discover'}))
         };
         const getGenre = async () => {
             dispatch(fetchMovies({type: 'genre'}))
         };
-        setMoviesToDB(movies)
-            .catch(error => console.log(error))
         getDiscover()
             .catch(error => console.log(error))
         getGenre()
             .catch((error => console.log(error)))
-
     }, [])
 
 
@@ -59,20 +80,22 @@ const MoviesAP = () => {
     let foundR = searchData && searchData.map(movie => <li>{movie.vote_average}</li>)
     let foundA = searchData && searchData.map(movie => <li>Delete</li>)
 
-    // delete func
+    // blackList func
 
     const addMovieToBlackList = (id) => {
 
         const blackListMovieIndex = copyMoviesData.findIndex(movie => movie.id === id);
 
         if (blackListMovieIndex !== -1) {
-            let copy = [...copyMoviesData]   // used spread operator because I cant use splice on copy array
+            let copy = [...copyMoviesData]
 
-            copy.splice(blackListMovieIndex, 1);
+            let blackListMovie = copy.splice(blackListMovieIndex, 1);
             setCopyMoviesData(copy)
+            setMoviesToDB(...blackListMovie)
+                .catch(error => console.log(error))
         }
     }
-
+// console.log(currentMovies)
 
     return (
         <div className={style.container}>
@@ -96,7 +119,8 @@ const MoviesAP = () => {
                         <li>Action</li>
                         <li>{foundA}</li>
                     </ul>
-                </div> :
+                </div>
+                :
                 <div className={style.wrapper}>
                     <ul>
                         <li>Title</li>
@@ -113,7 +137,7 @@ const MoviesAP = () => {
                     </ul>
                     <ul>
                         <li>Action</li>
-                        {copyMoviesData.map(movie =>
+                        {copyMoviesData && copyMoviesData.map(movie =>
                             <li className={style.deleteMovie} onClick={() => addMovieToBlackList(movie.id)}>
                                 Delete</li>)}
                     </ul>
