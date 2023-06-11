@@ -1,8 +1,6 @@
 import './App.css';
-import Header from "./Components/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import Layout from "./router/Layout";
-import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
 import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
@@ -66,7 +64,6 @@ function App() {
           <Route path="trending" element={<TrendingMovie/>}/>
           <Route path='/:genre' element={<CurrentGenre/>}/>
           <Route path="auth" element={<AuthPage/>}/>
-          <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/:id" element={<MovieCarousel />}/>
           <Route path="/movie/:id" element={<MoviePage />}/>
