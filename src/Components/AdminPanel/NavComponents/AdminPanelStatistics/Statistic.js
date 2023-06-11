@@ -1,20 +1,20 @@
 import React from 'react';
-import ShowStatistics from "./ShowStatistics";
+import style from "./AdminPanelStatistics.module.scss";
 
 const Statistic = (props) => {
-    let {data,length} = props
 
-    let statistic = data.map(item => <ShowStatistics
-        title={item.title}
-        description={item.description}
-        image={item.image && item.image}/>)
-
-    return (
-        <>
-            {statistic}
-            <ShowStatistics title={length}></ShowStatistics>
-        </>
-    );
+  let {title,description,image} = props
+  return (
+    <>
+        <div className={style.wrapperBox}>
+          <div className={style.box}>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            { image && <img src={image} alt="most popular movie"/>}
+          </div>
+        </div>
+    </>
+  );
 };
 
 export default Statistic;

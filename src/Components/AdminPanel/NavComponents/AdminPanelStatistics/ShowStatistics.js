@@ -1,20 +1,20 @@
 import React from 'react';
-import style from "./StatisticsAP.module.scss";
+import Statistic from "./Statistic";
 
 const ShowStatistics = (props) => {
+    let {data,length} = props
 
-  let {title,description,image} = props
-  return (
-    <>
-        <div className={style.wrapperBox}>
-          <div className={style.box}>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            { image && <img src={image} alt="most popular movie"/>}
-          </div>
-        </div>
-    </>
-  );
+    let statistic = data.map(item => <Statistic
+        title={item.title}
+        description={item.description}
+        image={item.image && item.image}/>)
+
+    return (
+        <>
+            {statistic}
+            <Statistic title={length}></Statistic>
+        </>
+    );
 };
 
 export default ShowStatistics;

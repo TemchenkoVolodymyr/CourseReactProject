@@ -1,105 +1,44 @@
 import React, {useEffect, useState} from 'react';
 import UniversalSearch from "../../../Home/Search/UniversalSearch";
-import {useSelector} from "react-redux";
 import style from "./userAP.module.scss"
-import {collection, getDocs, getFirestore} from "firebase/firestore";
 import Loader from "../../../../Loader/Loader";
+import {fetchUsers} from "../../../../hooks/fetchUsers";
+import IsActiveSearch from "./isActiveSearch";
 
 const UsersAP = () => {
 
-// search
-  let [searchData, setSearchData] = useState([]);
+    let [searchData, setSearchData] = useState([]);
 
-  const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
 
-  const [searchForUser,setSearchForUser] = useState("")
-
-
-  const searchMovie = (foundItem) => foundItem && users
-    .filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
+    const [searchForUser, setSearchForUser] = useState("")
 
 
-// emails section
+    const searchMovie = (foundItem) => foundItem && users
+        .filter(item => item.email.toLowerCase()
+            .includes(foundItem.toLowerCase()))
 
-  let foundEm = searchData &&searchData.map(item => <li>{item.email}</li>)
-  let foundDate = searchData && searchData.map(item => <li>{item.date}</li>)
-  let foundAction = searchData && searchData.map(item => <li>{item.action}</li>)
+    useEffect(() => {
+        fetchUsers()
+            .then(fetchedUsers => setUsers(fetchedUsers))
+            .catch(error => console.error(error));
+    }, []);
 
+    if (users.length < 1)
+        return <Loader></Loader>
 
-  const fetchUsers = async () => {
-    const db = getFirestore();
-
-    // Получите все документы из коллекции 'users'
-    const userSnapshot = await getDocs(collection(db, "users"));
-
-    // Преобразуйте каждый документ в данные пользователя и верните их
-    const users = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-    return users;
-  }
-
-  useEffect(() => {
-    fetchUsers()
-      .then(fetchedUsers => setUsers(fetchedUsers))
-      .catch(error => console.error(error));
-  }, []);
-
-  let emailDataBase = users.map(user => <li>{user.email}</li>)
-  let dateDataBase = users.map(user => <li>{user.date && user.date.toString()}</li>)
-
-  let ifSearchActive = () => {
-    if (searchData) {
-      return (
+    return (
         <>
-          <div className={style.container}>
-            <ul>
-              <li>Email</li>
-              {foundEm}
-            </ul>
-            <ul>
-              <li>Data Register</li>
-              {foundDate}
-            </ul>
-            <ul>
-              <li>Actions</li>
-              {foundAction}
-            </ul>
-          </div>
-        </>
-      )
-    } else {
-      return (
-        <>
-            <div className={style.container}>
-              <ul>
-                <li>Email</li>
-                {emailDataBase}
-              </ul>
-              <ul>
-                <li>Data Register</li>
-                {dateDataBase}
-              </ul>
-              <ul>
-                <li>Actions</li>
-                2
-              </ul>
+            <div>
+                <UniversalSearch callback={searchMovie} setFound={setSearchData}
+                                 value={searchForUser} setValue={setSearchForUser}/>
             </div>
+            <IsActiveSearch
+                data ={searchData}
+                users={users}
+            ></IsActiveSearch>
         </>
-      );
-    }
-  }
-
-  if(users.length < 1)
-    return <Loader></Loader>
-
-  return (
-    <>
-    <div>
-      <UniversalSearch callback={searchMovie} setFound = {setSearchData} value={searchForUser}  setValue={setSearchForUser} />
-    </div>
-  {ifSearchActive()}
-    </>
-  )
+    )
 };
 
 export default UsersAP;

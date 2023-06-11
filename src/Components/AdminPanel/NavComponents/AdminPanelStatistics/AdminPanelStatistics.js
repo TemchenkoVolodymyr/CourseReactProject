@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import style from "./StatisticsAP.module.scss"
+import style from "./AdminPanelStatistics.module.scss"
 import {useSelector} from "react-redux";
 import {fetchUsers} from "../../../../hooks/fetchUsers";
-import Statistic from "./Statistic";
+import ShowStatistics from "./ShowStatistics";
 
 const AdminPanelStatistics = () => {
 
@@ -19,10 +19,10 @@ const AdminPanelStatistics = () => {
         <div className={style.statistics}>
             <h1> Some statistics</h1>
             <div className={style.container}>
-                <Statistic
+                <ShowStatistics
                     data={statisticsData}
                     length={users.length}>
-                </Statistic>
+                </ShowStatistics>
 
             </div>
         </div>
