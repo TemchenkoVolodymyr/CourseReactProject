@@ -22,7 +22,7 @@ const MoviesAP = () => {
     let dispatch = useDispatch()
     const db = getFirestore();
 
-    const searchMovie = (foundItem) => foundItem && movies.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
+    const searchMovie = (foundItem) => foundItem && copyMoviesData.filter(item => item.title.toLowerCase().includes(foundItem.toLowerCase()))
     const setMoviesToDB = async (movie) => {
         await setDoc(doc(db, "blacklistMovies", movie.id.toString()), {
             title: movie.original_title,
