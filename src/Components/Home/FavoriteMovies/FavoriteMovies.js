@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import style from "./FaroviteMovies.module.scss"
 import star from "../../../assets/star.svg";
 import CustomLink from "../../../router/CustomLink/CustomLink";
+import {fetchMovie} from "../../../hooks/fetchMovies";
 
 
 const FavoriteMovies = () => {
@@ -13,16 +14,10 @@ const FavoriteMovies = () => {
   let auth = getAuth()
 
   useEffect(() => {
-    async function fetchMovie() {
-      try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
-        setFavoriteMovies(data.results);
-      } catch (err) {
-        alert('Error');
-      }
-    }
 
-    fetchMovie();
+    fetchMovie(setFavoriteMovies)
+    .catch(error => console.log(error))
+
   }, []);
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'

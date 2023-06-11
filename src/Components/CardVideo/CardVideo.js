@@ -1,12 +1,9 @@
 import React from 'react';
-import {useNavigate} from "react-router";
 import styles from "./CardVideo.module.scss"
 
 const CardVideo = (props) => {
 
   const urlImg = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/";
-
-  const navigate = useNavigate();
 
   const {description, sources, subtitle, thumb, title} = props;
 
