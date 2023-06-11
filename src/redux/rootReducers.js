@@ -4,8 +4,8 @@ import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";
-import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
-import {usersReducerAp} from "../Components/AdminPanel/NavComponents/UsersAP/usersReducerAP";
+import {statisticsReducer} from "../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer";
+import {usersReducerAp} from "../Components/AdminPanel/NavComponents/AdminPanelUsers/usersReducerAP";
 import {searchReducer} from "../Components/Home/Search/SearchReducer";
 
 

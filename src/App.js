@@ -12,9 +12,9 @@ import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPag
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
-import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
-import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
-import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP/MoviesAP";
+import StatisticsAP from "./Components/AdminPanel/NavComponents/AdminPanelStatistics/StatisticsAP";
+import UsersAP from "./Components/AdminPanel/NavComponents/AdminPanelUsers/UsersAP";
+import MoviesAP from "./Components/AdminPanel/NavComponents/AdminPanelMovies/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
 import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
