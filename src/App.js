@@ -12,7 +12,7 @@ import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPag
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
-import StatisticsAP from "./Components/AdminPanel/NavComponents/AdminPanelStatistics/StatisticsAP";
+import AdminPanelStatistics from "./Components/AdminPanel/NavComponents/AdminPanelStatistics/AdminPanelStatistics";
 import UsersAP from "./Components/AdminPanel/NavComponents/AdminPanelUsers/UsersAP";
 import MoviesAP from "./Components/AdminPanel/NavComponents/AdminPanelMovies/MoviesAP";
 import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
@@ -70,7 +70,7 @@ function App() {
           <Route path="/popMovies" element={<PopularMoviesPage />}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage />}/>
           <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route path="static" element={<StatisticsAP />}/>
+            <Route path="static" element={<AdminPanelStatistics />}/>
             <Route path="users" element={<UsersAP />}/>
             <Route path="movies" element={<MoviesAP />}/>
             <Route path="actors" element={<ActorsAP />}/>
