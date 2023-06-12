@@ -1,7 +1,6 @@
 <h1>MOVIE MAGIC CINEMA PROJECT</h1>
 <h2> Installation : </h2>
 
-
   <p> 1. Git clone https://github.com/TemchenkoVolodymyr/CourseReactProject.git</p>
   <p> 2. Run npm install </p>
   <p> 3. Dependency file  :
