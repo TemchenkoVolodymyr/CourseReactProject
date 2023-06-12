@@ -10,7 +10,7 @@ const SliderWithWatchBtn = (props) => {
   }
   return (
     <div
-      style={{backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/w500${bg})`}}>
+      style={{backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/original${bg})`}}>
       <div>
         <h2>{name}</h2>
         <h3>{category}</h3>
