@@ -1,6 +1,5 @@
 import {combineReducers} from "redux";
 import {reduxTestCounterReducer} from '../Components/reduxTestCounter/reduxTestCounterReducer';
-import {jsonReducer} from "./json/jsonReducer";
 import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
@@ -11,12 +10,11 @@ import {searchReducer} from "../Components/Home/Search/SearchReducer";
 
 export default combineReducers({
     reduxTestCounter: reduxTestCounterReducer,
-    jsonDataMedia: jsonReducer,
     headerMovies: reducerHomeHeader,
     user,
     statistics: statisticsReducer,
     movies,
     usersAp: usersReducerAp,
-  searchMovie: searchReducer,
+    searchMovie: searchReducer,
   },
 );

@@ -4,8 +4,6 @@ import Layout from "./router/Layout";
 import ReduxTestCounter from './Components/reduxTestCounter/ReduxTestCounter';
 import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
-import {jsonAC} from "./redux/json/jsonActions";
-import data from "./redux/json/Data.json"
 import Home from "./pages/Home";
 import NotfoundPage from "./pages/NotFoundPage/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
@@ -51,9 +49,6 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(jsonAC(data))
-  }, [data])
 
   return (
     <>
