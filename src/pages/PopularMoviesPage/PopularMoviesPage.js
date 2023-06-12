@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import style from "./PopularMoviesPage.module.scss"
 import {NavLink} from "react-router-dom";
 import {fetchMovies} from "../../redux/slices/movieSlice";
-import styles from "../Pages.module.scss";
-import PageBlock from "../../Components/PageBlock/PageBlock";
 
 const PopularMoviesPage = () => {
 
@@ -16,10 +14,10 @@ const PopularMoviesPage = () => {
     const getPopMovies = async () => {
       dispatch(fetchMovies({type: "popularMovie"}))
     }
-    if(dataMovies.length < 2){
+    if (dataMovies.length < 2) {
       getPopMovies()
     }
-  },[dataMovies.length])
+  }, [dataMovies.length])
 
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
