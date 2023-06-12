@@ -8,7 +8,8 @@
   <ul>  
  <li> Download  this file :</li> 
 
-[.env.txt](https://github.com/TemchenkoVolodymyr/CourseReactProject/files/11645918/default.env.txt)
+[default.env.txt](https://github.com/TemchenkoVolodymyr/CourseReactProject/files/11727067/default.env.txt)
+
  <li>Ask correct auth data from Admin of project</li>
  <li>Write this correct data to env.txt</li>
   <li> Change the file name to ".env.local" </li>
