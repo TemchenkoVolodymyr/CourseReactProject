@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import ItemCarousel from "./Header/Carousel/ItemCarousel";
-import style from "./MainHome.module.scss"
+import style from "./HomeLayout.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../redux/slices/movieSlice";
 import SliderItem from "../SliderItems/SliderItem";
@@ -9,7 +9,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {NavLink} from "react-router-dom";
 
-const MainHome = () => {
+const HomeLayout = () => {
   SwiperCore.use([Navigation]);
 
   const dispatch = useDispatch()
@@ -27,7 +27,7 @@ const MainHome = () => {
       dispatch(fetchMovies({type: 'popularActors'}))
     };
 
-    const getDiscover =  () => {
+    const getDiscover = () => {
       dispatch(fetchMovies({type: 'discover'}))
     };
     const getPopMovies = async () => {
@@ -57,17 +57,16 @@ const MainHome = () => {
           spaceBetween={10}>
 
           {discover?.map(movie =>
-            <SwiperSlide  key={movie.id} >
+            <SwiperSlide key={movie.id}>
               <NavLink
                 to={`/movie/${movie.id}`}
-                className={style.swiperSlideMain} >
-              <ItemCarousel
-                name={movie.title}
-                bg={movie.backdrop_path}
-                id={movie.id}></ItemCarousel>
+                className={style.swiperSlideMain}>
+                <ItemCarousel
+                  name={movie.title}
+                  bg={movie.backdrop_path}
+                  id={movie.id}></ItemCarousel>
               </NavLink>
             </SwiperSlide>
-
           )}
         </Swiper>
 
@@ -85,11 +84,11 @@ const MainHome = () => {
               <SwiperSlide key={movie.id}>
                 <NavLink
                   to={`/movie/${movie.id}`}
-                  className={style.swiperSlide} >
-                <SliderItem
-                  title={movie.title}
-                  img={movie.poster_path}
-                />
+                  className={style.swiperSlide}>
+                  <SliderItem
+                    title={movie.title}
+                    img={movie.poster_path}
+                  />
                 </NavLink>
               </SwiperSlide>
             )
@@ -107,7 +106,7 @@ const MainHome = () => {
           {
             popularActors?.map(actor =>
               <SwiperSlide className={style.swiperSlide} key={actor.id}>
-                  <SliderItem
+                <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
                 />
@@ -124,4 +123,4 @@ const MainHome = () => {
   );
 };
 
-export default MainHome;
+export default HomeLayout;

@@ -1,11 +1,11 @@
 import React from 'react';
-import MainHome from "../Components/Home/MainHome";
-import Search from "../Components/Search/Search";
+import HomeLayout from "../Components/Home/HomeLayout";
+
 
 const Home = () => {
   return (
     <>
-      <MainHome />
+      <HomeLayout />
     </>
   );
 };

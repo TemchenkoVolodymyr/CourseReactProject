@@ -11,7 +11,6 @@ import {GiDramaMasks, GiGhost, GiPistolGun} from "react-icons/gi";
 import {SiOpenstreetmap} from "react-icons/si";
 
 
-
 const Navigations = () => {
 
   const dispatch = useDispatch()
@@ -62,7 +61,7 @@ const Navigations = () => {
             className={styles.activeLink}
           ><Icon type={iconTypes.enter}/>Login</NavLink>
       }
-      {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null }
+      {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
 
     </>
   );

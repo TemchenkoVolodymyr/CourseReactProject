@@ -16,6 +16,7 @@ const FreshMoviePage = () => {
         alert('Error');
       }
     }
+
     fetchMovie();
   }, []);
 

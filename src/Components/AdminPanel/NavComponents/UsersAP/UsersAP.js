@@ -12,19 +12,16 @@ const UsersAP = () => {
 
   const [users, setUsers] = useState([]);
 
-  const [searchForUser,setSearchForUser] = useState("")
-
+  const [searchForUser, setSearchForUser] = useState("")
 
   const searchMovie = (foundItem) => foundItem && users
     .filter(item => item.email.toLowerCase().includes(foundItem.toLowerCase()))
 
-
 // emails section
 
-  let foundEm = searchData &&searchData.map(item => <li>{item.email}</li>)
+  let foundEm = searchData && searchData.map(item => <li>{item.email}</li>)
   let foundDate = searchData && searchData.map(item => <li>{item.date}</li>)
   let foundAction = searchData && searchData.map(item => <li>{item.action}</li>)
-
 
   const fetchUsers = async () => {
     const db = getFirestore();
@@ -33,7 +30,7 @@ const UsersAP = () => {
     const userSnapshot = await getDocs(collection(db, "users"));
 
     // Преобразуйте каждый документ в данные пользователя и верните их
-    const users = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const users = userSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
 
     return users;
   }
@@ -70,34 +67,35 @@ const UsersAP = () => {
     } else {
       return (
         <>
-            <div className={style.container}>
-              <ul>
-                <li>Email</li>
-                {emailDataBase}
-              </ul>
-              <ul>
-                <li>Data Register</li>
-                {dateDataBase}
-              </ul>
-              <ul>
-                <li>Actions</li>
-                2
-              </ul>
-            </div>
+          <div className={style.container}>
+            <ul>
+              <li>Email</li>
+              {emailDataBase}
+            </ul>
+            <ul>
+              <li>Data Register</li>
+              {dateDataBase}
+            </ul>
+            <ul>
+              <li>Actions</li>
+              2
+            </ul>
+          </div>
         </>
       );
     }
   }
 
-  if(users.length < 1)
+  if (users.length < 1)
     return <Loader></Loader>
 
   return (
     <>
-    <div>
-      <UniversalSearch callback={searchMovie} setFound = {setSearchData} value={searchForUser}  setValue={setSearchForUser} />
-    </div>
-  {ifSearchActive()}
+      <div>
+        <UniversalSearch callback={searchMovie} setFound={setSearchData} value={searchForUser}
+                         setValue={setSearchForUser}/>
+      </div>
+      {ifSearchActive()}
     </>
   )
 };

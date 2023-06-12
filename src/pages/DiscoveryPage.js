@@ -40,6 +40,7 @@ const DiscoveryPage = () => {
         alert('Error');
       }
     }
+
     fetchMovie();
   }, []);
 
@@ -49,7 +50,8 @@ const DiscoveryPage = () => {
   return (
     <div className={styles.container}>
       <h1>Discover Your Next Favorite Film by Category</h1>
-      <p>Dive into a vast array of film genres. Find action, romance, comedy, thriller, and more to satisfy your cinematic cravings.</p>
+      <p>Dive into a vast array of film genres. Find action, romance, comedy, thriller, and more to satisfy your
+        cinematic cravings.</p>
       <div className={styles.wrapper}>
         {
           genres?.genres.map(genre =>

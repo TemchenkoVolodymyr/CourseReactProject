@@ -24,15 +24,12 @@ const PopularMovies = () => {
                 backgroundSize: "cover"
               }}
               className={style.wrapperBox}>
-
               <div className={style.wrapperAbout}>
-
                 <h3 className={style.item}>{movie.original_title}</h3>
                 <p className={style.item}>{movie.category}</p>
                 <div className={style.wrapperMark}>
                   <img className={style.mark} src={star} alt="mark"/>
                   <p className={style.item}> {movie.vote_average}</p>
-
                 </div>
               </div>
             </div>

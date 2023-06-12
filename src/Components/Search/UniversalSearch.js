@@ -5,7 +5,7 @@ import {BiSearch} from "react-icons/bi";
 
 const Search = (props) => {
 
-  let {callback, setFound,value,setValue} = props
+  let {callback, setFound, value, setValue} = props
 
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Search = (props) => {
         type="search"
         placeholder={`Search`}
         value={value}
-        onChange={(e) => setValue(e.target.value) }></input>
+        onChange={(e) => setValue(e.target.value)}></input>
     </div>
   );
 };

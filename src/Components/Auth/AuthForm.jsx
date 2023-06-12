@@ -21,7 +21,6 @@ const AuthForm = () => {
   } = useForm({
     mode: "onChange"
   })
-
   const loginHandler = ({email, password}) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
@@ -56,10 +55,10 @@ const AuthForm = () => {
   }
 
 
-  const registerHandler = async ({ email, password }) => {
+  const registerHandler = async ({email, password}) => {
     const auth = getAuth();
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      const {user} = await createUserWithEmailAndPassword(auth, email, password);
 
       const db = getFirestore();
 
@@ -78,8 +77,7 @@ const AuthForm = () => {
       }));
 
       navigate('/');
-    }
-    catch (error) {
+    } catch (error) {
       let errorMessage = error.message;
       if (error.code === 'auth/email-already-in-use') {
         errorMessage = 'This email is already in use. Please try another one.'

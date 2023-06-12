@@ -8,7 +8,7 @@ const MovieBlock = ({image, title}) => {
       className={styles.wrapper}
       style={{backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${image})`}}>
       <p>{title}</p>
-   </div>
+    </div>
   );
 };
 

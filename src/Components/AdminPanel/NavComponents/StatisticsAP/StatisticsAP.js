@@ -16,7 +16,7 @@ const StatisticsAP = () => {
     const userSnapshot = await getDocs(collection(db, "users"));
 
     // Преобразуйте каждый документ в данные пользователя и верните их
-    const users = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const users = userSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
 
     return users;
   }
@@ -27,7 +27,8 @@ const StatisticsAP = () => {
       .catch(error => console.error(error));
   }, []);
 
-  let statistic = statisticsData.map(item => <SectionFromStatistics title={item.title} description={item.description} image={ item.image &&item.image}/> )
+  let statistic = statisticsData.map(item => <SectionFromStatistics title={item.title} description={item.description}
+                                                                    image={item.image && item.image}/>)
   // let currentUser = users.map(user => <SectionFromStatistics>{users.length}</SectionFromStatistics>)
   return (
     <div className={style.statistics}>

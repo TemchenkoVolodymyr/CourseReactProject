@@ -16,6 +16,7 @@ const TrendingMovie = () => {
         alert('Error');
       }
     }
+
     fetchMovie();
   }, []);
 

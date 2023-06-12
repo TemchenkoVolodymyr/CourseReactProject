@@ -9,7 +9,7 @@ import NotfoundPage from "./pages/NotFoundPage/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
 import PopularMoviesPage from "./pages/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+import {getAuth, onAuthStateChanged} from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
 import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
 import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
@@ -62,16 +62,16 @@ function App() {
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="redux" element={<ReduxTestCounter/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
-          <Route path="/:id" element={<MovieCarousel />}/>
-          <Route path="/movie/:id" element={<MoviePage />}/>
-          <Route path="/popMovies" element={<PopularMoviesPage />}/>
-          <Route path="/favoriteMovies" element={<FreshMoviePage />}/>
-          <Route path="/adminPanel" element={<AdminPanel />}>
-            <Route path="static" element={<StatisticsAP />}/>
-            <Route path="users" element={<UsersAP />}/>
-            <Route path="movies" element={<MoviesAP />}/>
-            <Route path="actors" element={<ActorsAP />}/>
-            <Route path="genres" element={<GenresAP />}/>
+          <Route path="/:id" element={<MovieCarousel/>}/>
+          <Route path="/movie/:id" element={<MoviePage/>}/>
+          <Route path="/popMovies" element={<PopularMoviesPage/>}/>
+          <Route path="/favoriteMovies" element={<FreshMoviePage/>}/>
+          <Route path="/adminPanel" element={<AdminPanel/>}>
+            <Route path="static" element={<StatisticsAP/>}/>
+            <Route path="users" element={<UsersAP/>}/>
+            <Route path="movies" element={<MoviesAP/>}/>
+            <Route path="actors" element={<ActorsAP/>}/>
+            <Route path="genres" element={<GenresAP/>}/>
           </Route>
         </Route>
       </Routes>

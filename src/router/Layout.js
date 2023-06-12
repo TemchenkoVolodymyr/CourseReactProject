@@ -24,9 +24,9 @@ const Layout = () => {
         </div>
 
         <div className={"containerSideBar"}>
-          <Search />
-          <PopularMovies />
-          <FavoriteMovies />
+          <Search/>
+          <PopularMovies/>
+          <FavoriteMovies/>
         </div>
       </div>
       <footer className={"footer"}>2023 - mock footer for course react</footer>
