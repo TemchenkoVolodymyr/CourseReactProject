@@ -65,7 +65,7 @@ function App() {
           <Route path='/:genre' element={<CurrentGenre/>}/>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
-          <Route path="/:id" element={<MovieCarousel />}/>
+          {/*<Route path="/:id" element={<MovieCarousel />}/>*/}
           <Route path="/movie/:id" element={<MoviePage />}/>
           <Route path="/popMovies" element={<PopularMoviesPage />}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage />}/>

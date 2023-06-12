@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import {jsonReducer} from "./json/jsonReducer";
-import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
+import {reducerHomeHeader} from "../Components/Home/Header/Home/reducerHomeHeader";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
 import {authReducer} from "../Components/Auth/login/AuthReducer";

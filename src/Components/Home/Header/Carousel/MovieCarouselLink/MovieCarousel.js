@@ -12,6 +12,7 @@ const MovieCarousel = () => {
 
   let movies = useSelector((store) => store.headerMovies)
 
+
   useEffect(() => {
 
     movies.map(film => {
@@ -24,7 +25,7 @@ const MovieCarousel = () => {
 
 
   const goBack = () => (navigate(-1))
-  
+
   return (
     <>
     <div>
