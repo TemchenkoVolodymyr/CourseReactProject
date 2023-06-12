@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {getAuth} from "firebase/auth";
 import axios from "axios";
 import {NavLink} from "react-router-dom";
-import style from "./FaroviteMovies.module.scss"
+import style from "../Outline.module.scss";
 import star from "../../../assets/star.svg";
 import CustomLink from "../../../router/CustomLink/CustomLink";
+import CircleRating from "../../CircleRating/CircleRating";
 
 
 const FavoriteMovies = () => {
@@ -38,12 +39,13 @@ const FavoriteMovies = () => {
         className={style.wrapperBox}>
 
         <div className={style.wrapperAbout}>
-
-          <h3 className={style.item}>{movie.original_title}</h3>
-          <p className={style.item}>{movie.category}</p>
-          <div className={style.wrapperMark}>
-            <img className={style.mark} src={star} alt="mark"/>
-            <p className={style.item}> {movie.vote_average}</p>
+          <div>
+            <h3 className={style.item}>{movie.original_title}</h3>
+            <p className={style.item}>{movie.category}</p></div>
+          <div>
+            <CircleRating
+              rating={movie.vote_average * 10}
+              size={70}/>
           </div>
         </div>
       </div>

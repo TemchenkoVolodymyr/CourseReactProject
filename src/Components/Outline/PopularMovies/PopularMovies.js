@@ -1,7 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import style from "./PopularMovies.module.scss";
-import star from "../../../assets/star.svg"
+import style from "../Outline.module.scss";
 import CustomLink from "../../../router/CustomLink/CustomLink";
 import {NavLink} from "react-router-dom";
 import CircleRating from "../../CircleRating/CircleRating";
@@ -28,12 +27,13 @@ const PopularMovies = () => {
               }}
               className={style.wrapperBox}>
               <div className={style.wrapperAbout}>
-                <h3 className={style.item}>{movie.original_title}</h3>
-                <p className={style.item}>{movie.category}</p>
-                <div className={style.wrapperMark}>
+                <div>
+                  <h3 className={style.item}>{movie.original_title}</h3>
+                  <p className={style.item}>{movie.category}</p></div>
+                <div>
                   <CircleRating
                   rating={movie.vote_average * 10}
-                  size={50}/>
+                  size={70}/>
                 </div>
               </div>
             </div>

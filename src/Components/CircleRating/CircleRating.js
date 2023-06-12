@@ -36,9 +36,11 @@ const CircleRating = ({ rating, size }) => {
     context.lineWidth = size * 0.1;
     context.stroke();
 
-    context.fillStyle = color;
+    context.fillStyle = 'white';
     context.font = `${size * 0.16}px Arial`;
-    context.fillText(`${rating}%`, center - size * 0.26, center + size * 0.05);
+    context.textBaseline = 'middle';
+    context.textAlign = 'center'
+    context.fillText(`${rating}%`, center, center);
   }, [rating, size]);
 
   return (
