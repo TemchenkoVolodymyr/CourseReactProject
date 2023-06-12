@@ -1,5 +1,5 @@
 import React from 'react';
-import  style from  "./TrendingMovies.module.scss"
+import  style from "./TrendingMovies.module.scss"
 
 const TrendingMovies = (props) => {
   return (

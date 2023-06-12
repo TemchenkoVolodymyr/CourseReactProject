@@ -6,10 +6,10 @@ import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
 import {jsonAC} from "./redux/json/jsonActions";
 import data from "./redux/json/Data.json"
-import Home from "./Components/Home/Home";
+import Home from "./pages/Home";
 import NotfoundPage from "./pages/NotFoundPage/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import PopularMoviesPage from "./Components/Home/Popular Movies/PopularMoviesPage/PopularMoviesPage";
+import PopularMoviesPage from "./pages/PopularMoviesPage/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";

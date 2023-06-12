@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import style from "./PopularMoviesPage.module.scss"
 import {NavLink} from "react-router-dom";
-import {fetchMovies} from "../../../../redux/slices/movieSlice";
+import {fetchMovies} from "../../redux/slices/movieSlice";
+import styles from "../Pages.module.scss";
+import PageBlock from "../../Components/PageBlock/PageBlock";
 
 const PopularMoviesPage = () => {
 
@@ -18,7 +20,6 @@ const PopularMoviesPage = () => {
       getPopMovies()
     }
   },[dataMovies.length])
-
 
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
@@ -44,5 +45,6 @@ const PopularMoviesPage = () => {
     </div>
   );
 };
+
 
 export default PopularMoviesPage;

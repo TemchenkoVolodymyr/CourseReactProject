@@ -4,9 +4,9 @@ import Navigations from "./Navigations";
 import style from "./Layout.scss"
 import {Outlet} from "react-router";
 import Search from "../Components/Home/Search/Search";
-import PopularMovies from "../Components/Home/Popular Movies/PopularMovies";
+import PopularMovies from "../Components/Outline/PopularMovies/PopularMovies";
 import {useSelector} from "react-redux";
-import FavoriteMovies from "../Components/Home/FavoriteMovies/FavoriteMovies";
+import FavoriteMovies from "../Components/Outline/FavoriteMovies/FavoriteMovies";
 
 
 const Layout = () => {

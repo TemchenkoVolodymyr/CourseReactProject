@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import ItemCarousel from "./Carousel/ItemCarousel";
-import style from "./HomeHeader.module.scss"
+import ItemCarousel from "./Header/Carousel/ItemCarousel";
+import style from "./MainHome.module.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {fetchMovies} from "../../../redux/slices/movieSlice";
-import SliderItem from "../../SliderItems/SliderItem";
+import {fetchMovies} from "../../redux/slices/movieSlice";
+import SliderItem from "../SliderItems/SliderItem";
 import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
@@ -11,7 +11,7 @@ import {NavLink} from "react-router-dom";
 
 
 
-const HomeHeader = () => {
+const MainHome = () => {
   SwiperCore.use([Navigation]);
 
   const dispatch = useDispatch()
@@ -127,4 +127,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default MainHome;
