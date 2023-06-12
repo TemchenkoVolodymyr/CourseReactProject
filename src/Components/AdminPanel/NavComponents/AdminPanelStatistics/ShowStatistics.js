@@ -7,12 +7,14 @@ const ShowStatistics = (props) => {
     let statistic = data.map(item => <Statistic
         title={item.title}
         description={item.description}
-        image={item.image && item.image}/>)
+        image={item.image && item.image}
+        key={item.id}
+    />)
 
     return (
         <>
             {statistic}
-            <Statistic title={length}></Statistic>
+            <Statistic  title={length}></Statistic>
         </>
     );
 };

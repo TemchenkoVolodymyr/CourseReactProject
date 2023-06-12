@@ -25,11 +25,11 @@ const Search = () => {
 
   return (
     <div>
-      <ul className={style.autocompleted}>
-        {findMovie && findMovie.map(item => <div className={style.wrapper} style={{
+      <ul  className={style.autocompleted} >
+        {findMovie && findMovie.map(item => <div key={item.id} className={style.wrapper} style={{
           backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,
           backgroundSize: "cover"
-        }}><NavLink className={style.item} onClick={resetSearchInput}
+        }}><NavLink  className={style.item} onClick={resetSearchInput}
                     to={`/movie/${item.id}`}>{item.original_title}</NavLink></div>)}
       </ul>
       <UniversalSearch callback={searchMovie} setFound={setFindMovie} value={searchForMovie}

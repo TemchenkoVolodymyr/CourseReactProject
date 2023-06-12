@@ -6,7 +6,7 @@ const Statistic = (props) => {
   let {title, description, image} = props
   return (
     <>
-      <div className={style.wrapperBox}>
+      <div  className={style.wrapperBox}>
         <div className={style.box}>
           <h3>{title}</h3>
           <p>{description}</p>
