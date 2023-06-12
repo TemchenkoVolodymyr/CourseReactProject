@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import style from "./PopularMoviesPage.module.scss"
 import {NavLink} from "react-router-dom";
 import {fetchMovies} from "../../redux/slices/movieSlice";
+import styles from "../Pages.module.scss";
+import MovieBlock from "../../Components/MovieBlock/MovieBlock";
 
 const PopularMoviesPage = () => {
 
@@ -19,28 +21,29 @@ const PopularMoviesPage = () => {
     }
   }, [dataMovies.length])
 
-
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-
-  let drawMovies = dataMovies.map(film =>
-    <div className={style.wrapper} key={film.id}>
-      <NavLink to={`/${film.id}`} style={{textDecoration: "none", color: "white"}}>
-        <div
-          id={film.id}
-          className={style.wrapperBox}
-          style={{
-            backgroundImage: `url(${imageBaseUrl}w500${film.poster_path})`, backgroundRepeat: "no-repeat",
-            backgroundSize: "cover"
-          }}>
-          <p>{film.original_title}</p>
-        </div>
-      </NavLink>
-    </div>
-  )
   return (
-    <div className={style.container}>
-      {drawMovies}
+
+    <div className={styles.container}>
+      <h1>Popular Movies</h1>
+      <p>Curated collection of popular movies: high-rated, diverse genres, captivating stories. Explore beloved
+        films!</p>
+      <div className={styles.wrapper}>
+        {
+          dataMovies?.map(film =>
+            <NavLink
+              to={`/movie/${film.id}`}
+              key={film.id}
+            >
+              <MovieBlock
+                image={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
+                title={film.title}
+              />
+            </NavLink>
+          )
+        }
+      </div>
     </div>
+
   );
 };
 

@@ -29,7 +29,6 @@ const FreshMoviePage = () => {
           movies?.results.map(movie =>
             <NavLink to={`/movie/${movie.id}`} key={movie.id}>
               <MovieBlock
-
                 image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 title={movie.title}
               />

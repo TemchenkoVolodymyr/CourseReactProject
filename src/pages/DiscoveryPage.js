@@ -67,8 +67,6 @@ const DiscoveryPage = () => {
           )
         }
       </div>
-
-
     </div>
   );
 };
