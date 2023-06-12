@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PageBlock from "../Components/PageBlock/PageBlock";
+import MovieBlock from "../Components/MovieBlock/MovieBlock";
 import axios from "axios";
 import styles from './Pages.module.scss'
 import {NavLink} from "react-router-dom";
@@ -16,9 +16,9 @@ const FreshMoviePage = () => {
         alert('Error');
       }
     }
+
     fetchMovie();
   }, []);
-  console.log(movies);
 
   return (
     <div className={styles.container}>
@@ -27,14 +27,13 @@ const FreshMoviePage = () => {
       <div className={styles.wrapper}>
         {
           movies?.results.map(movie =>
-              <NavLink to={`/movie/${movie.id}`}>
-                <PageBlock
-                  key={movie.id}
-                  image={movie.poster_path}
-                  title={movie.title}
-                />
-              </NavLink>
-             )
+            <NavLink to={`/movie/${movie.id}`} key={movie.id}>
+              <MovieBlock
+                image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                title={movie.title}
+              />
+            </NavLink>
+          )
         }
       </div>
 

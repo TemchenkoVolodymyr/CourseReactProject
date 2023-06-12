@@ -1,28 +1,16 @@
 import {combineReducers} from "redux";
-import {headerReducer} from "../Components/Header/headerReducer";
-import {reduxTestCounterReducer} from '../Components/reduxTestCounter/reduxTestCounterReducer';
-import {jsonReducer} from "./json/jsonReducer";
-import {reducerHomeHeader} from "../Components/Home/Header/reducerHomeHeader";
-// import {reducerBestActors} from "../Components/Home/Header/BestActors/reducerBestActors";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
-import {authReducer} from "../Components/Auth/login/AuthReducer";
-import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
-import {usersReducerAp} from "../Components/AdminPanel/NavComponents/UsersAP/usersReducerAP";
-import {searchReducer} from "../Components/Home/Search/SearchReducer";
+import {statisticsReducer} from "../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer";
+import {searchReducer} from "../Components/Search/SearchReducer";
+import {authReducer} from "../Components/Auth/AuthReducer";
 
 
 export default combineReducers({
-    header: headerReducer,
-    reduxTestCounter: reduxTestCounterReducer,
-    jsonDataMedia: jsonReducer,
-    headerMovies: reducerHomeHeader,
-    // bestActors: reducerBestActors,
-    user,
-    isAuth: authReducer,
-    statistics: statisticsReducer,
-    movies,
-    usersAp: usersReducerAp,
-    search: searchReducer,
-  },
+        user,
+        isAuth: authReducer,
+        statistics: statisticsReducer,
+        movies,
+        searchMovie: searchReducer,
+    },
 );

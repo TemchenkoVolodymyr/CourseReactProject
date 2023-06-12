@@ -14,4 +14,5 @@ export const iconTypes = {
   "exit": 'exit',
   "star" : 'star',
 
+
 }

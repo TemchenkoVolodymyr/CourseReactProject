@@ -2,9 +2,10 @@
 import {useSelector} from "react-redux";
 
 export const useAuth = () => {
-  const {email, token, id} = useSelector(state => state.user)
+  const {email, token, id, admin} = useSelector(state => state.user)
   return {
     isAuth: Boolean(email),
+    isAdmin: admin,
     email,
     token,
     id
