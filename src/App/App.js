@@ -1,42 +1,30 @@
 import './App.css';
 import {useDispatch,} from "react-redux";
 import {useEffect} from "react";
-import {getAuth, onAuthStateChanged} from "firebase/auth"
-import {removeUser, setUser} from "../redux/slices/userSlice";
+import {getAuth} from "firebase/auth"
 import RoutersCollection from "./RoutersCollection/RoutersCollection";
+import {unsubscribe} from "./SetAuthUsers/setAuthUsers";
 
 
 function App() {
 
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-  useEffect(() => {
+    useEffect(() => {
 
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in.
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.refreshToken
-        }));
-      } else {
-        // User is signed out.
-        dispatch(removeUser());
-      }
-    });
+        const auth = getAuth();
+        unsubscribe(auth, dispatch)
 
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, [dispatch]);
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, [dispatch]);
 
 
-  return (
-    <>
-      <RoutersCollection></RoutersCollection>
-    </>
-  );
+    return (
+        <>
+            <RoutersCollection></RoutersCollection>
+        </>
+    );
 }
 
 
