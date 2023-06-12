@@ -44,9 +44,6 @@ const DiscoveryPage = () => {
     fetchMovie();
   }, []);
 
-  console.log(genres);
-
-
   return (
     <div className={styles.container}>
       <h1>Discover Your Next Favorite Film by Category</h1>

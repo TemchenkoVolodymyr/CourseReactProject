@@ -4,12 +4,15 @@ import style from "./PopularMovies.module.scss";
 import star from "../../../assets/star.svg"
 import CustomLink from "../../../router/CustomLink/CustomLink";
 import {NavLink} from "react-router-dom";
+import CircleRating from "../../CircleRating/CircleRating";
 
 
 const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
+  console.log(popMovie);
+
 
   return (
     <>
@@ -28,8 +31,9 @@ const PopularMovies = () => {
                 <h3 className={style.item}>{movie.original_title}</h3>
                 <p className={style.item}>{movie.category}</p>
                 <div className={style.wrapperMark}>
-                  <img className={style.mark} src={star} alt="mark"/>
-                  <p className={style.item}> {movie.vote_average}</p>
+                  <CircleRating
+                  rating={movie.vote_average * 10}
+                  size={50}/>
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import axios from "axios";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {NavLink} from "react-router-dom";
 import { Navigation } from 'swiper';
+import CircleRating from "../../Components/CircleRating/CircleRating";
 const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
@@ -40,15 +41,25 @@ const MoviePage = () => {
           </div>
         </div>
         <h2>Overview</h2>
+
         <div className={style.overview}>
+          <div className={style.rating}>
+            <p>User Score</p>
+            <CircleRating
+              rating={movie.vote_average * 10}
+              size={110}
+            />
+          </div>
           <div className={style.about}>
-            <p>{movie.overview}</p>
+            <p>{movie.overview}
+             </p>
           </div>
           <div className={style.data}>
             <p><strong>Release Date:</strong> {movie.release_date}</p>
             <p><strong>Original Language:</strong> {movie.original_language.toUpperCase()}</p>
             <p><strong>Budget:</strong> $ {movie.budget}</p>
             <p><strong>Revenue:</strong> $ {movie.revenue}</p>
+
           </div>
         </div>
 
