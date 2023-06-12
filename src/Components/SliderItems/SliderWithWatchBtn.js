@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router";
 
-const ItemCarousel = (props) => {
+const SliderWithWatchBtn = (props) => {
 
   const navigate = useNavigate()
   let {name, category, id, bg} = props
@@ -20,4 +20,4 @@ const ItemCarousel = (props) => {
   );
 };
 
-export default ItemCarousel;
+export default SliderWithWatchBtn;

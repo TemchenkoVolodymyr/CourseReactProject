@@ -1,16 +1,19 @@
 import {combineReducers} from "redux";
 import user from './slices/userSlice'
 import movies from './slices/movieSlice'
-import {statisticsReducer} from "../Components/AdminPanel/NavComponents/StatisticsAP/statisticsReducer";
-import {usersReducerAp} from "../Components/AdminPanel/NavComponents/UsersAP/usersReducerAP";
+import {statisticsReducer} from "../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer";
+import {usersReducerAp} from "../Components/AdminPanel/NavComponents/AdminPanelUsers/usersReducerAP";
 import {searchReducer} from "../Components/Search/SearchReducer";
+import {authReducer} from "../Components/Auth/AuthReducer";
+
 
 
 export default combineReducers({
     user,
+    isAuth: authReducer,
     statistics: statisticsReducer,
     movies,
     usersAp: usersReducerAp,
-    searchMovie: searchReducer,
+  searchMovie: searchReducer,
   },
 );

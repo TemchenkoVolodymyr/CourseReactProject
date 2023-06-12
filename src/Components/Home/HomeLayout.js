@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import ItemCarousel from "./Header/Carousel/ItemCarousel";
+import SliderWithWatchBtn from "../SliderItems/SliderWithWatchBtn";
 import style from "./HomeLayout.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../redux/slices/movieSlice";
@@ -61,10 +61,10 @@ const HomeLayout = () => {
               <NavLink
                 to={`/movie/${movie.id}`}
                 className={style.swiperSlideMain}>
-                <ItemCarousel
+                <SliderWithWatchBtn
                   name={movie.title}
                   bg={movie.backdrop_path}
-                  id={movie.id}></ItemCarousel>
+                  id={movie.id}></SliderWithWatchBtn>
               </NavLink>
             </SwiperSlide>
           )}

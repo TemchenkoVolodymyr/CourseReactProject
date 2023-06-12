@@ -10,11 +10,11 @@ import PopularMoviesPage from "./pages/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import {getAuth, onAuthStateChanged} from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
-import StatisticsAP from "./Components/AdminPanel/NavComponents/StatisticsAP/StatisticsAP";
-import UsersAP from "./Components/AdminPanel/NavComponents/UsersAP/UsersAP";
-import MoviesAP from "./Components/AdminPanel/NavComponents/MoviesAP/MoviesAP";
-import ActorsAP from "./Components/AdminPanel/NavComponents/ActorsAP";
-import GenresAP from "./Components/AdminPanel/NavComponents/GenresAP";
+import AdminPanelStatistics from "./Components/AdminPanel/NavComponents/AdminPanelStatistics/AdminPanelStatistics";
+import UsersAP from "./Components/AdminPanel/NavComponents/AdminPanelUsers/UsersAP";
+import MoviesAP from "./Components/AdminPanel/NavComponents/AdminPanelMovies/MoviesAP";
+import ActorsAP from "./Components/AdminPanel/NavComponents/AdminPanelActors/ActorsAP";
+import GenresAP from "./Components/AdminPanel/NavComponents/AdminPanelGenres/GenresAP";
 import {removeUser, setUser} from "./redux/slices/userSlice";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import TrendingMovie from "./pages/TrendingMovie";
@@ -65,7 +65,7 @@ function App() {
           <Route path="/popMovies" element={<PopularMoviesPage/>}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage/>}/>
           <Route path="/adminPanel" element={<AdminPanel/>}>
-            <Route path="static" element={<StatisticsAP/>}/>
+            <Route path="static" element={<AdminPanelStatistics/>}/>
             <Route path="users" element={<UsersAP/>}/>
             <Route path="movies" element={<MoviesAP/>}/>
             <Route path="actors" element={<ActorsAP/>}/>

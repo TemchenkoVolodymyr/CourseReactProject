@@ -1,7 +1,7 @@
 import React from 'react';
-import style from "./StatisticsAP.module.scss";
+import style from "./AdminPanelStatistics.module.scss";
 
-const SectionFromStatistics = (props) => {
+const Statistic = (props) => {
 
   let {title, description, image} = props
   return (
@@ -17,4 +17,4 @@ const SectionFromStatistics = (props) => {
   );
 };
 
-export default SectionFromStatistics;
+export default Statistic;
