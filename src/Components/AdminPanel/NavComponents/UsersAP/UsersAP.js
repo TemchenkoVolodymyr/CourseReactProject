@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import UniversalSearch from "../../../Home/Search/UniversalSearch";
+import UniversalSearch from "../../../Search/UniversalSearch";
 import {useSelector} from "react-redux";
 import style from "./userAP.module.scss"
 import {collection, getDocs, getFirestore} from "firebase/firestore";

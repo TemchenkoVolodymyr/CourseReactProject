@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './PageBlock.module.scss'
+import styles from './MovieBlock.module.scss'
 
-const PageBlock = ({image, title}) => {
+const MovieBlock = ({image, title}) => {
 
   return (
     <div
@@ -12,4 +12,4 @@ const PageBlock = ({image, title}) => {
   );
 };
 
-export default PageBlock;
+export default MovieBlock;

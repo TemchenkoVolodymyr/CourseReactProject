@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import styles from "./Pages.module.scss";
 import {NavLink} from "react-router-dom";
-import PageBlock from "../Components/PageBlock/PageBlock";
+import MovieBlock from "../Components/MovieBlock/MovieBlock";
 
 
 const genreImages = {
@@ -57,7 +57,7 @@ const DiscoveryPage = () => {
               to={`/${genre.name.toLowerCase().replace(/\s+/g, '-')}`}
               key={genre.id}
             >
-              <PageBlock
+              <MovieBlock
                 image={genreImages[genre.id]}
                 title={genre.name}
               />

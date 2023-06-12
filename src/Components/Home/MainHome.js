@@ -9,8 +9,6 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {NavLink} from "react-router-dom";
 
-
-
 const MainHome = () => {
   SwiperCore.use([Navigation]);
 
@@ -65,7 +63,6 @@ const MainHome = () => {
                 className={style.swiperSlideMain} >
               <ItemCarousel
                 name={movie.title}
-                category={movie.category}
                 bg={movie.backdrop_path}
                 id={movie.id}></ItemCarousel>
               </NavLink>

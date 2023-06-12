@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
-import PageBlock from "../../Components/PageBlock/PageBlock";
+import MovieBlock from "../../Components/MovieBlock/MovieBlock";
 import {useParams} from "react-router";
 import axios from "axios";
 import style from "./CurrentGenre.module.scss"
@@ -58,7 +58,7 @@ const CurrentGenre = () => {
         {
           currGenre?.results.map(genre =>
             <NavLink key={genre.id} to={`/movie/${genre.id}`}>
-              <PageBlock
+              <MovieBlock
                 image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
                 title={genre.title}
               />

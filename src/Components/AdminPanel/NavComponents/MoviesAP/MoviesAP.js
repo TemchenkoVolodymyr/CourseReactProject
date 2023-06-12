@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMovies} from "../../../../redux/slices/movieSlice";
-import UniversalSearch from "../../../Home/Search/UniversalSearch";
+import UniversalSearch from "../../../Search/UniversalSearch";
 import style from "./moviesAP.module.scss"
 import axios from "axios";
 
