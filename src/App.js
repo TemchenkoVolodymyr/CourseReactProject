@@ -6,7 +6,7 @@ import {useEffect} from "react";
 import Home from "./pages/Home";
 import NotfoundPage from "./pages/NotFoundPage/NotfoundPage";
 import MovieCarousel from "./Components/Home/Header/Carousel/MovieCarouselLink/MovieCarousel";
-import PopularMoviesPage from "./pages/PopularMoviesPage/PopularMoviesPage";
+import PopularMoviesPage from "./pages/PopularMoviesPage";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import {getAuth, onAuthStateChanged} from "firebase/auth"
 import AuthPage from "./pages/AuthPage/AuthPage";
