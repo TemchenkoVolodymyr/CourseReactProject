@@ -3,7 +3,7 @@ import "./CustomLink.scss"
 import {Link,useMatch} from "react-router-dom";
 const CustomLink = ({children,to,...props}) => {
 
-  const math = useMatch(to);   // в match мы получаем url элемента на который мы нажали
+  const math = useMatch(to);
 
 
   return (

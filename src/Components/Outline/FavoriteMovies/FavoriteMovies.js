@@ -3,9 +3,8 @@ import {getAuth} from "firebase/auth";
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 import style from "../Outline.module.scss";
-import star from "../../../assets/star.svg";
-import CustomLink from "../../../router/CustomLink/CustomLink";
 import CircleRating from "../../CircleRating/CircleRating";
+import CustomLink from "../CustomLink/CustomLink";
 
 
 const FavoriteMovies = () => {

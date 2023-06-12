@@ -1,22 +1,19 @@
 import React from 'react';
-
-import Navigations from "./Navigations";
-import style from "./Layout.scss"
+import "./Layout.scss"
 import {Outlet} from "react-router";
 import Search from "../Components/Search/Search";
 import PopularMovies from "../Components/Outline/PopularMovies/PopularMovies";
-import {useSelector} from "react-redux";
 import FavoriteMovies from "../Components/Outline/FavoriteMovies/FavoriteMovies";
+import SectionNavigation from "./Navigations/SectionNavigation";
 
 
 const Layout = () => {
-
 
   return (
     <>
       <div className={"containerTopLayout"}>
         <div className={"containerNav"}>
-          <Navigations/>
+          <SectionNavigation></SectionNavigation>
         </div>
 
         <div className={"containerMain"}>

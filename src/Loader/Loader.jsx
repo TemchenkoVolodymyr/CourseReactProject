@@ -6,7 +6,6 @@ const Loader = () => {
   return (
     <div>
       <img src={spinner} alt="spinner"/>
-      <p>dsad</p>
     </div>
   )
 }
