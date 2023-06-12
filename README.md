@@ -11,8 +11,9 @@
 [default.env.txt](https://github.com/TemchenkoVolodymyr/CourseReactProject/files/11727067/default.env.txt)
 
  <li>Ask correct auth data from Admin of project</li>
- <li>Write this correct data to env.txt</li>
-  <li> Change the file name to ".env.local" </li>
+
+ <li>Write this correct data to downloaded file => "default.env.txt"</li>
+  <li> Change file default.env.txt name to ".env.local" </li>
   <li> And add this file to  main project </li>
   <li> Run npm start </li>
   </ul>
