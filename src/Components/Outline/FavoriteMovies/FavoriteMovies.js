@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {getAuth} from "firebase/auth";
-import axios from "axios";
-import {NavLink} from "react-router-dom";
-import style from "../Outline.module.scss";
-import CustomLink from "../../../router/CustomLink/CustomLink";
-import CircleRating from "../../CircleRating/CircleRating";
+import {getAuth} from 'firebase/auth';
+import axios from 'axios';
+import {NavLink} from 'react-router-dom';
+import style from '../Outline.module.scss';
+import CustomLink from '../CustomLink/CustomLink';
+import CircleRating from '../../CircleRating/CircleRating';
+
 
 
 const FavoriteMovies = () => {

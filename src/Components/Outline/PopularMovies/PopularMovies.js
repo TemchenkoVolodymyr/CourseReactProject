@@ -3,7 +3,8 @@ import {useSelector} from 'react-redux';
 import style from '../Outline.module.scss';
 import {NavLink} from 'react-router-dom';
 import CircleRating from '../../CircleRating/CircleRating';
-import CustomLink from '../../../router/CustomLink/CustomLink';
+import CustomLink from "../CustomLink/CustomLink";
+
 
 
 const PopularMovies = () => {
