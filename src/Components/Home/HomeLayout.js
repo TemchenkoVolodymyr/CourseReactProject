@@ -8,7 +8,7 @@ import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -111,13 +111,16 @@ const HomeLayout = () => {
           spaceBetween={10}>
           {
             popularActors?.map(actor =>
-              <SwiperSlide className={style.swiperSlide} key={actor.id}>
+              <SwiperSlide key={actor.id}>
+                <NavLink to={`/person/${actor.name.replace(/\s/g, '-')}`} className={style.swiperSlide}>
+
                 <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
                   rating={actor.popularity.toFixed(1)}
                   displayAsPercentage ={false}
                 />
+                </NavLink>
               </SwiperSlide>
             )
           }

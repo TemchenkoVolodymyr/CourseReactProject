@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  opacity: .8;
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+  }
+
+  .left {
+
+    img {
+      width: 350px;
+      border-radius: 20px;
+    }
+
+    .personalInfo {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+
+  .right {
+    width: 70%;
+    overflow: auto;
+
+    .biography {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    .knowFor {
+      width: 100%;
+
+      .swiperSlide {
+        text-decoration: none;
+        color: white;
+
+
+        & > div {
+          background-size: cover;
+          background-position: center;
+          height: 200px;
+          border-radius: 25px;
+          position: relative;
+
+          & > canvas {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+
+          &:hover {
+            box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+            transform: scale(1.05);
+          }
+
+        }
+      }
+    }
+  }
+}

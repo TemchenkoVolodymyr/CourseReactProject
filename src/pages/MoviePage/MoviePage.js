@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import style from "./MoviePage.module.scss";
 import axios from "axios";
@@ -12,7 +12,7 @@ import SliderItem from "../../Components/SliderItems/SliderItem";
 const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/'
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -81,7 +81,12 @@ const MoviePage = () => {
 
             {movie?.credits.cast.slice(0,20).map(actor =>
                   actor.profile_path &&
-                  <SwiperSlide key={actor.id} className={style.swiperSlide}>
+                  <SwiperSlide key={actor.id} >
+                    <NavLink
+                      to={`/person/${actor.name.replace(/\s/g, '-').toLowerCase()}`}
+                      className={style.swiperSlide}
+                      onClick={() => localStorage.setItem('actorId', actor.id)}
+                    >
                     <SliderItem
                       img={actor.profile_path}
                       rating={actor.popularity.toFixed(1)}
@@ -89,6 +94,7 @@ const MoviePage = () => {
                     />
                     <h3>{actor.name}</h3>
                     <p>{actor.character}</p>
+                    </NavLink>
                   </SwiperSlide>
             )}
           </Swiper>
@@ -96,7 +102,7 @@ const MoviePage = () => {
         </div>
 
         <div>
-          <h2>What the Trailer</h2>
+          <h2>Watch the Trailer</h2>
           {movie.videos.results.length > 0 && (
             <div>
               {movie?.videos.results

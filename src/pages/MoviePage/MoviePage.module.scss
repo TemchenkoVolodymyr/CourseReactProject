@@ -87,7 +87,12 @@
   .swiperSlide {
 
     text-decoration: none;
+    color: white;
 
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
     & > div {
       background-size: cover;
@@ -126,14 +131,17 @@
     }
   }
 }
-.genres{
+
+.genres {
   background-color: #050505;
   border-radius: 5px;
-  a{
-    color:firebrick;
+
+  a {
+    color: firebrick;
     text-decoration: none;
     padding: 0 5px;
-    &:hover{
+
+    &:hover {
       color: #ea6615;;
     }
   }
