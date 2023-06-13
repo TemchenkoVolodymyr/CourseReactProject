@@ -39,15 +39,15 @@ const CircleRating = ({ rating, size }) => {
     context.fillStyle = 'white';
     context.font = `${size * 0.16}px Arial`;
     context.textBaseline = 'middle';
-    context.textAlign = 'center'
+    context.textAlign = 'center';
     context.fillText(`${rating}%`, center, center);
   }, [rating, size]);
 
   return (
-    <div>
-      <canvas ref={canvasRef} width={size} height={size}></canvas>
-    </div>
+      <div>
+          <canvas ref={canvasRef} width={size} height={size}></canvas>
+      </div>
   );
-}
+};
 
 export default CircleRating;

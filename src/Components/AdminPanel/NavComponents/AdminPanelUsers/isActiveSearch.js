@@ -1,9 +1,9 @@
 import React from 'react';
-import style from "./userAP.module.scss";
-import {showInfoAboutUsers, showRegisteredUsers} from "./showInfoAboutUsers";
+import style from './userAP.module.scss';
+import { showInfoAboutUsers, showRegisteredUsers } from './showInfoAboutUsers';
 
 const IsActiveSearch = (props) => {
-    let {data,users} = props
+    const { data,users } = props;
 
         if (data) {
             return (
@@ -11,34 +11,34 @@ const IsActiveSearch = (props) => {
                     <div className={style.container}>
                         <ul>
                             <li>Email</li>
-                            {showInfoAboutUsers(data,"email")}
+                            {showInfoAboutUsers(data,'email')}
                         </ul>
                         <ul>
                             <li>Data Register</li>
-                            {showInfoAboutUsers(data,"date")}
+                            {showInfoAboutUsers(data,'date')}
                         </ul>
                         <ul>
                             <li>Actions</li>
-                            {showInfoAboutUsers(data,"action")}
+                            {showInfoAboutUsers(data,'action')}
                         </ul>
                     </div>
                 </>
-            )
+            );
         } else {
             return (
                 <>
                     <div className={style.container}>
                         <ul>
                             <li>Email</li>
-                            {showRegisteredUsers(users,"email")}
+                            {showRegisteredUsers(users,'email')}
                         </ul>
                         <ul>
                             <li>Data Register</li>
-                            {showRegisteredUsers(users,"date")}
+                            {showRegisteredUsers(users,'date')}
                         </ul>
                         <ul>
                             <li>Actions</li>
-                          2
+                            2
                         </ul>
                     </div>
                 </>

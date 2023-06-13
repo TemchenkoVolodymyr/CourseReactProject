@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+
+    ],
+    "rules": {
+      "object-curly-spacing": ["warn", "always"],
+        "arrow-parens": "warn",
+        "react/jsx-no-undef": "warn",
+        "no-undef": "off",
+        "react/jsx-pascal-case": "warn",
+        "react/jsx-curly-spacing": "warn",
+        "for-direction": "warn",
+        "no-console": "warn",
+        "quotes": ["warn","single"],
+        "jsx-quotes": ["warn","prefer-double"],
+        "prefer-const": "error",
+        "max-len": ["warn",120],
+        "semi": ["warn","always"],
+        "react/prop-types": "off"
+    }
+}
+

@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./AuthForm.module.scss";
+import styles from './AuthForm.module.scss';
 
 const Form = (props) => {
-    let {submit,onSubmit,register,errors,error,registerHandler,loginHandler} = props
+    const { submit, onSubmit, register, errors, error, registerHandler, loginHandler } = props;
 
     return (
         <>
@@ -18,7 +18,7 @@ const Form = (props) => {
                         }
                     )}
                     type="text"
-                    placeholder='Enter your email'
+                    placeholder="Enter your email"
                 />
                 {errors.email && <div className={styles.errorMessage}>{errors.email.message}</div>}
                 <label htmlFor="userName">password</label>
@@ -36,20 +36,22 @@ const Form = (props) => {
                         }
                     )}
                     type="password"
-                    placeholder='Enter your password'
+                    placeholder="Enter your password"
                 />
-                {errors.password && <div className={styles.errorMessage}>{errors.password.message}</div>}
+                {errors.password &&
+                    <div className={styles.errorMessage}>{errors.password.message}</div>}
                 {error && <div className={styles.errorMessage}>{error}</div>}
                 <div className={styles.btnContainer}>
                     <button
                         className={styles.active}
-                        type='button'
+                        type="button"
                         onClick={submit(loginHandler)}
                     >Login
                     </button>
                     <button
                         onClick={submit(registerHandler)}
-                        type='button'>Register
+                        type="button"
+                    >Register
                     </button>
                 </div>
             </form>

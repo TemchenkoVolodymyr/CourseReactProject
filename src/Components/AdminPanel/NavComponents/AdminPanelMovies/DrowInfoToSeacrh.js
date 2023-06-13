@@ -1,8 +1,8 @@
 import React from 'react';
-import style from "./moviesAP.module.scss";
+import style from './moviesAP.module.scss';
 
 const DrawnInfoToSearch = (props) => {
-    let {movies,genres,action,ratings} = props
+    const { movies,genres,action,ratings } = props;
     return (
         <div className={style.wrapper}>
             <ul>

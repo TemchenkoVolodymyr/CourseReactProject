@@ -1,15 +1,15 @@
 import React from 'react';
-import Statistic from "./Statistic";
+import Statistic from './Statistic';
 
 const ShowStatistics = (props) => {
-    let {data,length} = props
+    const { data,length } = props;
 
-    let statistic = data.map(item => <Statistic
+    const statistic = data.map((item) => <Statistic
         title={item.title}
         description={item.description}
         image={item.image && item.image}
         key={item.id}
-    />)
+                                         />);
 
     return (
         <>

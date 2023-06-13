@@ -1,7 +1,7 @@
 
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {getFirestore, collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
 
 
 
@@ -22,4 +22,4 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 
-export { app, auth, db,setDoc,doc};
+export { app, auth, db,setDoc,doc };

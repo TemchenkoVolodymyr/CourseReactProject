@@ -1,21 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {getAuth} from "firebase/auth";
-import axios from "axios";
-import {NavLink} from "react-router-dom";
-import style from "../Outline.module.scss";
-import CircleRating from "../../CircleRating/CircleRating";
-import CustomLink from "../CustomLink/CustomLink";
+import React, { useEffect, useState } from 'react';
+import { getAuth } from 'firebase/auth';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+import style from '../Outline.module.scss';
+import CircleRating from '../../CircleRating/CircleRating';
+import CustomLink from '../CustomLink/CustomLink';
 
 
 const FavoriteMovies = () => {
 
     const [favoriteMovies, setFavoriteMovies] = useState();
-    let auth = getAuth()
+    const auth = getAuth();
 
     useEffect(() => {
       async function fetchMovie() {
         try {
-          const {data} = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+          const { data } = await axios
+            .get(
+              `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
           setFavoriteMovies(data.results);
         } catch (err) {
           alert('Error');
@@ -25,17 +27,20 @@ const FavoriteMovies = () => {
       fetchMovie();
     }, []);
 
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/'
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/';
 
-    let showFavoriteMovies = favoriteMovies && favoriteMovies.slice(0, 4).map(movie => <NavLink key={movie.id}
-                                                                                                to={`/movie/${movie.id}`}>
+    const showFavoriteMovies = favoriteMovies && favoriteMovies.slice(0, 4).map((movie) => <NavLink
+      key={movie.id}
+      to={`/movie/${movie.id}`}
+    >
       <div
         style={{
           backgroundImage: `url(${imageBaseUrl}w500${movie.poster_path})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover'
         }}
-        className={style.wrapperBox}>
+        className={style.wrapperBox}
+      >
 
         <div className={style.wrapperAbout}>
           <div>
@@ -44,23 +49,26 @@ const FavoriteMovies = () => {
           <div>
             <CircleRating
               rating={movie.vote_average * 10}
-              size={70}/>
+              size={70}
+            />
           </div>
         </div>
       </div>
-    </NavLink>)
+    </NavLink>);
 
 
     if (auth && auth._currentUser && auth._currentUser.length > 1) {
-      return <p>To see your favorite movies just log in</p>
+      return <p>To see your favorite movies just log in</p>;
     }
     return (
       <div>
         <h3>FAVORITE</h3>
         {showFavoriteMovies}
         <div className={style.btn}>
-          <CustomLink style={{width: "135px", margin: " 10px 0", textAlign: "center", padding: "5px"}}
-                      to={"favoriteMovies"}>see more</CustomLink>
+          <CustomLink
+            style={{ width: '135px', margin: ' 10px 0', textAlign: 'center', padding: '5px' }}
+            to={'favoriteMovies'}
+          >see more</CustomLink>
         </div>
       </div>
     );

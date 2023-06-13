@@ -1,5 +1,5 @@
-import {onAuthStateChanged} from "firebase/auth";
-import {removeUser, setUser} from "../../redux/slices/userSlice";
+import { onAuthStateChanged } from 'firebase/auth';
+import { removeUser, setUser } from '../../redux/slices/userSlice';
 
 
 export const unsubscribe = (auth,dispatch) => onAuthStateChanged(auth, (user) => {
