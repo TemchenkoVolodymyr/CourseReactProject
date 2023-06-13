@@ -39,8 +39,6 @@ const FreshMoviePage = () => {
           )
         }
       </div>
-
-
     </div>
   );
 };

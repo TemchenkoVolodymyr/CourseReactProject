@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import style from "./AdminPanelStatistics.module.scss"
-import {useSelector} from "react-redux";
-import {fetchUsers} from "../../../../hooks/fetchUsers";
-import ShowStatistics from "./ShowStatistics";
+import React, { useEffect, useState } from 'react';
+import style from './AdminPanelStatistics.module.scss';
+import { useSelector } from 'react-redux';
+import { fetchUsers } from '../../../../hooks/fetchUsers';
+import ShowStatistics from './ShowStatistics';
 
 const AdminPanelStatistics = () => {
 
-    let statisticsData = useSelector((store) => store.statistics);
+    const statisticsData = useSelector((store) => store.statistics);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         fetchUsers()
-            .then(fetchedUsers => setUsers(fetchedUsers))
-            .catch(error => console.error(error));
+            .then((fetchedUsers) => setUsers(fetchedUsers))
+            .catch((error) => console.error(error));
     }, []);
 
     return (
@@ -21,7 +21,8 @@ const AdminPanelStatistics = () => {
             <div className={style.container}>
                 <ShowStatistics
                     data={statisticsData}
-                    length={users.length}>
+                    length={users.length}
+                >
                 </ShowStatistics>
 
             </div>

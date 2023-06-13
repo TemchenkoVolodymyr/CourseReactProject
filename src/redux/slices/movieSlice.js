@@ -1,10 +1,10 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const fetchMovies = createAsyncThunk(
-  "movie/fetchMovies",
-  async (params, thunkAPI) => {
-    const {type} = params;
+  'movie/fetchMovies',
+  async (params) => {
+    const { type } = params;
 
     let endpoint = '';
 
@@ -15,19 +15,19 @@ export const fetchMovies = createAsyncThunk(
     } else if (type === 'discover') {
       endpoint = 'discover/movie';
     } else if (type === 'popularMovie') {
-      endpoint = 'movie/popular'
+      endpoint = 'movie/popular';
     } else if (type === 'genre') {
-      endpoint = 'genre/movie/list'
+      endpoint = 'genre/movie/list';
     }
 
-    const {data} = await
-      axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`)
+    const { data } = await
+      axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
     if (data.results)
-      return data.results
+      return data.results;
      if (data.genres)
-      return data
+      return data;
   }
-)
+);
 
 const initialState = {
   discover: [],
@@ -37,27 +37,27 @@ const initialState = {
   popularMovie: [],
   movies: [],
   genre: [],
-}
+};
 
 export const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
     setItems(state, action) {
-      state.movies = action.payload
+      state.movies = action.payload;
     }
   },
   extraReducers: {
     [fetchMovies.pending]: (state) => {
-      state.status = 'loading'
-      state.trendingMovies = []
-      state.popularActors = []
-      state.discover = []
-      state.popularMovie = []
-      state.genre = []
+      state.status = 'loading';
+      state.trendingMovies = [];
+      state.popularActors = [];
+      state.discover = [];
+      state.popularMovie = [];
+      state.genre = [];
     },
     [fetchMovies.fulfilled]: (state, action) => {
-      const {type} = action.meta.arg;
+      const { type } = action.meta.arg;
       const responseData = action.payload;
 
       if (type === 'trendingMovies') {
@@ -69,22 +69,22 @@ export const movieSlice = createSlice({
       } else if (type === 'genre') {
         state.genre = responseData;
       } else if(type ==='popularMovie') {
-        state.popularMovie = responseData
+        state.popularMovie = responseData;
       }
 
 
       state.status = 'success';
     },
     [fetchMovies.rejected]: (state) => {
-      state.status = 'error'
-      state.trendingMovies = []
-      state.popularActors = []
-      state.discover = []
-      state.popularMovie = []
-      state.genre = []
+      state.status = 'error';
+      state.trendingMovies = [];
+      state.popularActors = [];
+      state.discover = [];
+      state.popularMovie = [];
+      state.genre = [];
     }
   }
-})
+});
 
-export const {setItems} = movieSlice.actions
-export default movieSlice.reducer
+export const { setItems } = movieSlice.actions;
+export default movieSlice.reducer;

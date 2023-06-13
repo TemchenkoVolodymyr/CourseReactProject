@@ -7,26 +7,26 @@ import style from "./CurrentGenre.module.scss"
 import styles from "../Pages.module.scss";
 
 const genreIds = {
-  "comedy": 35,
-  "cartoons": 878,
-  "fantasy": 14,
-  "documentary": 99,
-  "adventure": 12,
-  "animation": 16,
-  "crime": 80,
-  "drama": 18,
-  "action": 28,
-  "family": 10751,
-  "history": 36,
-  "horror": 27,
-  "mystery": 10402,
-  "music": 9648,
-  "romance": 10749,
-  "science-fiction": 878,
-  "thriller": 10770,
-  "tv-movie": 53,
-  "war": 10752,
-  "western": 37,
+  'comedy': 35,
+  'cartoons': 878,
+  'fantasy': 14,
+  'documentary': 99,
+  'adventure': 12,
+  'animation': 16,
+  'crime': 80,
+  'drama': 18,
+  'action': 28,
+  'family': 10751,
+  'history': 36,
+  'horror': 27,
+  'mystery': 10402,
+  'music': 9648,
+  'romance': 10749,
+  'science-fiction': 878,
+  'thriller': 10770,
+  'tv-movie': 53,
+  'war': 10752,
+  'western': 37,
 };
 const CurrentGenre = () => {
   const {genre} = useParams()
@@ -48,7 +48,7 @@ const CurrentGenre = () => {
 
     fetchMovie();
 
-  }, [genre])
+  }, [genre]);
 
   return (
     <div className={styles.container}>

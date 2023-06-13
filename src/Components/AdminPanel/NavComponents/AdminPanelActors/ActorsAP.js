@@ -2,9 +2,9 @@ import React from 'react';
 
 const ActorsAp = () => {
   return (
-    <div>
-      Actors
-    </div>
+      <div>
+          Actors
+      </div>
   );
 };
 

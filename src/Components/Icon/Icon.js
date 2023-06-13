@@ -1,5 +1,5 @@
 import React from 'react';
-import {iconsDefs} from "../../assets/icons/iconsDefs";
+import { iconsDefs } from '../../assets/icons/iconsDefs';
 
 export const Icon = (props) => {
   const icon = iconsDefs[props.type];
@@ -7,23 +7,23 @@ export const Icon = (props) => {
     return null;
   }
 
-  const {className, color, size, ...rest } = props;
+  const { color, size, ...rest } = props;
 
   let styles = null;
   if(color && size){
-    styles = {fill: color, fontSize: size};
+    styles = { fill: color, fontSize: size };
   }
 
   return (
-    <svg
+      <svg
       className={icon.className}
       height={icon.height}
       width={icon.width}
       viewBox={icon.viewBox}
       style={styles}
       {...rest}
-    >
-      {icon.body}
-    </svg>
+      >
+          {icon.body}
+      </svg>
   );
 };

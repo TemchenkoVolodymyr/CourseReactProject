@@ -1,47 +1,45 @@
-import React, {useEffect, useState} from 'react';
-import SliderWithWatchBtn from "../SliderItems/SliderWithWatchBtn";
-import style from "./HomeLayout.module.scss"
-import {useDispatch, useSelector} from "react-redux";
-import {fetchMovies} from "../../redux/slices/movieSlice";
-import SliderItem from "../SliderItems/SliderItem";
+import React, {useEffect} from 'react';
+import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
+import style from './HomeLayout.module.scss';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchMovies} from '../../redux/slices/movieSlice';
+import SliderItem from '../SliderItems/SliderItem';
 import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 
-
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
 
-  const dispatch = useDispatch()
-  const trendingMovies = useSelector(state => state.movies.trendingMovies);
-  const popularActors = useSelector(state => state.movies.popularActors);
-  const discover = useSelector(state => state.movies.discover);
+  const dispatch = useDispatch();
+  const trendingMovies = useSelector((state) => state.movies.trendingMovies);
+  const popularActors = useSelector((state) => state.movies.popularActors);
+  const discover = useSelector((state) => state.movies.discover);
 
   useEffect(() => {
 
     const getTrending = async () => {
-      dispatch(fetchMovies({type: 'trendingMovies'}))
+      dispatch(fetchMovies({ type: 'trendingMovies' }));
     };
 
     const getActors = async () => {
-      dispatch(fetchMovies({type: 'popularActors'}))
-
+      dispatch(fetchMovies({ type: 'popularActors' }));
     };
 
     const getDiscover = () => {
-      dispatch(fetchMovies({type: 'discover'}))
+      dispatch(fetchMovies({ type: 'discover' }));
     };
 
     const getPopMovies = async () => {
-      dispatch(fetchMovies({type: "popularMovie"}))
-    }
+      dispatch(fetchMovies({ type: 'popularMovie' }));
+    };
 
-    getTrending()
-    getActors()
-    getDiscover()
-    getPopMovies()
+    getTrending();
+    getActors();
+    getDiscover();
+    getPopMovies();
 
 
   }, []);
@@ -89,8 +87,7 @@ const HomeLayout = () => {
               <SwiperSlide key={movie.id}>
                 <NavLink
                   to={`/movie/${movie.id}`}
-                  className={style.swiperSlide}
-                  >
+                  className={style.swiperSlide}>
                     <SliderItem
                       title={movie.title}
                       img={movie.poster_path}

@@ -1,6 +1,6 @@
 import React from 'react';
-import {useNavigate} from "react-router";
-import CircleRating from "../CircleRating/CircleRating";
+import {useNavigate} from 'react-router';
+import CircleRating from '../CircleRating/CircleRating';
 
 const SliderWithWatchBtn = ({name, category, id, bg, rating, displayAsPercentage}) => {
 
@@ -23,8 +23,6 @@ const SliderWithWatchBtn = ({name, category, id, bg, rating, displayAsPercentage
         <h3>{category}</h3>
         <button onClick={handleClick}>Watch</button>
       </div>
-
-
     </div>
   );
 };

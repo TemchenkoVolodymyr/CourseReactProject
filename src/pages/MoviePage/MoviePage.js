@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useParams} from "react-router";
 import style from "./MoviePage.module.scss";
 import axios from "axios";
@@ -8,11 +8,11 @@ import { Navigation } from 'swiper';
 import CircleRating from "../../Components/CircleRating/CircleRating";
 import SliderItem from "../../Components/SliderItems/SliderItem";
 
+
 const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
-  console.log(movie);
-
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/'
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -64,6 +64,7 @@ const MoviePage = () => {
             <p><strong>Original Language:</strong> {movie.original_language.toUpperCase()}</p>
             <p><strong>Budget:</strong> $ {movie.budget}</p>
             <p><strong>Revenue:</strong> $ {movie.revenue}</p>
+
           </div>
         </div>
 

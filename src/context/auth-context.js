@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import {doc, getDoc, getFirestore} from "firebase/firestore";
+import React, { createContext, useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 
 export const AuthContext = createContext();
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
       // Проверяем роль администратора только для аутентифицированных пользователей
       if (user) {
         const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
+        const userDocRef = doc(db, 'users', user.uid);
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
@@ -34,8 +34,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, isAdmin }}>
-      {children}
-    </AuthContext.Provider>
+      <AuthContext.Provider value={{ currentUser, isAdmin }}>
+          {children}
+      </AuthContext.Provider>
   );
 };

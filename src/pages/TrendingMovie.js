@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import MovieBlock from "../Components/MovieBlock/MovieBlock";
-import styles from "./Pages.module.scss";
-import {NavLink} from "react-router-dom";
-import axios from "axios";
+import MovieBlock from '../Components/MovieBlock/MovieBlock';
+import styles from './Pages.module.scss';
+import {NavLink} from 'react-router-dom';
+import axios from 'axios';
 
 const TrendingMovie = () => {
   const [movies, setMovies] = useState();
@@ -10,7 +10,8 @@ const TrendingMovie = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovies(data);
       } catch (err) {
         alert('Error');
@@ -42,8 +43,6 @@ const TrendingMovie = () => {
           )
         }
       </div>
-
-
     </div>
   );
 };
