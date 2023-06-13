@@ -83,3 +83,15 @@
     width: 250px !important;
   }
 }
+.genres{
+  background-color: #050505;
+  border-radius: 5px;
+  a{
+    color:firebrick;
+    text-decoration: none;
+    padding: 0 5px;
+    &:hover{
+      color: #ea6615;;
+    }
+  }
+}
