@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {fetchMovies} from '../redux/slices/movieSlice';
-import styles from './Pages.module.scss';
-import MovieBlock from '../Components/MovieBlock/MovieBlock';
+import {fetchMovies} from '../../redux/slices/movieSlice';
+import styles from '../Pages.module.scss';
+import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 
 const PopularMoviesPage = () => {
 

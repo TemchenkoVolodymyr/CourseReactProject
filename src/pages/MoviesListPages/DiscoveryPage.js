@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styles from './Pages.module.scss';
+import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
-import MovieBlock from '../Components/MovieBlock/MovieBlock';
+import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 
 
 const genreImages = {

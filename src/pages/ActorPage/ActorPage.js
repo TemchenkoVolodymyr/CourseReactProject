@@ -13,8 +13,16 @@ const ActorPage = () => {
   const {name} = useParams();
   const [actors, setActors] = useState()
   const actorId = localStorage.getItem('actorId');
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  console.log(actors);
+  const words = actors.biography.split(" ");
+  const displayedWords = isExpanded ? words : words.slice(0, 100);
+
+  const handleReadMoreClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +37,6 @@ const ActorPage = () => {
     fetchData();
   }, [name, actorId]);
 
-
   let age;
   if (actors) {
     const birthDate = new Date(actors.birthday);
@@ -42,7 +49,6 @@ const ActorPage = () => {
       age -= 1;
     }
   }
-
 
   if (!actors) {
     return <>Loading....</>;
@@ -81,7 +87,12 @@ const ActorPage = () => {
       <div className={style.right}>
         <h1>{actors?.name}</h1>
         <div className={style.biography}>
-          <p>{actors.biography}</p>
+          <p>{displayedWords.join(" ")}</p>
+          {words.length > 100 && (
+            <button onClick={handleReadMoreClick}>
+              {isExpanded ? "Read Less" : "Read More"}
+            </button>
+          )}
         </div>
         <div className={style.knowFor}>
           <h2>Known For</h2>
