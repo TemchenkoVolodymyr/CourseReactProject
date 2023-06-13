@@ -110,6 +110,7 @@ const ActorPage = () => {
             spaceBetween={10}>
 
             {actors.movie_credits.cast.map(movie =>
+              movie.poster_path &&
               <SwiperSlide key={movie.id}>
                 <NavLink to={`/movie/${movie.id}`} className={style.swiperSlide}>
                   <SliderItem
