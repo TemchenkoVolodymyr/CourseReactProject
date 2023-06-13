@@ -22,8 +22,19 @@
     .personalInfo {
       display: flex;
       flex-direction: column;
-    }
 
+      h2{
+        margin: 10px;
+      }
+
+      & > div {
+        margin: 10px;
+
+        p{
+          padding: 10px;
+        }
+      }
+    }
   }
 
   .right {
@@ -38,10 +49,12 @@
     .knowFor {
       width: 100%;
 
+h2{
+  margin: 20px 0;
+}
       .swiperSlide {
         text-decoration: none;
         color: white;
-
 
         & > div {
           background-size: cover;

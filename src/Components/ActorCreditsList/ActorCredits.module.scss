@@ -1,8 +1,41 @@
 .wrapper {
   border-radius: 20px;
   border: 1px solid grey;
+  position: relative;
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  h2{
+    padding: 10px;
+  }
 
   .filter{
-    
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .info{
+    display: flex;
+    align-items: flex-start;
+    font-size: 22px;
+    padding: 10px;
+
+    .title{
+      margin-left: 20px;
+      font-size: 24px;
+      padding-bottom: 10px;
+
+    }
+
+    .role{
+      margin-left: 40px;
+    }
+
+  }
+
 }

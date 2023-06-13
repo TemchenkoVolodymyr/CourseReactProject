@@ -31,7 +31,7 @@ const ActorPage = () => {
 
 
   let age;
-  if(actors) {
+  if (actors) {
     const birthDate = new Date(actors.birthday);
     const currentDate = new Date();
     age = currentDate.getFullYear() - birthDate.getFullYear();
@@ -51,11 +51,9 @@ const ActorPage = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.left}>
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/original${actors?.profile_path}`}
-            alt={actors.name}/>
-        </div>
+        <img
+          src={`https://image.tmdb.org/t/p/original${actors?.profile_path}`}
+          alt={actors.name}/>
         <div className={style.personalInfo}>
           <h2>Personal Info</h2>
           <div>
@@ -68,7 +66,7 @@ const ActorPage = () => {
           </div>
           <div>
             <h3>Birthday</h3>
-            <p>{actors.birthday}  ({age} years)</p>
+            <p>{actors.birthday} ({age} years)</p>
           </div>
           <div>
             <h3>Place of Birth</h3>
@@ -109,9 +107,7 @@ const ActorPage = () => {
               </SwiperSlide>
             )}
           </Swiper>
-
         </div>
-
         <div>
           <ActorCreditsFilter actors={actors}/>
         </div>
