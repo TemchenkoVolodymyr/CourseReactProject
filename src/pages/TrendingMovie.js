@@ -34,6 +34,9 @@ const TrendingMovie = () => {
               <MovieBlock
                 image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 title={movie.title}
+                rating={(movie.vote_average * 10).toFixed(1)}
+                displayAsPercentage ={true}
+                canvasShow={true}
               />
             </NavLink>
           )

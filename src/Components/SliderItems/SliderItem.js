@@ -1,13 +1,18 @@
 import React from 'react';
+import CircleRating from "../CircleRating/CircleRating";
 
-const SliderItem = ({img, title}) => {
 
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/'
+const SliderItem = ({img, title, rating, displayAsPercentage}) => {
+
   return (
   <div
-    style={{backgroundImage: `url(${imageBaseUrl}w500${img})`}}>
+    style={{backgroundImage: `url(https://image.tmdb.org/t/p/w300${img})`}}>
+    <CircleRating
+      rating={rating}
+      displayAsPercentage={displayAsPercentage}
+      size={60}/>
     <p>{title}</p>
-    {/*<p>{actor.countOfFilms}</p>*/}
+
   </div>
   );
 };

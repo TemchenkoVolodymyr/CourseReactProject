@@ -7,6 +7,7 @@
     opacity: .8;
     text-transform: capitalize;
   }
+
   .header {
     padding: 15px;
     font-size: $sizeHeader;
@@ -55,7 +56,6 @@
 
     text-decoration: none;
 
-
     & > div {
       background-size: cover;
       background-position: center;
@@ -67,6 +67,21 @@
       justify-content: flex-end;
       position: relative;
 
+      & > div:first-child {
+        width: 20%;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        p {
+          color: white;
+          font-size: 22px;
+        }
+      }
+
       &:before {
         content: "";
         position: absolute;
@@ -74,14 +89,14 @@
         left: 0;
         width: 50%;
         height: 100%;
-        background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0));
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
       }
+
       & > div {
 
         z-index: 1;
         margin-left: 30px;
         margin-bottom: 10px;
-
 
         h2 {
           color: white;
@@ -110,14 +125,23 @@
 
     text-decoration: none;
 
+
     & > div {
       background-size: cover;
+      background-position: center;
       height: 300px;
       border-radius: 15px;
       margin: 5px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      position: relative;
+
+      & > canvas {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
 
       &:hover {
         box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
@@ -130,6 +154,7 @@
         color: white;
         padding: 10px;
         font-size: 20px;
+        text-align: center;
       }
 
       &:hover p {

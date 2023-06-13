@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import style from "./MoviePage.module.scss";
 import axios from "axios";
@@ -6,10 +6,13 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {NavLink} from "react-router-dom";
 import { Navigation } from 'swiper';
 import CircleRating from "../../Components/CircleRating/CircleRating";
+import SliderItem from "../../Components/SliderItems/SliderItem";
+
 const MoviePage = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState();
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/'
+  console.log(movie);
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -40,6 +43,7 @@ const MoviePage = () => {
             <p><span>Actors:</span> Thomas Holland</p>
           </div>
         </div>
+
         <h2>Overview</h2>
 
         <div className={style.overview}>
@@ -48,6 +52,7 @@ const MoviePage = () => {
             <CircleRating
               rating={movie.vote_average * 10}
               size={110}
+              displayAsPercentage={true}
             />
           </div>
           <div className={style.about}>
@@ -59,7 +64,6 @@ const MoviePage = () => {
             <p><strong>Original Language:</strong> {movie.original_language.toUpperCase()}</p>
             <p><strong>Budget:</strong> $ {movie.budget}</p>
             <p><strong>Revenue:</strong> $ {movie.revenue}</p>
-
           </div>
         </div>
 
@@ -76,14 +80,14 @@ const MoviePage = () => {
 
             {movie?.credits.cast.slice(0,20).map(actor =>
                   actor.profile_path &&
-                  <SwiperSlide key={actor.id}>
-                  <div className={style.actors}>
-                    <img
-                      src={`${imageBaseUrl}w200${actor.profile_path}`}
-                      alt={actor.name}/>
+                  <SwiperSlide key={actor.id} className={style.swiperSlide}>
+                    <SliderItem
+                      img={actor.profile_path}
+                      rating={actor.popularity.toFixed(1)}
+                      displayAsPercentage ={false}
+                    />
                     <h3>{actor.name}</h3>
                     <p>{actor.character}</p>
-                  </div>
                   </SwiperSlide>
             )}
           </Swiper>
@@ -119,16 +123,18 @@ const MoviePage = () => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={15}
+          navigation slidesPerView={5}
           spaceBetween={10}>
 
           {movie?.similar.results.map(similar =>
             similar.poster_path &&
-            <SwiperSlide key={similar.id}>
-              <NavLink to={`/movie/${similar.id}`}>
-                <div className={style.similar}>
-                  <img src={`https://image.tmdb.org/t/p/w200/${similar.poster_path}`} alt={similar.title}/>
-                </div>
+            <SwiperSlide key={similar.id} >
+              <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>
+                <SliderItem
+                  img={similar.poster_path}
+                  rating={(similar.vote_average * 10).toFixed(1)}
+                  displayAsPercentage ={true}
+                />
               </NavLink>
             </SwiperSlide>
           )}

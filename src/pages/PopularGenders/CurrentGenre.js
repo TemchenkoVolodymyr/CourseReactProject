@@ -61,6 +61,9 @@ const CurrentGenre = () => {
               <MovieBlock
                 image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
                 title={genre.title}
+                rating={(genre.vote_average * 10).toFixed(1)}
+                displayAsPercentage ={true}
+                canvasShow={true}
               />
             </NavLink>
           )

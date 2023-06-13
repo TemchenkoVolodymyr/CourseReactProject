@@ -45,6 +45,7 @@ const FavoriteMovies = () => {
           <div>
             <CircleRating
               rating={movie.vote_average * 10}
+              displayAsPercentage={true}
               size={70}/>
           </div>
         </div>

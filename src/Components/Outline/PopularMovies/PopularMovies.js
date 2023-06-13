@@ -10,7 +10,6 @@ const PopularMovies = () => {
 
   let popMovie = useSelector((state) => state.movies.popularMovie);
   const imageBaseUrl = 'https://image.tmdb.org/t/p/'
-  console.log(popMovie);
 
 
   return (
@@ -33,6 +32,7 @@ const PopularMovies = () => {
                 <div>
                   <CircleRating
                   rating={movie.vote_average * 10}
+                  displayAsPercentage={true}
                   size={70}/>
                 </div>
               </div>

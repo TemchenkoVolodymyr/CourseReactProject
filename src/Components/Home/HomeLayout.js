@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SliderWithWatchBtn from "../SliderItems/SliderWithWatchBtn";
 import style from "./HomeLayout.module.scss"
 import {useDispatch, useSelector} from "react-redux";
@@ -8,6 +8,8 @@ import 'swiper/swiper-bundle.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {NavLink} from "react-router-dom";
+import axios from "axios";
+
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -17,23 +19,24 @@ const HomeLayout = () => {
   const popularActors = useSelector(state => state.movies.popularActors);
   const discover = useSelector(state => state.movies.discover);
 
-
   useEffect(() => {
+
     const getTrending = async () => {
       dispatch(fetchMovies({type: 'trendingMovies'}))
     };
 
     const getActors = async () => {
       dispatch(fetchMovies({type: 'popularActors'}))
+
     };
 
     const getDiscover = () => {
       dispatch(fetchMovies({type: 'discover'}))
     };
+
     const getPopMovies = async () => {
       dispatch(fetchMovies({type: "popularMovie"}))
     }
-
 
     getTrending()
     getActors()
@@ -62,6 +65,8 @@ const HomeLayout = () => {
                 to={`/movie/${movie.id}`}
                 className={style.swiperSlideMain}>
                 <SliderWithWatchBtn
+                  rating={(movie.vote_average * 10).toFixed(1)}
+                  displayAsPercentage ={true}
                   name={movie.title}
                   bg={movie.backdrop_path}
                   id={movie.id}></SliderWithWatchBtn>
@@ -84,11 +89,15 @@ const HomeLayout = () => {
               <SwiperSlide key={movie.id}>
                 <NavLink
                   to={`/movie/${movie.id}`}
-                  className={style.swiperSlide}>
-                  <SliderItem
-                    title={movie.title}
-                    img={movie.poster_path}
-                  />
+                  className={style.swiperSlide}
+                  >
+                    <SliderItem
+                      title={movie.title}
+                      img={movie.poster_path}
+                      rating={(movie.vote_average * 10).toFixed(1)}
+                      displayAsPercentage ={true}
+                    />
+
                 </NavLink>
               </SwiperSlide>
             )
@@ -109,6 +118,8 @@ const HomeLayout = () => {
                 <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
+                  rating={actor.popularity.toFixed(1)}
+                  displayAsPercentage ={false}
                 />
               </SwiperSlide>
             )

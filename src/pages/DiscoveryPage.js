@@ -59,6 +59,7 @@ const DiscoveryPage = () => {
               <MovieBlock
                 image={genreImages[genre.id]}
                 title={genre.name}
+
               />
             </NavLink>
           )
