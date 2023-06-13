@@ -15,11 +15,11 @@ const ActorPage = () => {
   const actorId = localStorage.getItem('actorId');
   const [isExpanded, setIsExpanded] = useState(false);
 
-
+  let words = [];
   let displayedWords = [];
 
   if (actors && actors.biography) {
-    const words = actors.biography.split(" ");
+    words = actors.biography.split(" ");
     displayedWords = isExpanded ? words : words.slice(0, 100);
   }
 
@@ -92,7 +92,7 @@ const ActorPage = () => {
         <h1>{actors?.name}</h1>
         <div className={style.biography}>
           <p>{displayedWords.join(" ")}</p>
-          {displayedWords.length > 100 && (
+          {words.length > 100 && (
             <button onClick={handleReadMoreClick}>
               {isExpanded ? "Read Less" : "Read More"}
             </button>
