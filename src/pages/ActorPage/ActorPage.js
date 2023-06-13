@@ -15,20 +15,24 @@ const ActorPage = () => {
   const actorId = localStorage.getItem('actorId');
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const words = actors.biography.split(" ");
-  const displayedWords = isExpanded ? words : words.slice(0, 100);
+
+  let displayedWords = [];
+
+  if (actors && actors.biography) {
+    const words = actors.biography.split(" ");
+    displayedWords = isExpanded ? words : words.slice(0, 100);
+  }
 
   const handleReadMoreClick = () => {
     setIsExpanded(!isExpanded);
   };
-
-
 
   useEffect(() => {
     async function fetchData() {
       try {
         const {data} = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
         setActors(data);
+
       } catch (err) {
         alert('Error');
       }
@@ -88,7 +92,7 @@ const ActorPage = () => {
         <h1>{actors?.name}</h1>
         <div className={style.biography}>
           <p>{displayedWords.join(" ")}</p>
-          {words.length > 100 && (
+          {displayedWords.length > 100 && (
             <button onClick={handleReadMoreClick}>
               {isExpanded ? "Read Less" : "Read More"}
             </button>

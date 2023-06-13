@@ -21,7 +21,6 @@ const ActorCreditsFilter = ({actors}) => {
         role: credit.character,
         id: credit.id
       })
-
     });
   }
 
