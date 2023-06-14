@@ -6,7 +6,6 @@ import { getAuth } from 'firebase/auth';
 import RoutersCollection from './RoutersCollection/RoutersCollection';
 import { unsubscribe } from './SetAuthUsers/setAuthUsers';
 
-
 function App() {
 
     const dispatch = useDispatch();

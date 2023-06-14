@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {GiCastle, GiDramaMasks, GiGhost, GiPistolGun, GiRainbowStar} from 'react-icons/gi';
+import { GiCastle, GiDramaMasks, GiGhost, GiPistolGun, GiRainbowStar } from 'react-icons/gi';
 import { SiOpenstreetmap } from 'react-icons/si';
-import {BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire} from 'react-icons/bs';
+import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 
 

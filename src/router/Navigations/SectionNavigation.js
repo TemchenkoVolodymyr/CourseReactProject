@@ -32,13 +32,13 @@ const SectionNavigation = () => {
             to="/auth"
             onClick={logout}
             className={'active'}
-            style={{cursor: 'pointer'}}
+            style={{ cursor: 'pointer' }}
           ><BiLogOut size={25}/>Logout</NavLink>
           :
           <NavLink
             to="/auth"
             className={'active'}
-            style={{cursor: 'pointer'}}
+            style={{ cursor: 'pointer' }}
           ><BiLogIn size={25}/>Login</NavLink>
       }
       {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
