@@ -46,7 +46,7 @@ const CurrentGenre = () => {
     }
 
     fetchMovie();
-    fetchGenre()
+
   }, [genre]);
 
   return (

@@ -55,7 +55,7 @@ const DiscoveryPage = () => {
         {
           genres?.genres.map((genre) =>
             <NavLink
-              to={`/${genre.name.toLowerCase().replace(/\s+/g, '-')}`}
+              to={`/genre/${genre.name.toLowerCase().replace(' ', '-')}`}
               key={genre.id}
             >
               <MovieBlock
