@@ -33,12 +33,12 @@ const MoviePage = () => {
   console.log(movie);
   return (
     <>
+      <ActionBar/>
       <div className={style.wrapper}>
         <div
           style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
           className={style.banner}>
           <div className={style.info}>
-            <ActionBar/>
             <h1>{movie.title}</h1>
             <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
             <p>

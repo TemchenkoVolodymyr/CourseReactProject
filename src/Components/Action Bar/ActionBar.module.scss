@@ -1,5 +1,22 @@
 .tooltip{
   font-size: 18px;
   margin-left: 10px;
+}
+
+.actionBar {
+  position: sticky;
+  top: 1px;
+  z-index: 9999;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: dimgrey;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+
+  & > div{
+    margin: auto;
+  }
+
 
 }
