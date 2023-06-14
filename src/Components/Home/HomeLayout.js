@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
 import style from './HomeLayout.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchMovies} from '../../redux/slices/movieSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMovies } from '../../redux/slices/movieSlice';
 import SliderItem from '../SliderItems/SliderItem';
 import 'swiper/swiper-bundle.css';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import SwiperCore, {Navigation} from 'swiper';
-import {NavLink} from "react-router-dom";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import { NavLink } from 'react-router-dom';
 
 
 const HomeLayout = () => {
@@ -57,7 +57,7 @@ const HomeLayout = () => {
           navigation slidesPerView={1}
           spaceBetween={10}>
 
-          {discover?.map(movie =>
+          {discover?.map((movie) =>
             <SwiperSlide key={movie.id}>
               <NavLink
                 to={`/movie/${movie.id}`}
@@ -83,7 +83,7 @@ const HomeLayout = () => {
           navigation slidesPerView={7}
           spaceBetween={10}>
           {
-            trendingMovies?.map(movie =>
+            trendingMovies?.map((movie) =>
               <SwiperSlide key={movie.id}>
                 <NavLink
                   to={`/movie/${movie.id}`}
@@ -110,15 +110,21 @@ const HomeLayout = () => {
           navigation slidesPerView={7}
           spaceBetween={10}>
           {
-            popularActors?.map(actor =>
+            popularActors?.map((actor) =>
               <SwiperSlide key={actor.id}>
-                <NavLink to={`/person/${actor.name.replace(/\s/g, '-')}`} className={style.swiperSlide}>
+                <NavLink
+                  to={`/person/${actor.name.replace(/\s/g, '-')}`}
+                  className={style.swiperSlide}
+                  onClick={() => localStorage.setItem('actorId', actor.id)}
+                >
 
                 <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
                   rating={actor.popularity.toFixed(1)}
                   displayAsPercentage ={false}
+
+
                 />
                 </NavLink>
               </SwiperSlide>

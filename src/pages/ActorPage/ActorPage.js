@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router";
-import axios from "axios";
-import style from './ActorPage.module.scss'
-import {NavLink} from "react-router-dom";
-import SliderItem from "../../Components/SliderItems/SliderItem";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation} from "swiper";
-import ActorCreditsFilter from "../../Components/ActorCreditsList/ActorCreditsFilter";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import style from './ActorPage.module.scss';
+import { NavLink } from 'react-router-dom';
+import SliderItem from '../../Components/SliderItems/SliderItem';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
 
 const ActorPage = () => {
 
-  const {name} = useParams();
-  const [actors, setActors] = useState()
+  const { name } = useParams();
+  const [actors, setActors] = useState();
   const actorId = localStorage.getItem('actorId');
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -19,7 +19,7 @@ const ActorPage = () => {
   let displayedWords = [];
 
   if (actors && actors.biography) {
-    words = actors.biography.split(" ");
+    words = actors.biography.split(' ');
     displayedWords = isExpanded ? words : words.slice(0, 100);
   }
 
@@ -30,9 +30,8 @@ const ActorPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
         setActors(data);
-
       } catch (err) {
         alert('Error');
       }
@@ -91,10 +90,10 @@ const ActorPage = () => {
       <div className={style.right}>
         <h1>{actors?.name}</h1>
         <div className={style.biography}>
-          <p>{displayedWords.join(" ")}</p>
+          <p>{displayedWords.join(' ')}</p>
           {words.length > 100 && (
             <button onClick={handleReadMoreClick}>
-              {isExpanded ? "Read Less" : "Read More"}
+              {isExpanded ? 'Read Less' : 'Read More'}
             </button>
           )}
         </div>
@@ -109,7 +108,7 @@ const ActorPage = () => {
             slidesPerView={6}
             spaceBetween={10}>
 
-            {actors.movie_credits.cast.map(movie =>
+            {actors.movie_credits.cast.map((movie) =>
               movie.poster_path &&
               <SwiperSlide key={movie.id}>
                 <NavLink to={`/movie/${movie.id}`} className={style.swiperSlide}>

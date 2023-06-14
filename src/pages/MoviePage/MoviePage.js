@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router";
-import style from "./MoviePage.module.scss";
-import axios from "axios";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {NavLink} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import style from './MoviePage.module.scss';
+import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { NavLink } from 'react-router-dom';
 import { Navigation } from 'swiper';
-import CircleRating from "../../Components/CircleRating/CircleRating";
-import SliderItem from "../../Components/SliderItems/SliderItem";
+import CircleRating from '../../Components/CircleRating/CircleRating';
+import SliderItem from '../../Components/SliderItems/SliderItem';
 
 
 const MoviePage = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [movie, setMovie] = useState();
 
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovie(data);
       } catch (err) {
         alert('Error');
@@ -34,12 +34,22 @@ const MoviePage = () => {
     <>
       <div className={style.wrapper}>
         <div
-          style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}
+          style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
           className={style.banner}>
           <div className={style.info}>
             <h1>{movie.title}</h1>
-            <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map(country => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
-            <p><span>Genres:</span> {movie.genres.map(genre => genre.name).join(', ')}</p>
+            <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
+            <p>
+              <span>Genres:</span>
+              {movie.genres.map((genre, index) => (
+              <>
+                <NavLink
+                  key={genre.id}
+                  to={`/genre/${genre.name.toLowerCase().replace(' ', '-')}`}>{genre.name} </NavLink>
+                {index !== movie.genres.length - 1 && ', '}
+              </>
+            ) )}
+            </p>
             <p><span>Actors:</span> Thomas Holland</p>
           </div>
         </div>
@@ -79,7 +89,7 @@ const MoviePage = () => {
             slidesPerView={5}
             spaceBetween={10}>
 
-            {movie?.credits.cast.slice(0,20).map(actor =>
+            {movie?.credits.cast.slice(0,20).map((actor) =>
                   actor.profile_path &&
                   <SwiperSlide key={actor.id} >
                     <NavLink
@@ -91,6 +101,7 @@ const MoviePage = () => {
                       img={actor.profile_path}
                       rating={actor.popularity.toFixed(1)}
                       displayAsPercentage ={false}
+                      canvasShow={false}
                     />
                     <h3>{actor.name}</h3>
                     <p>{actor.character}</p>
@@ -106,9 +117,9 @@ const MoviePage = () => {
           {movie.videos.results.length > 0 && (
             <div>
               {movie?.videos.results
-                .filter(video => video.type === "Trailer")
+                .filter((video) => video.type === 'Trailer')
                 .slice(0, 1)
-                .map(video => (
+                .map((video) => (
                   <div key={video.key}>
                     <iframe
                       width="100%"
@@ -133,7 +144,7 @@ const MoviePage = () => {
           navigation slidesPerView={5}
           spaceBetween={10}>
 
-          {movie?.similar.results.map(similar =>
+          {movie?.similar.results.map((similar) =>
             similar.poster_path &&
             <SwiperSlide key={similar.id} >
               <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>

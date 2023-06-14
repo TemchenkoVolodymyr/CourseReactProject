@@ -19,14 +19,14 @@ const Navigations = () => {
       <NavLink to="/fresh"><Icon type={iconTypes.spinner}/>Fresh movies</NavLink>
       <NavLink to="/trending"><Icon type={iconTypes.fire}/>Trending now</NavLink>
       <p>popular genders</p>
-      <NavLink to="/action"><GiPistolGun/>Action</NavLink>
-      <NavLink to="/adventure"><SiOpenstreetmap/>Adventure</NavLink>
-      <NavLink to="/comedy"><Icon type={iconTypes.happy2}/>Comedy</NavLink>
-      <NavLink to="/drama"><GiDramaMasks/>Drama</NavLink>
-      <NavLink to="/animation"><Icon type={iconTypes.manWomen}/>Animation</NavLink>
-      <NavLink to="/fantasy"><Icon type={iconTypes.magicWand}/>Fantasy</NavLink>
-      <NavLink to="/documentary"><Icon type={iconTypes.hipster2}/>Documentary</NavLink>
-      <NavLink to="/horror"><GiGhost/>Horror</NavLink>
+      <NavLink to="/genre/action"><GiPistolGun/>Action</NavLink>
+      <NavLink to="/genre/adventure"><SiOpenstreetmap/>Adventure</NavLink>
+      <NavLink to="/genre/comedy"><Icon type={iconTypes.happy2}/>Comedy</NavLink>
+      <NavLink to="/genre/drama"><GiDramaMasks/>Drama</NavLink>
+      <NavLink to="/genre/animation"><Icon type={iconTypes.manWomen}/>Animation</NavLink>
+      <NavLink to="/genre/fantasy"><Icon type={iconTypes.magicWand}/>Fantasy</NavLink>
+      <NavLink to="/genre/documentary"><Icon type={iconTypes.hipster2}/>Documentary</NavLink>
+      <NavLink to="/genre/horror"><GiGhost/>Horror</NavLink>
     </>
   );
 };

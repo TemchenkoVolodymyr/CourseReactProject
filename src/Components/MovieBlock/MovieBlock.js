@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './MovieBlock.module.scss';
-import CircleRating from "../CircleRating/CircleRating";
+import CircleRating from '../CircleRating/CircleRating';
 
-const MovieBlock = ({image, title, rating, displayAsPercentage, canvasShow}) => {
+const MovieBlock = ({ image, title, rating, displayAsPercentage, canvasShow }) => {
 
   return (
     <div
       className={styles.wrapper}
-      style={{backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${image})`}}>
+      style={{ backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${image})` }}>
 
       {canvasShow ?  <CircleRating
         rating={rating}

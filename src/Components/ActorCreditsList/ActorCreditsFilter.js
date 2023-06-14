@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import style from './ActorCredits.module.scss'
-import DropDown from "./DropDown";
-import {NavLink} from "react-router-dom";
+import React, { useState } from 'react';
+import style from './ActorCredits.module.scss';
+import DropDown from './DropDown';
+import { NavLink } from 'react-router-dom';
 
-const ActorCreditsFilter = ({actors}) => {
+const ActorCreditsFilter = ({ actors }) => {
   const [selectedDepartment, setSelectedDepartment] = useState('Acting');
 
   const actingCredits = [];
@@ -20,7 +20,7 @@ const ActorCreditsFilter = ({actors}) => {
         year: credit.release_date.slice(0, 4),
         role: credit.character,
         id: credit.id
-      })
+      });
     });
   }
 

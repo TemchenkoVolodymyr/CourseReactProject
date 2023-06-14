@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {NavLink} from "react-router-dom";
-import MovieBlock from "../../Components/MovieBlock/MovieBlock";
-import {useParams} from "react-router";
-import axios from "axios";
-import style from "./CurrentGenre.module.scss"
-import styles from "../Pages.module.scss";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import MovieBlock from '../../Components/MovieBlock/MovieBlock';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import style from './CurrentGenre.module.scss';
+import styles from '../Pages.module.scss';
 
 const genreIds = {
   'comedy': 35,
@@ -19,26 +19,25 @@ const genreIds = {
   'family': 10751,
   'history': 36,
   'horror': 27,
-  'mystery': 10402,
-  'music': 9648,
+  'mystery': 9648,
+  'music': 10402,
   'romance': 10749,
   'science-fiction': 878,
-  'thriller': 10770,
-  'tv-movie': 53,
+  'thriller': 53,
+  'tv-movie': 10770,
   'war': 10752,
   'western': 37,
 };
 const CurrentGenre = () => {
-  const {genre} = useParams()
+  const { genre } = useParams();
 
-  const [currGenre, setCurrGenre] = useState()
+  const [currGenre, setCurrGenre] = useState();
 
   useEffect(() => {
     const currentGenre = genreIds[genre];
-
     async function fetchMovie() {
       try {
-        const {data} = await axios
+        const { data } = await axios
           .get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
         setCurrGenre(data);
       } catch (err) {
@@ -47,7 +46,7 @@ const CurrentGenre = () => {
     }
 
     fetchMovie();
-
+    fetchGenre()
   }, [genre]);
 
   return (
@@ -56,7 +55,7 @@ const CurrentGenre = () => {
       <h2>{genre}</h2>
       <div className={style.wrapper}>
         {
-          currGenre?.results.map(genre =>
+          currGenre?.results.map((genre) =>
             <NavLink key={genre.id} to={`/movie/${genre.id}`}>
               <MovieBlock
                 image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}

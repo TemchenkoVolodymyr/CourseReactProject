@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import styles from '../Pages.module.scss';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 const TrendingMovie = () => {
@@ -27,7 +27,7 @@ const TrendingMovie = () => {
       <p>Explore the most-watched movies making waves around the globe.</p>
       <div className={styles.wrapper}>
         {
-          movies?.results.map(movie =>
+          movies?.results.map((movie) =>
             <NavLink
               to={`/movie/${movie.id}`}
               key={movie.id}
