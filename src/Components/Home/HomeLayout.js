@@ -93,8 +93,8 @@ const HomeLayout = () => {
                       img={movie.poster_path}
                       rating={(movie.vote_average * 10).toFixed(1)}
                       displayAsPercentage ={true}
+                      canvasShow={true}
                     />
-
                 </NavLink>
               </SwiperSlide>
             )
@@ -117,14 +117,12 @@ const HomeLayout = () => {
                   className={style.swiperSlide}
                   onClick={() => localStorage.setItem('actorId', actor.id)}
                 >
-
                 <SliderItem
                   title={actor.name}
                   img={actor.profile_path}
                   rating={actor.popularity.toFixed(1)}
                   displayAsPercentage ={false}
-
-
+                  canvasShow={false}
                 />
                 </NavLink>
               </SwiperSlide>

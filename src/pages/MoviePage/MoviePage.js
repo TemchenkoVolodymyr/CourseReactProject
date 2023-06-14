@@ -152,6 +152,7 @@ const MoviePage = () => {
                   img={similar.poster_path}
                   rating={(similar.vote_average * 10).toFixed(1)}
                   displayAsPercentage ={true}
+                  canvasShow={true}
                 />
               </NavLink>
             </SwiperSlide>
