@@ -29,7 +29,7 @@ const MoviePage = () => {
   if (!movie) {
     return <>Loading....</>;
   }
-
+  console.log(movie);
   return (
     <>
       <div className={style.wrapper}>
@@ -40,7 +40,7 @@ const MoviePage = () => {
             <h1>{movie.title}</h1>
             <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
             <p>
-              <span>Genres:</span>
+              <span>Genres: </span>
               {movie.genres.map((genre, index) => (
               <>
                 <NavLink
@@ -50,7 +50,19 @@ const MoviePage = () => {
               </>
             ) )}
             </p>
-            <p><span>Actors:</span> Thomas Holland</p>
+            <p><span>Actors: </span>
+              {movie.credits.cast.slice(0, 5).map((actor, index) => (
+                <>
+                  <NavLink
+                    key={actor.id}
+                    to={`/person/${actor.name.toLowerCase().replace(' ', '-')}`}
+                    onClick={() => localStorage.setItem('actorId', actor.id)}
+                  >{actor.name} </NavLink>
+                  {index !== movie.credits.cast.slice(0, 5).length -1  && ', '}
+                </>
+              ) )}
+
+            </p>
           </div>
         </div>
 
