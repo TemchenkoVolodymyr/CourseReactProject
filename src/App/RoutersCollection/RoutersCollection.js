@@ -18,6 +18,7 @@ import MoviesAP from '../../Components/AdminPanel/NavComponents/AdminPanelMovies
 import ActorsAP from '../../Components/AdminPanel/NavComponents/AdminPanelActors/ActorsAP';
 import GenresAP from '../../Components/AdminPanel/NavComponents/AdminPanelGenres/GenresAP';
 import ActorPage from '../../pages/ActorPage/ActorPage';
+import UserProfile from "../../pages/UserProfilePage/UserProfile";
 
 const RoutersCollection = () => {
   return (
@@ -42,6 +43,7 @@ const RoutersCollection = () => {
             <Route path="actors" element={<ActorsAP/>}/>
             <Route path="genres" element={<GenresAP/>}/>
           </Route>
+          <Route path="/user" element={<UserProfile/>}/>
         </Route>
       </Routes>
     </>
