@@ -1,7 +1,6 @@
 import React from 'react';
-
 import CircleRating from '../CircleRating/CircleRating';
-import Button from '../Button/Button';
+import CustomButton from '../Button/CustomButton';
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
 
@@ -20,8 +19,7 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
       <div>
         <h2>{name}</h2>
         <h3>{category}</h3>
-        {/*<button onClick={handleClick}>Watch</button>*/}
-        <Button name={'Watch'} path={`/movie/${id}`} ></Button>
+        <CustomButton name={'Watch'} path={`/movie/${id}`} ></CustomButton>
       </div>
     </div>
   );

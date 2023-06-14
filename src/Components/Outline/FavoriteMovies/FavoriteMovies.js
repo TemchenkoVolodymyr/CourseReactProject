@@ -3,9 +3,8 @@ import { getAuth } from 'firebase/auth';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
-// import CustomLink from '../CustomLink/CustomLink';
 import CircleRating from '../../CircleRating/CircleRating';
-import Button from '../../Button/Button';
+import CustomButton from '../../Button/CustomButton';
 
 
 
@@ -64,7 +63,7 @@ const FavoriteMovies = () => {
         <h3>FAVORITE</h3>
         {showFavoriteMovies}
         <div className={style.btn}>
-          <Button name={'see more'} path={'favoriteMovies'}></Button>
+          <CustomButton name={'see more'} path={'favoriteMovies'}></CustomButton>
         </div>
       </div>
     );

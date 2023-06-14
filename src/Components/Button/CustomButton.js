@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Button.module.scss';
+import style from './CustomButton.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const Button = (props) => {
