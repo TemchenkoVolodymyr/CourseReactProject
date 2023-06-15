@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import style from './Search.module.scss';
-import { BiSearch } from 'react-icons/bi';
-
+import style from './UniversalSeach.module.scss';
 
 const Search = (props) => {
 
@@ -16,8 +14,7 @@ const Search = (props) => {
 
 
   return (
-    <div>
-      <BiSearch className={style.icon}></BiSearch>
+    <div className={style.container}>
       <input
         className={style.search}
         type="search"
