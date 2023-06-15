@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import style from './DropDown.module.scss';
 
-const DropDown = ({ setSelectedDepartment, actingCredits, productionCredits,directingCredits, writingCredits, creatorCredits, crewCredits }) => {
+const DropDown = ({
+                    setSelectedDepartment,
+                    actingCredits,
+                    productionCredits,
+                    directingCredits,
+                    writingCredits,
+                    creatorCredits,
+                    crewCredits }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
 

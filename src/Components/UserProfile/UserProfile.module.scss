@@ -1,0 +1,68 @@
+.container {
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #215064;
+  font-size: 20px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    opacity: .9;
+  }
+
+}
+
+.outlet {
+  font-size: 20px;
+  color: black;
+  opacity: .8;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 100vh;
+  margin-top: 20px;
+
+
+  .titleHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #215064;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    padding: 20px;
+
+    .filters {
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 30%;
+
+      & > div > span {
+        cursor: pointer;
+      }
+
+      .filtered {
+        position: relative;
+        
+        .dropDown {
+          width: 160px;
+          background-color: #215064;
+          color: white;
+          padding: 10px;
+          list-style: none;
+          position: absolute;
+          top: 40px;
+          border-radius: 20px ;
+
+          li {
+            cursor: pointer;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+}

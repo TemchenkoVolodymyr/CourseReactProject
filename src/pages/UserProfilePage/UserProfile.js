@@ -1,11 +1,12 @@
 import React from 'react';
+import UserProfileNavBar from '../../Components/UserProfile/UserProfileNavBar';
 
 const UserProfile = () => {
 
   return (
-    <div>
-      fgfgfgfgfgfg
-    </div>
+    <>
+      <UserProfileNavBar/>
+    </>
   );
 };
 

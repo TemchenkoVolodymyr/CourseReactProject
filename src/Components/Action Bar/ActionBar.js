@@ -1,10 +1,10 @@
 import React from 'react';
 import ActionButton from './ActionButton';
-import {AiFillHeart, AiFillStar, AiOutlineUnorderedList} from 'react-icons/ai';
-import {BsFillBookmarkFill} from 'react-icons/bs';
-import {Tooltip} from 'react-tooltip';
+import { AiFillHeart, AiFillStar, AiOutlineUnorderedList } from 'react-icons/ai';
+import { BsFillBookmarkFill } from 'react-icons/bs';
+import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
-import styles from './ActionBar.module.scss'
+import styles from './ActionBar.module.scss';
 
 
 const ActionBar = () => {

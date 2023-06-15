@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getAuth, signOut } from 'firebase/auth';
 import Navigations from './Navigations';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
-import {CgProfile} from "react-icons/cg";
+import { CgProfile } from 'react-icons/cg';
 
 
 const SectionNavigation = () => {
@@ -45,8 +45,8 @@ const SectionNavigation = () => {
       {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
       {isAuth ?
         <NavLink
-          to={'/user/'}
-          style={{ cursor: 'pointer'}}
+          to={'/u/'}
+          style={{ cursor: 'pointer' }}
         ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
 
         : null}
