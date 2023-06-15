@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import style from '../Outline.module.scss';
 import { NavLink } from 'react-router-dom';
 import CircleRating from '../../CircleRating/CircleRating';
-import CustomLink from '../CustomLink/CustomLink';
+import CustomButton from '../../Button/CustomButton';
 
 
 
@@ -42,9 +42,7 @@ const PopularMovies = () => {
           </NavLink>)}
       </div>
       <div className={style.btn}>
-        <CustomLink style={{ width: '135px', margin: ' 10px 0', textAlign: 'center', padding: '5px' }}
-                    to={'popMovies'}
-        >see more</CustomLink>
+        <CustomButton name={'see more'} path={'popMovies'}></CustomButton>
       </div>
 
     </>

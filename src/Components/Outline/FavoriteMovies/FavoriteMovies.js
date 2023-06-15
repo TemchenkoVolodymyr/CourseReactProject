@@ -3,8 +3,8 @@ import { getAuth } from 'firebase/auth';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
-import CustomLink from '../CustomLink/CustomLink';
 import CircleRating from '../../CircleRating/CircleRating';
+import CustomButton from '../../Button/CustomButton';
 
 
 
@@ -63,10 +63,7 @@ const FavoriteMovies = () => {
         <h3>FAVORITE</h3>
         {showFavoriteMovies}
         <div className={style.btn}>
-          <CustomLink
-            style={{ width: '135px', margin: ' 10px 0', textAlign: 'center', padding: '5px' }}
-            to={'favoriteMovies'}
-          >see more</CustomLink>
+          <CustomButton name={'see more'} path={'favoriteMovies'}></CustomButton>
         </div>
       </div>
     );

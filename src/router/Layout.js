@@ -7,6 +7,7 @@ import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies'
 import SectionNavigation from './Navigations/SectionNavigation';
 
 
+
 const Layout = () => {
 
   return (

@@ -1,0 +1,22 @@
+
+.link{
+  color: rgba(213, 8, 57, 0.62);
+  border-radius: 1rem;
+  background: transparent;
+  font-size: 16px;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 0 0.5em 0 rgba(213, 8, 57, 0.62), 0 0 0.5em 0 rgba(213, 8, 57, 0.62);
+  text-decoration: none;
+  max-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  &:hover {
+    background: transparent;
+    color: #fff;
+    box-shadow: 0 0 2em 0.5em rgba(213, 8, 57, 0.62);
+  }
+}
