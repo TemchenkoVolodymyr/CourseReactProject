@@ -104,3 +104,23 @@ $sidBarWidth: $size * 25;
   font-size: $size * 2;
   border-top: $footerWidthBorder solid darken($colorDefault, 25%);
 }
+.topArrow{
+  color: rgba(213, 8, 57, 0.62);
+  position: fixed;
+  bottom: 150px;
+  z-index: 1000;
+  left: 50px;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  &:hover{
+    cursor: pointer;
+    color: #c05a11;
+  }
+}
+
+@keyframes example {
+  from {color: rgba(30, 2, 8, 0.99);}
+  to {color : rgba(213, 8, 57, 0.62);}
+}
