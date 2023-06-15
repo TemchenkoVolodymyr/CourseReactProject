@@ -5,9 +5,23 @@ import { BsFillBookmarkFill } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {addFavorite} from "../../redux/slices/favoriteSlice";
 
 
-const ActionBar = () => {
+const ActionBar = ({movieId}) => {
+  const dispatch = useDispatch();
+
+  const userId = useSelector(state => state.user.id);
+  const handleAddFavorite = () => {
+    if (userId) {
+      dispatch(addFavorite({userId, movieId}));
+    } else {
+      alert("User data has not loaded yet");
+    }
+  };
+
+
 
   return (
     <div className={styles.actionBar}>
@@ -17,7 +31,9 @@ const ActionBar = () => {
           data-tooltip-id="list"
           data-tooltip-content="Add to list"
         />}/>
-        <ActionButton icon={<AiFillHeart
+        <ActionButton
+          onClick={handleAddFavorite}
+          icon={<AiFillHeart
           size={30}
           data-tooltip-id="like"
           data-tooltip-content="Mark as favorite"

@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './ActionButton.module.scss';
 
-const ActionButton = ({ icon }) => {
+const ActionButton = ({ icon, onClick }) => {
   return (
 
-      <button className={styles.actionButton}>
+      <button
+        onClick={onClick}
+        className={styles.actionButton}>
         <span className="icon">{icon}</span>
       </button>
 

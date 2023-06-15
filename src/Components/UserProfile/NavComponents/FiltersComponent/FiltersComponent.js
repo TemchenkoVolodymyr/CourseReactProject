@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiFillCaretDown, AiFillCaretUp, AiOutlineSortAscending, AiOutlineSortDescending } from 'react-icons/ai';
-import styles from '../UserProfile.module.scss';
+import styles from '../../UserProfile.module.scss';
 
 const FiltersComponent = () => {
 
