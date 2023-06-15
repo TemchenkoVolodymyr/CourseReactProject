@@ -1,8 +1,9 @@
 import React from 'react';
 import ActionButton from "../../../Action Bar/ActionButton";
 import {AiFillHeart, AiFillStar, AiOutlineUnorderedList} from "react-icons/ai";
-import {BsFillBookmarkFill} from "react-icons/bs";
 import styles from '../../UserProfile.module.scss'
+
+import {MdOutlinePlaylistRemove} from "react-icons/md";
 
 const ActionsComponent = () => {
   return (
@@ -28,8 +29,8 @@ const ActionsComponent = () => {
           <p>Favorite</p>
         </div>
         <div>
-          <ActionButton icon={<BsFillBookmarkFill
-            size={25}
+          <ActionButton icon={<MdOutlinePlaylistRemove
+            size={30}
           />}/>
           <p>Remove</p>
         </div>

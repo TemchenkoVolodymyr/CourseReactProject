@@ -41,6 +41,7 @@ const UserFavorites = () => {
                     title={favorite.movieInfo.title}
                     overview={favorite.movieInfo.overview}
                     release={favorite.movieInfo.release_date}
+                    id={favorite.movieInfo.id}
                   />
               </div>
             ))}

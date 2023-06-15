@@ -20,7 +20,6 @@
   opacity: .8;
   background-color: #fff;
   border-radius: 20px;
-  height: 100vh;
   margin-top: 20px;
 
 
@@ -68,22 +67,19 @@
 
   .pageInfo {
 
-    a{
-      text-decoration: none;
-      color: inherit;
-    }
+
     .movieBlock {
       display: flex;
       border-radius: 20px;
       border: 1px solid #215064;
-      margin: 10px;
+      margin: 10px 5px;
 
-      img{
+      .image{
         border-radius: 20px 0 0 20px;
-        width: 400px ;
-        margin-right: 20px;
+        background-size: cover;
+        background-position: center;
+        min-width: 300px;
       }
-
 
       .info {
         display: flex;
@@ -94,8 +90,15 @@
           display: flex;
           align-items: center;
 
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+
           h2, p{
             padding-left: 10px;
+
+
           }
 
           p{
@@ -104,10 +107,16 @@
         }
 
         .movieInfo{
-
+          margin: 10px;
 
           .actionBar{
             display: flex;
+            justify-content: space-around;
+            margin: 15px;
+
+            p{
+              opacity: .5;
+            }
           }
 
           .overview{
@@ -118,7 +127,6 @@
             -webkit-box-orient: vertical;
             line-height: 1.3em;
           }
-
         }
       }
 
