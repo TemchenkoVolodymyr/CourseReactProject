@@ -5,19 +5,20 @@ import { BsFillBookmarkFill } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
-import {useDispatch, useSelector} from "react-redux";
-import {addFavorite} from "../../redux/slices/favoriteSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite } from '../../redux/slices/favoriteSlice';
 
 
-const ActionBar = ({movieId}) => {
+
+const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
 
-  const userId = useSelector(state => state.user.id);
+  const userId = useSelector((state) => state.user.id);
   const handleAddFavorite = () => {
     if (userId) {
-      dispatch(addFavorite({userId, movieId}));
+      dispatch(addFavorite({ userId, movieId }));
     } else {
-      alert("User data has not loaded yet");
+      alert('User data has not loaded yet');
     }
   };
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../../UserProfile.module.scss'
-import CircleRating from "../../../CircleRating/CircleRating";
-import ActionsComponent from "../ActionsComponent/ActionsComponent";
-import {NavLink} from "react-router-dom";
+import styles from '../../UserProfile.module.scss';
+import CircleRating from '../../../CircleRating/CircleRating';
+import ActionsComponent from '../ActionsComponent/ActionsComponent';
+import { NavLink } from 'react-router-dom';
 
-const FilmComponent = ({id, image, title, rating, overview, release}) => {
+const FilmComponent = ({ id, image, title, rating, overview, release, removeFromFavorites }) => {
 
   const date = new Date(release);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -14,7 +14,7 @@ const FilmComponent = ({id, image, title, rating, overview, release}) => {
     <div className={styles.movieBlock}>
       <div
         className={styles.image}
-        style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${image})`}}>
+        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}>
       </div>
      <div className={styles.info}>
        <div className={styles.movieTitle}>
@@ -31,7 +31,9 @@ const FilmComponent = ({id, image, title, rating, overview, release}) => {
         <div className={styles.overview}>
           <p>{overview}</p>
         </div>
-         <ActionsComponent/>
+         <ActionsComponent
+           movieId={id}
+           removeFromFavorites={removeFromFavorites}/>
        </div>
      </div>
     </div>

@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchFavorites} from "../../../redux/slices/favoriteSlice";
-import FilmComponent from "./FilmComponent/FilmComponent";
-import styles from '../UserProfile.module.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFavorites, removeFavorite } from '../../../redux/slices/favoriteSlice';
+import FilmComponent from './FilmComponent/FilmComponent';
+import styles from '../UserProfile.module.scss';
 
 
 const UserFavorites = () => {
@@ -14,14 +14,16 @@ const UserFavorites = () => {
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const error = useSelector((state) => state.favorites.error);
 
-
+  const removeFromFavorites = (movieId) => {
+    dispatch(removeFavorite(movieId));
+  };
 
   useEffect(() => {
     if (isLoading === 'idle' && userId) {
       dispatch(fetchFavorites(userId));
     }
+
   }, [isLoading, userId]);
-  console.log(favorites);
 
   return (
     <>
@@ -42,6 +44,7 @@ const UserFavorites = () => {
                     overview={favorite.movieInfo.overview}
                     release={favorite.movieInfo.release_date}
                     id={favorite.movieInfo.id}
+                    removeFromFavorites={removeFromFavorites}
                   />
               </div>
             ))}

@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import user from './slices/userSlice';
 import movies from './slices/movieSlice';
-import {favoritesSlice} from './slices/favoriteSlice';
-import {statisticsReducer} from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
-import {searchReducer} from '../Components/Search/SearchReducer';
-import {authReducer} from '../Components/Auth/AuthReducer';
+import { favoritesSlice } from './slices/favoriteSlice';
+import { statisticsReducer } from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
+import { searchReducer } from '../Components/Search/SearchReducer';
+import { authReducer } from '../Components/Auth/AuthReducer';
 
 
 export default combineReducers({

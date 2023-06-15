@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {serverTimestamp, addDoc, collection, getDocs, query} from 'firebase/firestore';
-import {db} from '../../firebase';
-import axios from "axios";
+import { serverTimestamp, addDoc, collection, getDocs, query } from 'firebase/firestore';
+import { db } from '../../firebase';
+import axios from 'axios';
 
 const initialState = {
   favorites: [],
@@ -11,13 +11,13 @@ const initialState = {
 
 export const addFavorite = createAsyncThunk(
   'favorites/addFavorite',
-  async ({userId, movieId}, thunkAPI) => {
+  async ({ userId, movieId }, thunkAPI) => {
     try {
       await addDoc(collection(db, 'users', userId, 'favorites'), {
         movieId,
         addedAt: serverTimestamp(),
       });
-      return {userId, movieId};
+      return { userId, movieId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -55,7 +55,12 @@ export const fetchFavorites = createAsyncThunk(
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
-  reducers: {},
+  reducers: {
+    removeFavorite: (state, action) => {
+      const movieId = action.payload;
+      state.favorites = state.favorites.filter((favorite) => favorite.movieId !== movieId);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavorites.pending, (state) => {
@@ -70,6 +75,7 @@ export const favoritesSlice = createSlice({
         state.error = action.payload;
       });
   },
-});
 
+});
+export const { removeFavorite } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

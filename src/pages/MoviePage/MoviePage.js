@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import style from './MoviePage.module.scss';
 import axios from 'axios';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {NavLink} from 'react-router-dom';
-import {Navigation} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { NavLink } from 'react-router-dom';
+import { Navigation } from 'swiper';
 import CircleRating from '../../Components/CircleRating/CircleRating';
 import SliderItem from '../../Components/SliderItems/SliderItem';
 import ActionBar from '../../Components/Action Bar/ActionBar';
 
 
 const MoviePage = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [movie, setMovie] = useState();
 
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovie(data);
       } catch (err) {
         alert('Error');
@@ -38,7 +38,7 @@ const MoviePage = () => {
       />
       <div className={style.wrapper}>
         <div
-          style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}
+          style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
           className={style.banner}>
           <div className={style.info}>
             <h1>{movie.title}</h1>
