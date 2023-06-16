@@ -31,11 +31,11 @@ const Layout = () => {
   }, []);
 
 
-if (popMovie.length > 1) {
-  setTimeout(() => {
-    dispatch(loaderAction());
-  }, 2000);
-}
+  if (popMovie.length > 1) {
+    setTimeout(() => {
+      dispatch(loaderAction());
+    }, 2000);
+  }
 
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
@@ -44,6 +44,24 @@ if (popMovie.length > 1) {
       setShowButton(false);
     }
   };
+  const [theme, setTheme] = useState('dark');
+  const changeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+
+
+
+  };
+  useEffect(() => {
+    const root = document.querySelector(':root');
+
+    const components = ['body-background','components-background','text-color'];
+    components.forEach((component) => {
+      root.style.setProperty(
+        `--${component}-default`,
+        `var(--${component}-${theme})`,
+      );
+    });
+  },[theme]);
 
   return (
     <>
@@ -60,6 +78,7 @@ if (popMovie.length > 1) {
 
           <div className={'containerSideBar'}>
             <Search/>
+            <button onClick={changeTheme}>change theme</button>
             <PopularMovies/>
             <FavoriteMovies/>
           </div>

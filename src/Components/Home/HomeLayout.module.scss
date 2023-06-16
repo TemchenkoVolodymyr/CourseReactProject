@@ -3,7 +3,7 @@
 .wrapper {
 
   h1, h2, h3 {
-    color: white;
+    //color: var(#{--text-color-dark});
     opacity: .8;
     text-transform: capitalize;
   }

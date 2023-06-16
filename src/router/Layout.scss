@@ -10,12 +10,17 @@ $sidBarWidth: $size * 25;
   padding: 0;
   margin: 0;
 }
+body{
+  background-color: var(--body-background-default);
+  color:#050505;
+}
 
 .containerTopLayout {
   display: flex;
   justify-content: space-between;
-  background-color: $colorBg;
-  color: $colorDefault;
+  //background-color: $colorBg;
+  //color: $colorDefault;
+  color: var(--text-color-default);
 }
 
 .containerNav {
@@ -29,7 +34,7 @@ $sidBarWidth: $size * 25;
   user-select: none;
 
   & > a {
-    color: $colorDefault;
+    color: var(--text-color-default);
     margin-left: $size * 2;
     margin-top: $size * 2;
     font-size: $size * 1.4;
@@ -39,7 +44,7 @@ $sidBarWidth: $size * 25;
 
     h1 {
       font-size: $size * 2;
-      color: $colorBtn;
+      color:$logo-color;
       letter-spacing: $size * 0.1;
 
       span {
@@ -123,4 +128,17 @@ $sidBarWidth: $size * 25;
 @keyframes example {
   from {color: rgba(30, 2, 8, 0.99);}
   to {color : rgba(213, 8, 57, 0.62);}
+}
+
+:root{
+  --body-background-dark:#{$colorBg};
+  --body-background-light:#{$colorBgLight};
+  --body-background-default:var(#{--body-background-dark});
+  --components-background-dark:#{$components-background-dark};
+  --components-background-light:#{$components-background-light};
+  --components-background-default:var(#{--components-background-dark});
+  --text-color-dark:#{$text-color-dark};
+  --text-color-light:#{$text-color-light};
+  --text-color-default:var(#{--text-color-dark});
+
 }
