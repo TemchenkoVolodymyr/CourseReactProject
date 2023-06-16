@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 import FilmComponent from './FilmComponent/FilmComponent';
 import styles from '../UserProfile.module.scss';
-import NoInfoComponent from "./NoInfoComponent";
+import NoInfoComponent from './NoInfoComponent';
 
 const UserFavorites = () => {
 

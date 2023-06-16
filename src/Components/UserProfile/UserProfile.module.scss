@@ -129,6 +129,10 @@
             justify-content: space-around;
             margin: 15px;
 
+            .rating{
+              position: relative;
+            }
+
             p {
               opacity: .5;
             }

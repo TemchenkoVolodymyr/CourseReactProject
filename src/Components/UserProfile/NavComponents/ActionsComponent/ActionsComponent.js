@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ActionButton from '../../../Action Bar/ActionButton';
 import { AiFillHeart, AiFillStar, AiOutlineDelete, AiOutlineUnorderedList } from 'react-icons/ai';
 import styles from '../../UserProfile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import {addFavorite, deleteFavorite, fetchFavorites} from '../../../../redux/slices/favoriteSlice';
-import {deleteFromWatchList} from "../../../../redux/slices/watchListSlice";
-import {useLocation} from "react-router-dom";
+import { addFavorite, deleteFavorite, fetchFavorites } from '../../../../redux/slices/favoriteSlice';
+import { deleteFromWatchList } from '../../../../redux/slices/watchListSlice';
+import { useLocation } from 'react-router-dom';
+import RatingComponent from '../RatingComponent/RatingComponent';
 
 
 const ActionsComponent = ({ movieId }) => {
@@ -13,7 +14,7 @@ const ActionsComponent = ({ movieId }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const location = useLocation();
-
+  const [showRating, setShowRating] = useState(false);
 
   const handleToggleFavorite = () => {
     if (userId) {
@@ -43,14 +44,21 @@ const ActionsComponent = ({ movieId }) => {
 
   };
 
+  const handleRateClick = () => {
+    setShowRating(!showRating);
+  };
+
   return (
 
     <div className={styles.actionBar}>
-      <div>
-        <ActionButton icon={<AiFillStar
+      <div className={styles.rating}>
+        <ActionButton
+          onClick={handleRateClick}
+          icon={<AiFillStar
           size={30}
         />}/>
         <p>Rate It</p>
+        {showRating && <RatingComponent movieId={movieId}/>}
       </div>
       <div>
         <ActionButton

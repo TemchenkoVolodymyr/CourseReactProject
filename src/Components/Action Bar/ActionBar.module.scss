@@ -1,5 +1,4 @@
 
-
 .actionBar {
   position: sticky;
   top: 1px;
@@ -8,16 +7,25 @@
   margin-bottom: 20px;
   background-color: dimgrey;
   display: flex;
-  align-items: center;
+  justify-content: center;
   border-radius: 20px;
 
-  & > div{
-    margin: auto;
+
+  & > div {
+
   }
 
-  .tooltip{
+  .tooltip {
     font-size: 18px;
     margin-top: 12px;
+  }
+
+  .ratingButton {
+
+
+    .rating {
+      position: relative;
+    }
   }
 
 }

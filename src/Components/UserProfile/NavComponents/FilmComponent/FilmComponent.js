@@ -2,13 +2,14 @@ import React from 'react';
 import styles from '../../UserProfile.module.scss';
 import CircleRating from '../../../CircleRating/CircleRating';
 import ActionsComponent from '../ActionsComponent/ActionsComponent';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const FilmComponent = ({ id, image, title, rating, overview, release }) => {
 
   const date = new Date(release);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
   const formattedDate = date.toLocaleDateString('en-US', options);
+
 
   return (
     <div className={styles.movieBlock}>

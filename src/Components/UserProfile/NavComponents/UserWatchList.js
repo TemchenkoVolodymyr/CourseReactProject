@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchWatchList } from '../../../redux/slices/watchListSlice';
 import styles from '../UserProfile.module.scss';
 import FilmComponent from './FilmComponent/FilmComponent';
-import NoInfoComponent from "./NoInfoComponent";
+import NoInfoComponent from './NoInfoComponent';
 
 const UserWatchList = () => {
 

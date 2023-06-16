@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ActionButton from './ActionButton';
 import { AiFillHeart, AiFillStar, AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsFillBookmarkFill } from 'react-icons/bs';
@@ -7,13 +7,16 @@ import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
-import {addToWatchList, deleteFromWatchList, fetchWatchList} from "../../redux/slices/watchListSlice";
+import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
+import RatingComponent from '../UserProfile/NavComponents/RatingComponent/RatingComponent';
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const isListed = useSelector((state) => state.watchList.isListed[movieId]);
   const userId = useSelector((state) => state.user.id);
+  const [showRating, setShowRating] = useState(false);
+
 
   const handleToggleFavorite = () => {
     if (userId) {
@@ -41,6 +44,10 @@ const ActionBar = ({ movieId }) => {
     }
   };
 
+  const handleRateClick = () => {
+    setShowRating(!showRating);
+  };
+
   return (
     <div className={styles.actionBar}>
       <div>
@@ -49,6 +56,8 @@ const ActionBar = ({ movieId }) => {
           data-tooltip-id="list"
           data-tooltip-content="Add to list"
         />}/>
+      </div>
+      <div>
         <ActionButton
           onClick={handleToggleFavorite}
           icon={<AiFillHeart
@@ -57,20 +66,30 @@ const ActionBar = ({ movieId }) => {
             data-tooltip-content="Mark as favorite"
             color={isFavorite ? 'red' : null}
           />}/>
+      </div>
+      <div>
         <ActionButton
           onClick={handleToggleWatchList}
           icon={<BsFillBookmarkFill
-          size={25}
-          color={isListed ? 'red' : null}
-          data-tooltip-id="watchlist"
-          data-tooltip-content="Add to yout watchlist"
-        />}/>
-        <ActionButton icon={<AiFillStar
-          size={30}
-          data-tooltip-id="rate"
-          data-tooltip-content="Rate it"
-        />}/>
+            size={25}
+            color={isListed ? 'red' : null}
+            data-tooltip-id="watchlist"
+            data-tooltip-content="Add to yout watchlist"
+          />}/>
       </div>
+      <div className={styles.ratingButton}>
+        <ActionButton
+          onClick={handleRateClick}
+          className={styles.rating}
+          icon={<AiFillStar
+            size={30}
+            data-tooltip-id="rate"
+            data-tooltip-content="Rate it"
+          />}/>
+        {showRating && <RatingComponent movieId={movieId}/>}
+      </div>
+
+
       <Tooltip
         id="list"
         className={styles.tooltip}
