@@ -6,23 +6,25 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite } from '../../redux/slices/favoriteSlice';
-
-
+import {addFavorite, deleteFavorite, removeFavorite} from '../../redux/slices/favoriteSlice';
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
-
+  const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId])
   const userId = useSelector((state) => state.user.id);
-  const handleAddFavorite = () => {
+
+  const handleToggleFavorite = () => {
     if (userId) {
-      dispatch(addFavorite({ userId, movieId }));
+      if (isFavorite) {
+        dispatch(deleteFavorite({ userId, movieId }));
+        dispatch(removeFavorite(movieId));
+      } else {
+        dispatch(addFavorite({ userId, movieId }));
+      }
     } else {
       alert('User data has not loaded yet');
     }
   };
-
-
 
   return (
     <div className={styles.actionBar}>
@@ -33,12 +35,13 @@ const ActionBar = ({ movieId }) => {
           data-tooltip-content="Add to list"
         />}/>
         <ActionButton
-          onClick={handleAddFavorite}
+          onClick={handleToggleFavorite}
           icon={<AiFillHeart
-          size={30}
-          data-tooltip-id="like"
-          data-tooltip-content="Mark as favorite"
-        />}/>
+            size={30}
+            data-tooltip-id="like"
+            data-tooltip-content="Mark as favorite"
+            color={isFavorite ? 'red' : null}
+          />}/>
         <ActionButton icon={<BsFillBookmarkFill
           size={25}
           data-tooltip-id="watchlist"
