@@ -76,18 +76,17 @@ export const fetchFavorites = createAsyncThunk(
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
-  reducers: {
-
-    removeFavorite: (state, action) => {
-      const movieId = action.payload;
-      state.favorites = state.favorites.filter((favorite) => favorite.movieId !== movieId);
-      state.isFavorite = {...state.isFavorite, [movieId]: false};
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(addFavorite.fulfilled, (state, action) => {
+        const { movieId } = action.payload;
+        state.favorites.push(action.payload);
+        state.isFavorite = { ...state.isFavorite, [movieId]: true };
+      })
       .addCase(deleteFavorite.fulfilled, (state, action) => {
         const movieId = action.payload.movieId;
+        state.favorites = state.favorites.filter((favorite) => favorite.movieId !== movieId);
         state.isFavorite = {...state.isFavorite, [movieId]: false};
       })
       .addCase(fetchFavorites.pending, (state) => {
@@ -108,5 +107,5 @@ export const favoritesSlice = createSlice({
   },
 
 });
-export const { removeFavorite,addFavoriteToList } = favoritesSlice.actions;
+
 export default favoritesSlice.reducer;

@@ -3,7 +3,7 @@ import ActionButton from '../../../Action Bar/ActionButton';
 import {AiFillHeart, AiFillStar, AiOutlineDelete, AiOutlineUnorderedList} from 'react-icons/ai';
 import styles from '../../UserProfile.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteFavorite, removeFavorite} from '../../../../redux/slices/favoriteSlice';
+import {deleteFavorite} from '../../../../redux/slices/favoriteSlice';
 
 const ActionsComponent = ({movieId}) => {
   const userId = useSelector((state) => state.user.id);
@@ -13,7 +13,7 @@ const ActionsComponent = ({movieId}) => {
   const removeFromFavoriteHandle = () => {
     if (userId) {
       dispatch(deleteFavorite({ userId, movieId }));
-      dispatch(removeFavorite(movieId));
+
     } else {
       alert('User data has not loaded yet');
     }
