@@ -1,14 +1,14 @@
 import React from 'react';
 import ActionButton from '../../../Action Bar/ActionButton';
-import {AiFillHeart, AiFillStar, AiOutlineDelete, AiOutlineUnorderedList} from 'react-icons/ai';
+import { AiFillHeart, AiFillStar, AiOutlineDelete, AiOutlineUnorderedList } from 'react-icons/ai';
 import styles from '../../UserProfile.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {deleteFavorite} from '../../../../redux/slices/favoriteSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFavorite } from '../../../../redux/slices/favoriteSlice';
 
-const ActionsComponent = ({movieId}) => {
+const ActionsComponent = ({ movieId }) => {
   const userId = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
-  const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId])
+  const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
 
   const removeFromFavoriteHandle = () => {
     if (userId) {

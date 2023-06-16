@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {serverTimestamp, addDoc, collection, getDocs, query, deleteDoc, where} from 'firebase/firestore';
+import { serverTimestamp, addDoc, collection, getDocs, query, deleteDoc, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import axios from 'axios';
 
@@ -86,7 +86,7 @@ export const favoritesSlice = createSlice({
       .addCase(deleteFavorite.fulfilled, (state, action) => {
         const movieId = action.payload.movieId;
         state.favorites = state.favorites.filter((favorite) => favorite.movieId !== movieId);
-        state.isFavorite = {...state.isFavorite, [movieId]: false};
+        state.isFavorite = { ...state.isFavorite, [movieId]: false };
       })
       .addCase(fetchFavorites.pending, (state) => {
         state.isLoading = 'loading';
@@ -94,8 +94,8 @@ export const favoritesSlice = createSlice({
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.isLoading = 'succeeded';
         state.favorites = action.payload;
-        action.payload.forEach(favorite => {
-          state.isFavorite = {...state.isFavorite, [favorite.movieId]: true};
+        action.payload.forEach((favorite) => {
+          state.isFavorite = { ...state.isFavorite, [favorite.movieId]: true };
         });
       })
       .addCase(fetchFavorites.rejected, (state, action) => {

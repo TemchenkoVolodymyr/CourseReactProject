@@ -6,21 +6,21 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import {addFavorite, deleteFavorite, fetchFavorites} from '../../redux/slices/favoriteSlice';
+import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
-  const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId])
+  const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const userId = useSelector((state) => state.user.id);
 
   const handleToggleFavorite = () => {
     if (userId) {
       if (isFavorite) {
-        dispatch(deleteFavorite({ userId, movieId }))
+        dispatch(deleteFavorite({ userId, movieId }));
       } else {
         dispatch(addFavorite({ userId, movieId }));
       }
-      dispatch(fetchFavorites(userId))
+      dispatch(fetchFavorites(userId));
     } else {
       alert('User data has not loaded yet');
     }
