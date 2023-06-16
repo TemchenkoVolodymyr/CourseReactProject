@@ -2,9 +2,9 @@ import React from 'react';
 import styles from '../../UserProfile.module.scss';
 import CircleRating from '../../../CircleRating/CircleRating';
 import ActionsComponent from '../ActionsComponent/ActionsComponent';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
-const FilmComponent = ({ id, image, title, rating, overview, release, removeFromFavorites }) => {
+const FilmComponent = ({ id, image, title, rating, overview, release }) => {
 
   const date = new Date(release);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -33,7 +33,7 @@ const FilmComponent = ({ id, image, title, rating, overview, release, removeFrom
         </div>
          <ActionsComponent
            movieId={id}
-           removeFromFavorites={removeFromFavorites}/>
+         />
        </div>
      </div>
     </div>

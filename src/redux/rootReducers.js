@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import user from './slices/userSlice';
 import movies from './slices/movieSlice';
-import { favoritesSlice } from './slices/favoriteSlice';
+import favorites from './slices/favoriteSlice';
+import watchList from './slices/watchListSlice';
 import { statisticsReducer } from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
@@ -13,7 +14,8 @@ export default combineReducers({
     statistics: statisticsReducer,
     movies,
     searchMovie: searchReducer,
-    favorites: favoritesSlice.reducer
+    favorites,
+    watchList
 
   },
 );
