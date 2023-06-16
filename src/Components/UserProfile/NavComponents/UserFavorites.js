@@ -25,6 +25,7 @@ const UserFavorites = () => {
 
   }, [isLoading, userId]);
 
+
   return (
     <>
      <NavComponentsHeader
@@ -36,6 +37,7 @@ const UserFavorites = () => {
         {isLoading === 'succeeded' && (
           <div>
             {favorites.map((favorite) => (
+              favorite.movieInfo &&
               <div key={favorite.movieId}>
                   <FilmComponent
                     image={favorite.movieInfo.backdrop_path}

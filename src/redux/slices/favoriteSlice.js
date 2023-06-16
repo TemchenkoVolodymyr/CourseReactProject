@@ -65,7 +65,6 @@ export const fetchFavorites = createAsyncThunk(
           movieInfo,
         });
       }
-
       return favorites;
     } catch (error) {
       return rejectWithValue(error.message);
