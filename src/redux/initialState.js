@@ -10,4 +10,5 @@ export const initialStore = {
     }
   ],
   searchMovie: '',
+  isLoading:true,
 };

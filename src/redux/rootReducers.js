@@ -5,6 +5,7 @@ import { favoritesSlice } from './slices/favoriteSlice';
 import { statisticsReducer } from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
+import { loaderReducer } from '../Loader/LoaderReducer';
 
 
 export default combineReducers({
@@ -13,7 +14,8 @@ export default combineReducers({
     statistics: statisticsReducer,
     movies,
     searchMovie: searchReducer,
-    favorites: favoritesSlice.reducer
+    favorites: favoritesSlice.reducer,
+    loading:loaderReducer,
 
   },
 );

@@ -5,8 +5,6 @@ import { SiOpenstreetmap } from 'react-icons/si';
 import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 
-
-
 const Navigations = () => {
 
   return (

@@ -6,16 +6,36 @@ import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
 import SectionNavigation from './Navigations/SectionNavigation';
 import ScrollButton from './ScrollButton';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../Loader/Loader';
+import { loaderAction } from '../Loader/loaderAction';
+import { fetchMovies } from '../redux/slices/movieSlice';
 
 
 const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
+  const popMovie = useSelector((state) => state.movies.popularMovie);
+
+  const loading = useSelector((store) => store.loading);
+  const dispatch = useDispatch();
+  const getPopMovies = async () => {
+    dispatch(fetchMovies({ type: 'popularMovie' }));
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+    getPopMovies();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
+if (popMovie.length > 1) {
+  setTimeout(() => {
+    dispatch(loaderAction());
+  }, 2000);
+}
 
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
@@ -25,26 +45,28 @@ const Layout = () => {
     }
   };
 
-
   return (
     <>
-      <div id={'mainContent'} className={'containerTopLayout'}>
-        <div className={'containerNav'}>
-          <SectionNavigation></SectionNavigation>
-        </div>
+      {loading ? <Loader></Loader> : <>
+        <div id={'mainContent'} className={'containerTopLayout'}>
+          <div className={'containerNav'}>
+            <SectionNavigation></SectionNavigation>
+          </div>
 
-        <div className={'containerMain'}>
-          <Outlet/>
-          {showButton && <ScrollButton></ScrollButton>}
-        </div>
+          <div className={'containerMain'}>
+            <Outlet/>
+            {showButton && <ScrollButton></ScrollButton>}
+          </div>
 
-        <div className={'containerSideBar'}>
-          <Search/>
-          <PopularMovies/>
-          <FavoriteMovies/>
+          <div className={'containerSideBar'}>
+            <Search/>
+            <PopularMovies/>
+            <FavoriteMovies/>
+          </div>
         </div>
-      </div>
-      <footer className={'footer'}>2023 - mock footer for course react</footer>
+        <footer className={'footer'}>2023 - mock footer for course react</footer>
+      </>
+      }
     </>
   );
 };
