@@ -7,6 +7,7 @@ import ratings from './slices/userRatingsSlice';
 import { statisticsReducer } from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
+import { loaderReducer } from '../Loader/LoaderReducer';
 
 
 export default combineReducers({
@@ -17,7 +18,8 @@ export default combineReducers({
     searchMovie: searchReducer,
     favorites,
     watchList,
-  ratings
+  ratings,
+    loading:loaderReducer,
 
   },
 );

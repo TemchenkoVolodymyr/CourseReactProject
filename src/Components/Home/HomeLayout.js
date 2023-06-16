@@ -36,11 +36,10 @@ const HomeLayout = () => {
       dispatch(fetchMovies({ type: 'popularMovie' }));
     };
 
-    getTrending();
-    getActors();
-    getDiscover();
-    getPopMovies();
-
+  getTrending();
+  getActors();
+  getDiscover();
+  getPopMovies();
 
   }, []);
 
