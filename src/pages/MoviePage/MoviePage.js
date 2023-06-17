@@ -8,6 +8,10 @@ import { Navigation } from 'swiper';
 import CircleRating from '../../Components/CircleRating/CircleRating';
 import SliderItem from '../../Components/SliderItems/SliderItem';
 import ActionBar from '../../Components/Action Bar/ActionBar';
+import CustomButton from '../../Components/Button/CustomButton';
+import Loader from '../../Loader/Loader';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 
 const MoviePage = () => {
@@ -28,8 +32,16 @@ const MoviePage = () => {
 
   }, [id]);
 
+
+  const setReview = async (movie) => {
+    await setDoc(doc(db, '', movie.id.toString()), {
+
+    });
+  };
+
+
   if (!movie) {
-    return <>Loading....</>;
+    return <Loader></Loader>;
   }
   return (
     <>
@@ -126,29 +138,13 @@ const MoviePage = () => {
 
         </div>
 
-        {/*<div>*/}
-        {/*  <h2>Watch the Trailer</h2>*/}
-        {/*  {movie.videos.results.length > 0 && (*/}
-        {/*    <div>*/}
-        {/*      {movie?.videos.results*/}
-        {/*        .filter((video) => video.type === 'Trailer')*/}
-        {/*        .slice(0, 1)*/}
-        {/*        .map((video) => (*/}
-        {/*          <div key={video.key}>*/}
-        {/*            <iframe*/}
-        {/*              width="100%"*/}
-        {/*              height="500"*/}
-        {/*              src={`https://www.youtube.com/embed/${video.key}`}*/}
-        {/*              title={video.name}*/}
-        {/*              frameBorder="0"*/}
-        {/*              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
-        {/*              allowFullScreen*/}
-        {/*            ></iframe>*/}
-        {/*          </div>*/}
-        {/*        ))}*/}
-        {/*    </div>*/}
-        {/*  )}*/}
-        {/*</div>*/}
+        <div className={style.reviews}>
+          <h1>Discussions</h1>
+          <textarea/>
+         <CustomButton name="SEND"></CustomButton>
+        </div>
+
+
         <h2>Similar</h2>
         <Swiper
           modules={[Navigation]}

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { useDispatch } from 'react-redux';
-// import { loaderAction } from '../../Loader/loaderAction';
+
 
 export const fetchMovies = createAsyncThunk(
   'movie/fetchMovies',
@@ -22,18 +21,12 @@ export const fetchMovies = createAsyncThunk(
       endpoint = 'genre/movie/list';
     }
 
-    // const dispatch = useDispatch();
     const { data } = await
       axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
 
     if (data.results) {
-      console.log('s')
-      // setTimeout(() => {
-      //   dispatch(loaderAction());
-      // },2000);
       return data.results;
     }
-
     if (data.genres)
       return data;
   }
