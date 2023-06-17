@@ -104,7 +104,7 @@ body{
 .footer {
   height: $heightFooter;
   padding-top: $footerPaddingTop;
-  background-color: $colorBg;
+  background-color: var(--body-background-default);
   text-align: center;
   color: $colorDefault;
   font-size: $size * 2;
