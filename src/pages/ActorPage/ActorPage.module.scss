@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  color: white;
+  //color: white;
   opacity: .8;
 
   .left,
@@ -78,4 +78,7 @@ h2{
       }
     }
   }
+}
+.knowFor p{
+  color: var(--text-color-default);
 }

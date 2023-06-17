@@ -7,6 +7,7 @@ import SliderItem from '../../Components/SliderItems/SliderItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
+import CustomButton from '../../Components/Button/CustomButton';
 
 const ActorPage = () => {
 
@@ -92,9 +93,8 @@ const ActorPage = () => {
         <div className={style.biography}>
           <p>{displayedWords.join(' ')}</p>
           {words.length > 100 && (
-            <button onClick={handleReadMoreClick}>
-              {isExpanded ? 'Read Less' : 'Read More'}
-            </button>
+            <CustomButton callback={handleReadMoreClick} name={isExpanded ? 'Read Less' : 'Read More'}>
+            </CustomButton>
           )}
         </div>
         <div className={style.knowFor}>

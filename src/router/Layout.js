@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { loaderAction } from '../Loader/loaderAction';
 import { fetchMovies } from '../redux/slices/movieSlice';
+import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 
 
 const Layout = () => {
@@ -31,11 +32,11 @@ const Layout = () => {
   }, []);
 
 
-if (popMovie.length > 1) {
-  setTimeout(() => {
-    dispatch(loaderAction());
-  }, 2000);
-}
+  if (popMovie.length > 1) {
+    setTimeout(() => {
+      dispatch(loaderAction());
+    }, 2000);
+  }
 
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
@@ -44,6 +45,24 @@ if (popMovie.length > 1) {
       setShowButton(false);
     }
   };
+  const [theme, setTheme] = useState('dark');
+  const changeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+
+
+
+  };
+  useEffect(() => {
+    const root = document.querySelector(':root');
+
+    const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
+    components.forEach((component) => {
+      root.style.setProperty(
+        `--${component}-default`,
+        `var(--${component}-${theme})`,
+      );
+    });
+  },[theme]);
 
   return (
     <>
@@ -60,6 +79,7 @@ if (popMovie.length > 1) {
 
           <div className={'containerSideBar'}>
             <Search/>
+            <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
             <PopularMovies/>
             <FavoriteMovies/>
           </div>

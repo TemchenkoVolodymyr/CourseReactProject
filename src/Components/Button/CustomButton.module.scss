@@ -16,7 +16,7 @@
   margin: 10px 0;
   &:hover {
     background: transparent;
-    color: #fff;
+    color:var(#{--btn-color-hover-default});
     box-shadow: 0 0 2em 0.5em rgba(213, 8, 57, 0.62);
   }
 }

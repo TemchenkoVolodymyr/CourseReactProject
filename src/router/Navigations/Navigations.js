@@ -9,7 +9,7 @@ const Navigations = () => {
 
   return (
     <>
-      <NavLink className={'active'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></NavLink>
+      <NavLink className={'active logo'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></NavLink>
       <p>menu</p>
       <NavLink to="/"> <AiOutlineHome size={'24'}/>Home</NavLink>
       <NavLink to="/discovery"><AiOutlineCompass size={'24'}/>Discovery</NavLink>
