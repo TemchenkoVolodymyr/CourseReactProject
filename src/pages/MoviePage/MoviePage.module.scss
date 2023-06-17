@@ -1,6 +1,7 @@
+
 .wrapper {
   font-family: Arial, sans-serif;
-  color: white;
+  color: var(--text-color-default);
 
   a{
 
@@ -10,6 +11,12 @@
 
   h2 {
     padding: 25px 0;
+  }
+   p{
+    color: var(--text-color-default);
+  }
+  h2,h3{
+    color: var(--color-header-default);
   }
 
   .banner {
@@ -47,15 +54,18 @@
       h1 {
         letter-spacing: 2px;
         text-transform: uppercase;
+        color:white;
       }
 
       p {
         padding: 5px 0;
         font-size: 14px;
         opacity: .9;
+        color:white;
 
         span {
           opacity: .7;
+          color:white;
         }
       }
 
@@ -151,3 +161,8 @@
     }
   }
 }
+//.test {
+//  h2,h3 ,p{
+//    color: var(--text-color-default);
+//  }
+//}

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { loaderAction } from '../Loader/loaderAction';
 import { fetchMovies } from '../redux/slices/movieSlice';
+import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 
 
 const Layout = () => {
@@ -54,7 +55,7 @@ const Layout = () => {
   useEffect(() => {
     const root = document.querySelector(':root');
 
-    const components = ['body-background','components-background','text-color'];
+    const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
     components.forEach((component) => {
       root.style.setProperty(
         `--${component}-default`,
@@ -78,7 +79,7 @@ const Layout = () => {
 
           <div className={'containerSideBar'}>
             <Search/>
-            <button onClick={changeTheme}>change theme</button>
+            <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
             <PopularMovies/>
             <FavoriteMovies/>
           </div>

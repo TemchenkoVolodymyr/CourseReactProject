@@ -92,7 +92,7 @@ const MoviePage = () => {
           </div>
         </div>
 
-        <div>
+        <div className={style.test}>
           <h2>Top Billed Cast</h2>
           <Swiper
             modules={[Navigation]}

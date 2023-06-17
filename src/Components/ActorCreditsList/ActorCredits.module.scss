@@ -3,36 +3,37 @@
   border: 1px solid grey;
   position: relative;
 
-  a{
+  a {
     text-decoration: none;
-    color: white;
+    //color: white;
   }
 
-  h2{
+  h2 {
     padding: 10px;
   }
 
-  .filter{
+  .filter {
     font-size: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .info{
+  .info {
     display: flex;
     align-items: flex-start;
     font-size: 22px;
     padding: 10px;
 
-    .title{
+    .title {
       margin-left: 20px;
       font-size: 24px;
       padding-bottom: 10px;
+      color: var(--color-header-default);
 
     }
 
-    .role{
+    .role {
       margin-left: 40px;
     }
 
