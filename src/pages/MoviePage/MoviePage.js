@@ -10,13 +10,23 @@ import SliderItem from '../../Components/SliderItems/SliderItem';
 import ActionBar from '../../Components/Action Bar/ActionBar';
 import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { dbRealTime } from '../../firebase';
+import { ref, set, onValue, push } from 'firebase/database';
 
 
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
+
+  const [value, setValue] = useState('');
+
+  const [reviews, setReviews] = useState([]);
+  const db = getFirestore();
+
+  const auth = getAuth();
+
 
   useEffect(() => {
     async function fetchMovie() {
@@ -28,17 +38,50 @@ const MoviePage = () => {
       }
     }
 
+    const getReviews = async () => {
+      const reference = ref(dbRealTime, 'reviews/' + id);
+
+      onValue(reference, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childKey = childSnapshot.key;
+          const childData = childSnapshot.val();
+          setReviews((prevState) => [...prevState, childData]);
+        });
+      },{
+        onlyOnce:true
+      });
+
+
+    };
+
+    getReviews();
+
     fetchMovie();
 
   }, [id]);
 
+  console.log(reviews)
+  const setReview = async (text) => {
+    const reference = ref(dbRealTime, 'reviews/' + id);
+    const currentUser = auth.currentUser.email;
+    const date = new Date;
+    const newReviewRef = push(reference);
 
-  const setReview = async (movie) => {
-    await setDoc(doc(db, '', movie.id.toString()), {
-
+    await set(newReviewRef, {
+      text: text,
+      date: date.toLocaleDateString(),
+      user: currentUser,
     });
+
   };
 
+
+  const changeValue = (e) => {
+    setValue(e.target.value);
+  };
+  const sendReviewHandler = (review) => {
+    setReview(review);
+  };
 
   if (!movie) {
     return <Loader></Loader>;
@@ -140,8 +183,12 @@ const MoviePage = () => {
 
         <div className={style.reviews}>
           <h1>Discussions</h1>
-          <textarea/>
-         <CustomButton name="SEND"></CustomButton>
+          <textarea value={value} onChange={changeValue}/>
+          <CustomButton name="SEND" callback={() => sendReviewHandler(value)}></CustomButton>
+        </div>
+        <div>
+          {reviews && reviews.length > 1  ? reviews.map((item) => <div key={item.user}><p>{item.user}</p>
+          </div>) : null}
         </div>
 
 

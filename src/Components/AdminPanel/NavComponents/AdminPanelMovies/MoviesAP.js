@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './moviesAP.module.scss';
-import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { getMainDataToMovies } from './GetMainDataToMovies';
 import DrawInfoAboutMovies from './DrawInfoAboutMovies';
 import DrawnInfoToSearch from './DrowInfoToSeacrh';
 import { drawnInfo, drawnInfoSearch } from './drawnMoviesInfo';
 import UniversalSearch from '../../../Search/UniversalSearch';
+import { FilterById } from './FilterById';
 
 
 const MoviesAP = () => {
@@ -23,6 +24,7 @@ const MoviesAP = () => {
 
     const db = getFirestore();
 
+
     const searchMovie = (foundMovies) => foundMovies && adminPanelMovies
         .filter((item) => item.title.toLowerCase()
             .includes(foundMovies.toLowerCase()));
@@ -36,6 +38,7 @@ const MoviesAP = () => {
     };
 
     useEffect(() => {
+
         getMainDataToMovies(movies, dispatch, setAdminPanelMovies, db);
     }, []);
 

@@ -1,0 +1,17 @@
+.actionButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #032541;
+  border: none;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+.actionButton svg {
+  color: white;
+}
+.actionButton svg .active {
+  color: #c01145;
+}
+
+/*# sourceMappingURL=ActionButton.module.css.map */

@@ -1,0 +1,34 @@
+.wrapper {
+  border-radius: 20px;
+  border: 1px solid grey;
+  position: relative;
+}
+.wrapper a {
+  text-decoration: none;
+}
+.wrapper h2 {
+  padding: 10px;
+}
+.wrapper .filter {
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapper .info {
+  display: flex;
+  align-items: flex-start;
+  font-size: 22px;
+  padding: 10px;
+}
+.wrapper .info .title {
+  margin-left: 20px;
+  font-size: 24px;
+  padding-bottom: 10px;
+  color: var(--color-header-default);
+}
+.wrapper .info .role {
+  margin-left: 40px;
+}
+
+/*# sourceMappingURL=ActorCredits.module.css.map */
