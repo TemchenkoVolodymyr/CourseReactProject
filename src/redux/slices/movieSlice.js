@@ -27,7 +27,7 @@ export const fetchMovies = createAsyncThunk(
       axios(`https://api.themoviedb.org/3/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
 
     if (data.results) {
-      console.log('s')
+      console.log('s');
       // setTimeout(() => {
       //   dispatch(loaderAction());
       // },2000);

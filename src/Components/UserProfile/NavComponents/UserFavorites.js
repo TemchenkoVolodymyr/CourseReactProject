@@ -22,7 +22,6 @@ const UserFavorites = () => {
 
   }, [isLoading, userId]);
 
-
   return (
     <>
      <NavComponentsHeader
