@@ -132,4 +132,31 @@
   color: #ea6615;
 }
 
+.reviewsContainer {
+  margin-top: 35px;
+}
+.reviewsContainer h1 {
+  padding-bottom: 10px;
+}
+.reviewsContainer textarea {
+  padding: 20px;
+  width: 500px;
+}
+
+.wrapperReview {
+  background-color: #ececec;
+  margin-bottom: 10px;
+}
+
+.reviews {
+  color: #E30914 !important;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  padding-bottom: 10px;
+}
+
 /*# sourceMappingURL=MoviePage.module.css.map */

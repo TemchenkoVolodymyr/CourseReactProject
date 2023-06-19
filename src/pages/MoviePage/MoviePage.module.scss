@@ -3,7 +3,7 @@
   font-family: Arial, sans-serif;
   color: var(--text-color-default);
 
-  a{
+  a {
 
     color: white;
   }
@@ -12,10 +12,12 @@
   h2 {
     padding: 25px 0;
   }
-   p{
+
+  p {
     color: var(--text-color-default);
   }
-  h2,h3{
+
+  h2, h3 {
     color: var(--color-header-default);
   }
 
@@ -54,18 +56,18 @@
       h1 {
         letter-spacing: 2px;
         text-transform: uppercase;
-        color:white;
+        color: white;
       }
 
       p {
         padding: 5px 0;
         font-size: 14px;
         opacity: .9;
-        color:white;
+        color: white;
 
         span {
           opacity: .7;
-          color:white;
+          color: white;
         }
       }
 
@@ -161,6 +163,29 @@
     }
   }
 }
-.reviews{
+.reviewsContainer{
+  margin-top: 35px;
+  h1{
+    padding-bottom: 10px;
+  }
+  textarea{
+    padding:20px;
+    width: 500px;
+  }
+}
+.wrapperReview {
+  background-color: #ececec;
+  margin-bottom: 10px;
 
+}
+
+.reviews {
+  color: #E30914 !important;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.header{
+  padding-bottom: 10px;
 }
