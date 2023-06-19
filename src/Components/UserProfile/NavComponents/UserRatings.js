@@ -14,6 +14,7 @@ const UserRatings = () => {
   const isLoading = useSelector((state) => state.ratings.isLoading);
   const error = useSelector((state) => state.ratings.error);
 
+
   useEffect(() => {
     if (isLoading === 'idle' && userId) {
       dispatch(fetchRatings(userId));

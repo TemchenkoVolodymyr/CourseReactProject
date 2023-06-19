@@ -9,11 +9,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
 import RatingComponent from '../UserProfile/NavComponents/RatingComponent/RatingComponent';
+import {addRating} from "../../redux/slices/userRatingsSlice";
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const isListed = useSelector((state) => state.watchList.isListed[movieId]);
+  const isRated =useSelector((state) => state.ratings.isRated[movieId]);
   const userId = useSelector((state) => state.user.id);
   const [showRating, setShowRating] = useState(false);
 
@@ -42,9 +44,20 @@ const ActionBar = ({ movieId }) => {
       alert('User data has not loaded yet');
     }
   };
-  console.log(isListed)
+
   const handleRateClick = () => {
     setShowRating(!showRating);
+  };
+
+  const handleRatingChanged = (rating) => {
+    const movieIdStr = movieId.toString();
+    dispatch(addRating({ userId, movieId: movieIdStr, rating }))
+      .then(() => {
+        setShowRating(false);
+      })
+      .catch((error) => {
+        console.error('Error adding rating:', error);
+      });
   };
 
   return (
@@ -82,12 +95,15 @@ const ActionBar = ({ movieId }) => {
           className={styles.rating}
           icon={<AiFillStar
             size={30}
+            color={isRated ? 'yellow' : null}
             data-tooltip-id="rate"
             data-tooltip-content="Rate it"
           />}/>
-        {showRating && <RatingComponent movieId={movieId}/>}
+        {showRating &&  <RatingComponent
+          onChange={handleRatingChanged}
+          movieId={movieId}
+        />}
       </div>
-
 
       <Tooltip
         id="list"

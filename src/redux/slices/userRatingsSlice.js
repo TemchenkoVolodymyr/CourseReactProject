@@ -3,7 +3,7 @@ import {
   serverTimestamp,
   updateDoc,
   getDoc,
-  setDoc, doc, getDocs, collection, query
+  setDoc, doc, getDocs, collection, query, where, deleteDoc
 } from 'firebase/firestore';
 import { db } from '../../firebase';
 import axios from 'axios';
@@ -13,6 +13,7 @@ const initialState = {
   ratings: [],
   isLoading: 'idle',
   error: null,
+  isRated: {}
 };
 
 export const addRating = createAsyncThunk(
@@ -26,7 +27,7 @@ export const addRating = createAsyncThunk(
       if (docSnap.exists()) {
         await updateDoc(docRef, { rating, updatedAt: serverTimestamp() });
       } else {
-        await setDoc(docRef, { movieId, rating, addedAt: serverTimestamp() });
+        await setDoc(docRef, { movieId: parseInt(movieId), rating, addedAt: serverTimestamp() });
       }
       return { userId, movieId, rating };
     } catch (error) {
@@ -62,6 +63,26 @@ export const fetchRatings = createAsyncThunk(
     }
   }
 );
+export const deleteRatings = createAsyncThunk(
+  'ratings/deleteRatings',
+  async ({ userId, movieId }, thunkAPI) => {
+
+    try {
+      const collectionRef = collection(db, `users/${userId}/ratings`);
+      const queryRef = query(collectionRef, where('movieId', '==', movieId));
+      const snapshot = await getDocs(queryRef);
+
+      snapshot.forEach((doc) => {
+        deleteDoc(doc.ref);
+      });
+
+      return { userId, movieId };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 
 export const ratingsSlice = createSlice({
   name: 'ratings',
@@ -70,7 +91,15 @@ export const ratingsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addRating.fulfilled, (state, action) => {
+        const { movieId } = action.payload;
         state.ratings.push(action.payload);
+        state.isRated = { ...state.isRated, [movieId]: true };
+      })
+      .addCase(deleteRatings.fulfilled, (state, action) => {
+        const movieId = action.payload.movieId;
+        state.isRated = { ...state.isRated, [movieId]: false };
+        state.ratings = state.ratings.filter((rating) => rating.movieId !== movieId);
+
       })
       .addCase(fetchRatings.pending, (state) => {
         state.isLoading = 'loading';
@@ -78,6 +107,9 @@ export const ratingsSlice = createSlice({
       .addCase(fetchRatings.fulfilled, (state, action) => {
         state.isLoading = 'succeeded';
         state.ratings = action.payload;
+        action.payload.forEach((rated) => {
+          state.isRated = { ...state.isRated, [rated.movieId]: true };
+        });
       })
       .addCase(fetchRatings.rejected, (state, action) => {
         state.isLoading = 'failed';
