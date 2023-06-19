@@ -17,7 +17,6 @@ const ActionBar = ({ movieId }) => {
   const userId = useSelector((state) => state.user.id);
   const [showRating, setShowRating] = useState(false);
 
-
   const handleToggleFavorite = () => {
     if (userId) {
       if (isFavorite) {
@@ -33,7 +32,7 @@ const ActionBar = ({ movieId }) => {
 
   const handleToggleWatchList = () => {
     if (userId) {
-      if (isFavorite) {
+      if (isListed) {
         dispatch(deleteFromWatchList({ userId, movieId }));
       } else {
         dispatch(addToWatchList({ userId, movieId }));
@@ -43,7 +42,7 @@ const ActionBar = ({ movieId }) => {
       alert('User data has not loaded yet');
     }
   };
-
+  console.log(isListed)
   const handleRateClick = () => {
     setShowRating(!showRating);
   };
