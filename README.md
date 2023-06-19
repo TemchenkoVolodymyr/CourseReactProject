@@ -4,13 +4,15 @@
 <ul>
 <li>Single Page Application to show new movies and watch trailer</li>
 <li>Connect to API TMDB and take all fresh movies from that database</li>
+<li>Authorization and Registration by Firebase</li>
+<li>Page where you can watch all the information about the movie,actors and watch the trailer</li>
+<li>User profile where you can add your favorite movies, delete, show friends your list</li>
+<li>Router navigating the pages</li>
+<li>Review section by database Realtime</li>
 <li>Switch theme</li>
 <li>Search movies on main page</li>
-<li>Router navigating the pages</li>
-<li>Possibility of authorization and registration</li>
-<li>User profile where you can add your favorite movies, delete, show friends your list</li>
-<li>Authorization and Registration by Firebase</li>
-<li>Review section by database Realtime</li>
+
+
 
 </ul>
 <p></p>
