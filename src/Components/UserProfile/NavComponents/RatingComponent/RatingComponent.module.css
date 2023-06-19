@@ -1,0 +1,12 @@
+.stars {
+  background-color: #032541;
+  border-radius: 15px;
+  position: absolute;
+  padding: 20px;
+  top: 80px;
+}
+.stars > div > div {
+  display: flex;
+}
+
+/*# sourceMappingURL=RatingComponent.module.css.map */

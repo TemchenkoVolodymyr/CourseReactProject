@@ -1,0 +1,124 @@
+.container {
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #215064;
+  font-size: 20px;
+}
+.container a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  opacity: 0.9;
+}
+
+.outlet {
+  font-size: 20px;
+  color: black;
+  opacity: 0.8;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.outlet .titleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #215064;
+  border-radius: 20px 20px 0 0;
+  color: white;
+  padding: 20px;
+}
+.outlet .titleHeader .filters {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+}
+.outlet .titleHeader .filters > div > span {
+  cursor: pointer;
+}
+.outlet .titleHeader .filters .filtered {
+  position: relative;
+}
+.outlet .titleHeader .filters .filtered .dropDown {
+  width: 160px;
+  background-color: #215064;
+  color: white;
+  padding: 10px;
+  list-style: none;
+  position: absolute;
+  top: 40px;
+  border-radius: 20px;
+}
+.outlet .titleHeader .filters .filtered .dropDown li {
+  cursor: pointer;
+  padding: 5px;
+}
+.outlet .pageInfo .emptyList {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.outlet .pageInfo .emptyList p {
+  margin: 50px;
+  font-size: 24px;
+}
+.outlet .pageInfo .movieBlock {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid #215064;
+  margin: 10px 5px;
+}
+.outlet .pageInfo .movieBlock .image {
+  border-radius: 20px 0 0 20px;
+  background-size: cover;
+  background-position: center;
+  min-width: 300px;
+}
+.outlet .pageInfo .movieBlock .info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.outlet .pageInfo .movieBlock .info .movieTitle {
+  display: flex;
+  align-items: center;
+}
+.outlet .pageInfo .movieBlock .info .movieTitle a {
+  text-decoration: none;
+  color: inherit;
+}
+.outlet .pageInfo .movieBlock .info .movieTitle h2, .outlet .pageInfo .movieBlock .info .movieTitle p {
+  padding-left: 10px;
+}
+.outlet .pageInfo .movieBlock .info .movieTitle p {
+  opacity: 0.5;
+}
+.outlet .pageInfo .movieBlock .info .movieInfo {
+  margin: 10px;
+}
+.outlet .pageInfo .movieBlock .info .movieInfo .actionBar {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+.outlet .pageInfo .movieBlock .info .movieInfo .actionBar .rating {
+  position: relative;
+}
+.outlet .pageInfo .movieBlock .info .movieInfo .actionBar p {
+  opacity: 0.5;
+}
+.outlet .pageInfo .movieBlock .info .movieInfo .overview {
+  line-clamp: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.3em;
+}
+
+/*# sourceMappingURL=UserProfile.module.css.map */

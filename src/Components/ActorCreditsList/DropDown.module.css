@@ -1,0 +1,24 @@
+.dropDown {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 19%;
+}
+.dropDown span {
+  cursor: pointer;
+}
+.dropDown .dropDownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  text-align: left;
+  font-size: 20px;
+  width: 100%;
+}
+.dropDown .dropDownMenu p {
+  cursor: pointer;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=DropDown.module.css.map */

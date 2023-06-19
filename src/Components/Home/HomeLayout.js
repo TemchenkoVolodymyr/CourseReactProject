@@ -36,10 +36,10 @@ const HomeLayout = () => {
       dispatch(fetchMovies({ type: 'popularMovie' }));
     };
 
-  getTrending();
-  getActors();
-  getDiscover();
-  getPopMovies();
+    getTrending();
+    getActors();
+    getDiscover();
+    getPopMovies();
 
   }, []);
 
@@ -63,7 +63,7 @@ const HomeLayout = () => {
                 className={style.swiperSlideMain}>
                 <SliderWithWatchBtn
                   rating={(movie.vote_average * 10).toFixed(1)}
-                  displayAsPercentage ={true}
+                  displayAsPercentage={true}
                   name={movie.title}
                   bg={movie.backdrop_path}
                   id={movie.id}></SliderWithWatchBtn>
@@ -87,13 +87,13 @@ const HomeLayout = () => {
                 <NavLink
                   to={`/movie/${movie.id}`}
                   className={style.swiperSlide}>
-                    <SliderItem
-                      title={movie.title}
-                      img={movie.poster_path}
-                      rating={(movie.vote_average * 10).toFixed(1)}
-                      displayAsPercentage ={true}
-                      canvasShow={true}
-                    />
+                  <SliderItem
+                    title={movie.title}
+                    img={movie.poster_path}
+                    rating={(movie.vote_average * 10).toFixed(1)}
+                    displayAsPercentage={true}
+                    canvasShow={true}
+                  />
                 </NavLink>
               </SwiperSlide>
             )
@@ -116,13 +116,13 @@ const HomeLayout = () => {
                   className={style.swiperSlide}
                   onClick={() => localStorage.setItem('actorId', actor.id)}
                 >
-                <SliderItem
-                  title={actor.name}
-                  img={actor.profile_path}
-                  rating={actor.popularity.toFixed(1)}
-                  displayAsPercentage ={false}
-                  canvasShow={false}
-                />
+                  <SliderItem
+                    title={actor.name}
+                    img={actor.profile_path}
+                    rating={actor.popularity.toFixed(1)}
+                    displayAsPercentage={false}
+                    canvasShow={false}
+                  />
                 </NavLink>
               </SwiperSlide>
             )

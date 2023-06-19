@@ -3,11 +3,15 @@
   margin: 0;
 }
 
+body {
+  background-color: var(--body-background-default);
+  color: #050505;
+}
+
 .containerTopLayout {
   display: flex;
   justify-content: space-between;
-  background-color: #171B1E;
-  color: grey;
+  color: var(--text-color-default);
 }
 
 .containerNav {
@@ -21,7 +25,7 @@
   user-select: none;
 }
 .containerNav > a {
-  color: grey;
+  color: var(--text-color-default);
   margin-left: 20px;
   margin-top: 20px;
   font-size: 14px;
@@ -31,14 +35,14 @@
 }
 .containerNav > a h1 {
   font-size: 20px;
-  color: #f8f8f8;
+  color: rgba(152, 4, 4, 0.87);
   letter-spacing: 1px;
 }
 .containerNav > a h1 span {
   color: #E30914;
 }
 .containerNav > a:hover {
-  color: #f8f8f8;
+  color: #720101;
   transition: 0.2s;
 }
 .containerNav > a svg {
@@ -47,7 +51,7 @@
   fill: grey;
 }
 .containerNav > .active {
-  color: #f8f8f8;
+  color: #720101;
   cursor: default;
   border-right: 3px solid #E30914;
 }
@@ -67,6 +71,7 @@
 .containerMain {
   width: calc(100% - 250px - 250px);
   padding: 10px;
+  color: var(--text-color-default);
 }
 
 .containerSideBar {
@@ -81,11 +86,53 @@
 .footer {
   height: 60px;
   padding-top: 25px;
-  background-color: #171B1E;
+  background-color: var(--body-background-default);
   text-align: center;
-  color: grey;
+  color: var(--text-color-default);
   font-size: 20px;
   border-top: 1px solid #404040;
+}
+
+.topArrow {
+  color: rgba(213, 8, 57, 0.62);
+  position: fixed;
+  bottom: 150px;
+  z-index: 1000;
+  left: 50px;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.topArrow:hover {
+  cursor: pointer;
+  color: #c05a11;
+}
+
+@keyframes example {
+  from {
+    color: rgba(30, 2, 8, 0.99);
+  }
+  to {
+    color: rgba(213, 8, 57, 0.62);
+  }
+}
+:root {
+  --body-background-dark:#171B1E;
+  --body-background-light:#ffffff;
+  --body-background-default:var(--body-background-dark);
+  --components-background-dark:#171B1E;
+  --components-background-light:#ffffff;
+  --components-background-default:var(--components-background-dark);
+  --text-color-dark:#818080;
+  --text-color-light:#000000;
+  --text-color-default:var(--text-color-dark);
+  --btn-color-hover-dark:#f6f6f6;
+  --btn-color-hover-light:rgba(210, 9, 9, 0.99) ;
+  --btn-color-hover-default:#f6f6f6 ;
+  --color-header-dark:#ffffff;
+  --color-header-light:#000000;
+  --color-header-default:var(--color-header-dark);
 }
 
 /*# sourceMappingURL=Layout.css.map */

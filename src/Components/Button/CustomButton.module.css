@@ -1,5 +1,4 @@
-
-.link{
+.link {
   color: rgba(213, 8, 57, 0.62) !important;
   border-radius: 1rem;
   background: transparent;
@@ -14,9 +13,11 @@
   align-items: center;
   justify-content: center;
   margin: 10px 0;
-  &:hover {
-    background: transparent;
-    color:var(#{--btn-color-hover-default});
-    box-shadow: 0 0 2em 0.5em rgba(213, 8, 57, 0.62);
-  }
 }
+.link:hover {
+  background: transparent;
+  color: var(--btn-color-hover-default);
+  box-shadow: 0 0 2em 0.5em rgba(213, 8, 57, 0.62);
+}
+
+/*# sourceMappingURL=CustomButton.module.css.map */

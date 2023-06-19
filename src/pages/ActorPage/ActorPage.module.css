@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+}
+.wrapper .left,
+.wrapper .right {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.wrapper .left img {
+  width: 350px;
+  border-radius: 20px;
+}
+.wrapper .left .personalInfo {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .left .personalInfo h2 {
+  margin: 10px;
+}
+.wrapper .left .personalInfo > div {
+  margin: 10px;
+}
+.wrapper .left .personalInfo > div p {
+  padding: 10px;
+}
+.wrapper .right {
+  width: 70%;
+  overflow: auto;
+}
+.wrapper .right .biography {
+  margin-top: 10px;
+  font-size: 20px;
+}
+.wrapper .right .knowFor {
+  width: 100%;
+}
+.wrapper .right .knowFor h2 {
+  margin: 20px 0;
+}
+.wrapper .right .knowFor .swiperSlide {
+  text-decoration: none;
+  color: white;
+}
+.wrapper .right .knowFor .swiperSlide > div {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  border-radius: 25px;
+  position: relative;
+}
+.wrapper .right .knowFor .swiperSlide > div > canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.wrapper .right .knowFor .swiperSlide > div:hover {
+  box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+  transform: scale(1.05);
+}
+
+.knowFor p {
+  color: var(--text-color-default);
+}
+
+/*# sourceMappingURL=ActorPage.module.css.map */

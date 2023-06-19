@@ -106,7 +106,7 @@ body{
   padding-top: $footerPaddingTop;
   background-color: var(--body-background-default);
   text-align: center;
-  color: $colorDefault;
+  color: var(--text-color-default);
   font-size: $size * 2;
   border-top: $footerWidthBorder solid darken($colorDefault, 25%);
 }
