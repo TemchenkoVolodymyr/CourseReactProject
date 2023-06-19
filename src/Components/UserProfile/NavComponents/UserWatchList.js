@@ -45,7 +45,6 @@ const UserWatchList = () => {
                     overview={film.movieInfo.overview}
                     release={film.movieInfo.release_date}
                     id={film.movieInfo.id}
-
                   />
                 </div>
               ))}

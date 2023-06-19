@@ -30,7 +30,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 32,
     height: 32,
     '&:before': {
-      content: "''",
+      content: '\'\'',
       position: 'absolute',
       width: '100%',
       height: '100%',
@@ -51,12 +51,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches(props) {
- const {callback} = props;
+ const { callback } = props;
   return (
     <FormGroup onClick={callback}>
       <FormControlLabel
         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked/>}
         label="Switch Theme"
       />
-    </FormGroup>)
+    </FormGroup>);
 }
