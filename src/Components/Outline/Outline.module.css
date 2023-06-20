@@ -1,10 +1,12 @@
 .container {
-  max-height: 350px;
+  max-height: 500px;
   overflow: hidden;
-  margin-top: 93px;
+  margin-top: 50px;
 }
-
-.wrapperBox {
+.container a {
+  text-decoration: none;
+}
+.container .wrapperBox {
   width: 200px;
   height: 100px;
   margin: 10px;
@@ -15,29 +17,27 @@
   justify-content: end;
   flex-direction: column;
 }
-.wrapperBox:hover {
+.container .wrapperBox:hover {
   transform: scale(1.05);
   cursor: pointer;
   box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
 }
-.wrapperBox:hover .wrapperAbout {
+.container .wrapperBox:hover .wrapperAbout {
   opacity: 1;
 }
-
-.item {
+.container .item {
   padding: 5px;
   color: #ffffff;
 }
-
-.wrapperAbout {
+.container .wrapperAbout {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-.wrapperAbout div {
+.container .wrapperAbout div {
   width: 40%;
   text-align: center;
 }

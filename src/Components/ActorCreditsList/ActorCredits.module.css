@@ -15,17 +15,32 @@
   justify-content: space-between;
   align-items: center;
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .wrapper .filter {
+    font-size: 15px;
+  }
+}
 .wrapper .info {
   display: flex;
   align-items: flex-start;
   font-size: 22px;
   padding: 10px;
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .wrapper .info {
+    font-size: 15px;
+  }
+}
 .wrapper .info .title {
   margin-left: 20px;
   font-size: 24px;
   padding-bottom: 10px;
   color: var(--color-header-default);
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .wrapper .info .title {
+    font-size: 15px;
+  }
 }
 .wrapper .info .role {
   margin-left: 40px;
