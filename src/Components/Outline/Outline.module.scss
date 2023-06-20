@@ -6,6 +6,12 @@
   a{
     text-decoration: none;
   }
+  h3{
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      font-size: 13px;
+
+    }
+  }
 
   .wrapperBox {
     width: 200px;
@@ -17,6 +23,10 @@
     font-size: 12px;
     justify-content: end;
     flex-direction: column;
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      width: 110px;
+
+    }
 
     &:hover {
       transform: scale(1.05);

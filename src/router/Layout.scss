@@ -90,6 +90,9 @@ body{
   width: calc(100% - $navWidth - $sidBarWidth);
   padding: $size;
   color: var(--text-color-default);
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    width:700px ;
+  }
 }
 
 .containerSideBar {

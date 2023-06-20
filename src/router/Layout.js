@@ -91,7 +91,7 @@ const Layout = () => {
             />
           </div>
         </div>
-        <footer className={'footer'}>2023 - mock footer for course react</footer>
+        {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>
       }
     </>
