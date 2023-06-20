@@ -22,10 +22,15 @@
   border-radius: 20px;
   margin-top: 20px;
 
-  .profile{
+  .profile {
 
+    h2 {
+      padding: 20px;
+      color: rgba(33, 80, 100, 0.8);
+      text-align: center;
+    }
 
-    .header{
+    .header {
       background-color: #215064;
       border-radius: 19px 19px 0 0;
       display: flex;
@@ -33,56 +38,78 @@
       padding: 10px;
       color: white;
 
-      img{
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
+      .avatar {
+        margin-bottom: 20px;
+        margin-left: 20px;
       }
 
-      .userInfo{
+      .userInfo {
         display: flex;
         flex-direction: column;
         width: 60%;
 
-
-        .main{
+        .main {
           display: flex;
           align-items: stretch;
-          margin: 30px auto;
+          margin: 30px 0;
 
-          .name{
+          .name {
             font-size: 32px;
             font-weight: bold;
           }
 
-          .membership{
+          .membership {
             opacity: .7;
             font-size: 20px;
             padding-left: 20px;
           }
         }
 
-        .ratings{
+        .ratings {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
 
-          p{
+          p {
             padding-left: 20px;
             font-size: 24px;
           }
         }
 
-
       }
     }
 
-    .stats{
-      font-size: 30px;
+    .stats {
+      font-size: 24px;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       text-align: center;
+
+      div {
+        margin: 15px;
+        box-shadow: 5px 5px 25px 5px rgba(33, 80, 100, 0.5);
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+
+        h3 {
+          font-size: 26px;
+          padding-top: 40px;
+          color: rgba(33, 80, 100, 0.8)
+        }
+
+        p {
+          margin: 25px 0;
+          color: rgba(33, 80, 100, 0.8);
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+
+      }
+
+
     }
   }
 
@@ -137,14 +164,12 @@
       align-items: center;
       justify-content: center;
 
-      p{
+      p {
         margin: 50px;
         font-size: 24px;
       }
 
     }
-
-
 
 
     .movieBlock {
@@ -193,7 +218,7 @@
             justify-content: space-around;
             margin: 15px;
 
-            .rating{
+            .rating {
               position: relative;
             }
 

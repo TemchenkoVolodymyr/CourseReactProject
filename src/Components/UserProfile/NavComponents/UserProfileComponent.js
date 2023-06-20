@@ -16,7 +16,7 @@ const UserProfileComponent = () => {
   return (
     <div className={styles.profile}>
       <div className={styles.header}>
-        <Avatar name={'kateryna_lanina'} size={200} round={true} />
+        <Avatar className={styles.avatar} name={'kateryna_lanina'} size={250} round={true} />
         <div className={styles.userInfo}>
           <div className={styles.main}>
             <p className={styles.name}>kateryna_lanina</p>
@@ -35,15 +35,15 @@ const UserProfileComponent = () => {
       <h2>Stats</h2>
       <div className={styles.stats}>
         <div>
-          <p>Total Ratings</p>
+          <h3>Total Ratings</h3>
           <p>{ratings.length > 0 ? ratings.length : 0}</p>
         </div>
         <div>
-          <p>Favorite Movies</p>
+          <h3>Favorite Movies</h3>
           <p>{favorites.length > 0 ? favorites.length : 0}</p>
         </div>
         <div>
-          <p>Movies in WatchList</p>
+          <h3>WatchList</h3>
           <p>{watchList.length > 0 ? watchList.length : 0}</p>
         </div>
         <p></p>
