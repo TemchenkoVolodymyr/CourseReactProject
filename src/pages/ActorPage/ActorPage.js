@@ -105,7 +105,7 @@ const ActorPage = () => {
             tag="section"
             wrapperTag="ul"
             navigation
-            slidesPerView={6}
+            slidesPerView={1} // 6  // Что бы добавить адаптив к слайдеру , иначе не получается
             spaceBetween={10}>
 
             {actors.movie_credits.cast.map((movie) =>
@@ -117,7 +117,7 @@ const ActorPage = () => {
                     rating={(movie.vote_average * 10).toFixed(1)}
                     displayAsPercentage={true}
                   />
-                  <p>{movie.title}</p>
+                  <p className={style.nameOfMovie}>{movie.title}</p>
                 </NavLink>
               </SwiperSlide>
             )}
