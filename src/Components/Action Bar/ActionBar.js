@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ActionButton from './ActionButton';
-import { AiFillHeart, AiFillStar, AiOutlineUnorderedList } from 'react-icons/ai';
+import {AiFillHeart, AiFillStar, AiOutlinePlaySquare, AiOutlineUnorderedList} from 'react-icons/ai';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -8,19 +8,20 @@ import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
-import RatingComponent from '../UserProfile/NavComponents/RatingComponent/RatingComponent';
+import RatingComponent from '../RatingComponent/RatingComponent';
 import { addRating } from '../../redux/slices/userRatingsSlice';
+import MoviePlayerModal from "../MoviePlayerModal/MoviePlayerModal";
 
-const ActionBar = ({ movieId }) => {
+const ActionBar = ({ movieId, movie }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const isListed = useSelector((state) => state.watchList.isListed[movieId]);
   const isRated =useSelector((state) => state.ratings.isRated[movieId]);
   const userId = useSelector((state) => state.user.id);
   const [showRating, setShowRating] = useState(false);
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
   const handleToggleFavorite = async () => {
-
     if (userId) {
       try{
       if (isFavorite) {
@@ -50,6 +51,10 @@ const ActionBar = ({ movieId }) => {
 
   const handleRateClick = () => {
     setShowRating(!showRating);
+  };
+
+  const handlePlayerClick = () => {
+    setIsPlayerOpen(!isPlayerOpen);
   };
 
   const handleRatingChanged = (rating) => {
@@ -89,7 +94,7 @@ const ActionBar = ({ movieId }) => {
             size={25}
             color={isListed ? 'red' : null}
             data-tooltip-id="watchlist"
-            data-tooltip-content="Add to yout watchlist"
+            data-tooltip-content="Add to your watchlist"
           />}/>
       </div>
       <div className={styles.ratingButton}>
@@ -108,6 +113,21 @@ const ActionBar = ({ movieId }) => {
         />}
       </div>
 
+       <ActionButton
+         onClick={handlePlayerClick}
+         icon={<AiOutlinePlaySquare
+           size={25}
+           color={isPlayerOpen ? 'red' : null}
+           data-tooltip-id="player"
+           data-tooltip-content="Watch the trailer"
+         />}/>
+       {isPlayerOpen &&  <MoviePlayerModal
+         movie={movie}
+         isPlayerOpen={isPlayerOpen}
+         setIsPlayerOpen={setIsPlayerOpen}
+       />}
+
+
       <Tooltip
         id="list"
         className={styles.tooltip}
@@ -122,6 +142,10 @@ const ActionBar = ({ movieId }) => {
         place="bottom"/>
       <Tooltip
         id="rate"
+        className={styles.tooltip}
+        place="bottom"/>
+      <Tooltip
+        id="player"
         className={styles.tooltip}
         place="bottom"/>
     </div>

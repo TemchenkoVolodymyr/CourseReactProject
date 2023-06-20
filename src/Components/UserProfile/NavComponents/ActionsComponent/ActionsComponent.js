@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../../../redux/slices/favoriteSlice';
 import { deleteFromWatchList } from '../../../../redux/slices/watchListSlice';
 import { useLocation } from 'react-router-dom';
-import RatingComponent from '../RatingComponent/RatingComponent';
+import RatingComponent from '../../../RatingComponent/RatingComponent';
 import { addRating, deleteRatings } from '../../../../redux/slices/userRatingsSlice';
 
 
