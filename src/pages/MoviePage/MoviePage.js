@@ -20,14 +20,11 @@ import { ref, set, onValue, push } from 'firebase/database';
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
-
   const [value, setValue] = useState('');
-
   const [reviews, setReviews] = useState([]);
   const db = getFirestore();
 
   const auth = getAuth();
-
 
   useEffect(() => {
     async function fetchMovie() {
@@ -199,7 +196,29 @@ const MoviePage = () => {
           </div>
         </div>) }
 
-
+        <div>
+          <h2>Watch the Trailer</h2>
+          {movie.videos.results.length > 0 && (
+            <div>
+              {movie?.videos.results
+                .filter(video => video.type === "Trailer")
+                .slice(0, 1)
+                .map(video => (
+                  <div key={video.key}>
+                    <iframe
+                      width="100%"
+                      height="500"
+                      src={`https://www.youtube.com/embed/${video.key}`}
+                      title={video.name}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                ))}
+            </div>
+          )}
+        </div>
 
         <h2>Similar</h2>
         <Swiper
