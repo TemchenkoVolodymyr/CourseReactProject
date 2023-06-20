@@ -1,0 +1,55 @@
+.swiperSlide {
+
+  text-decoration: none;
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  & > div {
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+      transform: scale(1.05);
+    }
+
+    & > div:first-child {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      align-items: center;
+      opacity: 0;
+      width: 50%;
+    }
+    &:hover > div:first-child {
+      opacity: 1;
+    }
+
+
+
+    p {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      color: white;
+      padding: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    &:hover p {
+      opacity: 1;
+    }
+  }
+
+}

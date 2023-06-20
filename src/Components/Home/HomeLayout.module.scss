@@ -1,9 +1,9 @@
 @import "/src/index";
+@import 'src/Components/SliderItems/SwiperSlide.module';
 
 .wrapper {
 
   h1, h2, h3 {
-    //color: var(#{--text-color-dark});
     opacity: .8;
     text-transform: capitalize;
   }
@@ -117,48 +117,6 @@
           color: #ffffff;
           font-size: 20px;
         }
-      }
-    }
-  }
-
-  .swiperSlide {
-
-    text-decoration: none;
-
-
-    & > div {
-      background-size: cover;
-      background-position: center;
-      height: 300px;
-      border-radius: 15px;
-      margin: 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-
-      & > canvas {
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-
-      &:hover {
-        box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
-        transform: scale(1.05);
-      }
-
-      p {
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        color: white;
-        padding: 10px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      &:hover p {
-        opacity: 1;
       }
     }
   }

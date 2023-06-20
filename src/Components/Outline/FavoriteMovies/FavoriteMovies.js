@@ -3,16 +3,12 @@ import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
 import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 
 const FavoriteMovies = ({userId, isLoading, favorites}) => {
 
   const dispatch = useDispatch();
-  // const userId = useSelector((state) => state.user.id);
-  // const favorites = useSelector((state) => state.favorites.favorites);
-  // const isLoading = useSelector((state) => state.favorites.isLoading);
-
 
   useEffect(() => {
     if (isLoading === 'idle' && userId) {

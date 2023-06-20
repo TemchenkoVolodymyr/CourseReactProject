@@ -6,11 +6,10 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
-import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import { addRating } from '../../redux/slices/userRatingsSlice';
 import MoviePlayerModal from "../MoviePlayerModal/MoviePlayerModal";
+import {handleToggleFavorite, handleToggleWatchList} from "../../utils/helperFunctions/ActionsFn";
 
 const ActionBar = ({ movieId, movie }) => {
   const dispatch = useDispatch();
@@ -21,42 +20,12 @@ const ActionBar = ({ movieId, movie }) => {
   const [showRating, setShowRating] = useState(false);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
-  const handleToggleFavorite = async () => {
-    if (userId) {
-      try{
-      if (isFavorite) {
-        await dispatch(deleteFavorite({ userId, movieId }));
-      } else {
-        await dispatch(addFavorite({ userId, movieId }));
-      }
-      await dispatch(fetchFavorites(userId));
-    } catch (error){
-        console.error('Error toggling favorite:', error);
-      }
-    }
-  };
-
-  const handleToggleWatchList = () => {
-    if (userId) {
-      if (isListed) {
-        dispatch(deleteFromWatchList({ userId, movieId }));
-      } else {
-        dispatch(addToWatchList({ userId, movieId }));
-      }
-      dispatch(fetchWatchList(userId));
-    } else {
-      alert('User data has not loaded yet');
-    }
-  };
-
   const handleRateClick = () => {
     setShowRating(!showRating);
   };
-
   const handlePlayerClick = () => {
     setIsPlayerOpen(!isPlayerOpen);
   };
-
   const handleRatingChanged = (rating) => {
     const movieIdStr = movieId.toString();
     dispatch(addRating({ userId, movieId: movieIdStr, rating }))
@@ -79,7 +48,7 @@ const ActionBar = ({ movieId, movie }) => {
       </div>
       <div>
         <ActionButton
-          onClick={handleToggleFavorite}
+          onClick={() => handleToggleFavorite(userId, movieId, isFavorite, dispatch)}
           icon={<AiFillHeart
             size={30}
             data-tooltip-id="like"
@@ -89,7 +58,7 @@ const ActionBar = ({ movieId, movie }) => {
       </div>
       <div>
         <ActionButton
-          onClick={handleToggleWatchList}
+          onClick={() => handleToggleWatchList(userId, movieId, isListed, dispatch)}
           icon={<BsFillBookmarkFill
             size={25}
             color={isListed ? 'red' : null}
@@ -126,8 +95,6 @@ const ActionBar = ({ movieId, movie }) => {
          isPlayerOpen={isPlayerOpen}
          setIsPlayerOpen={setIsPlayerOpen}
        />}
-
-
       <Tooltip
         id="list"
         className={styles.tooltip}

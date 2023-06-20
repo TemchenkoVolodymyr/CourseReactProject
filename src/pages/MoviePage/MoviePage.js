@@ -215,6 +215,8 @@ const MoviePage = () => {
                   rating={(similar.vote_average * 10).toFixed(1)}
                   displayAsPercentage={true}
                   canvasShow={true}
+                  movieId={similar.id}
+                  showActionBadge={true}
                 />
               </NavLink>
             </SwiperSlide>

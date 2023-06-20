@@ -93,6 +93,9 @@ const HomeLayout = () => {
                     rating={(movie.vote_average * 10).toFixed(1)}
                     displayAsPercentage={true}
                     canvasShow={true}
+                    movieId={movie.id}
+                    showActionBadge={true}
+
                   />
                 </NavLink>
               </SwiperSlide>
@@ -128,8 +131,6 @@ const HomeLayout = () => {
             )
           }
         </Swiper>
-
-
       </div>
     </>
 
