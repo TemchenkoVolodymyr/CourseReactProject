@@ -77,8 +77,10 @@ const MoviePage = () => {
     setValue(e.target.value);
   };
   const sendReviewHandler = (review) => {
-    setValue("")
-    setReview(review);
+    if(review){
+      setValue("")
+      setReview(review);
+    }
   };
 
 
