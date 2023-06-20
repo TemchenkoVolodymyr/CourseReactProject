@@ -9,7 +9,7 @@ export const getMainDataToMovies = (movies, dispatch, setAdminPanelMovies, db) =
         const blackListRef = collection(db, 'blacklistMovies');
         const snapshot = await getDocs(blackListRef);
         const blackListFirestore = snapshot.docs.map((doc) => doc.data());
-console.log(blackListFirestore)
+console.log(blackListFirestore);
         FilterById(movies, blackListFirestore, setAdminPanelMovies);
     };
 

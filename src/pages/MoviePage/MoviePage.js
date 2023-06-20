@@ -43,13 +43,13 @@ const MoviePage = () => {
       const reference = ref(dbRealTime, 'reviews/' + id);
 
         onValue(reference,(snapshot) => {
-          const data = []
+          const data = [];
           snapshot.forEach((childSnapshot) => {
-           const childData = childSnapshot.val()
-            data.push(childData)
+           const childData = childSnapshot.val();
+            data.push(childData);
 
           });
-          setReviews(data)
+          setReviews(data);
         });
     };
 
@@ -78,7 +78,7 @@ const MoviePage = () => {
   };
   const sendReviewHandler = (review) => {
     if(review){
-      setValue("")
+      setValue('');
       setReview(review);
     }
   };

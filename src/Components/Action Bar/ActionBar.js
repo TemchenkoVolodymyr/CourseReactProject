@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
 import RatingComponent from '../UserProfile/NavComponents/RatingComponent/RatingComponent';
-import {addRating} from "../../redux/slices/userRatingsSlice";
+import { addRating } from '../../redux/slices/userRatingsSlice';
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();

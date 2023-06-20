@@ -1,10 +1,10 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
 import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchFavorites} from "../../../redux/slices/favoriteSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 
 
 
