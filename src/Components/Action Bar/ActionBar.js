@@ -48,7 +48,7 @@ const ActionBar = ({ movieId, movie }) => {
       </div>
       <div>
         <ActionButton
-          onClick={() => handleToggleFavorite(userId, movieId, isFavorite, dispatch)}
+          onClick={(event) => handleToggleFavorite(event, userId, movieId, isFavorite, dispatch)}
           icon={<AiFillHeart
             size={30}
             data-tooltip-id="like"
@@ -58,7 +58,7 @@ const ActionBar = ({ movieId, movie }) => {
       </div>
       <div>
         <ActionButton
-          onClick={() => handleToggleWatchList(userId, movieId, isListed, dispatch)}
+          onClick={(event) => handleToggleWatchList(event, userId, movieId, isListed, dispatch)}
           icon={<BsFillBookmarkFill
             size={25}
             color={isListed ? 'red' : null}

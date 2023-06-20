@@ -3,11 +3,12 @@ import ActionButton from '../../../Action Bar/ActionButton';
 import { AiFillHeart, AiFillStar, AiOutlineDelete, AiOutlineUnorderedList } from 'react-icons/ai';
 import styles from '../../UserProfile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, deleteFavorite, fetchFavorites } from '../../../../redux/slices/favoriteSlice';
+import { deleteFavorite } from '../../../../redux/slices/favoriteSlice';
 import { deleteFromWatchList } from '../../../../redux/slices/watchListSlice';
 import { useLocation } from 'react-router-dom';
 import RatingComponent from '../../../RatingComponent/RatingComponent';
 import { addRating, deleteRatings } from '../../../../redux/slices/userRatingsSlice';
+import {handleToggleFavorite} from "../../../../utils/helperFunctions/ActionsFn";
 
 
 const ActionsComponent = ({ movieId }) => {
@@ -17,19 +18,6 @@ const ActionsComponent = ({ movieId }) => {
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const location = useLocation();
   const [showRating, setShowRating] = useState(false);
-
-  const handleToggleFavorite = () => {
-    if (userId) {
-      if (isFavorite) {
-        dispatch(deleteFavorite({ userId, movieId }));
-      } else {
-        dispatch(addFavorite({ userId, movieId }));
-      }
-      dispatch(fetchFavorites(userId));
-    } else {
-      alert('User data has not loaded yet');
-    }
-  };
 
   const removeButtonHandle = () => {
     if (userId) {
@@ -87,7 +75,7 @@ const ActionsComponent = ({ movieId }) => {
       </div>
       <div>
         <ActionButton
-          onClick={handleToggleFavorite}
+          onClick={(event) => handleToggleFavorite(event,userId, movieId, isFavorite, dispatch)}
           icon={<AiFillHeart
             size={30}
             color={isFavorite ? 'red' : null}

@@ -2,7 +2,7 @@
 
 .wrapper {
   font-family: Arial, sans-serif;
-  color: var(--text-color-default);
+
 
   a {
     color: white;
@@ -79,6 +79,7 @@
     opacity: .8;
     line-height: 25px;
     font-size: 18px;
+    color: white;
 
     .rating {
       p {
