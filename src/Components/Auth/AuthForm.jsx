@@ -7,12 +7,17 @@ import { setUser } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import Form from './Form';
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState('');
+  const toggleFormMode = () => {
+    setIsRegister(!isRegister);
+  };
 
   const {
     register,
@@ -56,7 +61,7 @@ const AuthForm = () => {
   };
 
 
-  const registerHandler = async ({ email, password }) => {
+  const registerHandler = async ({ userName, email, password }) => {
     const auth = getAuth();
     try {
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
@@ -67,14 +72,15 @@ const AuthForm = () => {
         email: user.email,
         date: new Date().toLocaleDateString(),
         admin: false,
-
+        userName: userName
       });
 
       dispatch(setUser({
         email: user.email,
         id: user.uid,
         token: user.accessToken,
-        admin: false
+        admin: false,
+        userName: userName
       }));
 
       navigate('/');
@@ -93,15 +99,30 @@ const AuthForm = () => {
   };
 
   return (
-      <section className={styles.wrapperBox}>
-          <h1>Auth</h1>
-          <Form submit={handleSubmit} onSubmit={onSubmit}
-            register={register} errors={errors}
-            error={error} registerHandler={registerHandler}
-            loginHandler={loginHandler}
-          >
-          </Form>
-      </section>
+    <section className={styles.wrapperBox}>
+      <h1>Auth</h1>
+      {isRegister ? (
+        <RegisterForm
+          onSubmit={onSubmit}
+          handleSubmit={handleSubmit}
+          register={register}
+          errors={errors}
+          error={error}
+          registerHandler={registerHandler}
+          toggleFormMode={toggleFormMode}
+        />
+      ) : (
+        <LoginForm
+          onSubmit={onSubmit}
+          handleSubmit={handleSubmit}
+          register={register}
+          errors={errors}
+          error={error}
+          loginHandler={loginHandler}
+          toggleFormMode={toggleFormMode}
+        />
+      )}
+    </section>
   );
 };
 
