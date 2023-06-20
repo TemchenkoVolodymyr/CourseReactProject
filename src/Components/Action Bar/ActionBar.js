@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
 import RatingComponent from '../UserProfile/NavComponents/RatingComponent/RatingComponent';
-import {addRating} from "../../redux/slices/userRatingsSlice";
+import { addRating } from '../../redux/slices/userRatingsSlice';
 
 const ActionBar = ({ movieId }) => {
   const dispatch = useDispatch();
@@ -19,16 +19,19 @@ const ActionBar = ({ movieId }) => {
   const userId = useSelector((state) => state.user.id);
   const [showRating, setShowRating] = useState(false);
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = async () => {
+
     if (userId) {
+      try{
       if (isFavorite) {
-        dispatch(deleteFavorite({ userId, movieId }));
+        await dispatch(deleteFavorite({ userId, movieId }));
       } else {
-        dispatch(addFavorite({ userId, movieId }));
+        await dispatch(addFavorite({ userId, movieId }));
       }
-      dispatch(fetchFavorites(userId));
-    } else {
-      alert('User data has not loaded yet');
+      await dispatch(fetchFavorites(userId));
+    } catch (error){
+        console.error('Error toggling favorite:', error);
+      }
     }
   };
 

@@ -8,7 +8,6 @@ const initialState = {
   isLoading: 'idle',
   error: null,
   isFavorite: {}
-
 };
 
 export const addFavorite = createAsyncThunk(
@@ -80,7 +79,6 @@ export const favoritesSlice = createSlice({
     builder
       .addCase(addFavorite.fulfilled, (state, action) => {
         const { movieId } = action.payload;
-        state.favorites.push(action.payload);
         state.isFavorite = { ...state.isFavorite, [movieId]: true };
       })
       .addCase(deleteFavorite.fulfilled, (state, action) => {

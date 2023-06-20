@@ -11,18 +11,23 @@ import Loader from '../Loader/Loader';
 import { loaderAction } from '../Loader/loaderAction';
 import { fetchMovies } from '../redux/slices/movieSlice';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
+import {fetchFavorites} from "../redux/slices/favoriteSlice";
 
 
 const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
   const popMovie = useSelector((state) => state.movies.popularMovie);
+  const userId = useSelector((state) => state.user.id);
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const isLoading = useSelector((state) => state.favorites.isLoading);
 
   const loading = useSelector((store) => store.loading);
   const dispatch = useDispatch();
   const getPopMovies = async () => {
     dispatch(fetchMovies({ type: 'popularMovie' }));
   };
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -48,8 +53,6 @@ const Layout = () => {
   const [theme, setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-
-
 
   };
   useEffect(() => {
@@ -81,7 +84,11 @@ const Layout = () => {
             <Search/>
             <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
             <PopularMovies/>
-            <FavoriteMovies/>
+            <FavoriteMovies
+              userId={userId}
+              favorites={favorites}
+              isLoading={isLoading}
+            />
           </div>
         </div>
         <footer className={'footer'}>2023 - mock footer for course react</footer>

@@ -16,8 +16,8 @@ const PopularMovies = () => {
   return (
     <>
       <div className={style.container}>
-        <p>POPULAR MOVIES </p>
-        {popMovie && popMovie.slice(0, 5).map((movie) =>
+        <h3>POPULAR MOVIES </h3>
+        {popMovie && popMovie.slice(0, 4).map((movie) =>
           <NavLink key={movie.id} to={`/movie/${movie.id}`}>
             <div
               style={{
@@ -30,7 +30,7 @@ const PopularMovies = () => {
               <div className={style.wrapperAbout}>
                 <div>
                   <h3 className={style.item}>{movie.original_title}</h3>
-                  <p className={style.item}>{movie.category}</p></div>
+                </div>
                 <div>
                   <CircleRating
                   rating={movie.vote_average * 10}

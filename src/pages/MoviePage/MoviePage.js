@@ -42,15 +42,15 @@ const MoviePage = () => {
     const getReviews = async () => {
       const reference = ref(dbRealTime, 'reviews/' + id);
 
-        onValue(reference,(snapshot) => {
-          const data = []
-          snapshot.forEach((childSnapshot) => {
-           const childData = childSnapshot.val()
-            data.push(childData)
+      onValue(reference,(snapshot) => {
+        const data = [];
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          data.push(childData);
 
-          });
-          setReviews(data)
         });
+        setReviews(data);
+      });
     };
 
     getReviews();
@@ -78,11 +78,10 @@ const MoviePage = () => {
   };
   const sendReviewHandler = (review) => {
     if(review){
-      setValue("")
+      setValue('');
       setReview(review);
     }
   };
-
 
   if (!movie) {
     return <Loader></Loader>;
@@ -188,17 +187,17 @@ const MoviePage = () => {
           <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
         </div>
 
-          <h1 className={style.header}>Reviews :</h1>
-          {reviews && reviews.map((item) => <div className={style.wrapperReview} >
-            <div className={style.reviews}>
-              <p>{item.text}</p>
-              <div>
-            <p>{item.user}</p>
-            <p>{item.date}</p>
-              </div>
-
+        <h1 className={style.header}>Reviews :</h1>
+        {reviews && reviews.map((item, i) => <div key={i} className={style.wrapperReview} >
+          <div className={style.reviews}>
+            <p>{item.text}</p>
+            <div>
+              <p>{item.user}</p>
+              <p>{item.date}</p>
             </div>
-          </div>) }
+
+          </div>
+        </div>) }
 
 
 
