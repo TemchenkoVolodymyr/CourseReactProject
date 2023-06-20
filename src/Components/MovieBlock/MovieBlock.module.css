@@ -10,6 +10,11 @@
   align-items: flex-end;
   justify-content: space-between;
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .wrapper {
+    width: 200px;
+  }
+}
 .wrapper p {
   text-align: right;
   margin-left: 5px;
