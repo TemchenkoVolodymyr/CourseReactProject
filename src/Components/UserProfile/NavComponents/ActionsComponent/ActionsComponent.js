@@ -31,7 +31,6 @@ const ActionsComponent = ({ movieId }) => {
     } else {
       alert('User data has not loaded yet');
     }
-
   };
   const handleRateClick = () => {
     setShowRating(!showRating);

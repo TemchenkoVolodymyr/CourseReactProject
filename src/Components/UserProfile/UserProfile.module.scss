@@ -22,6 +22,69 @@
   border-radius: 20px;
   margin-top: 20px;
 
+  .profile{
+
+
+    .header{
+      background-color: #215064;
+      border-radius: 19px 19px 0 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      color: white;
+
+      img{
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+      }
+
+      .userInfo{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+
+
+        .main{
+          display: flex;
+          align-items: stretch;
+          margin: 30px auto;
+
+          .name{
+            font-size: 32px;
+            font-weight: bold;
+          }
+
+          .membership{
+            opacity: .7;
+            font-size: 20px;
+            padding-left: 20px;
+          }
+        }
+
+        .ratings{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          p{
+            padding-left: 20px;
+            font-size: 24px;
+          }
+        }
+
+
+      }
+    }
+
+    .stats{
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      text-align: center;
+    }
+  }
 
   .titleHeader {
     display: flex;
@@ -74,14 +137,15 @@
       align-items: center;
       justify-content: center;
 
-
       p{
         margin: 50px;
         font-size: 24px;
       }
 
-
     }
+
+
+
 
     .movieBlock {
       display: flex;

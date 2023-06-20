@@ -1,5 +1,6 @@
 import {addFavorite, deleteFavorite, fetchFavorites} from "../../redux/slices/favoriteSlice";
 import {addToWatchList, deleteFromWatchList, fetchWatchList} from "../../redux/slices/watchListSlice";
+import {addRating} from "../../redux/slices/userRatingsSlice";
 
 export const handleToggleFavorite = async (event, userId, movieId, isFavorite, dispatch) => {
 event.preventDefault()
@@ -33,3 +34,5 @@ export const handleToggleWatchList = async (event, userId, movieId, isListed, di
     }
   }
 };
+
+

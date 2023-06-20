@@ -20,8 +20,10 @@ const FiltersComponent = () => {
   ];
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSort] = useState(false);
+
   const toggleFilterOpen = () => setIsFilterOpen(!isFilterOpen);
   const sortByOrder = () => setIsSort(!isSortOpen);
+
   return (
     <div className={styles.filters}>
      <div className={styles.filtered}>

@@ -15,8 +15,6 @@ import { getAuth } from 'firebase/auth';
 import { dbRealTime } from '../../firebase';
 import { ref, set, onValue, push } from 'firebase/database';
 
-
-
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();

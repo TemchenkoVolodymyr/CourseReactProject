@@ -19,10 +19,10 @@ import ActorsAP from '../../Components/AdminPanel/NavComponents/AdminPanelActors
 import GenresAP from '../../Components/AdminPanel/NavComponents/AdminPanelGenres/GenresAP';
 import ActorPage from '../../pages/ActorPage/ActorPage';
 import UserProfile from '../../pages/UserProfilePage/UserProfile';
-import UserList from '../../Components/UserProfile/NavComponents/UserList';
 import UserWatchList from '../../Components/UserProfile/NavComponents/UserWatchList';
 import UserRatings from '../../Components/UserProfile/NavComponents/UserRatings';
 import UserFavorites from '../../Components/UserProfile/NavComponents/UserFavorites';
+import UserProfileComponent from "../../Components/UserProfile/NavComponents/UserProfileComponent";
 
 const RoutersCollection = () => {
   return (
@@ -47,9 +47,9 @@ const RoutersCollection = () => {
             <Route path="actors" element={<ActorsAP/>}/>
             <Route path="genres" element={<GenresAP/>}/>
           </Route>
-          <Route path="/u" element={<UserProfile/>}>
+          <Route path="/u/" element={<UserProfile/>}>
+            <Route index element={<UserProfileComponent/>} />
             <Route path="favorites" element={<UserFavorites/>}/>
-            <Route path="lists" element={<UserList/>}/>
             <Route path="watchlist" element={<UserWatchList/>}/>
             <Route path="ratings" element={<UserRatings/>}/>
           </Route>

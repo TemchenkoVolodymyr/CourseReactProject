@@ -8,6 +8,7 @@ import { fetchRatings } from '../../../redux/slices/userRatingsSlice';
 
 
 const UserRatings = () => {
+
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.id);
   const ratings = useSelector((state) => state.ratings.ratings);
