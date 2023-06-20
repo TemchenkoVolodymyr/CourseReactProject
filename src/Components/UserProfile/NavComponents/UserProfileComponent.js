@@ -11,7 +11,7 @@ const UserProfileComponent = () => {
 
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
   const averageRating = totalRating / ratings.length;
-
+  console.log(averageRating);
 
   return (
     <div className={styles.profile}>
@@ -24,7 +24,7 @@ const UserProfileComponent = () => {
           </div>
           <div className={styles.ratings}>
             <CircleRating
-              rating={averageRating * 10}
+              rating={isNaN(averageRating) ? 0 : averageRating * 10}
               size={90}
               displayAsPercentage={true}
             />
@@ -52,4 +52,4 @@ const UserProfileComponent = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfileComponent;
