@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
 import CircleRating from '../../CircleRating/CircleRating';
@@ -14,7 +14,7 @@ const FavoriteMovies = ({userId, isLoading, favorites}) => {
   // const isLoading = useSelector((state) => state.favorites.isLoading);
 
 
-    useEffect(() => {
+  useEffect(() => {
     if (isLoading === 'idle' && userId) {
       dispatch(fetchFavorites(userId));
     }
