@@ -12,6 +12,8 @@
     padding: 15px;
     font-size: $sizeHeader;
     letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .trendMovies {

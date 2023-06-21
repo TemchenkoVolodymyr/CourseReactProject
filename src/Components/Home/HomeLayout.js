@@ -8,6 +8,8 @@ import 'swiper/swiper-bundle.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
+import Search from '../Search/Search';
+
 
 
 const HomeLayout = () => {
@@ -43,11 +45,19 @@ const HomeLayout = () => {
 
   }, []);
 
+  let test = false;
+  if(window.innerWidth > 768 && window.innerWidth < 1024){
+    test = true;
+  }else{
+    test = false;
+  }
+
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.header}>
           <h1>watch movies online</h1>
+          {test && <Search></Search>}
         </div>
         <Swiper
           id="main"

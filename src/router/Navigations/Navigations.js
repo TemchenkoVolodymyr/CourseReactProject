@@ -4,8 +4,16 @@ import { GiCastle, GiDramaMasks, GiGhost, GiPistolGun, GiRainbowStar } from 'rea
 import { SiOpenstreetmap } from 'react-icons/si';
 import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
+import { MdFlutterDash } from 'react-icons/md';
 
 const Navigations = () => {
+
+    let test = false;
+    if(window.innerWidth > 768 && window.innerWidth < 1024){
+        test = true
+    }else{
+        test = false
+    }
 
   return (
     <>
@@ -15,6 +23,7 @@ const Navigations = () => {
       <NavLink to="/discovery"><AiOutlineCompass size={'24'}/>Discovery</NavLink>
       <NavLink to="/fresh"><BsArrowClockwise size={'24'}/>Fresh movies</NavLink>
       <NavLink to="/trending"><BsFire size={'24'} />Trending now</NavLink>
+        { test && <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink>}
       <p>popular genders</p>
       <NavLink to="/genre/action"><GiPistolGun size={'24'}/>Action</NavLink>
       <NavLink to="/genre/adventure"><SiOpenstreetmap size={'24'}/>Adventure</NavLink>
