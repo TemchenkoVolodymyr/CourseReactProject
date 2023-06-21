@@ -14,6 +14,9 @@
     letter-spacing: 1px;
     display: flex;
     justify-content: space-between;
+    @media (min-width: 480px) and (max-width: 600px) {
+      width: 100%;
+    }
   }
 
   .trendMovies {
@@ -95,7 +98,7 @@
       }
 
       & > div {
-
+cursor: pointer;
         z-index: 1;
         margin-left: 30px;
         margin-bottom: 10px;
@@ -124,4 +127,16 @@
   }
 
 }
+.logo{
+  display: flex;
+  justify-content: space-between;
+  @media (min-width: 480px) and (max-width: 600px) {
+    display:-moz-box;
+    justify-content: normal;
+  }
+  h1{
+    font-size: 15px;
+  }
+}
+
 
