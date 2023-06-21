@@ -17,6 +17,10 @@
     img {
       width: 350px;
       border-radius: 20px;
+        @media (min-width: 1024px) and (max-width: 1280px) {
+        width: 250px;
+
+      }
     }
 
     .personalInfo {
@@ -38,7 +42,7 @@
   }
 
   .right {
-    width: 70%;
+    width: 100%;
     overflow: auto;
 
     .biography {
@@ -81,4 +85,10 @@ h2{
 }
 .knowFor p{
   color: var(--text-color-default);
+}
+.nameOfMovie{
+  font-size: 20px;
+  font-weight: 900;
+  color: #9b1010 !important;
+  padding: 10px;
 }

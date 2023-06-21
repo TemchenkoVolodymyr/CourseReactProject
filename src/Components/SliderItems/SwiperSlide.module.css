@@ -1,0 +1,47 @@
+.swiperSlide {
+  text-decoration: none;
+  color: white;
+}
+.swiperSlide a {
+  text-decoration: none;
+  color: white;
+}
+.swiperSlide > div {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  border-radius: 15px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+.swiperSlide > div:hover {
+  box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
+  transform: scale(1.05);
+}
+.swiperSlide > div > div:first-child {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  align-items: center;
+  opacity: 0;
+  width: 50%;
+}
+.swiperSlide > div:hover > div:first-child {
+  opacity: 1;
+}
+.swiperSlide > div p {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+.swiperSlide > div:hover p {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=SwiperSlide.module.css.map */

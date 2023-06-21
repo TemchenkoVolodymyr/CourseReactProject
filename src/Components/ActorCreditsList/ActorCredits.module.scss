@@ -13,10 +13,14 @@
   }
 
   .filter {
+
     font-size: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      font-size: 15px;
+    }
   }
 
   .info {
@@ -24,12 +28,18 @@
     align-items: flex-start;
     font-size: 22px;
     padding: 10px;
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      font-size: 15px;
+    }
 
     .title {
       margin-left: 20px;
       font-size: 24px;
       padding-bottom: 10px;
       color: var(--color-header-default);
+      @media (min-width: 1024px) and (max-width: 1280px) {
+        font-size: 15px;
+      }
 
     }
 
