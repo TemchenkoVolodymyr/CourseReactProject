@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
 import style from './HomeLayout.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
 import Search from '../Search/Search';
+import { MdFlutterDash } from 'react-icons/md';
 
 
 
@@ -19,6 +20,8 @@ const HomeLayout = () => {
   const trendingMovies = useSelector((state) => state.movies.trendingMovies);
   const popularActors = useSelector((state) => state.movies.popularActors);
   const discover = useSelector((state) => state.movies.discover);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth,);
 
   useEffect(() => {
 
@@ -37,27 +40,32 @@ const HomeLayout = () => {
     const getPopMovies = async () => {
       dispatch(fetchMovies({ type: 'popularMovie' }));
     };
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
 
     getTrending();
     getActors();
     getDiscover();
     getPopMovies();
 
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  let test = false;
-  if(window.innerWidth > 768 && window.innerWidth < 1024){
-    test = true;
-  }else{
-    test = false;
-  }
+
+
+  useEffect(() => {
+
+
+  }, []);
 
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.header}>
           <h1>watch movies online</h1>
-          {test && <Search></Search>}
+          {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> :null}
         </div>
         <Swiper
           id="main"

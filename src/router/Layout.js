@@ -67,19 +67,6 @@ const Layout = () => {
     });
   },[theme]);
 
-
-let test = false;
-if(window.innerWidth > 768 && window.innerWidth < 1024){
-  test = true
-}else{
-  test = false
-}
-  useEffect(() => {
-
-    if(test){
-      console.log("too low")
-    }
-  },[test])
   return (
     <>
       {loading ? <Loader></Loader> : <>
