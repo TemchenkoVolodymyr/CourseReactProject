@@ -9,6 +9,7 @@
   h3{
     @media (min-width: 1024px) and (max-width: 1280px) {
       font-size: 13px;
+      margin-left: 10px;
 
     }
   }
@@ -23,10 +24,7 @@
     font-size: 12px;
     justify-content: end;
     flex-direction: column;
-    @media (min-width: 1024px) and (max-width: 1280px) {
-      width: 110px;
 
-    }
 
     &:hover {
       transform: scale(1.05);
@@ -65,4 +63,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (min-width: 1024px) and (max-width: 1280px) {
+   display: block;
+    width: 150px;
+    margin-left: 10px;
+  }
 }
+//977616404
