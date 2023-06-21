@@ -1,9 +1,15 @@
 import React from 'react';
 import styles from './AuthForm.module.scss';
-const RegisterForm = (props) => {
-  const { handleSubmit, register, errors, error, registerHandler, toggleFormMode } = props;
+
+
+const RegisterForm = ({handleSubmit, register, errors, error, registerHandler, toggleFormMode, watch}) => {
+
+  const password = watch('password');
+  const confirmPassword = watch('confirmPassword');
+
+
   const handleRegisterClick = (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     handleSubmit(registerHandler)();
   };
   return (
@@ -12,13 +18,17 @@ const RegisterForm = (props) => {
       <input
         {...register('userName', {
             required: 'User Name is required',
+            pattern: {
+              value: /^[a-zA-Z]+(_[a-zA-Z]+)*$/,
+              message: 'Please enter a valid user name (e.g., john_doe)',
+            },
           }
         )}
         type="text"
         placeholder="Enter user name"
       />
-      {errors.email && <div className={styles.errorMessage}>{errors.email.message}</div>}
-      <label htmlFor="userName">e-mail</label>
+      {errors.userName && <div className={styles.errorMessage}>{errors.userName.message}</div>}
+      <label htmlFor="email">e-mail</label>
       <input
         {...register('email', {
             required: 'Email is required',
@@ -32,7 +42,7 @@ const RegisterForm = (props) => {
         placeholder="Enter your email"
       />
       {errors.email && <div className={styles.errorMessage}>{errors.email.message}</div>}
-      <label htmlFor="userName">password</label>
+      <label htmlFor="password">password</label>
       <input
         {...register('password', {
             required: 'Password is required',
@@ -51,6 +61,18 @@ const RegisterForm = (props) => {
       />
       {errors.password &&
         <div className={styles.errorMessage}>{errors.password.message}</div>}
+      <label htmlFor="confirmPassword">confirm password</label>
+      <input
+        {...register('confirmPassword', {
+            required: 'Required field',
+            validate: (value) => value === password || 'Passwords do not match',
+          }
+        )}
+        type="password"
+        placeholder="Confirm your password"
+      />
+      {errors.confirmPassword &&
+        <div className={styles.errorMessage}>{errors.confirmPassword.message}</div>}
       {error && <div className={styles.errorMessage}>{error}</div>}
       <div className={styles.btnContainer}>
         <button type="button" onClick={toggleFormMode}>Login</button>

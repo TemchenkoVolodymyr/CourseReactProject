@@ -1,26 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "../UserProfile.module.scss";
 import CircleRating from "../../CircleRating/CircleRating";
-import Avatar from "react-avatar";
-import {useSelector} from "react-redux";
+import Avatar from 'react-avatar';
+import { useSelector } from 'react-redux';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { useAuth } from '../../../hooks/useAuth';
 
 const UserProfileComponent = () => {
-  const favorites = useSelector(state => state.favorites.favorites)
-  const watchList = useSelector(state => state.watchList.watchList)
-  const ratings = useSelector(state => state.ratings.ratings)
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const watchList = useSelector((state) => state.watchList.watchList);
+  const ratings = useSelector((state) => state.ratings.ratings);
+  const [userData, setUserData] = useState();
+  const { id } = useAuth();
 
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
   const averageRating = totalRating / ratings.length;
-  console.log(averageRating);
+
+  useEffect(() => {
+    const loadData = async () => {
+        const db = getFirestore();
+        const userDoc = await getDoc(doc(db, 'users', id));
+        const userData = userDoc.data();
+        setUserData(userData);
+    };
+
+    loadData();
+  }, [])
 
   return (
     <div className={styles.profile}>
       <div className={styles.header}>
-        <Avatar className={styles.avatar} name={'kateryna_lanina'} size={250} round={true} />
+        <Avatar className={styles.avatar} name={userData && userData.userName} size={250} round={true} />
         <div className={styles.userInfo}>
           <div className={styles.main}>
-            <p className={styles.name}>kateryna_lanina</p>
-            <p className={styles.membership}>Member since May 2023</p>
+            <p className={styles.name}>{userData && userData.userName}</p>
+            <p className={styles.membership}>Member since {userData && userData.date}</p>
           </div>
           <div className={styles.ratings}>
             <CircleRating
