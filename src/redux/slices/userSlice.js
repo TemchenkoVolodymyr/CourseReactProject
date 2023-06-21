@@ -56,7 +56,7 @@ export const registerUser = createAsyncThunk(
         admin: false,
         userName: userName,
       });
-      console.log(user);
+
       return {
         email: user.email,
         id: user.uid,
