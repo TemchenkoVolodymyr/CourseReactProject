@@ -1,9 +1,14 @@
 import React from 'react';
 import CircleRating from '../CircleRating/CircleRating';
-import CustomButton from '../Button/CustomButton';
+import {useNavigate} from "react-router";
+import styles from '../Button/CustomButton.module.scss'
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
+const navigate = useNavigate()
 
+  const watchOnClickHandler = () => {
+  navigate(`/movie/${id}`)
+  }
   return (
     <div
       style={{
@@ -19,7 +24,11 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
       <div>
         <h2>{name}</h2>
         <h3>{category}</h3>
-        <CustomButton name={'Watch'} path={`/movie/${id}`} ></CustomButton>
+        <button
+          className={styles.link}
+          onClick={watchOnClickHandler}>
+          Watch
+        </button>
       </div>
     </div>
   );
