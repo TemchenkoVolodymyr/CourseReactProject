@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {NavLink} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import {removeUser} from '../../redux/slices/userSlice';
-import {useAuth} from '../../hooks/useAuth';
-import {getAuth, signOut} from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../../redux/slices/userSlice';
+import { useAuth } from '../../hooks/useAuth';
+import { getAuth, signOut } from 'firebase/auth';
 import Navigations from './Navigations';
-import {BiLogIn, BiLogOut} from 'react-icons/bi';
-import {CgProfile} from 'react-icons/cg';
-import {loadData} from "../../utils/helperFunctions/loadUserDataFromFB";
+import { BiLogIn, BiLogOut } from 'react-icons/bi';
+import { CgProfile } from 'react-icons/cg';
+import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
 
 
 const SectionNavigation = () => {
   const dispatch = useDispatch();
-  const {isAuth, isAdmin} = useAuth();
-  const {id} = useAuth();
-  const [userData, setUserData] = useState(null);
+  const { isAuth, isAdmin } = useAuth();
+  const { id } = useAuth();
+  const [ userData, setUserData] = useState(null);
 
 
   useEffect(() => {
-    if (id) loadData({setUserData, id});
+    if (id) loadData({ setUserData, id });
 
-  }, [id])
+  }, [id]);
 
   const userName = userData && userData.userName;
 
@@ -29,7 +29,7 @@ const SectionNavigation = () => {
       const auth = getAuth();
       await signOut(auth);
       dispatch(removeUser());
-      setUserData(null)
+      setUserData(null);
     } catch (error) {
       console.log(error);
     }

@@ -36,7 +36,7 @@ export const loginUser = createAsyncThunk(
       if (errorCode === 'auth/user-not-found') {
         errorMessage = 'User not found. Please register.';
       }
-      return thunkAPI.rejectWithValue(errorMessage);
+      return thunkAPI.rejectWithValue({ message: errorMessage });
     }
   }
 );
@@ -69,7 +69,7 @@ export const registerUser = createAsyncThunk(
       if (error.code === 'auth/email-already-in-use') {
         errorMessage = 'This email is already in use. Please try another one.';
       }
-      return thunkAPI.rejectWithValue(errorMessage);
+      return thunkAPI.rejectWithValue({ message: errorMessage });
     }
   }
 );
@@ -97,8 +97,6 @@ export const userSlice = createSlice({
         state.userName = action.payload.userName;
         state.date = action.payload.date;
 
-        localStorage.setItem('date', action.payload.date);
-        localStorage.setItem('userName', action.payload.userName);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.error.message;
