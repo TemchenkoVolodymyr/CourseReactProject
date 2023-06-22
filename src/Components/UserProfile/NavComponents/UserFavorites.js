@@ -5,7 +5,7 @@ import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 import FilmComponent from './FilmComponent/FilmComponent';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
-import {filterProfileMovies} from "../../../utils/helperFunctions/filterProfieMovies";
+import {applySortOrder, filterProfileMovies} from "../../../utils/helperFunctions/filterProfieMovies";
 
 const UserFavorites = () => {
 
@@ -14,7 +14,8 @@ const UserFavorites = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const error = useSelector((state) => state.favorites.error);
-  const filterBy = useSelector((state) => state.filters.filterBy);
+  const {filterBy, isOrderOpen} = useSelector((state) => state.filters);
+
 
   useEffect(() => {
     if (isLoading === 'idle' && userId) {
@@ -23,7 +24,7 @@ const UserFavorites = () => {
 
   }, [isLoading, userId]);
 
-  const sortedFavorites = filterProfileMovies(favorites, filterBy);
+  const sortedFavorites = applySortOrder(filterProfileMovies(favorites, filterBy), isOrderOpen );
 
   return (
     <>

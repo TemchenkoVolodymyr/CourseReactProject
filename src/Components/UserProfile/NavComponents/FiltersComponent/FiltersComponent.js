@@ -43,7 +43,7 @@ const FiltersComponent = () => {
     dispatch(toggleFilter());
   };
 
-  const handleSortToggle = () => {
+  const handleOrderToggle = () => {
     dispatch(toggleOrder());
   };
 
@@ -69,7 +69,7 @@ const FiltersComponent = () => {
       </div>
 
       <div>
-        <span onClick={handleSortToggle}>Order
+        <span onClick={handleOrderToggle}>Order
           {isOrderOpen ? <AiOutlineSortDescending/> : <AiOutlineSortAscending/>}
         </span>
       </div>

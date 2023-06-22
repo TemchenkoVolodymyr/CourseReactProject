@@ -22,3 +22,11 @@ export const filterProfileMovies = (arr, filterBy, page) => {
       return arrCopy;
   }
 };
+
+export const applySortOrder = (arr, isOrderOpen) => {
+
+  if (isOrderOpen) {
+    return arr.reverse();
+  }
+  return arr;
+}
