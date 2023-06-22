@@ -22,6 +22,12 @@ const UserProfileComponent = () => {
 
   }, [id])
 
+  const dateStr = userData.date
+  const dateParts = dateStr.split('.');
+  const dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = dateObject.toLocaleDateString('en-US', options);
   return (
     <div className={styles.profile}>
       <div className={styles.header}>
@@ -29,7 +35,7 @@ const UserProfileComponent = () => {
         <div className={styles.userInfo}>
           <div className={styles.main}>
             <p className={styles.name}>{userData && userData.userName}</p>
-            <p className={styles.membership}>Member since {userData && userData.date}</p>
+            <p className={styles.membership}>Member since {userData && formattedDate}</p>
           </div>
           <div className={styles.ratings}>
             <CircleRating
