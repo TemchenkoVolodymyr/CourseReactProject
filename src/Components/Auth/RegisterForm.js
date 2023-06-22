@@ -19,7 +19,7 @@ const RegisterForm = ({handleSubmit, register, errors, error, registerHandler, t
         {...register('userName', {
             required: 'User Name is required',
             pattern: {
-              value: /^[a-zA-Z0-9]+$/,
+              value: /^[a-zA-Z0-9_]+$/,
               message: 'Please enter a valid user name without spaces (e.g., john_doe)',
             },
           }

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import {doc, getDoc, getFirestore, setDoc} from "firebase/firestore";
+import {collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where} from "firebase/firestore";
 
 
 const initialState = {
@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk(
   async ({email, password}, thunkAPI) => {
     try {
       const auth = getAuth();
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      const {user} = await signInWithEmailAndPassword(auth, email, password);
       const db = getFirestore();
       const userDoc = await getDoc(doc(db, 'users', user.uid));
       const userData = userDoc.data();
@@ -36,7 +36,7 @@ export const loginUser = createAsyncThunk(
       if (errorCode === 'auth/user-not-found') {
         errorMessage = 'User not found. Please register.';
       }
-      return thunkAPI.rejectWithValue({ message: errorMessage });
+      return thunkAPI.rejectWithValue({message: errorMessage});
     }
   }
 );
@@ -46,9 +46,15 @@ export const registerUser = createAsyncThunk(
   async ({userName, email, password}, thunkAPI) => {
     try {
       const auth = getAuth();
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
       const db = getFirestore();
 
+      // Check if the username is already taken
+      const userQuerySnapshot = await getDocs(query(collection(db, 'users'), where('userName', '==', userName)));
+      if (!userQuerySnapshot.empty) {
+        throw new Error('This username is already in use. Please try another one.');
+      }
+
+      const {user} = await createUserWithEmailAndPassword(auth, email, password);
 
       await setDoc(doc(db, 'users', user.uid), {
         email: user.email,
@@ -69,7 +75,7 @@ export const registerUser = createAsyncThunk(
       if (error.code === 'auth/email-already-in-use') {
         errorMessage = 'This email is already in use. Please try another one.';
       }
-      return thunkAPI.rejectWithValue({ message: errorMessage });
+      return thunkAPI.rejectWithValue({message: errorMessage});
     }
   }
 );
@@ -115,6 +121,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { removeUser } = userSlice.actions;
+export const {removeUser} = userSlice.actions;
 export const selectUserStatus = state => state.user.status;
 export default userSlice.reducer;
