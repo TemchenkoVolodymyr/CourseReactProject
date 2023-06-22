@@ -5,6 +5,7 @@ import { fetchWatchList } from '../../../redux/slices/watchListSlice';
 import styles from '../UserProfile.module.scss';
 import FilmComponent from './FilmComponent/FilmComponent';
 import NoInfoComponent from './NoInfoComponent';
+import {filterProfileMovies} from "../../../utils/helperFunctions/filterProfieMovies";
 
 const UserWatchList = () => {
 
@@ -13,6 +14,7 @@ const UserWatchList = () => {
   const watchList = useSelector((state) => state.watchList.watchList);
   const error = useSelector((state) => state.watchList.error);
   const isLoading = useSelector((state) => state.watchList.isLoading);
+  const filterBy = useSelector((state) => state.filters.filterBy);
 
 
   useEffect(() => {
@@ -21,6 +23,8 @@ const UserWatchList = () => {
     }
 
   }, [isLoading, userId]);
+
+  const sortedWatchList = filterProfileMovies(watchList, filterBy);
 
 
   return (
@@ -35,7 +39,7 @@ const UserWatchList = () => {
           {isLoading === 'loading' && <div>Loading...</div>}
           {isLoading === 'succeeded' && (
             <div>
-              {watchList.map((film) => (
+              {sortedWatchList.map((film) => (
                 film.movieInfo &&
                 <div key={film.movieId}>
                   <FilmComponent

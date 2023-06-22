@@ -46,6 +46,7 @@ export const fetchRatings = createAsyncThunk(
       for (const doc of ratingsSnapshot.docs) {
         const ratingsData = doc.data();
         const movieId = ratingsData.movieId;
+        const addedAt = ratingsData.addedAt.toDate();
 
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const movieInfo = response.data;
@@ -54,7 +55,8 @@ export const fetchRatings = createAsyncThunk(
           id: doc.id,
           movieId,
           movieInfo,
-          rating: ratingsData.rating
+          rating: ratingsData.rating,
+          addedAt
         });
       }
       return ratings;

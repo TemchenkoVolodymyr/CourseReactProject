@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { serverTimestamp, addDoc, collection, getDocs, query, deleteDoc, where } from 'firebase/firestore';
+import { serverTimestamp, addDoc, collection, getDocs, query, deleteDoc, where, Timestamp} from 'firebase/firestore';
 import { db } from '../../firebase';
 import axios from 'axios';
+
 
 const initialState = {
   favorites: [],
@@ -54,14 +55,17 @@ export const fetchFavorites = createAsyncThunk(
       for (const doc of favoritesSnapshot.docs) {
         const favoriteData = doc.data();
         const movieId = favoriteData.movieId;
+        const addedAt = favoriteData.addedAt.toDate();
 
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const movieInfo = response.data;
+        console.log(addedAt);
 
         favorites.push({
           id: doc.id,
           movieId,
           movieInfo,
+          addedAt
         });
       }
       return favorites;

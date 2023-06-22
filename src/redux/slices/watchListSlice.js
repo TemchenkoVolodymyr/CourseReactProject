@@ -55,6 +55,7 @@ export const fetchWatchList = createAsyncThunk(
       for (const doc of watchListSnapshot.docs) {
         const watchListData = doc.data();
         const movieId = watchListData.movieId;
+        const addedAt = watchListData.addedAt.toDate();
 
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const movieInfo = response.data;
@@ -63,6 +64,7 @@ export const fetchWatchList = createAsyncThunk(
           id: doc.id,
           movieId,
           movieInfo,
+          addedAt
         });
       }
       return watchList;
