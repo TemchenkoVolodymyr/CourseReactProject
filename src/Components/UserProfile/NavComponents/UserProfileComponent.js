@@ -5,27 +5,25 @@ import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useAuth } from '../../../hooks/useAuth';
+import {useParams} from "react-router";
+import {loadData} from "../../../utils/helperFunctions/loadUserDataFromFB";
 
 const UserProfileComponent = () => {
+
   const favorites = useSelector((state) => state.favorites.favorites);
   const watchList = useSelector((state) => state.watchList.watchList);
   const ratings = useSelector((state) => state.ratings.ratings);
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
   const { id } = useAuth();
 
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
   const averageRating = totalRating / ratings.length;
 
   useEffect(() => {
-    const loadData = async () => {
-        const db = getFirestore();
-        const userDoc = await getDoc(doc(db, 'users', id));
-        const userData = userDoc.data();
-        setUserData(userData);
-    };
 
-    loadData();
-  }, [])
+    loadData({setUserData, id});
+
+  }, [id])
 
   return (
     <div className={styles.profile}>

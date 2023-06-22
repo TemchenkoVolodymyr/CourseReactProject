@@ -1,26 +1,39 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { removeUser } from '../../redux/slices/userSlice';
-import { useAuth } from '../../hooks/useAuth';
-import { getAuth, signOut } from 'firebase/auth';
+import React, {useEffect, useState} from 'react';
+import {NavLink} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {removeUser} from '../../redux/slices/userSlice';
+import {useAuth} from '../../hooks/useAuth';
+import {getAuth, signOut} from 'firebase/auth';
 import Navigations from './Navigations';
-import { BiLogIn, BiLogOut } from 'react-icons/bi';
-import { CgProfile } from 'react-icons/cg';
+import {BiLogIn, BiLogOut} from 'react-icons/bi';
+import {CgProfile} from 'react-icons/cg';
+import {loadData} from "../../utils/helperFunctions/loadUserDataFromFB";
 
 
 const SectionNavigation = () => {
-
   const dispatch = useDispatch();
-  const { isAuth, isAdmin } = useAuth();
+  const {isAuth, isAdmin} = useAuth();
+  const {id} = useAuth();
+  const [userData, setUserData] = useState(null);
 
-  const logout = () => {
-    const auth = getAuth();
-    signOut(auth).then(() => {
 
+  useEffect(() => {
+
+    loadData({setUserData, id});
+
+  }, [id])
+
+  const userName = userData && userData.userName;
+
+  const logout = async () => {
+    try {
+      const auth = getAuth();
+      await signOut(auth);
       dispatch(removeUser());
-    }).catch((error) => error
-    );
+      setUserData(null)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,20 +46,20 @@ const SectionNavigation = () => {
             to="/auth"
             onClick={logout}
             className={'active'}
-            style={{ cursor: 'pointer' }}
+            style={{cursor: 'pointer'}}
           ><BiLogOut size={25}/>Logout</NavLink>
           :
           <NavLink
             to="/auth"
             className={'active'}
-            style={{ cursor: 'pointer' }}
+            style={{cursor: 'pointer'}}
           ><BiLogIn size={25}/>Login</NavLink>
       }
       {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
-      {isAuth ?
+      {isAuth && userName?
         <NavLink
-          to={'/u/'}
-          style={{ cursor: 'pointer' }}
+          to={`/u/${userName}`}
+          style={{cursor: 'pointer'}}
         ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
 
         : null}

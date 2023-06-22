@@ -22,9 +22,10 @@ import UserProfile from '../../pages/UserProfilePage/UserProfile';
 import UserWatchList from '../../Components/UserProfile/NavComponents/UserWatchList';
 import UserRatings from '../../Components/UserProfile/NavComponents/UserRatings';
 import UserFavorites from '../../Components/UserProfile/NavComponents/UserFavorites';
-import UserProfileComponent from "../../Components/UserProfile/NavComponents/UserProfileComponent";
+import UserProfileComponent from '../../Components/UserProfile/NavComponents/UserProfileComponent';
 
 const RoutersCollection = () => {
+
   return (
     <>
       <Routes>
@@ -47,11 +48,11 @@ const RoutersCollection = () => {
             <Route path="actors" element={<ActorsAP/>}/>
             <Route path="genres" element={<GenresAP/>}/>
           </Route>
-          <Route path="/u/" element={<UserProfile/>}>
+          <Route path="/u/:userName" element={<UserProfile/>}>
             <Route index element={<UserProfileComponent/>} />
-            <Route path="favorites" element={<UserFavorites/>}/>
-            <Route path="watchlist" element={<UserWatchList/>}/>
-            <Route path="ratings" element={<UserRatings/>}/>
+            <Route path="/u/:userName/favorites" element={<UserFavorites/>}/>
+            <Route path="/u/:userName/watchlist" element={<UserWatchList/>}/>
+            <Route path="/u/:userName/ratings" element={<UserRatings/>}/>
           </Route>
         </Route>
       </Routes>
