@@ -24,7 +24,7 @@ const HomeLayout = () => {
   const popularActors = useSelector((state) => state.movies.popularActors);
   const discover = useSelector((state) => state.movies.discover);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth,);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
 
@@ -85,49 +85,16 @@ const HomeLayout = () => {
       name: 'Popular Movie',
     },
   ];
-  const itemGenres = [{
 
-      to: 'genre/action',
-      name: 'Action',
-    },
-    {
-      to: '/genre/adventure',
-      name: 'Adventure',
-    },
-    {
-      to: '/genre/comedy',
-      name: 'Comedy',
-    },
-    {
-      to: '/genre/drama',
-      name: 'Drama',
-    },
-    {
-      to: '/genre/animation',
-      name: 'Animation',
-    },
-    {
-      to: '/genre/fantasy',
-      name: 'Fantasy',
-    },
-    {
-      to: '/genre/documentary',
-      name: 'Documentary',
-    },
-    {
-      to: '/genre/horror',
-      name: 'Horror',
-    },
-  ];
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.header}>
-          {windowWidth >= 480 && windowWidth < 600 ? <div className={style.logo}>
+          {windowWidth >= 360 && windowWidth < 600 ? <div className={style.logo}>
               <NavLink className={'active logo'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></NavLink>
               <Search></Search>
               <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
-              <MyHamburger title={'Genres'} items={itemGenres}></MyHamburger>
+              {/*<MyHamburger title={'Genres'} items={itemGenres}></MyHamburger>*/}
             </div>
             :
             <h1>watch movies online</h1>}
@@ -146,6 +113,7 @@ const HomeLayout = () => {
                 to={`/movie/${movie.id}`}
                 className={style.swiperSlideMain}>
                 <SliderWithWatchBtn
+                  windowWidth={windowWidth}
                   rating={(movie.vote_average * 10).toFixed(1)}
                   displayAsPercentage={true}
                   name={movie.title}
@@ -159,7 +127,7 @@ const HomeLayout = () => {
         <div className={style.header}>
           <h2>Trending Now </h2>
         </div>
-        {windowWidth >= 480 && windowWidth < 600 ? <Swiper
+        {windowWidth >= 360 && windowWidth < 600 ? <Swiper
             id="main"
             tag="section"
             wrapperTag="ul"

@@ -27,7 +27,7 @@ const Layout = () => {
   const getPopMovies = async () => {
     dispatch(fetchMovies({ type: 'popularMovie' }));
   };
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -56,6 +56,12 @@ const Layout = () => {
 
   };
   useEffect(() => {
+
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
 
     const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
@@ -65,6 +71,8 @@ const Layout = () => {
         `var(--${component}-${theme})`,
       );
     });
+
+    return () => window.removeEventListener('resize', handleResize);
   },[theme]);
 
   return (
@@ -80,6 +88,7 @@ const Layout = () => {
             {showButton && <ScrollButton></ScrollButton>}
           </div>
 
+          {windowWidth <= 768 ?
           <div className={'containerSideBar'}>
             <Search/>
             <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
@@ -89,7 +98,8 @@ const Layout = () => {
               favorites={favorites}
               isLoading={isLoading}
             />
-          </div>
+          </div> : null}
+
         </div>
         {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>

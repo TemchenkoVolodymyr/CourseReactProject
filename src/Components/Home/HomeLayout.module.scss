@@ -14,7 +14,7 @@
     letter-spacing: 1px;
     display: flex;
     justify-content: space-between;
-    @media (min-width: 480px) and (max-width: 600px) {
+    @media (min-width: 360px) and (max-width: 600px) {
       width: 100%;
     }
   }
@@ -98,7 +98,7 @@
       }
 
       & > div {
-cursor: pointer;
+        cursor: pointer;
         z-index: 1;
         margin-left: 30px;
         margin-bottom: 10px;
@@ -127,16 +127,19 @@ cursor: pointer;
   }
 
 }
-.logo{
+
+.logo {
   display: flex;
   justify-content: space-between;
-  @media (min-width: 480px) and (max-width: 600px) {
-    display:-moz-box;
+  @media (min-width: 360px) and (max-width: 600px) {
+    display: flex;
     justify-content: normal;
   }
-  h1{
+
+  h1 {
     font-size: 15px;
   }
 }
+
 
 

@@ -9,6 +9,8 @@ const MyHamburger = (props) => {
   const [modal, setModal] = useState(false);
   const [styleModal, setStyleModal] = useState();
 
+  const [isActive,setIsActive] = useState(false);
+
   const openModal = () => {
     setModal(!modal);
   };
@@ -16,39 +18,43 @@ const MyHamburger = (props) => {
   useEffect(() => {
     if (modal === false) {
       setStyleModal({
-        backgroundColor: '#050505',
+        // backgroundColor: '#219132',
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
         zIndex: '1001',
-        opacity: 0,
+        // top:-1000,
+        top:0,
       });
     } else {
       setStyleModal({
-        backgroundColor: '#050505',
+        backgroundColor: '#7c1d1d',
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
         zIndex: '1001',
-        opacity: 1,
+
       });
     }
   }, [modal]);
 
-  const closeTheModal = () => {
-    console.log('s');
-    setModal(false);
-  };
 
+const changeActive = () => {
+  document.body.classList.toggle('lock');
+  setIsActive(!isActive);
+}
   const links = items.map((item) => <NavLink  to={item.to}>{item.name}</NavLink>);
 
   return (
-    <div className={style.container} onBlur={closeTheModal}>
-      <p className={style.openModal} onClick={openModal}>{title}</p>
-      <div onBlur={closeTheModal} className={style.test} >
-      <ul className={style.items}  style={styleModal}>
-        {links}
-      </ul>
+    <div className={style.container}>
+      {/*<p className={style.openModal} onClick={openModal}>{title}</p>*/}
+      <div className={`${style.headerBurger} ${isActive ? style.active : null}`} onClick={changeActive}>
+        <span></span>
+        <div className={style.menu}>
+          <ul className={style.items}  style={styleModal}>
+            {links}
+          </ul>
+        </div>
       </div>
     </div>
   );
