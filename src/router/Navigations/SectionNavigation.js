@@ -18,8 +18,7 @@ const SectionNavigation = () => {
 
 
   useEffect(() => {
-
-    loadData({setUserData, id});
+    if (id) loadData({setUserData, id});
 
   }, [id])
 
@@ -56,7 +55,7 @@ const SectionNavigation = () => {
           ><BiLogIn size={25}/>Login</NavLink>
       }
       {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
-      {isAuth && userName?
+      {isAuth && userName ?
         <NavLink
           to={`/u/${userName}`}
           style={{cursor: 'pointer'}}
