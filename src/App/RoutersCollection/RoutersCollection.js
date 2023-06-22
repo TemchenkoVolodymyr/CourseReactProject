@@ -30,7 +30,7 @@ const RoutersCollection = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home/>} />
           <Route path="discovery" element={<DiscoveryPage/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>

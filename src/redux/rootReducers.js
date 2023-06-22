@@ -21,7 +21,8 @@ export default combineReducers({
     watchList,
     ratings,
     loading: loaderReducer,
-    filters
+    filters,
+
 
   },
 );

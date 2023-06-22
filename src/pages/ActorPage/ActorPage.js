@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
 import CustomButton from '../../Components/Button/CustomButton';
+import {Helmet} from "react-helmet";
+
 
 const ActorPage = () => {
 
@@ -59,6 +61,11 @@ const ActorPage = () => {
   }
 
   return (
+<>
+  <Helmet>
+    <title>{actors.name} | Biography and Movies - MovieMagic</title>
+  </Helmet>
+
     <div className={style.wrapper}>
       <div className={style.left}>
         <img
@@ -128,6 +135,7 @@ const ActorPage = () => {
         </div>
       </div>
     </div>
+</>
   );
 };
 

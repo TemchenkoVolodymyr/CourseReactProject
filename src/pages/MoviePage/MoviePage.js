@@ -14,6 +14,8 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { dbRealTime } from '../../firebase';
 import { ref, set, onValue, push } from 'firebase/database';
+import {Helmet} from "react-helmet";
+
 
 const MoviePage = () => {
   const { id } = useParams();
@@ -83,6 +85,9 @@ const MoviePage = () => {
   }
   return (
     <>
+      <Helmet>
+        <title>{movie.title} | Overview, Ratings and Trailer </title>
+      </Helmet>
       <ActionBar
         movie={movie}
         movieId={movie.id}

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
-import { useParams } from 'react-router';
+import {useParams} from 'react-router';
 import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
+import { useLocation } from 'react-router-dom';
 
 const genreIds = {
   'comedy': 35,
@@ -29,15 +30,17 @@ const genreIds = {
   'western': 37,
 };
 const CurrentGenre = () => {
-  const { genre } = useParams();
+  const location = useLocation()
+  const {genre} = useParams();
 
   const [currGenre, setCurrGenre] = useState();
 
   useEffect(() => {
     const currentGenre = genreIds[genre];
+
     async function fetchMovie() {
       try {
-        const { data } = await axios
+        const {data} = await axios
           .get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
         setCurrGenre(data);
       } catch (err) {
@@ -49,26 +52,33 @@ const CurrentGenre = () => {
 
   }, [genre]);
 
+
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
-    <div className={styles.container}>
-      <h1>Popular genres: Everyone likes them</h1>
-      <h2>{genre}</h2>
-      <div className={style.wrapper}>
-        {
-          currGenre?.results.map((genre) =>
-            <NavLink key={genre.id} to={`/movie/${genre.id}`}>
-              <MovieBlock
-                image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
-                title={genre.title}
-                rating={(genre.vote_average * 10).toFixed(1)}
-                displayAsPercentage ={true}
-                canvasShow={true}
-              />
-            </NavLink>
-          )
-        }
+
+      <div className={styles.container}>
+        <h1>Popular genres: Everyone likes them</h1>
+        <h2>{genre}</h2>
+        <div className={style.wrapper}>
+          {
+            currGenre?.results.map((genre) =>
+              <NavLink key={genre.id} to={`/movie/${genre.id}`}>
+                <MovieBlock
+                  image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
+                  title={genre.title}
+                  rating={(genre.vote_average * 10).toFixed(1)}
+                  displayAsPercentage={true}
+                  canvasShow={true}
+                />
+              </NavLink>
+            )
+          }
+        </div>
       </div>
-    </div>
+
   );
 };
 
