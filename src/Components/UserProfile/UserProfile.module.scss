@@ -4,31 +4,28 @@
   text-align: center;
   font-size: 20px;
   box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
-  opacity: .7;
-  color: white;
+  color: var(--text-color-default);
 
 
   a {
-    color: white;
+    color: var(--text-color-default);
     text-decoration: none;
     padding: 20px;
-    opacity: .9;
   }
 }
 
 .outlet {
   font-size: 20px;
-  color: white;
-  opacity: .8;
+  color: var(--text-color-default);
   border-radius: 20px;
   margin-top: 20px;
+  opacity: .9;
 
   .profile {
 
     h2 {
       padding: 20px;
       text-align: center;
-      opacity: .8;
     }
 
     .header {
@@ -116,9 +113,9 @@
     justify-content: space-between;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
-    color: white;
+    color: var(--text-color-default);
     padding: 20px;
-    opacity: 0.8;
+
 
     .filters {
       font-size: 22px;
@@ -137,7 +134,7 @@
         .dropDown {
           width: 160px;
           background-color: #215064;
-          color: white;
+          color: var(--text-color-default);
           padding: 10px;
           list-style: none;
           position: absolute;
@@ -242,7 +239,7 @@
             line-height: 1.3em;
 
             p{
-              opacity: .7;
+
               @media (min-width: 1024px) and (max-width: 1280px) {
                 font-size: 13px;
               }
