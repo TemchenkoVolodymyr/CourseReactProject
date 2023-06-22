@@ -50,7 +50,7 @@ const CurrentGenre = () => {
 
     fetchMovie();
 
-  }, [genre]);
+  }, [genre])
 
 
   const capitalizeFirstLetter = (str) => {
