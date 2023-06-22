@@ -2,8 +2,11 @@
   border-radius: 20px;
   padding: 20px;
   text-align: center;
-  background-color: #215064;
   font-size: 20px;
+  box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
+  opacity: .7;
+  color: white;
+
 
   a {
     color: white;
@@ -11,14 +14,12 @@
     padding: 20px;
     opacity: .9;
   }
-
 }
 
 .outlet {
   font-size: 20px;
-  color: black;
+  color: white;
   opacity: .8;
-  background-color: #fff;
   border-radius: 20px;
   margin-top: 20px;
 
@@ -26,17 +27,17 @@
 
     h2 {
       padding: 20px;
-      color: rgba(33, 80, 100, 0.8);
       text-align: center;
+      opacity: .8;
     }
 
     .header {
-      background-color: #215064;
-      border-radius: 19px 19px 0 0;
+      border-radius: 19px;
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      color: white;
+      box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
+
 
       .avatar {
         margin-bottom: 20px;
@@ -75,19 +76,21 @@
             font-size: 24px;
           }
         }
-
       }
     }
 
     .stats {
-      font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
+      border-radius: 19px;
+      opacity: .8;
+
 
       div {
-        margin: 15px;
+        margin: 45px;
         box-shadow: 5px 5px 25px 5px rgba(33, 80, 100, 0.5);
         width: 200px;
         height: 200px;
@@ -96,20 +99,14 @@
         h3 {
           font-size: 26px;
           padding-top: 40px;
-          color: rgba(33, 80, 100, 0.8)
         }
 
         p {
           margin: 25px 0;
-          color: rgba(33, 80, 100, 0.8);
           font-size: 28px;
           font-weight: bold;
         }
-
-
       }
-
-
     }
   }
 
@@ -117,10 +114,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #215064;
     border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
     color: white;
     padding: 20px;
+    opacity: 0.8;
 
     .filters {
       font-size: 22px;
@@ -175,8 +173,8 @@
     .movieBlock {
       display: flex;
       border-radius: 20px;
-      border: 1px solid #215064;
-      margin: 10px 5px;
+      border: 1px solid rgba(34, 80, 80, .7);
+      margin: 10px 2px;
 
       .image {
         border-radius: 20px 0 0 20px;
@@ -204,11 +202,10 @@
 
           h2, p {
             padding-left: 10px;
+            opacity: .8;
             @media (min-width: 1024px) and (max-width: 1280px) {
               font-size: 14px;
             }
-
-
           }
 
           p {
@@ -243,7 +240,9 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             line-height: 1.3em;
+
             p{
+              opacity: .7;
               @media (min-width: 1024px) and (max-width: 1280px) {
                 font-size: 13px;
               }
