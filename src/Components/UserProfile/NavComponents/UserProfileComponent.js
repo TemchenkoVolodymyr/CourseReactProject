@@ -13,29 +13,51 @@ const UserProfileComponent = () => {
   const ratings = useSelector((state) => state.ratings.ratings);
   const [userData, setUserData] = useState(null);
   const { id } = useAuth();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
   const averageRating = totalRating / ratings.length;
 
   useEffect(() => {
     loadData({setUserData, id});
-
   }, [id])
 
-  const dateStr = userData.date
-  const dateParts = dateStr.split('.');
-  const dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+  const formatDate = (dateStr) => {
+    const dateParts = dateStr.split('.');
+    const dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return dateObject.toLocaleDateString('en-US', options);
+  };
 
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const formattedDate = dateObject.toLocaleDateString('en-US', options);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  let avatarSize = 250;
+  if (windowWidth < 500) {
+    avatarSize = 100;
+  } else if (windowWidth <= 1030) {
+    avatarSize = 150;
+  } else if (windowWidth <= 1200) {
+    avatarSize = 190;
+  }
+
+
   return (
     <div className={styles.profile}>
       <div className={styles.header}>
-        <Avatar className={styles.avatar} name={userData && userData.userName} size={250} round={true} />
+        <Avatar className={styles.avatar} name={userData && userData.userName} size={avatarSize} round={true} />
         <div className={styles.userInfo}>
           <div className={styles.main}>
             <p className={styles.name}>{userData && userData.userName}</p>
-            <p className={styles.membership}>Member since {userData && formattedDate}</p>
+            <p className={styles.membership}>Member since {userData && formatDate(userData.date)}</p>
           </div>
           <div className={styles.ratings}>
             <CircleRating
