@@ -18,7 +18,7 @@ const AuthForm = () => {
 
   const registerHandler = ({userName, email, password}) => {
 
-    dispatch(registerUser({email, password}))
+    dispatch(registerUser({userName, email, password}))
       .then((action) => {
         if (registerUser.fulfilled.match(action)) {
           navigate('/');
