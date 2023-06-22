@@ -3,9 +3,7 @@ import styles from "../UserProfile.module.scss";
 import CircleRating from "../../CircleRating/CircleRating";
 import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useAuth } from '../../../hooks/useAuth';
-import {useParams} from "react-router";
 import {loadData} from "../../../utils/helperFunctions/loadUserDataFromFB";
 
 const UserProfileComponent = () => {
@@ -20,7 +18,6 @@ const UserProfileComponent = () => {
   const averageRating = totalRating / ratings.length;
 
   useEffect(() => {
-
     loadData({setUserData, id});
 
   }, [id])
