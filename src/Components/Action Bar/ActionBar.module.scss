@@ -2,14 +2,21 @@
 .actionBar {
   position: sticky;
   top: 1px;
-  z-index: 9999;
+  z-index: 1000;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: dimgrey;
   display: flex;
   justify-content: center;
   border-radius: 20px;
-
+  @media (min-width: 360px) and (max-width: 600px) {
+    z-index: 2;
+    position: absolute;
+    display: block;
+    top: 17px;
+    right: 4px;
+    background: transparent;
+  }
 
   & > div {
 

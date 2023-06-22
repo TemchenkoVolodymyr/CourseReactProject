@@ -4,6 +4,10 @@
   position: absolute;
   padding: 20px;
   top: 80px;
+  @media (min-width: 360px) and (max-width: 600px) {
+  padding: 8px;
+    top: 57px;
+  }
 
   & > div{
     & > div {

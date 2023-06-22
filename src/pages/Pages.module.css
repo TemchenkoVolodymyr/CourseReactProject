@@ -1,6 +1,12 @@
 .container h1 {
   padding: 15px;
 }
+@media (min-width: 360px) and (max-width: 600px) {
+  .container h1 {
+    font-size: 15px;
+    color: #f8f8f8;
+  }
+}
 .container h2 {
   text-transform: capitalize;
   padding: 15px;
@@ -16,6 +22,11 @@
 .container p {
   padding: 15px;
   font-size: 18px;
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .container p {
+    font-size: 12px;
+  }
 }
 .container .wrapper {
   display: flex;

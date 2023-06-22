@@ -17,26 +17,34 @@
     img {
       width: 350px;
       border-radius: 20px;
-        @media (min-width: 1024px) and (max-width: 1280px) {
+      @media (min-width: 1024px) and (max-width: 1280px) {
         width: 250px;
       }
       @media (min-width: 768px) and (max-width: 1024px) {
-       width: 200px;
+        width: 200px;
+      }
+      @media (min-width: 360px) and (max-width: 600px) {
+        width: 100px;
       }
     }
 
     .personalInfo {
       display: flex;
       flex-direction: column;
+      @media (min-width: 360px) and (max-width: 600px) {
+        h3 {
+          color: #f8f8f8;
+        }
+      }
 
-      h2{
+      h2 {
         margin: 10px;
       }
 
       & > div {
         margin: 10px;
 
-        p{
+        p {
           padding: 10px;
         }
       }
@@ -47,20 +55,33 @@
     width: 100%;
     overflow: auto;
 
+
     .biography {
       margin-top: 10px;
       font-size: 20px;
       @media (min-width: 768px) and (max-width: 1024px) {
-       font-size: 15px;
+        font-size: 15px;
+      }
+      @media (min-width: 360px) and (max-width: 600px) {
+        p {
+          font-size: 13px;
+        }
+        h1 {
+          color: #fdfdfd;
+        }
       }
     }
 
     .knowFor {
       width: 100%;
 
-h2{
-  margin: 20px 0;
-}
+      h2 {
+        margin: 20px 0;
+        @media (min-width: 360px) and (max-width: 600px) {
+          color: #f8f8f8;
+        }
+      }
+
       .swiperSlide {
         text-decoration: none;
         color: white;
@@ -87,11 +108,19 @@ h2{
       }
     }
   }
+
+  @media (min-width: 360px) and (max-width: 600px) {
+    h1 {
+      color: #f8f8f8;
+    }
+  }
 }
-.knowFor p{
+
+.knowFor p {
   color: var(--text-color-default);
 }
-.nameOfMovie{
+
+.nameOfMovie {
   font-size: 20px;
   font-weight: 900;
   color: #9b1010 !important;

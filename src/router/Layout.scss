@@ -113,11 +113,10 @@ body{
     width:575px ;
   }
   @media (min-width: 360px) and (max-width: 600px) {
-   width: 400px;
+   width: 100%;
+    padding: 0;
   }
-  .swiper{
-    width: 200px;
-  }
+
 }
 
 .containerSideBar {
@@ -165,6 +164,9 @@ body{
     cursor: pointer;
     color: #c05a11;
   }
+}
+.headerMain{
+  background-color: #424c43;
 }
 
 @keyframes example {

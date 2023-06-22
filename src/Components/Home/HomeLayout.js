@@ -64,42 +64,9 @@ const HomeLayout = () => {
 
   }, []);
 
-  const itemMovies = [{
-    to: '/',
-    name: 'Home',
-  },
-    {
-      to: '/discovery',
-      name: 'Discovery',
-    },
-    {
-      to: '/fresh',
-      name: 'Fresh movies',
-    },
-    {
-      to: '/trending',
-      name: 'Trending now',
-    },
-    {
-      to: '/popMovies',
-      name: 'Popular Movie',
-    },
-  ];
-
   return (
     <>
       <div className={style.wrapper}>
-        <div className={style.header}>
-          {windowWidth >= 360 && windowWidth < 600 ? <div className={style.logo}>
-              <NavLink className={'active logo'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></NavLink>
-              <Search></Search>
-              <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
-              {/*<MyHamburger title={'Genres'} items={itemGenres}></MyHamburger>*/}
-            </div>
-            :
-            <h1>watch movies online</h1>}
-          {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
-        </div>
         <Swiper
           id="main"
           tag="section"
@@ -184,7 +151,7 @@ const HomeLayout = () => {
         <div className={style.header}>
           <h2>Best Actors</h2>
         </div>
-        {windowWidth >= 480 && windowWidth < 600 ? <Swiper
+        {windowWidth >= 360 && windowWidth < 600 ? <Swiper
             id="main"
             tag="section"
             wrapperTag="ul"

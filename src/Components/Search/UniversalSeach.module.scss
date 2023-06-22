@@ -1,5 +1,8 @@
 .container{
 width: 200px;
+  @media (min-width: 360px) and (max-width: 600px) {
+    width: 100px;
+  }
 }
 .icon{
 
@@ -19,7 +22,7 @@ width: 200px;
     padding: 6px 20px;
     width: 110px;
   }
-  @media (min-width: 480px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 600px) {
     width: 110px;
   }
 }
