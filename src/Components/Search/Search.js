@@ -10,7 +10,9 @@ const Search = () => {
   const movies = useSelector((state) => state.movies.discover);
   const [searchForMovie, setSearchForMovie] = useState('');
 
-  const [isModal,setIsModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+
+  const [clearSearch, setClearSearch] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -19,39 +21,45 @@ const Search = () => {
     movies.filter((item) => item.original_title.toLowerCase().includes(foundItem.toLowerCase()));
 
   const resetSearchInput = (id) => {
-    localStorage.setItem('movieId', id );
+    localStorage.setItem('movieId', id);
     dispatch(searchAC(''));
   };
 
   useEffect(() => {
-    if(findMovie.length > 2) {
+    if (findMovie.length >= 1) {
       setIsModal(true);
-    }else{
+    } else {
       setIsModal(false);
     }
-  },[findMovie]);
+  }, [findMovie]);
 
-useEffect(() => {
-  if(!isModal){
-    setSearchForMovie('');
-  }
-},[isModal])
+  useEffect(() => {
+    if (!clearSearch) {
+      setSearchForMovie('');
+      setClearSearch(true);
+    }
+
+
+  }, [clearSearch]);
 
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
   return (
-    <div className={style.container} >
-      <div className={`${style.autocompleted} ${isModal ? style.openModal : null}`}  onBlur={() => setIsModal(false)}>
-      <ul>
-        {findMovie && findMovie.map((item) => <div key={item.id} className={style.wrapper} style={{
-          backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,
-          backgroundSize: 'cover'
-        }}
-        ><NavLink className={style.item} onClick={() => resetSearchInput(item.id)}
-                  to={`/movie/${encodeURIComponent(item.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+    <div className={style.container}>
+      <div className={`${style.autocompleted} ${isModal ? style.openModal : null}`}
+           onBlur={() => setClearSearch(false)}>
+        <ul>
+          {findMovie && findMovie.map((item) => <NavLink className={style.item}
+                                                         onClick={() => resetSearchInput(item.id)}
+                                                         to={`/movie/${encodeURIComponent(item.title.replace(/[\s:]/g, '-').toLowerCase())}`}
 
-        >{item.original_title}</NavLink></div>)}
-      </ul>
+          >
+            <div key={item.id} className={style.wrapper} style={{
+              backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,
+              backgroundSize: 'cover'
+            }}>{item.original_title}</div>
+          </NavLink>)}
+        </ul>
       </div>
       <UniversalSearch callback={searchMovie} setFound={setFindMovie} value={searchForMovie}
                        setValue={setSearchForMovie} isModal={isModal}
