@@ -37,7 +37,7 @@ const RoutersCollection = () => {
           <Route path="/genre/:genre" element={<CurrentGenre/>}/>
           <Route path="auth" element={<AuthPage/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
-          <Route path="/movie/:id" element={<MoviePage/>}/>
+          <Route path="/movie/:title" element={<MoviePage/>}/>
           <Route path="/person/:name" element={<ActorPage/>}/>
           <Route path="/popMovies" element={<PopularMoviesPage/>}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage/>}/>

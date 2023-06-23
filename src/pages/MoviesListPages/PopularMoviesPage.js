@@ -37,7 +37,8 @@ const PopularMoviesPage = () => {
           {
             dataMovies?.map((film) =>
               <NavLink
-                to={`/movie/${film.id}`}
+                to={`/movie/${encodeURIComponent(film.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', film.id)}
                 key={film.id}
               >
                 <MovieBlock

@@ -15,7 +15,8 @@ import SimilarBlock from "../../Components/MoviePage Components/SimilarBlock";
 
 
 const MoviePage = () => {
-  const {id} = useParams();
+  const {title} = useParams();
+  const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
@@ -27,14 +28,14 @@ const MoviePage = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovie(data);
       } catch (err) {
         alert('Error');
       }
     }
 
-    dispatch(fetchReviews(id));
+    dispatch(fetchReviews(movieId));
     fetchMovie();
 
     function handleResize() {
@@ -42,7 +43,7 @@ const MoviePage = () => {
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [id]);
+  }, [title, movieId]);
 
   const sendReviewHandler = (review) => {
     if (review) {

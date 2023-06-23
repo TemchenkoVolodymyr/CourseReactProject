@@ -17,7 +17,6 @@ const HomeLayout = () => {
   const trendingMovies = useSelector((state) => state.movies.trendingMovies);
   const popularActors = useSelector((state) => state.movies.popularActors);
   const discover = useSelector((state) => state.movies.discover);
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -25,23 +24,18 @@ const HomeLayout = () => {
     const getTrending = async () => {
       dispatch(fetchMovies({ type: 'trendingMovies' }));
     };
-
     const getActors = async () => {
       dispatch(fetchMovies({ type: 'popularActors' }));
     };
-
     const getDiscover = () => {
       dispatch(fetchMovies({ type: 'discover' }));
     };
-
     const getPopMovies = async () => {
       dispatch(fetchMovies({ type: 'popularMovie' }));
     };
-
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
-
     window.addEventListener('resize', handleResize);
 
     getTrending();
@@ -74,8 +68,10 @@ const HomeLayout = () => {
           {discover?.map((movie) =>
             <SwiperSlide key={movie.id}>
               <NavLink
-                to={`/movie/${movie.id}`}
-                className={style.swiperSlideMain}>
+                to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                className={style.swiperSlideMain}
+                onClick={() => localStorage.setItem('movieId', movie.id )}>
+
                 <SliderWithWatchBtn
                   windowWidth={windowWidth}
                   rating={(movie.vote_average * 10).toFixed(1)}
@@ -101,8 +97,9 @@ const HomeLayout = () => {
               trendingMovies?.map((movie) =>
                 <SwiperSlide key={movie.id}>
                   <NavLink
-                    to={`/movie/${movie.id}`}
-                    className={style.swiperSlide}>
+                    to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                    className={style.swiperSlide}
+                    onClick={() => localStorage.setItem('movieId', movie.id )}>
                     <SliderItem
                       title={movie.title}
                       img={movie.poster_path}
@@ -111,7 +108,6 @@ const HomeLayout = () => {
                       canvasShow={true}
                       movieId={movie.id}
                       showActionBadge={true}
-
                     />
                   </NavLink>
                 </SwiperSlide>
@@ -128,8 +124,9 @@ const HomeLayout = () => {
               trendingMovies?.map((movie) =>
                 <SwiperSlide key={movie.id}>
                   <NavLink
-                    to={`/movie/${movie.id}`}
-                    className={style.swiperSlide}>
+                    to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                    className={style.swiperSlide}
+                    onClick={() => localStorage.setItem('movieId', movie.id )}>
                     <SliderItem
                       title={movie.title}
                       img={movie.poster_path}
@@ -138,7 +135,6 @@ const HomeLayout = () => {
                       canvasShow={true}
                       movieId={movie.id}
                       showActionBadge={true}
-
                     />
                   </NavLink>
                 </SwiperSlide>
