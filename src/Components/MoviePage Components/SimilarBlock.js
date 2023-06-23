@@ -43,7 +43,10 @@ const SimilarBlock = ({movie, windowWidth }) => {
           {movie?.similar.results.map((similar) =>
             similar.poster_path &&
             <SwiperSlide key={similar.id}>
-              <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>
+              <NavLink
+                to={`/movie/${encodeURIComponent(similar.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', similar.id)}
+                >
                 <SliderItem
                   img={similar.poster_path}
                   rating={(similar.vote_average * 10).toFixed(1)}
