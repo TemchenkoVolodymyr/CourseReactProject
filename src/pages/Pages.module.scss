@@ -3,7 +3,7 @@
 
   h1 {
     padding: 15px;
-    @media (min-width: 360px) and (max-width: 600px){
+    @media (min-width: 360px) and (max-width: 768px){
 
       font-size: 15px;
       color:#f8f8f8;
@@ -28,7 +28,7 @@
   p {
     padding: 15px;
     font-size: 18px;
-    @media (min-width: 360px) and (max-width: 600px){
+    @media (min-width: 360px) and (max-width: 768px){
 
       font-size: 12px;
     }

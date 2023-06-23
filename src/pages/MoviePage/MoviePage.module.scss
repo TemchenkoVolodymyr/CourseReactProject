@@ -80,7 +80,7 @@
     line-height: 25px;
     font-size: 18px;
     color: white;
-    @media (min-width: 360px) and (max-width: 600px) {
+    @media (min-width: 360px) and (max-width: 768px) {
       font-size: 13px;
     }
     }
@@ -98,7 +98,7 @@
 
     .data {
       padding-right: 80px;
-      @media (min-width: 360px) and (max-width: 600px) {
+      @media (min-width: 360px) and (max-width: 768px) {
         padding-right: 0;
         strong{
           color: #fcfcfc;

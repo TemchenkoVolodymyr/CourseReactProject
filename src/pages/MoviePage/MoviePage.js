@@ -136,7 +136,7 @@ const MoviePage = () => {
         <div className={style.overview}>
           <div className={style.rating}>
             <p>User Score</p>
-            {windowWidth >= 360 && windowWidth < 600 ?  <CircleRating
+            {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
                 rating={movie.vote_average * 10}
                 size={90}
                 displayAsPercentage={true}
@@ -162,7 +162,7 @@ const MoviePage = () => {
 
         <div className={style.test}>
           <h2>Top Billed Cast</h2>
-          {windowWidth >= 360 && windowWidth < 600 ?  <Swiper
+          {windowWidth >= 360 && windowWidth < 768 ?  <Swiper
               modules={[Navigation]}
               id="main"
               tag="section"
@@ -242,7 +242,7 @@ const MoviePage = () => {
         </div>) }
 
         <h2>Similar</h2>
-        {windowWidth >= 360 && windowWidth < 600 ? <Swiper
+        {windowWidth >= 360 && windowWidth < 768 ? <Swiper
             modules={[Navigation]}
             id="main"
             tag="section"

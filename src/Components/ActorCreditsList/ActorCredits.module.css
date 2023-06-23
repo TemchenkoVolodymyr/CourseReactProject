@@ -57,7 +57,7 @@
     font-size: 15px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .wrapper .info .title {
     font-size: 14px;
   }
@@ -70,7 +70,7 @@
     font-size: 13px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .wrapper {
     margin-right: 12px;
   }

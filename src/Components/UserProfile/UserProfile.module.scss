@@ -4,7 +4,7 @@
   text-align: center;
   background-color: #215064;
   font-size: 20px;
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     font-size: 15px;
     background-color: #424c43;
     margin-top: 20px;
@@ -72,7 +72,7 @@
         font-size: 12px;
       }
     }
-    @media (min-width: 360px) and (max-width: 600px) {
+    @media (min-width: 360px) and (max-width: 768px) {
      background-color: #424c43;
       border-radius: 0;
       font-size: 15px;
@@ -111,7 +111,7 @@
         @media (min-width: 768px) and (max-width: 1024px) {
           min-width: 280px;
         }
-        @media (min-width: 360px) and (max-width: 600px) {
+        @media (min-width: 360px) and (max-width: 768px) {
           min-width: 138px;
         }
       }
@@ -127,7 +127,7 @@
         @media (min-width: 768px) and (max-width: 1024px) {
           min-width: 260px;
         }
-        @media (min-width: 360px) and (max-width: 600px) {
+        @media (min-width: 360px) and (max-width: 768px) {
           padding:0;
         }
 
@@ -145,7 +145,7 @@
             @media (min-width: 1024px) and (max-width: 1280px) {
               font-size: 14px;
             }
-            @media (min-width: 360px) and (max-width: 600px) {
+            @media (min-width: 360px) and (max-width: 768px) {
               font-size: 13px;
             }
 
@@ -155,7 +155,7 @@
           p {
             opacity: .5;
           }
-          @media (min-width: 360px) and (max-width: 600px) {
+          @media (min-width: 360px) and (max-width: 768px) {
             width:200px;
           }
         }
@@ -185,7 +185,7 @@
                 font-size: 12px;
               }
             }
-            @media (min-width: 360px) and (max-width: 600px) {
+            @media (min-width: 360px) and (max-width: 768px) {
               margin: 0;
             }
           }
@@ -210,7 +210,7 @@
                 line-height: 1em;
               }
             }
-            @media (min-width: 360px) and (max-width: 600px) {
+            @media (min-width: 360px) and (max-width: 768px) {
              font-size: 13px;
               width: 186px;
             }

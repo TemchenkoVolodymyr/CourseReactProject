@@ -14,7 +14,7 @@
     margin: 10px 3px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .actionButton {
     width: 40px;
     height: 40px;

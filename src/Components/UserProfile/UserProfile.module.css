@@ -5,7 +5,7 @@
   background-color: #215064;
   font-size: 20px;
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .container {
     font-size: 15px;
     background-color: #424c43;
@@ -69,7 +69,7 @@
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .titleHeader {
     background-color: #424c43;
     border-radius: 0;
@@ -104,7 +104,7 @@
     min-width: 280px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .image {
     min-width: 138px;
   }
@@ -124,7 +124,7 @@
     min-width: 260px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info {
     padding: 0;
   }
@@ -145,7 +145,7 @@
     font-size: 14px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieTitle h2, .outlet .pageInfo .movieBlock .info .movieTitle p {
     font-size: 13px;
   }
@@ -153,7 +153,7 @@
 .outlet .pageInfo .movieBlock .info .movieTitle p {
   opacity: 0.5;
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieTitle {
     width: 200px;
   }
@@ -187,7 +187,7 @@
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .actionBar {
     margin: 0;
   }
@@ -216,7 +216,7 @@
     line-height: 1em;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .overview {
     font-size: 13px;
     width: 186px;

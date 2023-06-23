@@ -30,7 +30,7 @@
     margin-left: 0;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 768px) {
   .wrapper {
     width: 150px;
   }

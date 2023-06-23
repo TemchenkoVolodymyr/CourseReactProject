@@ -1,13 +1,18 @@
-.container{
-width: 200px;
+.container {
+  width: 200px;
   @media (min-width: 360px) and (max-width: 600px) {
     width: 100px;
   }
+  @media (min-width: 600px) and (max-width: 768px) {
+    width: 72px;
+  }
 }
-.icon{
+
+.icon {
 
 
 }
+
 .search {
   border-radius: 15px;
   border: 1px solid grey;
@@ -22,7 +27,7 @@ width: 200px;
     padding: 6px 20px;
     width: 110px;
   }
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     width: 110px;
   }
 }

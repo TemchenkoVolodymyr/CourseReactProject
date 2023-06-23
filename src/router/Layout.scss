@@ -35,7 +35,7 @@ body{
   @media (min-width: 768px) and (max-width: 1024px) {
     width:150px;
   }
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     opacity: 0;
     width: 0;
     overflow: hidden;
@@ -126,7 +126,7 @@ body{
   @media (min-width: 768px) and (max-width: 1024px) {
     width:575px ;
   }
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 768px) {
    width: 100%;
     padding: 0;
   }
@@ -151,7 +151,7 @@ body{
     width: 0;
     overflow: hidden;
   }
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     opacity: 0;
     width: 0;
     overflow: hidden;

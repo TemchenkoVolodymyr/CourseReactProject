@@ -11,7 +11,6 @@ import Loader from '../Loader/Loader';
 import { loaderAction } from '../Loader/loaderAction';
 import { fetchMovies } from '../redux/slices/movieSlice';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
-import {fetchFavorites} from "../redux/slices/favoriteSlice";
 import style from '../Components/Home/HomeLayout.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
@@ -129,11 +128,10 @@ const Layout = () => {
       </>
         :  <div className={'containerMain'}>
           <div className={style.header + ' ' + style.headerMain}>
-            {windowWidth >= 360 && windowWidth < 600 ? <div className={style.logo}>
+            {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
                 <Search></Search>
                 <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
                 <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
-                {/*<MyHamburger title={'Genres'} items={itemGenres}></MyHamburger>*/}
               </div>
               :
               <h1>watch movies online</h1>}

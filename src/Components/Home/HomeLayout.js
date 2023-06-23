@@ -8,13 +8,6 @@ import 'swiper/swiper-bundle.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
-import Search from '../Search/Search';
-import { MdFlutterDash } from 'react-icons/md';
-import { BsFilm } from 'react-icons/bs';
-import PositionedMenu from './HamburgerMovies';
-import HamburgerGenres from './HamburgerGenres';
-import MyHamburger from './MyHamburger';
-
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -94,7 +87,7 @@ const HomeLayout = () => {
         <div className={style.header}>
           <h2>Trending Now </h2>
         </div>
-        {windowWidth >= 360 && windowWidth < 600 ? <Swiper
+        {windowWidth >= 360 && windowWidth < 768 ? <Swiper
             id="main"
             tag="section"
             wrapperTag="ul"
@@ -151,7 +144,7 @@ const HomeLayout = () => {
         <div className={style.header}>
           <h2>Best Actors</h2>
         </div>
-        {windowWidth >= 360 && windowWidth < 600 ? <Swiper
+        {windowWidth >= 360 && windowWidth < 768 ? <Swiper
             id="main"
             tag="section"
             wrapperTag="ul"
