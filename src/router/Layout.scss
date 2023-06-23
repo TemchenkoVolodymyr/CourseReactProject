@@ -207,6 +207,9 @@ body{
   --color-header-dark:#{$header-color-darkMode};
   --color-header-light:#{$header-color-lightMode};
   --color-header-default:var(#{--color-header-dark});
+  --color-input-dark:#{$input-color-darkMode};
+  --color-input-light:#{$input-color-lightMode};
+  --color-input-default:var(#{--color-input-dark});
 
 
 

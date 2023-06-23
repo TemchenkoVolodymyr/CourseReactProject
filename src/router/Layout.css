@@ -225,6 +225,9 @@ body {
   --color-header-dark:#ffffff;
   --color-header-light:#000000;
   --color-header-default:var(--color-header-dark);
+  --color-input-dark:#ffffff;
+  --color-input-light:#000000;
+  --color-input-default:var(--color-input-dark);
 }
 
 /*# sourceMappingURL=Layout.css.map */

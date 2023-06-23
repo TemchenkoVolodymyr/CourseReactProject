@@ -7,9 +7,9 @@
 }
 @media (min-width: 360px) and (max-width: 768px) {
   .stars {
-    padding: 8px;
-    top: 230px;
-    right: 0;
+    padding: 5px;
+    top: 188px;
+    right: 48px;
   }
 }
 .stars > div > div {

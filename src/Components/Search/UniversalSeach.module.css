@@ -17,7 +17,7 @@
   border: 1px solid grey;
   padding: 8px 27px;
   background-color: var(--body-background-default);
-  color: white;
+  color: var(--color-input-default);
   background-image: url("https://cdn-icons-png.flaticon.com/128/954/954591.png");
   background-size: 20px;
   background-repeat: no-repeat;

@@ -67,7 +67,7 @@ const Layout = () => {
     window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
 
-    const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
+    const components = ['body-background','components-background','text-color','btn-color-hover','color-header','color-input'];
     components.forEach((component) => {
       root.style.setProperty(
         `--${component}-default`,
