@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Search.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import UniversalSearch from './UniversalSearch';
@@ -10,31 +10,49 @@ const Search = () => {
   const movies = useSelector((state) => state.movies.discover);
   const [searchForMovie, setSearchForMovie] = useState('');
 
+  const [isModal,setIsModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const [findMovie, setFindMovie] = useState([]);
   const searchMovie = (foundItem) => foundItem &&
     movies.filter((item) => item.original_title.toLowerCase().includes(foundItem.toLowerCase()));
 
-  const resetSearchInput = () => {
+  const resetSearchInput = (id) => {
+    localStorage.setItem('movieId', id );
     dispatch(searchAC(''));
   };
 
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
+  useEffect(() => {
+    if(findMovie.length > 2) {
+      setIsModal(true);
+    }else{
+      setIsModal(false);
+    }
+  },[findMovie]);
 
+useEffect(() => {
+  if(!isModal){
+    setSearchForMovie('');
+  }
+},[isModal])
+
+
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
   return (
     <div className={style.container}>
-      <ul className={style.autocompleted}>
+      <ul className={`${style.autocompleted} ${isModal ? style.openModal : null}`} onBlur={() => setIsModal(false)}>
         {findMovie && findMovie.map((item) => <div key={item.id} className={style.wrapper} style={{
           backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,
           backgroundSize: 'cover'
         }}
-        ><NavLink className={style.item} onClick={resetSearchInput}
-                  to={`/movie/${item.id}`}
+        ><NavLink className={style.item} onClick={() => resetSearchInput(item.id)}
+                  to={`/movie/${encodeURIComponent(item.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+
         >{item.original_title}</NavLink></div>)}
       </ul>
       <UniversalSearch callback={searchMovie} setFound={setFindMovie} value={searchForMovie}
-                       setValue={setSearchForMovie}
+                       setValue={setSearchForMovie} isModal={isModal}
       />
     </div>
   );

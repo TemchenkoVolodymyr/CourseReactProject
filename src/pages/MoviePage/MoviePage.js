@@ -15,7 +15,7 @@ import SimilarBlock from "../../Components/MoviePage Components/SimilarBlock";
 
 
 const MoviePage = () => {
-  const {title} = useParams();
+  const { title } = useParams();
   const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
