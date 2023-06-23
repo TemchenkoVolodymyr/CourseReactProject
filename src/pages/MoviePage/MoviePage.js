@@ -12,16 +12,18 @@ import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
 import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchReviews, setReview} from "../../redux/slices/reviewsSlice";
+import {fetchMovieReviews, fetchReviews, setReview} from "../../redux/slices/reviewsSlice";
+import {useAuth} from "../../hooks/useAuth";
 
 
 const MoviePage = () => {
-  const { id } = useParams();
+  const { id: movieId } = useParams();
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews.reviews);
   const status = useSelector((state) => state.reviews.status);
+  const {id: userId} = useAuth()
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -34,7 +36,7 @@ const MoviePage = () => {
         alert('Error');
       }
     }
-    dispatch(fetchReviews(id));
+    dispatch(fetchMovieReviews(movieId));
 
     fetchMovie();
 
@@ -46,11 +48,11 @@ const MoviePage = () => {
 
     return () => window.removeEventListener('resize', handleResize);
 
-  }, [id]);
+  }, [movieId]);
 
   const sendReviewHandler = (review) => {
     if (review) {
-      dispatch(setReview({id, text: review}))
+      dispatch(setReview({movieId: movieId, userId: userId, text: review}))
       setValue('');
     }
   };
