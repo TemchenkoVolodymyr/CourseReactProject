@@ -32,6 +32,17 @@ body{
   font-family: Arial, sans-serif;
   font-weight: bold;
   user-select: none;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width:150px;
+  }
+  @media (min-width: 360px) and (max-width: 768px) {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width:120px;
+  }
 
   & > a {
     color: var(--text-color-default);
@@ -41,11 +52,22 @@ body{
     text-decoration: none;
     display: flex;
     align-items: center;
-
+    @media (min-width: 768px) and (max-width: 1024px) {
+      font-size: 13px;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      font-size: 11px;
+    }
     h1 {
       font-size: $size * 2;
       color:$logo-color;
       letter-spacing: $size * 0.1;
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 13px;
+      }
+      @media (min-width: 1024px) and (max-width: 1200px) {
+        font-size: 12px;
+      }
 
       span {
         color: $colorBtnBg;
@@ -71,6 +93,11 @@ body{
 
     &:first-child {
       border: none;
+      @media (min-width: 1024px) and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+      }
+
     }
 
     & > svg {
@@ -83,6 +110,9 @@ body{
     margin-top: $size * 4;
     text-transform: uppercase;
     font-size: $size * 1.4;
+    @media (min-width: 768px) and (max-width: 1024px) {
+     font-size: 12px;
+    }
   }
 }
 
@@ -90,6 +120,20 @@ body{
   width: calc(100% - $navWidth - $sidBarWidth);
   padding: $size;
   color: var(--text-color-default);
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    width:700px ;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width:575px ;
+  }
+  @media (min-width: 360px) and (max-width: 768px) {
+   width: 100%;
+    padding: 0;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 650px;
+  }
+
 }
 
 .containerSideBar {
@@ -99,6 +143,19 @@ body{
   border-left: 1px solid darken($colorDefault, 25%);
   padding-top: $size;
   padding-left: $size;
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    width:200px ;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+   opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  @media (min-width: 360px) and (max-width: 768px) {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
 }
 
 .footer {
@@ -124,6 +181,9 @@ body{
     cursor: pointer;
     color: #c05a11;
   }
+}
+.headerMain{
+  background-color: #424c43;
 }
 
 @keyframes example {

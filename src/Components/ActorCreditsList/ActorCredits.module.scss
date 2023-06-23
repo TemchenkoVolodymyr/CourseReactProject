@@ -21,6 +21,9 @@
     @media (min-width: 1024px) and (max-width: 1280px) {
       font-size: 15px;
     }
+    @media (min-width: 360px) and (max-width: 600px){
+        font-size: 12px;
+      }
   }
 
   .info {
@@ -31,6 +34,14 @@
     @media (min-width: 1024px) and (max-width: 1280px) {
       font-size: 15px;
     }
+    @media (min-width: 360px) and (max-width: 600px){
+
+    font-size: 12px;
+      h3{
+        //font-size: 12px;
+      }
+
+    }
 
     .title {
       margin-left: 20px;
@@ -40,13 +51,28 @@
       @media (min-width: 1024px) and (max-width: 1280px) {
         font-size: 15px;
       }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 15px;
+      }
+      @media (min-width: 360px) and (max-width: 768px){
+
+        font-size: 14px;
+
+      }
 
     }
 
     .role {
       margin-left: 40px;
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 13px;
+
+      }
     }
 
   }
+  @media (min-width: 360px) and (max-width: 768px){
 
+    margin-right: 12px
+  }
 }

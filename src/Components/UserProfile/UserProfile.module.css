@@ -5,6 +5,14 @@
   background-color: #215064;
   font-size: 20px;
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .container {
+    font-size: 15px;
+    background-color: #424c43;
+    margin-top: 20px;
+    border-radius: 0;
+  }
+}
 .container a {
   color: white;
   text-decoration: none;
@@ -56,6 +64,18 @@
   cursor: pointer;
   padding: 5px;
 }
+@media (min-width: 360px) and (max-width: 600px) {
+  .outlet .titleHeader .filters {
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .titleHeader {
+    background-color: #424c43;
+    border-radius: 0;
+    font-size: 15px;
+  }
+}
 .outlet .pageInfo .emptyList {
   height: 100vh;
   display: flex;
@@ -79,6 +99,16 @@
   background-position: center;
   min-width: 300px;
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .outlet .pageInfo .movieBlock .image {
+    min-width: 280px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .image {
+    min-width: 138px;
+  }
+}
 .outlet .pageInfo .movieBlock .info {
   display: flex;
   flex-direction: column;
@@ -87,6 +117,16 @@
 @media (min-width: 1024px) and (max-width: 1280px) {
   .outlet .pageInfo .movieBlock .info {
     width: 200px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .outlet .pageInfo .movieBlock .info {
+    min-width: 260px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .info {
+    padding: 0;
   }
 }
 .outlet .pageInfo .movieBlock .info .movieTitle {
@@ -105,8 +145,18 @@
     font-size: 14px;
   }
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .info .movieTitle h2, .outlet .pageInfo .movieBlock .info .movieTitle p {
+    font-size: 13px;
+  }
+}
 .outlet .pageInfo .movieBlock .info .movieTitle p {
   opacity: 0.5;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .info .movieTitle {
+    width: 200px;
+  }
 }
 .outlet .pageInfo .movieBlock .info .movieInfo {
   margin: 10px;
@@ -127,6 +177,21 @@
     font-size: 12px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .actionBar p {
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .actionBar p {
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .actionBar {
+    margin: 0;
+  }
+}
 .outlet .pageInfo .movieBlock .info .movieInfo .overview {
   line-clamp: 1;
   overflow: hidden;
@@ -135,9 +200,26 @@
   -webkit-box-orient: vertical;
   line-height: 1.3em;
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .overview {
+    display: block;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1280px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .overview p {
     font-size: 13px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .overview p {
+    font-size: 13px;
+    line-height: 1em;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .outlet .pageInfo .movieBlock .info .movieInfo .overview {
+    font-size: 13px;
+    width: 186px;
   }
 }
 

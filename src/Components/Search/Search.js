@@ -25,7 +25,7 @@ const Search = () => {
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
 
   return (
-    <div>
+    <div className={style.container}>
       <ul className={style.autocompleted}>
         {findMovie && findMovie.map((item) => <div key={item.id} className={style.wrapper} style={{
           backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,

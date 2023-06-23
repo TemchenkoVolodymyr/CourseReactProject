@@ -10,6 +10,9 @@
     @media (min-width: 1024px) and (max-width: 1280px) {
       font-size: 12px;
     }
+    @media (min-width: 768px) and (max-width: 1024px) {
+     font-size: 12px;
+    }
 
   }
 
@@ -23,10 +26,17 @@
     @media (min-width: 1024px) and (max-width: 1280px) {
       font-size: 12px;
     }
+    @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 12px;
+    }
 
     p{
       cursor: pointer;
       padding: 5px;
+    }
+    @media (min-width: 360px) and (max-width: 768px){
+
+      font-size: 12px;
     }
   }
 }

@@ -11,7 +11,10 @@ import Loader from '../Loader/Loader';
 import { loaderAction } from '../Loader/loaderAction';
 import { fetchMovies } from '../redux/slices/movieSlice';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
-import {fetchFavorites} from "../redux/slices/favoriteSlice";
+import style from '../Components/Home/HomeLayout.module.scss';
+import { NavLink } from 'react-router-dom';
+import { BsFilm } from 'react-icons/bs';
+import MyHamburger from '../Components/Home/MyHamburger';
 
 
 const Layout = () => {
@@ -27,7 +30,7 @@ const Layout = () => {
   const getPopMovies = async () => {
     dispatch(fetchMovies({ type: 'popularMovie' }));
   };
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -56,6 +59,12 @@ const Layout = () => {
 
   };
   useEffect(() => {
+
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
 
     const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
@@ -65,11 +74,33 @@ const Layout = () => {
         `var(--${component}-${theme})`,
       );
     });
+
+    return () => window.removeEventListener('resize', handleResize);
   },[theme]);
+
+  const itemMovies = [
+    {
+      to: '/discovery',
+      name: 'Discovery',
+    },
+    {
+      to: '/fresh',
+      name: 'Fresh movies',
+    },
+    {
+      to: '/trending',
+      name: 'Trending now',
+    },
+    {
+      to: '/popMovies',
+      name: 'Popular Movie',
+    },
+  ];
 
   return (
     <>
-      {loading ? <Loader></Loader> : <>
+      {windowWidth >= 768 ?
+      loading ? <Loader></Loader> : <>
         <div id={'mainContent'} className={'containerTopLayout'}>
           <div className={'containerNav'}>
             <SectionNavigation></SectionNavigation>
@@ -79,6 +110,7 @@ const Layout = () => {
             <Outlet/>
             {showButton && <ScrollButton></ScrollButton>}
           </div>
+
 
           <div className={'containerSideBar'}>
             <Search/>
@@ -90,10 +122,23 @@ const Layout = () => {
               isLoading={isLoading}
             />
           </div>
+
         </div>
-        <footer className={'footer'}>2023 - mock footer for course react</footer>
+        {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>
-      }
+        :  <div className={'containerMain'}>
+          <div className={style.header + ' ' + style.headerMain}>
+            {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
+                <Search></Search>
+                <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
+                <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
+              </div>
+              :
+              <h1>watch movies online</h1>}
+            {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
+          </div>
+          <Outlet/>
+        </div>}
     </>
   );
 };

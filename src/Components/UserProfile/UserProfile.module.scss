@@ -2,7 +2,14 @@
   border-radius: 20px;
   padding: 20px;
   text-align: center;
+  background-color: #215064;
   font-size: 20px;
+  @media (min-width: 360px) and (max-width: 768px) {
+    font-size: 15px;
+    background-color: #424c43;
+    margin-top: 20px;
+    border-radius: 0;
+  }
   box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
   color: var(--text-color-default);
 
@@ -11,7 +18,9 @@
     color: var(--text-color-default);
     text-decoration: none;
     padding: 20px;
+    opacity: .9;
   }
+
 }
 
 .outlet {
@@ -150,11 +159,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #215064;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 0 5px 5px rgba(34, 80, 80, .9);
     color: var(--text-color-default);
     padding: 20px;
-
 
     .filters {
       font-size: 22px;
@@ -186,6 +195,14 @@
           }
         }
       }
+      @media (min-width: 360px) and (max-width: 600px) {
+        font-size: 12px;
+      }
+    }
+    @media (min-width: 360px) and (max-width: 768px) {
+     background-color: #424c43;
+      border-radius: 0;
+      font-size: 15px;
     }
   }
 
@@ -198,13 +215,14 @@
       align-items: center;
       justify-content: center;
 
-      p {
+
+      p{
         margin: 50px;
         font-size: 24px;
       }
 
-    }
 
+    }
 
     .movieBlock {
       display: flex;
@@ -217,6 +235,12 @@
         background-size: cover;
         background-position: center;
         min-width: 300px;
+        @media (min-width: 768px) and (max-width: 1024px) {
+          min-width: 280px;
+        }
+        @media (min-width: 360px) and (max-width: 768px) {
+          min-width: 138px;
+        }
       }
 
       .info {
@@ -225,6 +249,12 @@
         padding: 20px;
         @media (min-width: 1024px) and (max-width: 1280px) {
           width: 200px;
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+          min-width: 260px;
+        }
+        @media (min-width: 360px) and (max-width: 768px) {
+          padding:0;
         }
 
         .movieTitle {
@@ -242,10 +272,18 @@
             @media (min-width: 1024px) and (max-width: 1280px) {
               font-size: 14px;
             }
+            @media (min-width: 360px) and (max-width: 768px) {
+              font-size: 13px;
+            }
+
+
           }
 
           p {
             opacity: .5;
+          }
+          @media (min-width: 360px) and (max-width: 768px) {
+            width:200px;
           }
         }
 
@@ -266,6 +304,15 @@
               @media (min-width: 1024px) and (max-width: 1280px) {
                 font-size: 12px;
               }
+              @media (min-width: 768px) and (max-width: 1024px) {
+               font-size: 12px;
+              }
+              @media (min-width: 360px) and (max-width: 600px) {
+                font-size: 12px;
+              }
+            }
+            @media (min-width: 360px) and (max-width: 768px) {
+              margin: 0;
             }
           }
 
@@ -277,11 +324,21 @@
             -webkit-box-orient: vertical;
             line-height: 1.3em;
 
+            @media (min-width: 768px) and (max-width: 1024px) {
+              display: block;
+            }
             p{
-
               @media (min-width: 1024px) and (max-width: 1280px) {
                 font-size: 13px;
               }
+              @media (min-width: 768px) and (max-width: 1024px) {
+               font-size: 13px;
+                line-height: 1em;
+              }
+            }
+            @media (min-width: 360px) and (max-width: 768px) {
+             font-size: 13px;
+              width: 186px;
             }
           }
         }

@@ -20,6 +20,11 @@
     font-size: 15px;
   }
 }
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .filter {
+    font-size: 12px;
+  }
+}
 .wrapper .info {
   display: flex;
   align-items: flex-start;
@@ -29,6 +34,11 @@
 @media (min-width: 1024px) and (max-width: 1280px) {
   .wrapper .info {
     font-size: 15px;
+  }
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .info {
+    font-size: 12px;
   }
 }
 .wrapper .info .title {
@@ -42,8 +52,28 @@
     font-size: 15px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wrapper .info .title {
+    font-size: 15px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper .info .title {
+    font-size: 14px;
+  }
+}
 .wrapper .info .role {
   margin-left: 40px;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wrapper .info .role {
+    font-size: 13px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper {
+    margin-right: 12px;
+  }
 }
 
 /*# sourceMappingURL=ActorCredits.module.css.map */

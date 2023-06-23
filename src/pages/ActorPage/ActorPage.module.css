@@ -18,9 +18,24 @@
     width: 250px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wrapper .left img {
+    width: 200px;
+  }
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .left img {
+    width: 100px;
+  }
+}
 .wrapper .left .personalInfo {
   display: flex;
   flex-direction: column;
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .left .personalInfo h3 {
+    color: #f8f8f8;
+  }
 }
 .wrapper .left .personalInfo h2 {
   margin: 10px;
@@ -39,11 +54,29 @@
   margin-top: 10px;
   font-size: 20px;
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wrapper .right .biography {
+    font-size: 15px;
+  }
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .right .biography p {
+    font-size: 13px;
+  }
+  .wrapper .right .biography h1 {
+    color: #fdfdfd;
+  }
+}
 .wrapper .right .knowFor {
   width: 100%;
 }
 .wrapper .right .knowFor h2 {
   margin: 20px 0;
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper .right .knowFor h2 {
+    color: #f8f8f8;
+  }
 }
 .wrapper .right .knowFor .swiperSlide {
   text-decoration: none;
@@ -64,6 +97,11 @@
 .wrapper .right .knowFor .swiperSlide > div:hover {
   box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
   transform: scale(1.05);
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .wrapper h1 {
+    color: #f8f8f8;
+  }
 }
 
 .knowFor p {
