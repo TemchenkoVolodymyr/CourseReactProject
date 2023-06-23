@@ -7,6 +7,7 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import { getAuth, signOut } from 'firebase/auth';
 import { removeUser } from '../../redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
 
 
 const MyHamburger = (props) => {
@@ -19,9 +20,13 @@ const MyHamburger = (props) => {
   const { isAuth, isAdmin } = useAuth();
   const dispatch = useDispatch();
 
-  const openModal = () => {
-    setModal(!modal);
-  };
+  const [ userData, setUserData] = useState(null);
+
+  const { id } = useAuth();
+
+
+
+
 
   useEffect(() => {
     if (modal === false) {
@@ -44,7 +49,11 @@ const MyHamburger = (props) => {
 
       });
     }
-  }, [modal]);
+
+    if (id) loadData({ setUserData, id });
+  }, [modal,id]);
+
+  const userName = userData && userData.userName;
 
   const itemGenres = [{
     to: '/genre/action',
@@ -100,7 +109,6 @@ const MyHamburger = (props) => {
 
     return (
     <div className={style.container}>
-      {/*<p className={style.openModal} onClick={openModal}>{title}</p>*/}
       <div className={`${style.headerBurger} ${isActive ? style.active : null}`} onClick={changeActive}>
         <span></span>
         <div className={style.menu}>
@@ -128,7 +136,7 @@ const MyHamburger = (props) => {
             }
             {isAuth ?
               <NavLink
-                to={'/u/'}
+                to={`/u/${userName}`}
                 style={{ cursor: 'pointer' }}
               ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
 
