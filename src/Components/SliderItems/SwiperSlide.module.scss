@@ -31,6 +31,9 @@
       align-items: center;
       opacity: 0;
       width: 50%;
+      @media (min-width: 360px) and (max-width: 768px) {
+        opacity: 1;
+      }
     }
     &:hover > div:first-child {
       opacity: 1;
@@ -50,6 +53,12 @@
       }
       @media (min-width: 768px) and (max-width: 1024px) {
        font-size: 12px;
+      }
+      @media (min-width: 360px) and (max-width: 768px) {
+        font-size: 14px;
+        opacity: 1;
+        background-color: rgba(5, 5, 5, 0.81);
+        padding: 20px 0;
       }
     }
 

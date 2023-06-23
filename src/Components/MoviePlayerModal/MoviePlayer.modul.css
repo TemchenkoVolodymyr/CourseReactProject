@@ -10,5 +10,10 @@
   width: 70%;
   height: 100%;
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .modal .modal-content {
+    margin: 0;
+  }
+}
 
 /*# sourceMappingURL=MoviePlayer.modul.css.map */

@@ -95,7 +95,7 @@ const HomeLayout = () => {
             id="main"
             tag="section"
             wrapperTag="ul"
-            navigation slidesPerView={4}
+            navigation slidesPerView={3}
             spaceBetween={10}>
             {
               trendingMovies?.map((movie) =>
@@ -152,7 +152,7 @@ const HomeLayout = () => {
             id="main"
             tag="section"
             wrapperTag="ul"
-            navigation slidesPerView={4}
+            navigation slidesPerView={3}
             spaceBetween={10}>
             {
               popularActors?.map((actor) =>

@@ -48,7 +48,7 @@ const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movie
     </div>
 
 
-    <p>{title}</p>
+    {title && <p>{title}</p> }
 
   </div>
   );
