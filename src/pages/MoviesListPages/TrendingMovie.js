@@ -34,7 +34,8 @@ const TrendingMovie = () => {
           {
             movies?.results.map((movie) =>
               <NavLink
-                to={`/movie/${movie.id}`}
+                to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', movie.id)}
                 key={movie.id}
               >
                 <MovieBlock

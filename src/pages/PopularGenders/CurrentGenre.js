@@ -65,7 +65,10 @@ const CurrentGenre = () => {
         <div className={style.wrapper}>
           {
             currGenre?.results.map((genre) =>
-              <NavLink key={genre.id} to={`/movie/${genre.id}`}>
+              <NavLink
+                key={genre.id}
+                to={`/movie/${encodeURIComponent(genre.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', genre.id)}>
                 <MovieBlock
                   image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
                   title={genre.title}

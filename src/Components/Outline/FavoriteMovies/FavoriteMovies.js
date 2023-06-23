@@ -26,7 +26,8 @@ const FavoriteMovies = ({userId, isLoading, favorites}) => {
       {favorites.length > 0 && favorites?.slice(0, 4).map((movie) =>
         <NavLink
           key={movie?.id}
-          to={`/movie/${movie?.movieInfo.id}`}
+          to={`/movie/${encodeURIComponent(movie?.movieInfo.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+          onClick={() => localStorage.setItem('movieId', movie.movieInfo.id)}
         >
           <div
             style={{
