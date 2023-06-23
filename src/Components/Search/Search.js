@@ -40,8 +40,9 @@ useEffect(() => {
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/';
   return (
-    <div className={style.container}>
-      <ul className={`${style.autocompleted} ${isModal ? style.openModal : null}`} onBlur={() => setIsModal(false)}>
+    <div className={style.container} >
+      <div className={`${style.autocompleted} ${isModal ? style.openModal : null}`}  onBlur={() => setIsModal(false)}>
+      <ul>
         {findMovie && findMovie.map((item) => <div key={item.id} className={style.wrapper} style={{
           backgroundImage: `url(${imageBaseUrl}w500${item.backdrop_path})`,
           backgroundSize: 'cover'
@@ -51,6 +52,7 @@ useEffect(() => {
 
         >{item.original_title}</NavLink></div>)}
       </ul>
+      </div>
       <UniversalSearch callback={searchMovie} setFound={setFindMovie} value={searchForMovie}
                        setValue={setSearchForMovie} isModal={isModal}
       />

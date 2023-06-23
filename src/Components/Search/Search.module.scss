@@ -10,6 +10,7 @@
   flex-direction: column;
   z-index: 1000;
 
+
   .item{
     text-decoration: none;
     color: #fcfcfc;
@@ -25,8 +26,11 @@
   }
 }
 .openModal{
-  color:#424c43;
+ display: flex;
+  top: 50px;
+
 }
+
 
 .autocompletedItem {
   font-size: 20px;
@@ -55,10 +59,7 @@
 
 }
 .container {
-  .openModal{
-    top: 50px;
-    display: flex;
-  }
+  color:#f0ad4e;
 }
 
 
