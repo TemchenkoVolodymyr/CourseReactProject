@@ -40,6 +40,9 @@ body{
     width: 0;
     overflow: hidden;
   }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width:120px;
+  }
 
   & > a {
     color: var(--text-color-default);
@@ -52,12 +55,18 @@ body{
     @media (min-width: 768px) and (max-width: 1024px) {
       font-size: 13px;
     }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      font-size: 11px;
+    }
     h1 {
       font-size: $size * 2;
       color:$logo-color;
       letter-spacing: $size * 0.1;
       @media (min-width: 768px) and (max-width: 1024px) {
         font-size: 13px;
+      }
+      @media (min-width: 1024px) and (max-width: 1200px) {
+        font-size: 12px;
       }
 
       span {
@@ -84,6 +93,11 @@ body{
 
     &:first-child {
       border: none;
+      @media (min-width: 1024px) and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+      }
+
     }
 
     & > svg {
@@ -115,6 +129,9 @@ body{
   @media (min-width: 360px) and (max-width: 600px) {
    width: 100%;
     padding: 0;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 650px;
   }
 
 }
