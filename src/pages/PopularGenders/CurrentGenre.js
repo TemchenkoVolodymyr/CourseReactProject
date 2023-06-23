@@ -6,6 +6,8 @@ import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
 import { useLocation } from 'react-router-dom';
+import genreTitles from "./genreTitles";
+import {Helmet} from "react-helmet";
 
 const genreIds = {
   'comedy': 35,
@@ -30,9 +32,7 @@ const genreIds = {
   'western': 37,
 };
 const CurrentGenre = () => {
-  const location = useLocation()
-  const {genre} = useParams();
-
+  const { genre} = useParams();
   const [currGenre, setCurrGenre] = useState();
 
   useEffect(() => {
@@ -50,15 +50,15 @@ const CurrentGenre = () => {
 
     fetchMovie();
 
-  }, [genre]);
+  }, [genre])
 
-
-  const capitalizeFirstLetter = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+  const pageTitle = genreTitles[genre] || '';
 
   return (
-
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
       <div className={styles.container}>
         <h1>Popular genres: Everyone likes them</h1>
         <h2>{genre}</h2>
@@ -78,7 +78,7 @@ const CurrentGenre = () => {
           }
         </div>
       </div>
-
+</>
   );
 };
 

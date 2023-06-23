@@ -8,6 +8,7 @@ import 'swiper/swiper-bundle.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
+import {Helmet} from "react-helmet";
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -59,6 +60,9 @@ const HomeLayout = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Latest Movie Trailers, Reviews & Overviews | Ultimate Cinema Guide</title>
+      </Helmet>
       <div className={style.wrapper}>
         <Swiper
           id="main"
