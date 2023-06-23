@@ -10,23 +10,20 @@ import SliderItem from '../../Components/SliderItems/SliderItem';
 import ActionBar from '../../Components/Action Bar/ActionBar';
 import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { dbRealTime } from '../../firebase';
-import { ref, set, onValue, push } from 'firebase/database';
 import {Helmet} from "react-helmet";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchReviews, setReview} from "../../redux/slices/reviewsSlice";
 
 
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
-  const [reviews, setReviews] = useState([]);
-  const db = getFirestore();
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => state.reviews.reviews);
+  const status = useSelector((state) => state.reviews.status);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const auth = getAuth();
 
   useEffect(() => {
     async function fetchMovie() {
@@ -37,22 +34,7 @@ const MoviePage = () => {
         alert('Error');
       }
     }
-
-    const getReviews = async () => {
-      const reference = ref(dbRealTime, 'reviews/' + id);
-
-      onValue(reference,(snapshot) => {
-        const data = [];
-        snapshot.forEach((childSnapshot) => {
-          const childData = childSnapshot.val();
-          data.push(childData);
-
-        });
-        setReviews(data);
-      });
-    };
-
-    getReviews();
+    dispatch(fetchReviews(id));
 
     fetchMovie();
 
@@ -66,27 +48,10 @@ const MoviePage = () => {
 
   }, [id]);
 
-  const setReview = async (text) => {
-    const reference = ref(dbRealTime, 'reviews/' + id);
-    const currentUser = auth.currentUser.email;
-    const date = new Date;
-    const newReviewRef = push(reference);
-
-    await set(newReviewRef, {
-      text: text,
-      date: date.toLocaleDateString(),
-      user: currentUser,
-    });
-
-  };
-
-  const changeValue = (e) => {
-    setValue(e.target.value);
-  };
   const sendReviewHandler = (review) => {
-    if(review){
+    if (review) {
+      dispatch(setReview({id, text: review}))
       setValue('');
-      setReview(review);
     }
   };
 
@@ -159,7 +124,6 @@ const MoviePage = () => {
             <p><strong>Original Language:</strong> {movie.original_language.toUpperCase()}</p>
             <p><strong>Budget:</strong> $ {movie.budget}</p>
             <p><strong>Revenue:</strong> $ {movie.revenue}</p>
-
           </div>
         </div>
 
@@ -228,22 +192,27 @@ const MoviePage = () => {
 
         <div className={style.reviewsContainer}>
           <h1>Write Your Review</h1>
-          <textarea value={value} onChange={changeValue} placeholder="write your review"/>
+          <textarea
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="write your review"/>
           <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
         </div>
 
         <h1 className={style.header}>Reviews :</h1>
-        {reviews && reviews.map((item, i) => <div key={i} className={style.wrapperReview} >
-          <div className={style.reviews}>
-            <p>{item.text}</p>
-            <div>
-              <p>{item.user}</p>
-              <p>{item.date}</p>
-            </div>
+        {status === 'loading' ? <p>Loading</p> :
+          <>
+            {reviews && reviews?.map((item, i) => <div key={i} className={style.wrapperReview} >
+              <div className={style.reviews}>
+                <p>{item.text}</p>
+                <div>
+                  <p>{item.user}</p>
+                  <p>{item.date}</p>
+                </div>
 
-          </div>
-        </div>) }
-
+              </div>
+            </div>) }
+          </>}
         <h2>Similar</h2>
         {windowWidth >= 360 && windowWidth < 768 ? <Swiper
             modules={[Navigation]}
