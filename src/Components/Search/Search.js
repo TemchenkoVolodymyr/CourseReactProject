@@ -8,11 +8,9 @@ import { searchAC } from './searchAC';
 const Search = () => {
 
   const movies = useSelector((state) => state.movies.discover);
-
   const [searchForMovie, setSearchForMovie] = useState('');
 
   const dispatch = useDispatch();
-
 
   const [findMovie, setFindMovie] = useState([]);
   const searchMovie = (foundItem) => foundItem &&
