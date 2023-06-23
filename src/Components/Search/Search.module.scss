@@ -3,7 +3,7 @@
   position: absolute;
   background-color: #1f2126;
   top: 50px;
-  width: 220px;
+  //width: 220px;
   list-style: none;
   box-shadow: 11px 11px 55px #000000;
   height: auto;
@@ -18,7 +18,12 @@
     padding: 15px;
     width: 100%;
     min-width: 100%;
-
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    top:60px;
+  }
+  @media (min-width: 480px) and (max-width: 768px) {
+   top:70px;
   }
 }
 
@@ -46,6 +51,9 @@
     transform: scale(1.05);
 
   }
+
+}
+.container{
 
 }
 

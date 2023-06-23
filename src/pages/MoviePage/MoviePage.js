@@ -24,6 +24,8 @@ const MoviePage = () => {
   const [reviews, setReviews] = useState([]);
   const db = getFirestore();
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const auth = getAuth();
 
   useEffect(() => {
@@ -53,6 +55,14 @@ const MoviePage = () => {
     getReviews();
 
     fetchMovie();
+
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
 
   }, [id]);
 
@@ -129,11 +139,16 @@ const MoviePage = () => {
         <div className={style.overview}>
           <div className={style.rating}>
             <p>User Score</p>
+            {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
+                rating={movie.vote_average * 10}
+                size={90}
+                displayAsPercentage={true}
+              /> :
             <CircleRating
               rating={movie.vote_average * 10}
               size={110}
               displayAsPercentage={true}
-            />
+            /> }
           </div>
           <div className={style.about}>
             <p>{movie.overview}
@@ -150,6 +165,35 @@ const MoviePage = () => {
 
         <div className={style.test}>
           <h2>Top Billed Cast</h2>
+          {windowWidth >= 360 && windowWidth < 768 ?  <Swiper
+              modules={[Navigation]}
+              id="main"
+              tag="section"
+              wrapperTag="ul"
+              navigation
+              slidesPerView={3}
+              spaceBetween={10}>
+
+              {movie?.credits.cast.slice(0, 20).map((actor) =>
+                actor.profile_path &&
+                <SwiperSlide key={actor.id}>
+                  <NavLink
+                    to={`/person/${actor.name.replace(/\s/g, '-').toLowerCase()}`}
+                    className={style.swiperSlide}
+                    onClick={() => localStorage.setItem('actorId', actor.id)}
+                  >
+                    <SliderItem
+                      img={actor.profile_path}
+                      rating={actor.popularity.toFixed(1)}
+                      displayAsPercentage={false}
+                      canvasShow={false}
+                    />
+                    <h3>{actor.name}</h3>
+                    <p>{actor.character}</p>
+                  </NavLink>
+                </SwiperSlide>
+              )}
+            </Swiper> :
           <Swiper
             modules={[Navigation]}
             id="main"
@@ -179,7 +223,7 @@ const MoviePage = () => {
               </SwiperSlide>
             )}
           </Swiper>
-
+          }
         </div>
 
         <div className={style.reviewsContainer}>
@@ -201,7 +245,31 @@ const MoviePage = () => {
         </div>) }
 
         <h2>Similar</h2>
-        <Swiper
+        {windowWidth >= 360 && windowWidth < 768 ? <Swiper
+            modules={[Navigation]}
+            id="main"
+            tag="section"
+            wrapperTag="ul"
+            navigation slidesPerView={3}
+            spaceBetween={10}>
+
+            {movie?.similar.results.map((similar) =>
+              similar.poster_path &&
+              <SwiperSlide key={similar.id}>
+                <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>
+                  <SliderItem
+                    img={similar.poster_path}
+                    rating={(similar.vote_average * 10).toFixed(1)}
+                    displayAsPercentage={true}
+                    canvasShow={true}
+                    movieId={similar.id}
+                    showActionBadge={true}
+                  />
+                </NavLink>
+              </SwiperSlide>
+            )}
+          </Swiper> :
+          <Swiper
           modules={[Navigation]}
           id="main"
           tag="section"
@@ -224,7 +292,7 @@ const MoviePage = () => {
               </NavLink>
             </SwiperSlide>
           )}
-        </Swiper>
+        </Swiper> }
 
       </div>
     </>

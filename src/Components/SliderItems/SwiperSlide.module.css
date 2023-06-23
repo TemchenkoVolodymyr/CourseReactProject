@@ -40,8 +40,27 @@
   font-size: 20px;
   text-align: center;
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .swiperSlide > div p {
+    font-size: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .swiperSlide > div p {
+    font-size: 12px;
+  }
+}
 .swiperSlide > div:hover p {
   opacity: 1;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .swiperSlide {
+    width: 200px;
+  }
+}
+
+.swiper {
+  width: 200px;
 }
 
 /*# sourceMappingURL=SwiperSlide.module.css.map */

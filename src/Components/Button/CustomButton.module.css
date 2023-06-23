@@ -14,6 +14,11 @@
   justify-content: center;
   margin: 10px 0;
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .link {
+    display: block;
+  }
+}
 .link:hover {
   background: transparent;
   color: var(--btn-color-hover-default);

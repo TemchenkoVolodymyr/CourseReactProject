@@ -1,11 +1,15 @@
-.stars{
+.stars {
   background-color: #032541;
   border-radius: 15px;
   position: absolute;
   padding: 20px;
   top: 80px;
+  @media (min-width: 360px) and (max-width: 768px) {
+    padding: 8px;
+    top: 57px;
+  }
 
-  & > div{
+  & > div {
     & > div {
       display: flex;
     }
