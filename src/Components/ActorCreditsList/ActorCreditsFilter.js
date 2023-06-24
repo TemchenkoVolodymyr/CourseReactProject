@@ -1,71 +1,96 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './ActorCredits.module.scss';
 import DropDown from './DropDown';
 import { NavLink } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import {
+  addActingCredits, addCreatorCreditsCredits, addCrewCreditsCredits,
+  addDirectingCredits,
+  addProductionCredits,
+  addWritingCredits
+} from "../../redux/slices/actorCreditsSlice";
+
 
 const ActorCreditsFilter = ({ actors }) => {
   const [selectedDepartment, setSelectedDepartment] = useState('Acting');
 
-  const actingCredits = [];
-  const productionCredits = [];
-  const directingCredits = [];
-  const writingCredits = [];
-  const creatorCredits = [];
-  const crewCredits = [];
+  const actingCredits = []
+  const {
+    productionCredits,
+    directingCredits,
+    writingCredits,
+    creatorCredits,
+    crewCredits
+  } = useSelector(state => state.credits)
+
+
+  const dispatch = useDispatch()
 
   if (actors.movie_credits.cast) {
     actors.movie_credits.cast.forEach((credit) => {
       actingCredits.push({
         title: credit.title,
         year: credit.release_date.slice(0, 4),
-        role: credit.character,
+        role: credit.job,
         id: credit.id
       });
+
     });
   }
-
+  useEffect(() => {
   if (actors.movie_credits.crew) {
     actors.movie_credits.crew.forEach((credit) => {
+
       switch (credit.department) {
         case 'Production':
-          productionCredits.push({
-            title: credit.title,
-            year: credit.release_date.slice(0, 4),
-            role: credit.job,
-            id: credit.id
-          });
+          dispatch(
+            addProductionCredits([{
+              title: credit.title,
+              year: credit.release_date.slice(0, 4),
+              role: credit.job,
+              id: credit.id
+            }])
+          )
           break;
         case 'Directing':
-          directingCredits.push({
-            title: credit.title,
-            year: credit.release_date.slice(0, 4),
-            role: credit.job,
-            id: credit.id
-          });
+          dispatch(
+            addDirectingCredits([{
+              title: credit.title,
+              year: credit.release_date.slice(0, 4),
+              role: credit.job,
+              id: credit.id
+            }])
+          )
           break;
         case 'Writing':
-          writingCredits.push({
-            title: credit.title,
-            year: credit.release_date.slice(0, 4),
-            role: credit.job,
-            id: credit.id
-          });
+          dispatch(
+            addWritingCredits([{
+              title: credit.title,
+              year: credit.release_date.slice(0, 4),
+              role: credit.job,
+              id: credit.id
+            }])
+          )
           break;
         case 'Creator':
-          creatorCredits.push({
-            title: credit.title,
-            year: credit.release_date.slice(0, 4),
-            role: credit.job,
-            id: credit.id
-          });
+          dispatch(
+            addCreatorCreditsCredits([{
+              title: credit.title,
+              year: credit.release_date.slice(0, 4),
+              role: credit.job,
+              id: credit.id
+            }])
+          )
           break;
         case 'Crew':
-          crewCredits.push({
-            title: credit.title,
-            year: credit.release_date.slice(0, 4),
-            role: credit.job,
-            id: credit.id
-          });
+          dispatch(
+            addCrewCreditsCredits([{
+              title: credit.title,
+              year: credit.release_date.slice(0, 4),
+              role: credit.job,
+              id: credit.id
+            }])
+          )
           break;
 
         default:
@@ -73,7 +98,8 @@ const ActorCreditsFilter = ({ actors }) => {
       }
     });
   }
-
+  }, [actors.movie_credits.crew, dispatch]);
+  console.log(productionCredits);
   let displayCredits;
   switch (selectedDepartment) {
     case 'Acting':
@@ -104,7 +130,6 @@ const ActorCreditsFilter = ({ actors }) => {
 
   return (
     <div className={style.wrapper}>
-
       <div className={style.filter}>
         <h2>{selectedDepartment}</h2>
         <DropDown
@@ -117,7 +142,6 @@ const ActorCreditsFilter = ({ actors }) => {
           crewCredits={crewCredits}
         />
       </div>
-
         {displayCredits.map((credit) => (
           <div
             key={credit.id}

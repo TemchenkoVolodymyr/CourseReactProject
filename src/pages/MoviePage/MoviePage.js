@@ -13,7 +13,6 @@ import OverviewSection from "../../Components/MoviePage Components/OverviewSecti
 import TopBilledCast from "../../Components/MoviePage Components/TopBilledCast";
 import SimilarBlock from "../../Components/MoviePage Components/SimilarBlock";
 
-
 const MoviePage = () => {
   const { title } = useParams();
   const movieId = localStorage.getItem('movieId');
@@ -34,7 +33,6 @@ const MoviePage = () => {
         alert('Error');
       }
     }
-
     dispatch(fetchReviews(movieId));
     fetchMovie();
 
@@ -47,7 +45,7 @@ const MoviePage = () => {
 
   const sendReviewHandler = (review) => {
     if (review) {
-      dispatch(setReview({id, text: review}))
+      dispatch(setReview({id: movieId, text: review}))
       setValue('');
     }
   };
