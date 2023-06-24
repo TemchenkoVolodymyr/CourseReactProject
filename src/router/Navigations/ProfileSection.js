@@ -50,11 +50,10 @@ const ProfileSection = () => {
             style={{ cursor: 'pointer' }}
           ><BiLogIn size={25}/>Login</NavLink>
       }
-      {isAuth && isAdmin ? <NavLink to={'/adminPanel'}>Admin Panel</NavLink> : null}
       {isAuth ?
         <NavLink
           to={`/u/${userName}`}
-          style={{ cursor: 'pointer' }}
+          style={{cursor: 'pointer'}}
         ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
 
         : null}

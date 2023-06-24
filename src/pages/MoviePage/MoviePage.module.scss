@@ -173,3 +173,10 @@
 .header {
   padding-bottom: 10px;
 }
+.headerReviews{
+  display: flex;
+  justify-content: space-between;
+  h1{
+    color: #fafafa;
+  }
+}

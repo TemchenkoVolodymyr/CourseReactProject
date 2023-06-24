@@ -1,0 +1,10 @@
+.wrapperInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapperInput input {
+  height: 40px;
+}
+
+/*# sourceMappingURL=ModalForReviews.module.css.map */

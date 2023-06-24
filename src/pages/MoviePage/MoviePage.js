@@ -12,6 +12,8 @@ import MainBanner from '../../Components/MoviePage Components/MainBanner';
 import OverviewSection from '../../Components/MoviePage Components/OverviewSection';
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
+import SliderForReview from './SliderForReview';
+import BasicModal from './ModalForReviews';
 
 
 const MoviePage = () => {
@@ -23,7 +25,12 @@ const MoviePage = () => {
   const reviews = useSelector((state) => state.reviews.reviews);
   const status = useSelector((state) => state.reviews.status);
 
+  const [openModal, setOpenModal] = useState(false);
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
 
   useEffect(() => {
     async function fetchMovie() {
@@ -34,26 +41,31 @@ const MoviePage = () => {
         alert('Error');
       }
     }
+
     dispatch(fetchReviews(movieId));
     fetchMovie();
 
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [title, movieId]);
 
   const sendReviewHandler = (review) => {
     if (review) {
-      dispatch(setReview({id: movieId, text: review}))
+      dispatch(setReview({ id: movieId, text: review }));
       setValue('');
     }
   };
 
+
+
   if (!movie) {
     return <Loader/>;
   }
+
   return (
     <>
       <Helmet>
@@ -67,30 +79,28 @@ const MoviePage = () => {
         <h2>Top Billed Cast</h2>
         <TopBilledCast movie={movie} windowWidth={windowWidth}/>
         <div className={style.reviewsContainer}>
-          <h1>Write Your Review</h1>
-          <textarea
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="write your review"/>
-          <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
+          <div className={style.headerReviews}>
+            <h1>Reviews</h1>
+            <button onClick={handleOpen}>Leave a review</button>
+          </div>
+          <p>{`About film "${movie.original_title}"`}</p>
+          {/*<textarea*/}
+          {/*  value={value}*/}
+          {/*  onChange={(e) => setValue(e.target.value)}*/}
+          {/*  placeholder="write your review"/>*/}
+
+          {/*<CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>*/}
         </div>
 
-        {reviews && <h1 className={style.header}>Reviews :</h1>}
         {status === 'loading' ? <p>...Loading</p> :
           <>
-            {reviews ? reviews?.map((item, i) => <div key={i} className={style.wrapperReview}>
-              <div className={style.reviews}>
-                <p>{item.text}</p>
-                <div>
-                  <p>{item.user}</p>
-                  <p>{item.date}</p>
-                </div>
-              </div>
-            </div>) : <p>There are no reviews </p>}
+            <SliderForReview reviews={reviews}></SliderForReview>
           </>}
+
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>
       </div>
+      <BasicModal reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={"write your review"}></BasicModal>
     </>
   );
 };
