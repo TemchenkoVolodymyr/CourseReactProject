@@ -1,10 +1,11 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import user from './slices/userSlice';
 import movies from './slices/movieSlice';
 import favorites from './slices/favoriteSlice';
 import watchList from './slices/watchListSlice';
 import ratings from './slices/userRatingsSlice';
 import reviews from './slices/reviewsSlice';
+import credits from './slices/actorCreditsSlice';
 import { statisticsReducer } from '../Components/AdminPanel/NavComponents/AdminPanelStatistics/statisticsReducer';
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
@@ -23,8 +24,8 @@ export default combineReducers({
     ratings,
     loading: loaderReducer,
     filters,
-  reviews,
-  credits
+    reviews,
+    credits
 
 
   },
