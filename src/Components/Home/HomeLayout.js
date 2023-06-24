@@ -9,6 +9,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from "react-helmet";
+import Search from '../Search/Search';
+import CustomizedSwitches from '../Button/switchThemeBtn';
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -18,6 +20,8 @@ const HomeLayout = () => {
   const popularActors = useSelector((state) => state.movies.popularActors);
   const discover = useSelector((state) => state.movies.discover);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+
 
   useEffect(() => {
 
@@ -52,11 +56,16 @@ const HomeLayout = () => {
 
   }, []);
 
+
+
   return (
     <>
       <Helmet>
         <title>Latest Movie Trailers, Reviews & Overviews | Ultimate Cinema Guide</title>
       </Helmet>
+      {windowWidth >= 769 && windowWidth <= 1024 ? <div>
+        <Search></Search>
+        </div> : null}
       <div className={style.wrapper}>
         <Swiper
           id="main"

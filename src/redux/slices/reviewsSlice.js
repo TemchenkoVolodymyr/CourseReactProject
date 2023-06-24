@@ -12,6 +12,8 @@ const initialState = {
 export const setReview = createAsyncThunk(
   'reviews/setReview',
   async ({text, id}) => {
+    console.log(id)
+    console.log(text)
     try {
       const reference = ref(dbRealTime, 'reviews/' + id);
       const auth = getAuth()

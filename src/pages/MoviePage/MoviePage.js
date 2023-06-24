@@ -45,9 +45,13 @@ const MoviePage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [title, movieId]);
 
+
   const sendReviewHandler = (review) => {
+    console.log(title)
+
+    const x = title.toLowerCase().replace(' ', '-');
     if (review) {
-      dispatch(setReview({id, text: review}))
+      dispatch(setReview({ id: x ,text: review }));
       setValue('');
     }
   };
