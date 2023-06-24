@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
+import React, {useState} from 'react';
+import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import style from './DropDown.module.scss';
+import {setSelectedDepartment} from "../../redux/slices/actorCreditsSlice";
+import {useDispatch} from "react-redux";
 
 const DropDown = ({
-                    setSelectedDepartment,
                     actingCredits,
                     productionCredits,
                     directingCredits,
                     writingCredits,
                     creatorCredits,
-                    crewCredits }) => {
+                    crewCredits
+                  }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-
+  const dispatch = useDispatch()
   const listItems = [
     {
       'id': 1,
       'role': 'Acting',
       'count': actingCredits.length
-
     },
     {
       'id': 2,
@@ -45,17 +46,16 @@ const DropDown = ({
       'role': 'Crew',
       'count': crewCredits.length
     }
-    ];
-
+  ];
 
   return (
     <div className={style.dropDown}>
-      <span onClick={toggleOpen}>Department {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}</span>
+      <span onClick={toggleOpen}>Department {isOpen ? <AiFillCaretUp/> : <AiFillCaretDown/>}</span>
       {isOpen && (
         <div className={style.dropDownMenu}>
           {listItems.map((item) => (
             <p key={item.id} onClick={() => {
-              setSelectedDepartment(item.role);
+              dispatch(setSelectedDepartment(item.role))
               toggleOpen();
             }}>
               {item.role} ({item.count})

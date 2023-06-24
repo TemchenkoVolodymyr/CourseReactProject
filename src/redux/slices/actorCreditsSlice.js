@@ -18,7 +18,6 @@ const actorCreditsSlice = createSlice({
       action.payload.forEach((credit) => {
         state.actingCredits.push(credit);
       });
-
     },
     addProductionCredits: (state, action) => {
       state.productionCredits = [...state.productionCredits, ...action.payload];
@@ -35,11 +34,16 @@ const actorCreditsSlice = createSlice({
     addCrewCreditsCredits: (state, action) => {
       state.crewCredits = [...state.crewCredits, ...action.payload];
     },
-
-
-
     setSelectedDepartment: (state, action) => {
       state.selectedDepartment = action.payload;
+    },
+    clearCredits: state => {
+      state.actingCredits = [];
+      state.productionCredits= [];
+      state.directingCredits= [];
+      state.writingCredits= [];
+      state.creatorCredits= [];
+      state.crewCredits= [];
     },
   },
 });
@@ -51,7 +55,8 @@ export const {
   addWritingCredits,
   addCreatorCreditsCredits,
   addCrewCreditsCredits,
-
+  clearCredits,
 
   setSelectedDepartment } = actorCreditsSlice.actions;
+
 export default actorCreditsSlice.reducer;
