@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
 import CustomButton from '../../Components/Button/CustomButton';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 
 const ActorPage = () => {

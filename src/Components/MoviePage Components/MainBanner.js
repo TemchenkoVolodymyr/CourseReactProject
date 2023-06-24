@@ -1,6 +1,6 @@
 import React from 'react';
-import style from "../../pages/MoviePage/MoviePage.module.scss";
-import {NavLink} from "react-router-dom";
+import style from '../../pages/MoviePage/MoviePage.module.scss';
+import { NavLink } from 'react-router-dom';
 
 const MainBanner = ({movie}) => {
   const image = movie.poster_path ? movie.poster_path : movie.backdrop_path
@@ -31,6 +31,7 @@ const MainBanner = ({movie}) => {
               {index !== movie.credits.cast.slice(0, 5).length - 1 && ', '}
             </React.Fragment>
           ))}
+
         </p>
       </div>
     </div>

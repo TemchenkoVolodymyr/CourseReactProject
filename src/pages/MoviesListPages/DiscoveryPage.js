@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../Pages.module.scss';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 
 const genreImages = {
@@ -34,7 +34,7 @@ const DiscoveryPage = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios
+        const { data } = await axios
           .get(
             `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setGenres(data);

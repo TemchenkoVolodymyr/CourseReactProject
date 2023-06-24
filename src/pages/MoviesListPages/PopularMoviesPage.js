@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {NavLink} from 'react-router-dom';
-import {fetchMovies} from '../../redux/slices/movieSlice';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { fetchMovies } from '../../redux/slices/movieSlice';
 import styles from '../Pages.module.scss';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 
 const PopularMoviesPage = () => {
@@ -15,7 +15,7 @@ const PopularMoviesPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const getPopMovies = async () => {
-      dispatch(fetchMovies({type: 'popularMovie'}));
+      dispatch(fetchMovies({ type: 'popularMovie' }));
     };
     if (dataMovies.length < 2) {
       getPopMovies();

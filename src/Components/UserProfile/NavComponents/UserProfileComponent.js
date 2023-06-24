@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import styles from "../UserProfile.module.scss";
-import CircleRating from "../../CircleRating/CircleRating";
+import React, { useEffect, useState } from 'react';
+import styles from '../UserProfile.module.scss';
+import CircleRating from '../../CircleRating/CircleRating';
 import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../../../hooks/useAuth';
-import {loadData} from "../../../utils/helperFunctions/loadUserDataFromFB";
+import { loadData } from '../../../utils/helperFunctions/loadUserDataFromFB';
 
 const UserProfileComponent = () => {
 
@@ -19,8 +19,8 @@ const UserProfileComponent = () => {
   const averageRating = totalRating / ratings.length;
 
   useEffect(() => {
-    loadData({setUserData, id});
-  }, [id])
+    loadData({ setUserData, id });
+  }, [id]);
 
   const formatDate = (dateStr) => {
     const dateParts = dateStr.split('.');

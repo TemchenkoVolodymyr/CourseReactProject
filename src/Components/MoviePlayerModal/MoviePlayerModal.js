@@ -1,7 +1,7 @@
 import React from 'react';
-import {Modal} from "@mui/material";
-import './MoviePlayer.modul.scss'
-const MoviePlayerModal = ({isPlayerOpen, movie, setIsPlayerOpen}) => {
+import { Modal } from '@mui/material';
+import './MoviePlayer.modul.scss';
+const MoviePlayerModal = ({ isPlayerOpen, movie, setIsPlayerOpen }) => {
 
 
   return (

@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from "../../Components/UserProfile/UserProfile.module.scss";
-import {NavLink} from "react-router-dom";
-import {Outlet, useParams} from "react-router";
-import {HelmetWrapper} from "./HelmetWrapper";
+import styles from '../../Components/UserProfile/UserProfile.module.scss';
+import { NavLink } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router';
+import { HelmetWrapper } from './HelmetWrapper';
 
 
 const UserProfile = () => {
-  const {userName} = useParams()
+  const { userName } = useParams();
 
   return (
     <>
