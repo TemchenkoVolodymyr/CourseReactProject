@@ -9,8 +9,6 @@ import CustomButton from '../../Button/CustomButton';
 const PopularMovies = () => {
 
   const popMovie = useSelector((state) => state.movies.popularMovie);
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-
 
   return (
     <>
@@ -23,7 +21,7 @@ const PopularMovies = () => {
             onClick={() => localStorage.setItem('movieId', movie.id)}>
             <div
               style={{
-                backgroundImage: `url(${imageBaseUrl}w500${movie.poster_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
               }}

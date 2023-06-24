@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './MyHamburger.module.scss';
 import { useAuth } from '../../hooks/useAuth';
-import itemGenres from "../../constants/itemGenres";
 import ProfileSection from "../../router/Navigations/ProfileSection";
+import {itemGenres} from "../../constants/data";
 
 
 const MyHamburger = ({ items }) => {

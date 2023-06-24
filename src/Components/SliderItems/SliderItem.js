@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {BsFillBookmarkFill} from "react-icons/bs";
 
 
-
 const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movieId, showActionBadge }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);

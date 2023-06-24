@@ -1,4 +1,4 @@
-const itemGenres = [{
+export const itemGenres = [{
   to: '/genre/action',
   name: 'Action',
 },
@@ -32,5 +32,26 @@ const itemGenres = [{
     name: 'Horror',
   },
 ];
+export const filterItems = [
+  {
+    'id': 1,
+    'sortBy': 'Release Date',
+  },
+  {
+    'id': 2,
+    'sortBy': 'Date Added',
+  },
+  {
+    'id': 3,
+    'sortBy': 'Popularity',
+  },
+  {
+    'id': 4,
+    'sortBy': 'Rating',
+  },
+  {
+    'id': 5,
+    'sortBy': 'Runtime',
+  },
+];
 
-export default itemGenres

@@ -28,7 +28,8 @@ const Navigations = () => {
       <NavLink to="/discovery"><AiOutlineCompass size={'24'}/>Discovery</NavLink>
       <NavLink to="/fresh"><BsArrowClockwise size={'24'}/>Fresh movies</NavLink>
       <NavLink to="/trending"><BsFire size={'24'}/>Trending now</NavLink>
-      {windowWidth > 768 && windowWidth < 1024 ? <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
+      {windowWidth > 768 && windowWidth < 1024 ?
+        <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
       <p>popular genders</p>
       <NavLink to="/genre/action"><GiPistolGun size={'24'}/>Action</NavLink>
       <NavLink to="/genre/adventure"><SiOpenstreetmap size={'24'}/>Adventure</NavLink>
