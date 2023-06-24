@@ -15,6 +15,7 @@ import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
 import MyHamburger from '../Components/Home/MyHamburger';
 import Navigations from "./Navigations/Navigations";
+import {itemMovies} from "../constants/data";
 
 
 const Layout = () => {
@@ -24,9 +25,9 @@ const Layout = () => {
   const userId = useSelector((state) => state.user.id);
   const favorites = useSelector((state) => state.favorites.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
-
   const loading = useSelector((store) => store.loading);
   const dispatch = useDispatch();
+
   const getPopMovies = async () => {
     dispatch(fetchMovies({ type: 'popularMovie' }));
   };
@@ -56,7 +57,6 @@ const Layout = () => {
   const [theme, setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-
   };
   useEffect(() => {
 
@@ -78,25 +78,6 @@ const Layout = () => {
     return () => window.removeEventListener('resize', handleResize);
   },[theme]);
 
-  const itemMovies = [
-    {
-      to: '/discovery',
-      name: 'Discovery',
-    },
-    {
-      to: '/fresh',
-      name: 'Fresh movies',
-    },
-    {
-      to: '/trending',
-      name: 'Trending now',
-    },
-    {
-      to: '/popMovies',
-      name: 'Popular Movie',
-    },
-  ];
-
   return (
     <>
       {windowWidth >= 768 ?
@@ -105,13 +86,10 @@ const Layout = () => {
           <div className={'containerNav'}>
             <Navigations/>
           </div>
-
           <div className={'containerMain'}>
             <Outlet/>
             {showButton && <ScrollButton></ScrollButton>}
           </div>
-
-
           <div className={'containerSideBar'}>
             <Search/>
             <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>

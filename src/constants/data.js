@@ -123,3 +123,22 @@ export const genreTitles = {
   western: 'Western Movies: Unmissable Classic & Modern Western Films List',
 };
 
+export const itemMovies = [
+  {
+    to: '/discovery',
+    name: 'Discovery',
+  },
+  {
+    to: '/fresh',
+    name: 'Fresh movies',
+  },
+  {
+    to: '/trending',
+    name: 'Trending now',
+  },
+  {
+    to: '/popMovies',
+    name: 'Popular Movie',
+  },
+];
+
