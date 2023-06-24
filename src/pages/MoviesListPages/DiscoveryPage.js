@@ -4,29 +4,8 @@ import styles from '../Pages.module.scss';
 import {NavLink} from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import {Helmet} from "react-helmet";
+import {genreImages} from "../../constants/data";
 
-
-const genreImages = {
-  28: '/images/genres/action_genre.jpg',
-  12: '/images/genres/adventure.jpg',
-  16: '/images/genres/animation.jpg',
-  35: '/images/genres/comedy.jpg',
-  80: '/images/genres/crime.jpg',
-  99: '/images/genres/documentary.jpg',
-  18: '/images/genres/drama.jpg',
-  10751: '/images/genres/family.jpg',
-  14: '/images/genres/fantasy.jpg',
-  36: '/images/genres/history.jpg',
-  27: '/images/genres/horror.jpg',
-  10402: '/images/genres/mystery.jpg',
-  9648: '/images/genres/music.jpg',
-  10749: '/images/genres/romance.jpg',
-  878: '/images/genres/science_fiction.jpg',
-  10770: '/images/genres/thriller.jpg',
-  53: '/images/genres/tv_movie.jpg',
-  10752: '/images/genres/war.jpg',
-  37: '/images/genres/western.jpg'
-};
 
 const DiscoveryPage = () => {
   const [genres, setGenres] = useState();
@@ -67,7 +46,6 @@ const DiscoveryPage = () => {
                 <MovieBlock
                   image={genreImages[genre.id]}
                   title={genre.name}
-
                 />
               </NavLink>
             )
