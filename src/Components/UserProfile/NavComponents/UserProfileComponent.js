@@ -19,7 +19,7 @@ const UserProfileComponent = () => {
   const averageRating = totalRating / ratings.length;
 
   useEffect(() => {
-    loadData({setUserData, id});
+    if (id) loadData({ setUserData, id });
   }, [id])
 
   const formatDate = (dateStr) => {
@@ -48,7 +48,6 @@ const UserProfileComponent = () => {
   } else if (windowWidth <= 1200) {
     avatarSize = 190;
   }
-
 
   return (
     <div className={styles.profile}>
