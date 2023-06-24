@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {onValue, push, ref, set, get} from "firebase/database";
-import { dbRealTime } from "../../firebase";
-import {getAuth} from "firebase/auth";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { onValue, push, ref, set, get } from 'firebase/database';
+import { dbRealTime } from '../../firebase';
+import { getAuth } from 'firebase/auth';
 
 const initialState = {
   reviews: [],
@@ -11,12 +11,11 @@ const initialState = {
 
 export const setReview = createAsyncThunk(
   'reviews/setReview',
-  async ({text, id}) => {
-    console.log(id)
-    console.log(text)
+  async ({ text, id }) => {
+
     try {
       const reference = ref(dbRealTime, 'reviews/' + id);
-      const auth = getAuth()
+      const auth = getAuth();
       const currentUser = auth.currentUser.email;
       const date = new Date();
       const newReviewRef = push(reference);
@@ -49,6 +48,7 @@ export const fetchReviews = createAsyncThunk(
     onValue(reference, (snapshot) => {
       const reviews = [];
       snapshot.forEach((childSnapshot) => {
+
         const childData = childSnapshot.val();
         reviews.push(childData);
       });
@@ -80,7 +80,7 @@ export const reviewsSlice = createSlice({
       .addCase(fetchReviews.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-      })
+      });
 
   }
 });

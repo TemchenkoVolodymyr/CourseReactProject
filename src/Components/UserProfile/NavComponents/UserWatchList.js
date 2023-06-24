@@ -5,7 +5,7 @@ import { fetchWatchList } from '../../../redux/slices/watchListSlice';
 import styles from '../UserProfile.module.scss';
 import FilmComponent from './FilmComponent/FilmComponent';
 import NoInfoComponent from './NoInfoComponent';
-import {filterProfileMovies} from "../../../utils/helperFunctions/filterProfieMovies";
+import { filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
 
 const UserWatchList = () => {
 

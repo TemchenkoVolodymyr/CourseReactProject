@@ -8,7 +8,7 @@ import { deleteFromWatchList } from '../../../../redux/slices/watchListSlice';
 import { useLocation } from 'react-router-dom';
 import RatingComponent from '../../../RatingComponent/RatingComponent';
 import { addRating, deleteRatings } from '../../../../redux/slices/userRatingsSlice';
-import {handleToggleFavorite} from "../../../../utils/helperFunctions/ActionsFn";
+import { handleToggleFavorite } from '../../../../utils/helperFunctions/ActionsFn';
 
 
 const ActionsComponent = ({ movieId }) => {

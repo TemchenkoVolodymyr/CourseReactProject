@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthForm from '../../Components/Auth/AuthForm';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 
 const AuthPage = () => {

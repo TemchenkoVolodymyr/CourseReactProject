@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {AiFillCaretDown, AiFillCaretUp, AiOutlineSortAscending, AiOutlineSortDescending} from 'react-icons/ai';
+import React, { useState } from 'react';
+import { AiFillCaretDown, AiFillCaretUp, AiOutlineSortAscending, AiOutlineSortDescending } from 'react-icons/ai';
 import styles from '../../UserProfile.module.scss';
-import {useDispatch, useSelector} from "react-redux";
-import {setFilterBy, toggleFilter, toggleOrder} from "../../../../redux/slices/filtersSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterBy, toggleFilter, toggleOrder } from '../../../../redux/slices/filtersSlice';
 
 const FiltersComponent = () => {
 
-  const filterBy = useSelector(state => state.filters.filterBy)
+  const filterBy = useSelector((state) => state.filters.filterBy);
 
   const listItems = [
     {
@@ -32,7 +32,7 @@ const FiltersComponent = () => {
   ];
 
   const dispatch = useDispatch();
-  const {isFilterOpen, isOrderOpen} = useSelector(state => state.filters)
+  const { isFilterOpen, isOrderOpen } = useSelector((state) => state.filters);
 
   const handleSortBy = (sortOption) => {
     dispatch(setFilterBy(sortOption));

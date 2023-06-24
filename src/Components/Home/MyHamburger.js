@@ -95,7 +95,7 @@ const MyHamburger = (props) => {
     setIsActive(!isActive);
   };
   const links = items.map((item) => <NavLink to={item.to}>{item.name}</NavLink>);
-  const genres = itemGenres.map((item) => <NavLink to={item.to}>{item.name}</NavLink>)
+  const genres = itemGenres.map((item) => <NavLink to={item.to}>{item.name}</NavLink>);
 
   const logout = () => {
     const auth = getAuth();

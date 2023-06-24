@@ -1,8 +1,8 @@
 import React from 'react';
-import style from "../../pages/MoviePage/MoviePage.module.scss";
-import {NavLink} from "react-router-dom";
+import style from '../../pages/MoviePage/MoviePage.module.scss';
+import { NavLink } from 'react-router-dom';
 
-const MainBanner = ({movie}) => {
+const MainBanner = ({ movie }) => {
   return (
     <div
       style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}

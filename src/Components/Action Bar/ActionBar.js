@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ActionButton from './ActionButton';
-import {AiFillHeart, AiFillStar, AiOutlinePlaySquare, AiOutlineUnorderedList} from 'react-icons/ai';
+import { AiFillHeart, AiFillStar, AiOutlinePlaySquare, AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -8,8 +8,8 @@ import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import { addRating } from '../../redux/slices/userRatingsSlice';
-import MoviePlayerModal from "../MoviePlayerModal/MoviePlayerModal";
-import {handleToggleFavorite, handleToggleWatchList} from "../../utils/helperFunctions/ActionsFn";
+import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
+import { handleToggleFavorite, handleToggleWatchList } from '../../utils/helperFunctions/ActionsFn';
 
 const ActionBar = ({ movieId, movie }) => {
   const dispatch = useDispatch();

@@ -29,4 +29,4 @@ export const applySortOrder = (arr, isOrderOpen) => {
     return arr.reverse();
   }
   return arr;
-}
+};

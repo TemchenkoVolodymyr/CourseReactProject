@@ -1,10 +1,10 @@
 import React from 'react';
 import CircleRating from '../CircleRating/CircleRating';
-import ActionButton from "../Action Bar/ActionButton";
-import {AiFillHeart } from "react-icons/ai";
-import {handleToggleFavorite, handleToggleWatchList} from "../../utils/helperFunctions/ActionsFn";
-import {useDispatch, useSelector} from "react-redux";
-import {BsFillBookmarkFill} from "react-icons/bs";
+import ActionButton from '../Action Bar/ActionButton';
+import { AiFillHeart } from 'react-icons/ai';
+import { handleToggleFavorite, handleToggleWatchList } from '../../utils/helperFunctions/ActionsFn';
+import { useDispatch, useSelector } from 'react-redux';
+import { BsFillBookmarkFill } from 'react-icons/bs';
 
 
 

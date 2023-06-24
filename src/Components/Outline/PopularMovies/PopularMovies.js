@@ -1,7 +1,7 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import style from '../Outline.module.scss';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
 

@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './AuthForm.module.scss';
-import {useForm} from 'react-hook-form';
-import {useDispatch} from 'react-redux';
-import {loginUser, registerUser} from '../../redux/slices/userSlice';
-import RegisterForm from "./RegisterForm";
-import LoginForm from "./LoginForm";
-import {useNavigate} from "react-router";
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../../redux/slices/userSlice';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
+import { useNavigate } from 'react-router';
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ const AuthForm = () => {
     setIsRegister(!isRegister);
   };
 
-  const registerHandler = ({userName, email, password}) => {
+  const registerHandler = ({ userName, email, password }) => {
 
-    dispatch(registerUser({userName, email, password}))
+    dispatch(registerUser({ userName, email, password }))
       .then((action) => {
         if (registerUser.fulfilled.match(action)) {
           navigate('/');
@@ -32,8 +32,8 @@ const AuthForm = () => {
       });
   };
 
-  const loginHandler = ({email, password}) => {
-    dispatch(loginUser({email, password}))
+  const loginHandler = ({ email, password }) => {
+    dispatch(loginUser({ email, password }))
       .then((action) => {
         if (loginUser.fulfilled.match(action)) {
           navigate('/');
@@ -50,7 +50,7 @@ const AuthForm = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     reset,
     watch,
   } = useForm({

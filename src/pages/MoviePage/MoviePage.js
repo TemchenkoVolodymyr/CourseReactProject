@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import style from './MoviePage.module.scss';
 import axios from 'axios';
 import ActionBar from '../../Components/Action Bar/ActionBar';
 import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
-import {Helmet} from "react-helmet";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchReviews, setReview} from "../../redux/slices/reviewsSlice";
-import MainBanner from "../../Components/MoviePage Components/MainBanner";
-import OverviewSection from "../../Components/MoviePage Components/OverviewSection";
-import TopBilledCast from "../../Components/MoviePage Components/TopBilledCast";
-import SimilarBlock from "../../Components/MoviePage Components/SimilarBlock";
+import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReviews, setReview } from '../../redux/slices/reviewsSlice';
+import MainBanner from '../../Components/MoviePage Components/MainBanner';
+import OverviewSection from '../../Components/MoviePage Components/OverviewSection';
+import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
+import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 
 
 const MoviePage = () => {
@@ -28,26 +28,25 @@ const MoviePage = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovie(data);
       } catch (err) {
         alert('Error');
       }
     }
 
-    dispatch(fetchReviews(movieId));
     fetchMovie();
-
+    dispatch(fetchReviews(title));
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, [title, movieId]);
 
-
+console.log(reviews)
   const sendReviewHandler = (review) => {
-    console.log(title)
 
     const x = title.toLowerCase().replace(' ', '-');
     if (review) {
@@ -59,6 +58,7 @@ const MoviePage = () => {
   if (!movie) {
     return <Loader/>;
   }
+  // console.log(reviews)
   return (
     <>
       <Helmet>
@@ -80,10 +80,10 @@ const MoviePage = () => {
           <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
         </div>
 
-        <h1 className={style.header}>Reviews :</h1>
+        {reviews && <h1 className={style.header}>Reviews :</h1>}
         {status === 'loading' ? <p>...Loading</p> :
           <>
-            {reviews && reviews?.map((item, i) => <div key={i} className={style.wrapperReview}>
+            {reviews ? reviews?.map((item, i) => <div key={i} className={style.wrapperReview}>
               <div className={style.reviews}>
                 <p>{item.text}</p>
                 <div>
@@ -91,7 +91,7 @@ const MoviePage = () => {
                   <p>{item.date}</p>
                 </div>
               </div>
-            </div>)}
+            </div>) : <p>There are no reviews </p>}
           </>}
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>

@@ -8,7 +8,7 @@ import 'swiper/swiper-bundle.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import Search from '../Search/Search';
 import CustomizedSwitches from '../Button/switchThemeBtn';
 
