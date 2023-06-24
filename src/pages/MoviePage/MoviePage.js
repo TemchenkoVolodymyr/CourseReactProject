@@ -66,14 +66,14 @@ const MoviePage = () => {
         <OverviewSection movie={movie} windowWidth={windowWidth}/>
         <h2>Top Billed Cast</h2>
         <TopBilledCast movie={movie} windowWidth={windowWidth}/>
-        <div className={style.reviewsContainer}>
+        <section className={style.reviewsContainer}>
           <h1>Write Your Review</h1>
           <textarea
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="write your review"/>
           <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
-        </div>
+        </section>
 
         {reviews && <h1 className={style.header}>Reviews :</h1>}
         {status === 'loading' ? <p>...Loading</p> :

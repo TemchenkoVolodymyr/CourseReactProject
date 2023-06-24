@@ -4,6 +4,7 @@ import styles from '../Pages.module.scss';
 import {NavLink} from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import {Helmet} from "react-helmet";
+import {genreImages} from "../../constants/data";
 
 
 const DiscoveryPage = () => {

@@ -5,9 +5,8 @@ import {useParams} from 'react-router';
 import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
-import { useLocation } from 'react-router-dom';
-import genreTitles from "./genreTitles";
 import {Helmet} from "react-helmet";
+import {genreIds, genreTitles} from "../../constants/data";
 
 const CurrentGenre = () => {
   const { genre} = useParams();
@@ -30,16 +29,20 @@ const CurrentGenre = () => {
 
   }, [genre])
 
-  const pageTitle = genreTitles[genre] || '';
+  const pageTitle = genreTitles[genre].title || '';
+  const description = genreTitles[genre].description || '';
+  const text = genreTitles[genre].text || '';
+  const paragraphs = text.split('\n');
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
+        <meta name="description" content={description}/>
       </Helmet>
       <div className={styles.container}>
-        <h1>Popular genres: Everyone likes them</h1>
-        <h2>{genre}</h2>
+        <h1>{pageTitle}</h1>
+        {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         <div className={style.wrapper}>
           {
             currGenre?.results.map((genre) =>

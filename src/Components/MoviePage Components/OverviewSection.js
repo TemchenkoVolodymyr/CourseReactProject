@@ -4,7 +4,7 @@ import CircleRating from '../CircleRating/CircleRating';
 
 const OverviewSection = ({ movie,windowWidth }) => {
   return (
-    <div className={style.overview}>
+    <section className={style.overview}>
       <div className={style.rating}>
         <p>User Score</p>
         {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
@@ -28,7 +28,7 @@ const OverviewSection = ({ movie,windowWidth }) => {
         <p><strong>Budget:</strong> $ {movie.budget}</p>
         <p><strong>Revenue:</strong> $ {movie.revenue}</p>
       </div>
-    </div>
+    </section>
   );
 };
 

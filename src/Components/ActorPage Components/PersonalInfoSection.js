@@ -17,7 +17,7 @@ const PersonalInfoSection = ({actors}) => {
   }
 
   return (
-    <div className={style.left}>
+    <section className={style.left}>
       <img
         src={`https://image.tmdb.org/t/p/original${actors?.profile_path}`}
         alt={actors.name}/>
@@ -44,7 +44,7 @@ const PersonalInfoSection = ({actors}) => {
           {actors.also_known_as.map((name, i) => <p key={i}>{name}</p>)}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

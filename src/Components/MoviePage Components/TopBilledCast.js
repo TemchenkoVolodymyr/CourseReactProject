@@ -7,7 +7,7 @@ import SliderItem from '../SliderItems/SliderItem';
 
 const TopBilledCast = ({ movie, windowWidth }) => {
   return (
-    <div>
+    <section>
       {windowWidth >= 360 && windowWidth < 768 ? <Swiper
           modules={[Navigation]}
           id="main"
@@ -67,7 +67,7 @@ const TopBilledCast = ({ movie, windowWidth }) => {
           )}
         </Swiper>
       }
-    </div>
+    </section>
   );
 };
 

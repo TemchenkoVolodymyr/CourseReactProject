@@ -82,15 +82,15 @@ const Layout = () => {
     <>
       {windowWidth >= 768 ?
       loading ? <Loader></Loader> : <>
-        <div id={'mainContent'} className={'containerTopLayout'}>
-          <div className={'containerNav'}>
+        <section id={'mainContent'} className={'containerTopLayout'}>
+          <nav className={'containerNav'}>
             <Navigations/>
-          </div>
-          <div className={'containerMain'}>
+          </nav>
+          <main className={'containerMain'}>
             <Outlet/>
             {showButton && <ScrollButton></ScrollButton>}
-          </div>
-          <div className={'containerSideBar'}>
+          </main>
+          <section className={'containerSideBar'}>
             <Search/>
             <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
             <PopularMovies/>
@@ -99,12 +99,12 @@ const Layout = () => {
               favorites={favorites}
               isLoading={isLoading}
             />
-          </div>
+          </section>
 
-        </div>
+        </section>
         {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>
-        :  <div className={'containerMain'}>
+        :  <main className={'containerMain'}>
           <div className={style.header + ' ' + style.headerMain}>
             {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
                 <Search></Search>
@@ -116,7 +116,7 @@ const Layout = () => {
             {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
           </div>
           <Outlet/>
-        </div>}
+        </main>}
     </>
   );
 };

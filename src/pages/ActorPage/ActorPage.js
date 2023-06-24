@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './ActorPage.module.scss';
-import { NavLink } from 'react-router-dom';
-import SliderItem from '../../Components/SliderItems/SliderItem';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
-import CustomButton from '../../Components/Button/CustomButton';
 import {Helmet} from "react-helmet";
+import PersonalInfoSection from "../../Components/ActorPage Components/PersonalInfoSection";
+import BiographySection from "../../Components/ActorPage Components/BiographySection";
+import ActorCreditsFilter from "../../Components/ActorPage Components/ActorCreditsList/ActorCreditsFilter";
 
 
 const ActorPage = () => {
@@ -48,12 +45,12 @@ const ActorPage = () => {
 
       <div className={style.wrapper}>
         <PersonalInfoSection actors={actors}/>
-        <div className={style.right}>
+        <section className={style.right}>
           <BiographySection actors={actors} handleReadMoreClick={handleReadMoreClick} isExpanded={isExpanded}/>
-          <div>
+          <section>
             <ActorCreditsFilter actors={actors}/>
-          </div>
-        </div>
+          </section>
+        </section>
       </div>
     </>
   );

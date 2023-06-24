@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const MainBanner = ({movie}) => {
   const image = movie.poster_path ? movie.poster_path : movie.backdrop_path
   return (
-    <div
+    <section
       style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}
       className={style.banner}>
       <div className={style.info}>
@@ -34,7 +34,7 @@ const MainBanner = ({movie}) => {
 
         </p>
       </div>
-    </div>
+    </section>
   );
 };
 
