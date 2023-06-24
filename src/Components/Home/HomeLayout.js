@@ -8,7 +8,7 @@ import {Helmet} from "react-helmet";
 import MainBannerSection from "./MainBannerSection";
 import TrendingNowSection from "./TrendingNowSection";
 import BestActorsSection from "./BestActorsSection";
-
+import Search from '../Search/Search';
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
 
@@ -32,11 +32,9 @@ const HomeLayout = () => {
     const getPopMovies = async () => {
       dispatch(fetchMovies({type: 'popularMovie'}));
     };
-
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
-
     window.addEventListener('resize', handleResize);
 
     getTrending();
@@ -52,6 +50,9 @@ const HomeLayout = () => {
       <Helmet>
         <title>Latest Movie Trailers, Reviews & Overviews | Ultimate Cinema Guide</title>
       </Helmet>
+      {windowWidth >= 769 && windowWidth <= 1024 ? <div>
+        <Search></Search>
+        </div> : null}
       <div className={style.wrapper}>
         <MainBannerSection discover={discover} windowWidth={windowWidth}/>
         <h2>Trending Now </h2>
@@ -60,6 +61,8 @@ const HomeLayout = () => {
         <BestActorsSection popularActors={popularActors} windowWidth={windowWidth}/>
       </div>
     </>
+
+
   );
 };
 

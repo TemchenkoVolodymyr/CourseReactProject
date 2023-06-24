@@ -5,8 +5,9 @@ import {useParams} from 'react-router';
 import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
+import { useLocation } from 'react-router-dom';
+import genreTitles from "./genreTitles";
 import {Helmet} from "react-helmet";
-import {genreIds, genreTitles} from "../../constants/data";
 
 const CurrentGenre = () => {
   const { genre} = useParams();

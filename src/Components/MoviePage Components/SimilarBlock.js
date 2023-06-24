@@ -1,11 +1,11 @@
 import React from 'react';
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation} from "swiper";
-import {NavLink} from "react-router-dom";
-import style from "../../pages/MoviePage/MoviePage.module.scss";
-import SliderItem from "../SliderItems/SliderItem";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import { NavLink } from 'react-router-dom';
+import style from '../../pages/MoviePage/MoviePage.module.scss';
+import SliderItem from '../SliderItems/SliderItem';
 
-const SimilarBlock = ({movie, windowWidth }) => {
+const SimilarBlock = ({ movie, windowWidth }) => {
   return (
     <>
       {windowWidth >= 360 && windowWidth < 768 ? <Swiper

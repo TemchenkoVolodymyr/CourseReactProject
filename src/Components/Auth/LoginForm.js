@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./AuthForm.module.scss";
+import styles from './AuthForm.module.scss';
 
 const LoginForm = (props) => {
   const { handleSubmit, register, errors, error, loginHandler, toggleFormMode } = props;

@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, setDoc, doc, collection, query, where, deleteDoc } from 'firebase/firestore';
-import { getDatabase, ref,set } from "firebase/database";
+import { getDatabase, ref,set } from 'firebase/database';
 
 
 const firebaseConfig = {
@@ -23,4 +23,4 @@ const auth = getAuth(app);
 export const db = getFirestore(app);
 export const dbRealTime = getDatabase(app);
 
-export { app, auth, setDoc,doc, collection, query, where, deleteDoc};
+export { app, auth, setDoc,doc, collection, query, where, deleteDoc };

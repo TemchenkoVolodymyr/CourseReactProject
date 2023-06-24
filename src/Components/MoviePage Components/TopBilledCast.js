@@ -1,11 +1,11 @@
 import React from 'react';
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation} from "swiper";
-import {NavLink} from "react-router-dom";
-import style from "../../pages/MoviePage/MoviePage.module.scss";
-import SliderItem from "../SliderItems/SliderItem";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import { NavLink } from 'react-router-dom';
+import style from '../../pages/MoviePage/MoviePage.module.scss';
+import SliderItem from '../SliderItems/SliderItem';
 
-const TopBilledCast = ({movie, windowWidth }) => {
+const TopBilledCast = ({ movie, windowWidth }) => {
   return (
     <div>
       {windowWidth >= 360 && windowWidth < 768 ? <Swiper

@@ -1,16 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './ActorPage.module.scss';
-import ActorCreditsFilter from '../../Components/ActorPage Components/ActorCreditsList/ActorCreditsFilter';
+import { NavLink } from 'react-router-dom';
+import SliderItem from '../../Components/SliderItems/SliderItem';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import ActorCreditsFilter from '../../Components/ActorCreditsList/ActorCreditsFilter';
+import CustomButton from '../../Components/Button/CustomButton';
 import {Helmet} from "react-helmet";
-import PersonalInfoSection from "../../Components/ActorPage Components/PersonalInfoSection";
-import BiographySection from "../../Components/ActorPage Components/BiographySection";
 
 
 const ActorPage = () => {
 
-  const {name} = useParams();
+  const { name } = useParams();
   const [actors, setActors] = useState();
   const actorId = localStorage.getItem('actorId');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,7 +25,7 @@ const ActorPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
         setActors(data);
       } catch (err) {
         alert('Error');
