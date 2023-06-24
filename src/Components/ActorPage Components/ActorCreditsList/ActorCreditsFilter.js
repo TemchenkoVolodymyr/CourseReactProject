@@ -3,7 +3,7 @@ import style from './ActorCredits.module.scss';
 import DropDown from './DropDown';
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchActorCredits} from "../../utils/helperFunctions/fetchActorCredits";
+import {fetchActorCredits} from "../../../utils/helperFunctions/fetchActorCredits";
 
 const ActorCreditsFilter = ({actors}) => {
   const dispatch = useDispatch()
