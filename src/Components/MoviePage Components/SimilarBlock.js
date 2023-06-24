@@ -21,7 +21,7 @@ const SimilarBlock = ({movie, windowWidth }) => {
             <SwiperSlide key={similar.id}>
               <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>
                 <SliderItem
-                  img={similar.poster_path}
+                  img={similar.poster_path ? similar.poster_path : similar.backdrop_path}
                   rating={(similar.vote_average * 10).toFixed(1)}
                   displayAsPercentage={true}
                   canvasShow={true}
@@ -48,7 +48,7 @@ const SimilarBlock = ({movie, windowWidth }) => {
                 onClick={() => localStorage.setItem('movieId', similar.id)}
                 >
                 <SliderItem
-                  img={similar.poster_path}
+                  img={similar.poster_path ? similar.poster_path : similar.backdrop_path}
                   rating={(similar.vote_average * 10).toFixed(1)}
                   displayAsPercentage={true}
                   canvasShow={true}

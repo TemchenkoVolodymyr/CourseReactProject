@@ -68,7 +68,9 @@ const ActorCreditsFilter = ({actors}) => {
           className={style.info}>
           <p>{credit.year} </p>
           <div>
-            <NavLink to={`/movie/${credit.id}`}>
+            <NavLink
+              to={`/movie/${encodeURIComponent(credit.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+              onClick={() => localStorage.setItem('movieId', credit.id )}>
               <h3 className={style.title}>{credit.title}</h3>
             </NavLink>
             <p className={style.role}>as {credit.role}</p>

@@ -116,11 +116,13 @@ const ActorPage = () => {
             spaceBetween={10}>
 
             {actors.movie_credits.cast.map((movie) =>
-              movie.poster_path &&
+
               <SwiperSlide key={movie.id}>
-                <NavLink to={`/movie/${movie.id}`} className={style.swiperSlide}>
+                <NavLink
+                  to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                  onClick={() => localStorage.setItem('movieId', movie.id )} className={style.swiperSlide}>
                   <SliderItem
-                    img={movie.poster_path}
+                    img={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
                     rating={(movie.vote_average * 10).toFixed(1)}
                     displayAsPercentage={true}
                   />

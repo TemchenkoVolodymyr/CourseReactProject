@@ -3,9 +3,10 @@ import style from "../../pages/MoviePage/MoviePage.module.scss";
 import {NavLink} from "react-router-dom";
 
 const MainBanner = ({movie}) => {
+  const image = movie.poster_path ? movie.poster_path : movie.backdrop_path
   return (
     <div
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
+      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}
       className={style.banner}>
       <div className={style.info}>
         <h1>{movie.title}</h1>
@@ -30,7 +31,6 @@ const MainBanner = ({movie}) => {
               {index !== movie.credits.cast.slice(0, 5).length - 1 && ', '}
             </React.Fragment>
           ))}
-
         </p>
       </div>
     </div>

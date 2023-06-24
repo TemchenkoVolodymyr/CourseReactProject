@@ -98,8 +98,8 @@ const HomeLayout = () => {
                 <SwiperSlide key={movie.id}>
                   <NavLink
                     to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
-                    className={style.swiperSlide}
-                    onClick={() => localStorage.setItem('movieId', movie.id )}>
+                    onClick={() => localStorage.setItem('movieId', movie.id )}
+                    className={style.swiperSlide}>
                     <SliderItem
                       title={movie.title}
                       img={movie.poster_path}
