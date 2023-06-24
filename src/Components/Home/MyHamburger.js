@@ -1,32 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './MyHamburger.module.scss';
-import { CgProfile } from 'react-icons/cg';
 import { useAuth } from '../../hooks/useAuth';
-import { BiLogIn, BiLogOut } from 'react-icons/bi';
-import { getAuth, signOut } from 'firebase/auth';
-import { removeUser } from '../../redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
-import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
+import itemGenres from "../../constants/itemGenres";
+import ProfileSection from "../../router/Navigations/ProfileSection";
 
 
-const MyHamburger = (props) => {
+const MyHamburger = ({ items }) => {
 
-  const { title, items } = props;
   const [modal, setModal] = useState(false);
   const [styleModal, setStyleModal] = useState();
-
   const [isActive, setIsActive] = useState(false);
-  const { isAuth, isAdmin } = useAuth();
-  const dispatch = useDispatch();
-
-  const [ userData, setUserData] = useState(null);
-
   const { id } = useAuth();
-
-
-
-
 
   useEffect(() => {
     if (modal === false) {
@@ -94,20 +79,11 @@ const MyHamburger = (props) => {
     document.body.classList.toggle('lock');
     setIsActive(!isActive);
   };
-  const links = items.map((item) => <NavLink to={item.to}>{item.name}</NavLink>);
-  const genres = itemGenres.map((item) => <NavLink to={item.to}>{item.name}</NavLink>);
-
-  const logout = () => {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-
-      dispatch(removeUser());
-    }).catch((error) => error
-    );
-  };
+  const links = items.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
+  const genres = itemGenres.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>)
 
 
-    return (
+  return (
     <div className={style.container}>
       <div className={`${style.headerBurger} ${isActive ? style.active : null}`} onClick={changeActive}>
         <span></span>
@@ -116,31 +92,9 @@ const MyHamburger = (props) => {
             <NavLink to={'/'} >Home</NavLink>
             <p>Movies</p>
             {links}
-           <p>Genres</p>
+            <p>Genres</p>
             {genres}
-            <p>Profile</p>
-            {
-              isAuth ?
-                <NavLink
-                  to="/auth"
-                  onClick={logout}
-                  className={'active'}
-                  style={{ cursor: 'pointer' }}
-                ><BiLogOut size={25}/>Logout</NavLink>
-                :
-                <NavLink
-                  to="/auth"
-                  className={'active'}
-                  style={{ cursor: 'pointer' }}
-                ><BiLogIn size={25}/>Login</NavLink>
-            }
-            {isAuth ?
-              <NavLink
-                to={`/u/${userName}`}
-                style={{ cursor: 'pointer' }}
-              ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
-
-              : null}
+            <ProfileSection/>
           </ul>
         </div>
       </div>

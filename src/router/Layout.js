@@ -4,7 +4,6 @@ import { Outlet } from 'react-router';
 import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
-import SectionNavigation from './Navigations/SectionNavigation';
 import ScrollButton from './ScrollButton';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
@@ -15,6 +14,7 @@ import style from '../Components/Home/HomeLayout.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
 import MyHamburger from '../Components/Home/MyHamburger';
+import Navigations from "./Navigations/Navigations";
 
 
 const Layout = () => {
@@ -103,7 +103,7 @@ const Layout = () => {
       loading ? <Loader></Loader> : <>
         <div id={'mainContent'} className={'containerTopLayout'}>
           <div className={'containerNav'}>
-            <SectionNavigation></SectionNavigation>
+            <Navigations/>
           </div>
 
           <div className={'containerMain'}>

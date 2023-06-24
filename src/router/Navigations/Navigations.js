@@ -5,6 +5,7 @@ import { SiOpenstreetmap } from 'react-icons/si';
 import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 import { MdFlutterDash } from 'react-icons/md';
+import ProfileSection from "./ProfileSection";
 
 const Navigations = () => {
 
@@ -37,6 +38,7 @@ const Navigations = () => {
       <NavLink to="/genre/fantasy"><GiCastle size={'24'}/>Fantasy</NavLink>
       <NavLink to="/genre/documentary"><BsCameraReelsFill size={'23'}/>Documentary</NavLink>
       <NavLink to="/genre/horror"><GiGhost size={'24'}/>Horror</NavLink>
+      <ProfileSection/>
     </>
   );
 };
