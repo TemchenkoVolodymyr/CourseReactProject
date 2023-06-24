@@ -5,32 +5,9 @@ import {useParams} from 'react-router';
 import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
-import { useLocation } from 'react-router-dom';
-import genreTitles from "./genreTitles";
 import {Helmet} from "react-helmet";
+import {genreIds, genreTitles} from "../../constants/data";
 
-const genreIds = {
-  'comedy': 35,
-  'cartoons': 878,
-  'fantasy': 14,
-  'documentary': 99,
-  'adventure': 12,
-  'animation': 16,
-  'crime': 80,
-  'drama': 18,
-  'action': 28,
-  'family': 10751,
-  'history': 36,
-  'horror': 27,
-  'mystery': 9648,
-  'music': 10402,
-  'romance': 10749,
-  'science-fiction': 878,
-  'thriller': 53,
-  'tv-movie': 10770,
-  'war': 10752,
-  'western': 37,
-};
 const CurrentGenre = () => {
   const { genre} = useParams();
   const [currGenre, setCurrGenre] = useState();

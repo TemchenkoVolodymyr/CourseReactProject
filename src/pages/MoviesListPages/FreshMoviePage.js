@@ -36,7 +36,6 @@ const FreshMoviePage = () => {
                 to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
                 onClick={() => localStorage.setItem('movieId', movie.id)}
                 key={movie.id}
-
               >
                 <MovieBlock
                   image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
