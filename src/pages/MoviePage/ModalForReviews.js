@@ -13,16 +13,18 @@ const styleModal = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: "rgb(0 0 0 / 83%)",
+  bgcolor: 'rgb(0 0 0 / 83%)',
   boxShadow: 24,
   p: 4,
-  color:"white",
+  color: 'white',
+  maxHeight: '600px',
+  overflowY: 'scroll',
 };
 
-export default function BasicModal(props) {
+export default function ModalForReviews(props) {
 
 
-  const { callback, open, value, setValue, placeholder, movie ,reviews } = props;
+  const { callback, open, value, setValue, placeholder, movie, reviews, sendReview } = props;
 
   return (
     <div className={style.modal}>
@@ -51,16 +53,16 @@ export default function BasicModal(props) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={placeholder}/>
-              <CustomButton name={'Send'}></CustomButton>
+              <CustomButton value={value} callback={sendReview} name={'Send'}></CustomButton>
             </div>
             <div>
-              { reviews && reviews.map((review) => <div className={style.reviews}>
+              {reviews && reviews.map((review) => <div className={style.reviews}>
                 <div className={style.headerReview}>
                   <p className={style.headerInfo}>{review.user}</p>
                   <p className={style.headerInfo}>{review.date}</p>
                 </div>
                 <p className={style.text}>{review.text}</p>
-              </div> )}
+              </div>)}
             </div>
           </Typography>
         </Box>

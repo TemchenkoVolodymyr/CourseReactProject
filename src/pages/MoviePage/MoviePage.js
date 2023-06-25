@@ -13,7 +13,7 @@ import OverviewSection from '../../Components/MoviePage Components/OverviewSecti
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
-import BasicModal from './ModalForReviews';
+import ModalForReviews from './ModalForReviews';
 
 
 const MoviePage = () => {
@@ -84,12 +84,6 @@ const MoviePage = () => {
             <CustomButton callback={handleOpen} name={"Leave review"}></CustomButton>
           </div>
           <p>{`About film "${movie.original_title}"`}</p>
-          {/*<textarea*/}
-          {/*  value={value}*/}
-          {/*  onChange={(e) => setValue(e.target.value)}*/}
-          {/*  placeholder="write your review"/>*/}
-
-          {/*<CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>*/}
         </div>
 
         {status === 'loading' ? <p>...Loading</p> :
@@ -100,7 +94,7 @@ const MoviePage = () => {
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>
       </div>
-      <BasicModal reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={"write your review"}></BasicModal>
+      <ModalForReviews sendReview={sendReviewHandler} reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={"write your review"}></ModalForReviews>
     </>
   );
 };

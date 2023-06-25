@@ -21,10 +21,7 @@ const SliderForReview = (props) => {
               <p className={'name'}>{item.user}</p>
               <p className={'content'}>{item.text}</p>
               <p className={'date'}>{item.date}</p>
-
             </div>
-
-
           </SwiperSlide>)}
 
         </Swiper>
