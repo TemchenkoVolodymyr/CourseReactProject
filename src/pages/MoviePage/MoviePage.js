@@ -12,6 +12,8 @@ import MainBanner from '../../Components/MoviePage Components/MainBanner';
 import OverviewSection from '../../Components/MoviePage Components/OverviewSection';
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
+import SliderForReview from './SliderForReview';
+import ModalForReviews from './ModalForReviews';
 
 
 const MoviePage = () => {
@@ -23,7 +25,12 @@ const MoviePage = () => {
   const reviews = useSelector((state) => state.reviews.reviews);
   const status = useSelector((state) => state.reviews.status);
 
+  const [openModal, setOpenModal] = useState(false);
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
 
   useEffect(() => {
     async function fetchMovie() {
@@ -46,7 +53,7 @@ const MoviePage = () => {
 
   const sendReviewHandler = (review) => {
     if (review) {
-      dispatch(setReview({id: movieId, text: review}))
+      dispatch(setReview({ id: movieId, text: review }));
       setValue('');
     }
   };
@@ -66,31 +73,24 @@ const MoviePage = () => {
         <OverviewSection movie={movie} windowWidth={windowWidth}/>
         <h2>Top Billed Cast</h2>
         <TopBilledCast movie={movie} windowWidth={windowWidth}/>
-        <section className={style.reviewsContainer}>
-          <h1>Write Your Review</h1>
-          <textarea
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="write your review"/>
-          <CustomButton name="Write" callback={() => sendReviewHandler(value)}></CustomButton>
+        <section >
+        <div className={style.reviewsContainer}>
+          <div className={style.headerReviews}>
+            <h1>Reviews</h1>
+            <CustomButton callback={handleOpen} name={"Leave review"}></CustomButton>
+          </div>
+          <p>{`About film "${movie.original_title}"`}</p>
+        </div>
         </section>
 
-        {reviews && <h1 className={style.header}>Reviews :</h1>}
         {status === 'loading' ? <p>...Loading</p> :
           <>
-            {reviews ? reviews?.map((item, i) => <div key={i} className={style.wrapperReview}>
-              <div className={style.reviews}>
-                <p>{item.text}</p>
-                <div>
-                  <p>{item.user}</p>
-                  <p>{item.date}</p>
-                </div>
-              </div>
-            </div>) : <p>There are no reviews </p>}
+            <SliderForReview reviews={reviews}></SliderForReview>
           </>}
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>
       </div>
+      <ModalForReviews sendReview={sendReviewHandler} reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={"write your review"}></ModalForReviews>
     </>
   );
 };
