@@ -28,13 +28,28 @@
   max-width: 100px;
   border-radius: 10px;
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .container img {
+    max-height: 125px;
+  }
+}
 .container h1 {
   font-size: 30px;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .container h1 {
+    font-size: 15px;
+  }
 }
 
 .description {
   max-width: 100px;
   font-size: 13px;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .description {
+    font-size: 10px;
+  }
 }
 
 .css-1wnsr1i {
@@ -59,6 +74,13 @@
 
 .text {
   margin-top: 10px;
+}
+
+.wrapperCloseModalBtn {
+  max-width: 119px;
+}
+.wrapperCloseModalBtn a {
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=ModalForReviews.module.css.map */

@@ -176,6 +176,9 @@
 .headerReviews{
   display: flex;
   justify-content: space-between;
+  @media (min-width: 360px) and (max-width: 768px) {
+    align-items: baseline;
+  }
   h1{
     color: #fafafa;
   }

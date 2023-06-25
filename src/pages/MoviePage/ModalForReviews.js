@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
 
@@ -20,8 +20,32 @@ const styleModal = {
   maxHeight: '600px',
   overflowY: 'scroll',
 };
+const stylePhoneModal = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: "100%",
+  bgcolor: 'rgb(0 0 0 / 83%)',
+  boxShadow: 24,
+  p: 4,
+  color: 'white',
+  maxHeight: '600px',
+  overflowY: 'scroll',
+};
 
 export default function ModalForReviews(props) {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 
   const { callback, open, value, setValue, placeholder, movie, reviews, sendReview } = props;
@@ -34,7 +58,10 @@ export default function ModalForReviews(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={styleModal}>
+        <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}>
+          <div className={style.wrapperCloseModalBtn}>
+            <CustomButton callback={callback} name={"Close the modal"}></CustomButton>
+          </div>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <div className={style.container}>
               <h1>{`Leave your review for "${movie.original_title}"`}</h1>

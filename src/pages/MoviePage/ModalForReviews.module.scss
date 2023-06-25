@@ -25,14 +25,24 @@
   img{
     max-width: 100px;
     border-radius: 10px;
+    @media (min-width: 360px) and (max-width: 768px) {
+     max-height: 125px;
+    }
   }
   h1{
     font-size: 30px;
+    @media (min-width: 360px) and (max-width: 768px) {
+      font-size: 15px;
+    }
   }
 }
 .description{
   max-width: 100px;
   font-size: 13px;
+  @media (min-width: 360px) and (max-width: 768px) {
+    font-size: 10px;
+
+  }
 }
 .css-1wnsr1i{
   background-color: #f0ad4e !important;
@@ -58,4 +68,11 @@
 }
 .text{
   margin-top: 10px;
+}
+.wrapperCloseModalBtn{
+  max-width: 119px;
+  a{
+    font-size: 12px;
+
+  }
 }

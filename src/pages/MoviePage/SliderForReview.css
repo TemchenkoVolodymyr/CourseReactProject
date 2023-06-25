@@ -7,14 +7,36 @@
   padding: 15px 50px;
   margin-right: 10px;
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper__slider-item {
+    height: 70px;
+    max-height: 150px;
+    overflow: hidden;
+  }
+}
 .wrapper__slider-item .name {
   font-size: 12px;
   color: #939993;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper__slider-item .name {
+    font-size: 10px;
+  }
 }
 .wrapper__slider-item .content {
   font-size: 20px;
   padding: 15px 0;
   color: #f6f6f6;
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper__slider-item .content {
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapper__slider-item .date {
+    font-size: 10px;
+  }
 }
 
 /*# sourceMappingURL=SliderForReview.css.map */
