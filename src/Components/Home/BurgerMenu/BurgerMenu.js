@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import style from './MyHamburger.module.scss';
-import { useAuth } from '../../hooks/useAuth';
-import ProfileSection from '../../router/Navigations/ProfileSection';
-import { itemGenres } from '../../constants/data';
-import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
+import style from './BurgerMenu.module.scss';
+import { useAuth } from '../../../hooks/useAuth';
+import ProfileSection from '../../../router/Navigations/ProfileSection';
+import { itemGenres } from '../../../constants/data';
+import { loadData } from '../../../utils/helperFunctions/loadUserDataFromFB';
 
 
-const MyHamburger = ({ items }) => {
+const BurgerMenu = ({ items }) => {
 
   const [modal, setModal] = useState(false);
   const [styleModal, setStyleModal] = useState();
@@ -103,4 +103,4 @@ const MyHamburger = ({ items }) => {
   );
 };
 
-export default MyHamburger;
+export default BurgerMenu;

@@ -13,7 +13,7 @@ import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
-import MyHamburger from '../Components/Home/MyHamburger';
+import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
 import { itemMovies } from '../constants/data';
 
@@ -109,7 +109,7 @@ const Layout = () => {
             {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
                 <Search></Search>
                 <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
-                <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
+                <BurgerMenu title={'Movies'} items={itemMovies}></BurgerMenu>
               </div>
               :
               <h1>watch movies online</h1>}
