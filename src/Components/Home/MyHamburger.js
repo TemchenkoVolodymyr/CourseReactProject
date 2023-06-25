@@ -4,6 +4,7 @@ import style from './MyHamburger.module.scss';
 import { useAuth } from '../../hooks/useAuth';
 import ProfileSection from "../../router/Navigations/ProfileSection";
 import {itemGenres} from "../../constants/data";
+import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
 
 
 const MyHamburger = ({ items }) => {
@@ -35,10 +36,10 @@ const MyHamburger = ({ items }) => {
       });
     }
 
-    if (id) loadData({ setUserData, id });
+    // if (id) loadData({ setUserData, id });
   }, [modal,id]);
 
-  const userName = userData && userData.userName;
+  // const userName = userData && userData.userName;
 
   const itemGenres = [{
     to: '/genre/action',
