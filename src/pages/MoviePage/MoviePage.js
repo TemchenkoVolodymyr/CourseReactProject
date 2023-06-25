@@ -81,7 +81,7 @@ const MoviePage = () => {
         <div className={style.reviewsContainer}>
           <div className={style.headerReviews}>
             <h1>Reviews</h1>
-            <button onClick={handleOpen}>Leave a review</button>
+            <CustomButton callback={handleOpen} name={"Leave review"}></CustomButton>
           </div>
           <p>{`About film "${movie.original_title}"`}</p>
           {/*<textarea*/}

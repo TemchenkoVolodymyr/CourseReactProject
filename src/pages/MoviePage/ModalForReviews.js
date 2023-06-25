@@ -13,21 +13,19 @@ const styleModal = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "rgb(0 0 0 / 83%)",
   boxShadow: 24,
   p: 4,
+  color:"white",
 };
 
 export default function BasicModal(props) {
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+
 
   const { callback, open, value, setValue, placeholder, movie ,reviews } = props;
+
   return (
-    <div>
-      {/*<Button onClick={handleOpen}>Open modal</Button>*/}
+    <div className={style.modal}>
       <Modal
         open={open}
         onClose={callback}
@@ -36,12 +34,10 @@ export default function BasicModal(props) {
       >
         <Box sx={styleModal}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            <div>
-              <h1>{movie.original_title}</h1>
-              <div>
+            <div className={style.container}>
+              <h1>{`Leave your review for "${movie.original_title}"`}</h1>
+              <div className={style.description}>
                 <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}/>
-              </div>
-              <div>
                 <p>Language : {movie.original_language}</p>
                 <p>Release date : {movie.release_date}</p>
                 <p>Rating : {Math.round(movie.vote_average * 10 / 10)}</p>
@@ -55,10 +51,16 @@ export default function BasicModal(props) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={placeholder}/>
-              <CustomButton name={'send'}></CustomButton>
+              <CustomButton name={'Send'}></CustomButton>
             </div>
             <div>
-              { reviews && reviews.map((review) => <p>{review.text}</p>  )}
+              { reviews && reviews.map((review) => <div className={style.reviews}>
+                <div className={style.headerReview}>
+                  <p className={style.headerInfo}>{review.user}</p>
+                  <p className={style.headerInfo}>{review.date}</p>
+                </div>
+                <p className={style.text}>{review.text}</p>
+              </div> )}
             </div>
           </Typography>
         </Box>

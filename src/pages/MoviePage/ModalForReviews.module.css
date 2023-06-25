@@ -1,10 +1,63 @@
+.modal .css-1wnsr1i {
+  background-color: #f0ad4e;
+}
+
 .wrapperInput {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .wrapperInput input {
-  height: 40px;
+  height: 54px;
+  width: 315px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(247, 6, 6, 0.42);
+  padding-left: 10px;
+  display: flex;
+  align-items: end;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container img {
+  max-width: 100px;
+  border-radius: 10px;
+}
+.container h1 {
+  font-size: 30px;
+}
+
+.description {
+  max-width: 100px;
+  font-size: 13px;
+}
+
+.css-1wnsr1i {
+  background-color: #f0ad4e !important;
+}
+
+.reviews {
+  margin: 10px 0;
+  background-color: rgba(40, 40, 40, 0.4784313725);
+  padding: 5px;
+  border-radius: 10px;
+}
+.reviews .headerInfo {
+  font-size: 11px;
+  color: rgba(248, 248, 248, 0.72);
+}
+
+.headerReview {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=ModalForReviews.module.css.map */
