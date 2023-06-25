@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './ActorCredits.module.scss';
 import DropDown from './DropDown';
-import {NavLink} from 'react-router-dom';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchActorCredits} from "../../../utils/helperFunctions/fetchActorCredits";
+import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchActorCredits } from '../../../utils/helperFunctions/fetchActorCredits';
 
-const ActorCreditsFilter = ({actors}) => {
-  const dispatch = useDispatch()
+const ActorCreditsFilter = ({ actors }) => {
+  const dispatch = useDispatch();
   const {
     actingCredits,
     productionCredits,
@@ -15,7 +15,7 @@ const ActorCreditsFilter = ({actors}) => {
     creatorCredits,
     crewCredits,
     selectedDepartment
-  } = useSelector(state => state.credits)
+  } = useSelector((state) => state.credits);
 
   useEffect(() => {
     fetchActorCredits(actors, dispatch);

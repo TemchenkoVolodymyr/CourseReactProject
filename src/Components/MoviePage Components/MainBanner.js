@@ -2,8 +2,8 @@ import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import { NavLink } from 'react-router-dom';
 
-const MainBanner = ({movie}) => {
-  const image = movie.poster_path ? movie.poster_path : movie.backdrop_path
+const MainBanner = ({ movie }) => {
+  const image = movie.poster_path ? movie.poster_path : movie.backdrop_path;
   return (
     <section
       style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}

@@ -157,9 +157,6 @@
 .wrapperReview {
   background-color: #ececec;
   margin-bottom: 10px;
-  //@media (min-width: 768px) and (max-width: 1024px) {
-  //  width: 100%;
-  //}
 }
 
 .reviews {
@@ -180,7 +177,7 @@
     align-items: baseline;
   }
   h1{
-    color: #fafafa;
+    color: var(--color-header-default);
   }
   a{
     margin-right: 5px;

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './ActorPage.module.scss';
-import {Helmet} from "react-helmet";
-import PersonalInfoSection from "../../Components/ActorPage Components/PersonalInfoSection";
-import BiographySection from "../../Components/ActorPage Components/BiographySection";
-import ActorCreditsFilter from "../../Components/ActorPage Components/ActorCreditsList/ActorCreditsFilter";
+import { Helmet } from 'react-helmet';
+import PersonalInfoSection from '../../Components/ActorPage Components/PersonalInfoSection';
+import BiographySection from '../../Components/ActorPage Components/BiographySection';
+import ActorCreditsFilter from '../../Components/ActorPage Components/ActorCreditsList/ActorCreditsFilter';
 
 
 const ActorPage = () => {

@@ -14,8 +14,8 @@ import style from '../Components/Home/HomeLayout.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
 import MyHamburger from '../Components/Home/MyHamburger';
-import Navigations from "./Navigations/Navigations";
-import {itemMovies} from "../constants/data";
+import Navigations from './Navigations/Navigations';
+import { itemMovies } from '../constants/data';
 
 
 const Layout = () => {

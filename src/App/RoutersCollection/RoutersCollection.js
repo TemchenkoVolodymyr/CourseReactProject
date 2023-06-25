@@ -10,13 +10,6 @@ import AuthPage from '../../pages/AuthPage/AuthPage';
 import NotfoundPage from '../../pages/NotFoundPage/NotfoundPage';
 import MoviePage from '../../pages/MoviePage/MoviePage';
 import PopularMoviesPage from '../../pages/MoviesListPages/PopularMoviesPage';
-import AdminPanel from '../../Components/AdminPanel/AdminPanel';
-import AdminPanelStatistics
-  from '../../Components/AdminPanel/NavComponents/AdminPanelStatistics/AdminPanelStatistics';
-import UsersAP from '../../Components/AdminPanel/NavComponents/AdminPanelUsers/UsersAP';
-import MoviesAP from '../../Components/AdminPanel/NavComponents/AdminPanelMovies/MoviesAP';
-import ActorsAP from '../../Components/AdminPanel/NavComponents/AdminPanelActors/ActorsAP';
-import GenresAP from '../../Components/AdminPanel/NavComponents/AdminPanelGenres/GenresAP';
 import ActorPage from '../../pages/ActorPage/ActorPage';
 import UserProfile from '../../pages/UserProfilePage/UserProfile';
 import UserWatchList from '../../Components/UserProfile/NavComponents/UserWatchList';
@@ -41,13 +34,6 @@ const RoutersCollection = () => {
           <Route path="/person/:name" element={<ActorPage/>}/>
           <Route path="/popMovies" element={<PopularMoviesPage/>}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage/>}/>
-          <Route path="/adminPanel" element={<AdminPanel/>}>
-            <Route path="static" element={<AdminPanelStatistics/>}/>
-            <Route path="users" element={<UsersAP/>}/>
-            <Route path="movies" element={<MoviesAP/>}/>
-            <Route path="actors" element={<ActorsAP/>}/>
-            <Route path="genres" element={<GenresAP/>}/>
-          </Route>
           <Route path="/u/:userName" element={<UserProfile/>}>
             <Route index element={<UserProfileComponent/>} />
             <Route path="/u/:userName/favorites" element={<UserFavorites/>}/>

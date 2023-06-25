@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   actingCredits: [],
@@ -37,7 +37,7 @@ const actorCreditsSlice = createSlice({
     setSelectedDepartment: (state, action) => {
       state.selectedDepartment = action.payload;
     },
-    clearCredits: state => {
+    clearCredits: (state) => {
       state.actingCredits = [];
       state.productionCredits= [];
       state.directingCredits= [];

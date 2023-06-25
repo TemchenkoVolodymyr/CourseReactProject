@@ -1,10 +1,10 @@
 import React from 'react';
-import {Swiper, SwiperSlide} from "swiper/react";
-import {NavLink} from "react-router-dom";
-import style from "./HomeLayout.module.scss";
-import SliderItem from "../SliderItems/SliderItem";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { NavLink } from 'react-router-dom';
+import style from './HomeLayout.module.scss';
+import SliderItem from '../SliderItems/SliderItem';
 
-const TrendingNowSection = ({trendingMovies,windowWidth }) => {
+const TrendingNowSection = ({ trendingMovies,windowWidth }) => {
   return (
     <>
       {windowWidth >= 360 && windowWidth < 768 ? <Swiper

@@ -5,7 +5,7 @@ import { SiOpenstreetmap } from 'react-icons/si';
 import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 import { MdFlutterDash } from 'react-icons/md';
-import ProfileSection from "./ProfileSection";
+import ProfileSection from './ProfileSection';
 
 const Navigations = () => {
 

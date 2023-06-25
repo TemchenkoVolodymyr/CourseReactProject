@@ -31,8 +31,8 @@ const MoviePage = () => {
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
-console.log(reviews)
-  console.log(movieId)
+
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -78,7 +78,7 @@ console.log(reviews)
         <div className={style.reviewsContainer}>
           <div className={style.headerReviews}>
             <h1>Reviews</h1>
-            <CustomButton callback={handleOpen} name={"Leave review"}></CustomButton>
+            <CustomButton callback={handleOpen} name={'Leave review'}></CustomButton>
           </div>
           <p>{`About film "${movie.original_title}"`}</p>
         </div>
@@ -86,12 +86,12 @@ console.log(reviews)
 
         {status === 'loading' ? <p>...Loading</p> :
           <>
-            <SliderForReview reviews={reviews}></SliderForReview>
+            <SliderForReview  reviews={reviews}></SliderForReview>
           </>}
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>
       </div>
-      <ModalForReviews sendReview={sendReviewHandler} reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={"write your review"}></ModalForReviews>
+      <ModalForReviews sendReview={sendReviewHandler} reviews={reviews} movie={movie} open={openModal} callback={handleClose} value={value} setValue={setValue} placeholder={'write your review'}></ModalForReviews>
     </>
   );
 };

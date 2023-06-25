@@ -32,7 +32,6 @@ const UserRatings = () => {
 
 
   const sortedRatingList = filterProfileMovies(ratings, filterBy, ratingSortOption);
-  console.log(sortedRatingList);
 
   return (
     <>

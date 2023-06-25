@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Search.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UniversalSearch from './UniversalSearch';
-import {NavLink} from 'react-router-dom';
-import {searchAC} from './searchAC';
+import { NavLink } from 'react-router-dom';
+import { searchAC } from './searchAC';
 
 const Search = () => {
 
@@ -55,7 +55,7 @@ const Search = () => {
                 className={style.wrapper}
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
-                  backgroundSize: 'cover'}}
+                  backgroundSize: 'cover' }}
               >{item.original_title}</div>
             </NavLink>)}
         </ul>

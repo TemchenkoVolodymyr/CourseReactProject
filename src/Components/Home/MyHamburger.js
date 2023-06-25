@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './MyHamburger.module.scss';
 import { useAuth } from '../../hooks/useAuth';
-import ProfileSection from "../../router/Navigations/ProfileSection";
-import {itemGenres} from "../../constants/data";
+import ProfileSection from '../../router/Navigations/ProfileSection';
+import { itemGenres } from '../../constants/data';
 import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
 
 
@@ -81,7 +81,7 @@ const MyHamburger = ({ items }) => {
     setIsActive(!isActive);
   };
   const links = items.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
-  const genres = itemGenres.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>)
+  const genres = itemGenres.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
 
 
   return (

@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
-import {useParams} from 'react-router';
+import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
-import {Helmet} from "react-helmet";
-import {genreIds, genreTitles} from "../../constants/data";
+import { Helmet } from 'react-helmet';
+import { genreIds, genreTitles } from '../../constants/data';
 
 const CurrentGenre = () => {
-  const { genre} = useParams();
+  const { genre } = useParams();
   const [currGenre, setCurrGenre] = useState();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const CurrentGenre = () => {
 
     async function fetchMovie() {
       try {
-        const {data} = await axios
+        const { data } = await axios
           .get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
         setCurrGenre(data);
       } catch (err) {
@@ -27,7 +27,7 @@ const CurrentGenre = () => {
 
     fetchMovie();
 
-  }, [genre])
+  }, [genre]);
 
   const pageTitle = genreTitles[genre].title || '';
   const description = genreTitles[genre].description || '';

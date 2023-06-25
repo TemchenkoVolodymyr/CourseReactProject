@@ -81,4 +81,4 @@ export const fetchActorCredits = (actors, dispatch) => {
   } catch(error) {
     console.error(error);
   }
-}
+};

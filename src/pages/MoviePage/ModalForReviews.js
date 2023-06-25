@@ -25,7 +25,7 @@ const stylePhoneModal = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "100%",
+  width: '100%',
   bgcolor: 'rgb(0 0 0 / 83%)',
   boxShadow: 24,
   p: 4,
@@ -60,7 +60,7 @@ export default function ModalForReviews(props) {
       >
         <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}>
           <div className={style.wrapperCloseModalBtn}>
-            <CustomButton callback={callback} name={"Close the modal"}></CustomButton>
+            <CustomButton callback={callback} name={'Close the modal'}></CustomButton>
           </div>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <div className={style.container}>
@@ -83,7 +83,7 @@ export default function ModalForReviews(props) {
               <CustomButton value={value} callback={sendReview} name={'Send'}></CustomButton>
             </div>
             <div>
-              {reviews && reviews.map((review) => <div className={style.reviews}>
+              {reviews && reviews.map((review) => <div className={style.reviews} >
                 <div className={style.headerReview}>
                   <p className={style.headerInfo}>{review.user}</p>
                   <p className={style.headerInfo}>{review.date}</p>

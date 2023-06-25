@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
+import React, { useState } from 'react';
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import style from './DropDown.module.scss';
-import {setSelectedDepartment} from "../../../redux/slices/actorCreditsSlice";
-import {useDispatch} from "react-redux";
+import { setSelectedDepartment } from '../../../redux/slices/actorCreditsSlice';
+import { useDispatch } from 'react-redux';
 
 const DropDown = ({
                     actingCredits,
@@ -14,7 +14,7 @@ const DropDown = ({
                   }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const listItems = [
     {
       'id': 1,
@@ -55,7 +55,7 @@ const DropDown = ({
         <div className={style.dropDownMenu}>
           {listItems.map((item) => (
             <p key={item.id} onClick={() => {
-              dispatch(setSelectedDepartment(item.role))
+              dispatch(setSelectedDepartment(item.role));
               toggleOpen();
             }}>
               {item.role} ({item.count})

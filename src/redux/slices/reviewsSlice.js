@@ -24,6 +24,7 @@ export const setReview = createAsyncThunk(
         text: text,
         date: date.toLocaleDateString(),
         user: currentUser,
+        id:id,
       });
       const snapshot = await get(reference);
 
@@ -52,7 +53,7 @@ export const fetchReviews = createAsyncThunk(
         const childData = childSnapshot.val();
         reviews.push(childData);
       });
-      console.log(reviews)
+
       dispatch(reviewsReceived(reviews));
     }, (error) => {
       throw error;

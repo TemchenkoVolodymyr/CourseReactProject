@@ -1,10 +1,10 @@
 import React from 'react';
-import {Swiper, SwiperSlide} from "swiper/react";
-import {NavLink} from "react-router-dom";
-import style from "./HomeLayout.module.scss";
-import SliderWithWatchBtn from "../SliderItems/SliderWithWatchBtn";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { NavLink } from 'react-router-dom';
+import style from './HomeLayout.module.scss';
+import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
 
-const MainBannerSection = ({discover, windowWidth}) => {
+const MainBannerSection = ({ discover, windowWidth }) => {
   return (
     <>
       <Swiper

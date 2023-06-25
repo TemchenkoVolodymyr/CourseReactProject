@@ -29,7 +29,7 @@ const SliderForReview = (props) => {
           wrapperTag="ul"
           navigation slidesPerView={2}
           spaceBetween={2}>
-          {reviews.map((item) => <SwiperSlide>
+          {reviews.map((item) => <SwiperSlide >
             <div className={'wrapper__slider-item'}>
               <p className={'name'}>{item.user}</p>
               <p className={'content'}>{item.text}</p>
@@ -46,7 +46,7 @@ const SliderForReview = (props) => {
           wrapperTag="ul"
           navigation slidesPerView={4}
           spaceBetween={2}>
-          {reviews.map((item) => <SwiperSlide>
+          {reviews.map((item) => <SwiperSlide >
             <div className={'wrapper__slider-item'}>
               <p className={'name'}>{item.user}</p>
               <p className={'content'}>{item.text}</p>

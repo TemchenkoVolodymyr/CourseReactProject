@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './HomeLayout.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchMovies} from '../../redux/slices/movieSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMovies } from '../../redux/slices/movieSlice';
 import 'swiper/swiper-bundle.css';
-import SwiperCore, {Navigation} from 'swiper';
-import {Helmet} from "react-helmet";
-import MainBannerSection from "./MainBannerSection";
-import TrendingNowSection from "./TrendingNowSection";
-import BestActorsSection from "./BestActorsSection";
+import SwiperCore, { Navigation } from 'swiper';
+import { Helmet } from 'react-helmet';
+import MainBannerSection from './MainBannerSection';
+import TrendingNowSection from './TrendingNowSection';
+import BestActorsSection from './BestActorsSection';
 import Search from '../Search/Search';
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
@@ -21,21 +21,22 @@ const HomeLayout = () => {
   useEffect(() => {
 
     const getTrending = async () => {
-      dispatch(fetchMovies({type: 'trendingMovies'}));
+      dispatch(fetchMovies({ type: 'trendingMovies' }));
     };
     const getActors = async () => {
-      dispatch(fetchMovies({type: 'popularActors'}));
+      dispatch(fetchMovies({ type: 'popularActors' }));
     };
     const getDiscover = () => {
-      dispatch(fetchMovies({type: 'discover'}));
+      dispatch(fetchMovies({ type: 'discover' }));
     };
     const getPopMovies = async () => {
-      dispatch(fetchMovies({type: 'popularMovie'}));
+      dispatch(fetchMovies({ type: 'popularMovie' }));
     };
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
     window.addEventListener('resize', handleResize);
+
 
     getTrending();
     getActors();

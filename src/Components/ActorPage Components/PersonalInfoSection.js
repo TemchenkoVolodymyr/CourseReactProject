@@ -1,7 +1,7 @@
 import React from 'react';
-import style from "../../pages/ActorPage/ActorPage.module.scss";
+import style from '../../pages/ActorPage/ActorPage.module.scss';
 
-const PersonalInfoSection = ({actors}) => {
+const PersonalInfoSection = ({ actors }) => {
 
   let age;
   if (actors) {
