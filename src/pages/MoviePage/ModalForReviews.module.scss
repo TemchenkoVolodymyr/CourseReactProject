@@ -71,8 +71,10 @@
 }
 .wrapperCloseModalBtn{
   max-width: 119px;
-  a{
-    font-size: 12px;
+  @media (min-width: 360px) and (max-width: 768px) {
+    a{
+      font-size: 12px;
 
+    }
   }
 }

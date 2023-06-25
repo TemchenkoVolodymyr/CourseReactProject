@@ -67,6 +67,9 @@
     color: #fdfdfd;
   }
 }
+.wrapper .right .biography a {
+  max-width: 90px;
+}
 .wrapper .right .knowFor {
   width: 100%;
 }

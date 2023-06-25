@@ -79,8 +79,10 @@
 .wrapperCloseModalBtn {
   max-width: 119px;
 }
-.wrapperCloseModalBtn a {
-  font-size: 12px;
+@media (min-width: 360px) and (max-width: 768px) {
+  .wrapperCloseModalBtn a {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=ModalForReviews.module.css.map */

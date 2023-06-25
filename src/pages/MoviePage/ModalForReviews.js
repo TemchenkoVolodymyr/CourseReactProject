@@ -60,7 +60,7 @@ export default function ModalForReviews(props) {
       >
         <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}>
           <div className={style.wrapperCloseModalBtn}>
-            <CustomButton callback={callback} name={'Close the modal'}></CustomButton>
+            {windowWidth >= 360 && windowWidth < 768 ? <CustomButton callback={callback} name={'Close the modal'}></CustomButton> : null}
           </div>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             <div className={style.container}>
