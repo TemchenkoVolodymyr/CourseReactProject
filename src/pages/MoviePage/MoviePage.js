@@ -31,7 +31,8 @@ const MoviePage = () => {
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
-
+console.log(reviews)
+  console.log(movieId)
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -49,7 +50,7 @@ const MoviePage = () => {
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [title, movieId]);
+  }, [movieId]);
 
   const sendReviewHandler = (review) => {
     if (review) {

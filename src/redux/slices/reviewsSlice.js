@@ -52,6 +52,7 @@ export const fetchReviews = createAsyncThunk(
         const childData = childSnapshot.val();
         reviews.push(childData);
       });
+      console.log(reviews)
       dispatch(reviewsReceived(reviews));
     }, (error) => {
       throw error;
@@ -68,21 +69,22 @@ export const reviewsSlice = createSlice({
       state.reviews = action.payload;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchReviews.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchReviews.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.reviews = action.payload;
-      })
-      .addCase(fetchReviews.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-
-  }
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(fetchReviews.pending, (state) => {
+  //       state.status = 'loading';
+  //     })
+  //     .addCase(fetchReviews.fulfilled, (state, action) => {
+  //       state.status = 'succeeded';
+  //       state.reviews = action.payload;
+  //       console.log(action.payload)
+  //     })
+  //     .addCase(fetchReviews.rejected, (state, action) => {
+  //       state.status = 'failed';
+  //       state.error = action.error.message;
+  //     });
+  //
+  // }
 });
 export const { reviewsReceived } = reviewsSlice.actions;
 export default reviewsSlice.reducer;
