@@ -1,19 +1,23 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchUserReviews} from '../../../redux/slices/userReviewsSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteUserReviews, fetchUserReviews} from '../../../redux/slices/userReviewsSlice';
 import {useAuth} from '../../../hooks/useAuth';
-import styles from '../UserProfile.module.scss'
-import {BiEdit} from "react-icons/bi";
-import {CiSquareRemove} from "react-icons/ci";
+import styles from '../UserProfile.module.scss';
+import {BiEdit} from 'react-icons/bi';
+import {CiSquareRemove} from 'react-icons/ci';
 
 const UserReviews = () => {
-  const dispatch = useDispatch()
-  const userReviews = useSelector((state) => state.userReviews.userReviews)
-  const { email } = useAuth()
+  const dispatch = useDispatch();
+  const userReviews = useSelector((state) => state.userReviews.userReviews);
+  const { email } = useAuth();
 
   useEffect(() => {
     dispatch(fetchUserReviews(email));
   }, [])
+  console.log(userReviews);
+  const removeRevieHandler = (reviewId, movieId) => {
+    dispatch(deleteUserReviews(reviewId, movieId))
+  }
 
   return (
     <div className={styles.reviews}>
@@ -28,8 +32,7 @@ const UserReviews = () => {
              </div>
           <div className={styles.actions}>
            <BiEdit size={30}/>
-            <CiSquareRemove size={30}/>
-
+            <CiSquareRemove size={30} onClick={()=> removeRevieHandler({reviewId: review.id, movieId: review.movieId})} />
           </div>
         </div>)}
     </div>

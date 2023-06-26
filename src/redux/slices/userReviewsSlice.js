@@ -1,7 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {get, ref} from "firebase/database";
+import {get, ref, remove} from "firebase/database";
 import {dbRealTime} from "../../firebase";
 import axios from "axios";
+
 
 
 
@@ -46,23 +47,41 @@ export const fetchUserReviews = createAsyncThunk(
   }
 );
 
+export const deleteUserReviews = createAsyncThunk(
+  'userReviewsSlice/deleteUserReviews',
+  async ({reviewId, movieId}, thunkAPI) => {
+    try{
+      const reviewsRef = ref(dbRealTime, `reviews/${movieId}/${reviewId}`);
+
+      return remove(reviewsRef);
+    } catch (error) {
+      console.error("Error removing user review: ", error);
+      return thunkAPI.rejectWithValue(error);
+    }
+
+  }
+)
+
 const userReviewsSlice = createSlice({
   name: 'reviews',
   initialState,
   reducers: {},
-  extraReducers: {
-    [fetchUserReviews.pending]: (state, action) => {
-      state.status = 'loading';
-    },
-    [fetchUserReviews.fulfilled]: (state, action) => {
-      state.status = 'succeeded';
-      // Добавляем отзывы пользователя в состояние
-      state.userReviews = action.payload;
-    },
-    [fetchUserReviews.rejected]: (state, action) => {
-      state.status = 'failed';
-      state.error = action.error.message;
-    }
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserReviews.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchUserReviews.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.userReviews = action.payload;
+      })
+      .addCase(fetchUserReviews.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteUserReviews.fulfilled, (state, action) => {
+        state.userReviews = state.userReviews.filter(review => review.id !== action.meta.arg.reviewId);
+      })
   }
 });
 

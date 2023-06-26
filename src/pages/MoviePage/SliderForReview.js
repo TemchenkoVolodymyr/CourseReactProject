@@ -7,7 +7,6 @@ import style from '../../Components/Home/HomeLayout.module.scss';
 const SliderForReview = (props) => {
 
   const { reviews } = props;
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const SliderForReview = (props) => {
           wrapperTag="ul"
           navigation slidesPerView={2}
           spaceBetween={2}>
-          {reviews?.map((item) => <SwiperSlide >
+          {reviews?.map((item, i) => <SwiperSlide key={i} >
             <div className={'wrapper__slider-item'}>
               <p className={'name'}>{item.user}</p>
               <p className={'content'}>{item.text}</p>
@@ -46,7 +45,7 @@ const SliderForReview = (props) => {
           wrapperTag="ul"
           navigation slidesPerView={4}
           spaceBetween={2}>
-          {reviews?.map((item) => <SwiperSlide >
+          {reviews?.map((item, i) => <SwiperSlide key={i}>
             <div className={'wrapper__slider-item'}>
               <p className={'name'}>{item.user}</p>
               <p className={'content'}>{item.text}</p>

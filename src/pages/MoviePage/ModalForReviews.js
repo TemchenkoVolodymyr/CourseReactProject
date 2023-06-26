@@ -83,7 +83,7 @@ export default function ModalForReviews(props) {
               <CustomButton value={value} callback={sendReview} name={'Send'}></CustomButton>
             </div>
             <div>
-              {reviews && reviews.map((review) => <div className={style.reviews} >
+              {reviews && reviews.map((review, i) => <div className={style.reviews} key={i}>
                 <div className={style.headerReview}>
                   <p className={style.headerInfo}>{review.user}</p>
                   <p className={style.headerInfo}>{review.date}</p>
