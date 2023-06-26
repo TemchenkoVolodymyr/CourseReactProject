@@ -3,11 +3,16 @@ import style from './CustomButton.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const Button = (props) => {
-  const { name,path,callback }  = props;
+  const { name, path, callback, value } = props;
+
+  const callbackFn =  () => callback(value) ;
   return (
     <>
-      <NavLink to={path} className={style.link} onClick={callback && callback}>
-        {name}</NavLink>
+      {value ? <NavLink to={path} className={style.link} onClick={callbackFn}>
+          {name}</NavLink> :
+        <NavLink to={path} className={style.link} onClick={callback}>
+          {name}</NavLink>}
+
     </>
   );
 };

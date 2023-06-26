@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import axios from 'axios';
 import styles from '../Pages.module.scss';
-import {NavLink} from 'react-router-dom';
-import {Helmet} from "react-helmet";
+import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const FreshMoviePage = () => {
   const [movies, setMovies] = useState();
@@ -11,7 +11,7 @@ const FreshMoviePage = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovies(data);
       } catch (err) {
         alert('Error');
@@ -32,7 +32,11 @@ const FreshMoviePage = () => {
         <div className={styles.wrapper}>
           {
             movies?.results.map((movie) =>
-              <NavLink to={`/movie/${movie.id}`} key={movie.id}>
+              <NavLink
+                to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', movie.id)}
+                key={movie.id}
+              >
                 <MovieBlock
                   image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                   title={movie.title}

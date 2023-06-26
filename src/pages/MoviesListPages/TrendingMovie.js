@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import styles from '../Pages.module.scss';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import {Helmet} from "react-helmet";
+import { Helmet } from 'react-helmet';
 
 
 const TrendingMovie = () => {
@@ -12,7 +12,7 @@ const TrendingMovie = () => {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const {data} = await axios.get(
+        const { data } = await axios.get(
           `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
         setMovies(data);
       } catch (err) {
@@ -34,7 +34,8 @@ const TrendingMovie = () => {
           {
             movies?.results.map((movie) =>
               <NavLink
-                to={`/movie/${movie.id}`}
+                to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                onClick={() => localStorage.setItem('movieId', movie.id)}
                 key={movie.id}
               >
                 <MovieBlock

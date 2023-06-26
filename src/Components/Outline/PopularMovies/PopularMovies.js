@@ -6,22 +6,22 @@ import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
 
 
-
 const PopularMovies = () => {
 
   const popMovie = useSelector((state) => state.movies.popularMovie);
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-
 
   return (
     <>
       <div className={style.container}>
         <h3>POPULAR MOVIES </h3>
         {popMovie && popMovie.slice(0, 4).map((movie) =>
-          <NavLink key={movie.id} to={`/movie/${movie.id}`}>
+          <NavLink
+            key={movie.id}
+            to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+            onClick={() => localStorage.setItem('movieId', movie.id)}>
             <div
               style={{
-                backgroundImage: `url(${imageBaseUrl}w500${movie.poster_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
               }}
@@ -33,9 +33,9 @@ const PopularMovies = () => {
                 </div>
                 <div>
                   <CircleRating
-                  rating={movie.vote_average * 10}
-                  displayAsPercentage={true}
-                  size={50}/>
+                    rating={movie.vote_average * 10}
+                    displayAsPercentage={true}
+                    size={50}/>
                 </div>
               </div>
             </div>

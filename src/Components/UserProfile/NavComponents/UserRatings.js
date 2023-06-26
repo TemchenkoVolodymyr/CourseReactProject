@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import FilmComponent from './FilmComponent/FilmComponent';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchRatings} from '../../../redux/slices/userRatingsSlice';
-import {filterProfileMovies} from "../../../utils/helperFunctions/filterProfieMovies";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRatings } from '../../../redux/slices/userRatingsSlice';
+import { filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
 
 
 const UserRatings = () => {
@@ -32,7 +32,6 @@ const UserRatings = () => {
 
 
   const sortedRatingList = filterProfileMovies(ratings, filterBy, ratingSortOption);
-  console.log(sortedRatingList);
 
   return (
     <>

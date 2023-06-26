@@ -21,7 +21,9 @@ const FilmComponent = ({ id, image, title, rating, overview, release }) => {
        <div className={styles.movieTitle}>
          <CircleRating rating={rating} size={70} displayAsPercentage={true}/>
          <div>
-           <NavLink to={`/movie/${id}`}>
+           <NavLink
+             to={`/movie/${encodeURIComponent(title.replace(/[\s:]/g, '-').toLowerCase())}`}
+             onClick={() => localStorage.setItem('movieId', id)}>
              <h2>{title}</h2>
            </NavLink>
 

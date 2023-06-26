@@ -29,6 +29,11 @@
   opacity: 0;
   width: 50%;
 }
+@media (min-width: 360px) and (max-width: 768px) {
+  .swiperSlide > div > div:first-child {
+    opacity: 1;
+  }
+}
 .swiperSlide > div:hover > div:first-child {
   opacity: 1;
 }
@@ -48,6 +53,14 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .swiperSlide > div p {
     font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 768px) {
+  .swiperSlide > div p {
+    font-size: 14px;
+    opacity: 1;
+    background-color: rgba(5, 5, 5, 0.81);
+    padding: 20px 0;
   }
 }
 .swiperSlide > div:hover p {

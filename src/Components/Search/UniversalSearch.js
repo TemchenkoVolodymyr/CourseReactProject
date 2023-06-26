@@ -5,13 +5,11 @@ const Search = (props) => {
 
   const { callback, setFound, value, setValue } = props;
 
-
   useEffect(() => {
     const includes = callback(value);
     setFound(includes && includes.map((item) => item));
 
   }, [value]);
-
 
   return (
     <div className={style.container}>

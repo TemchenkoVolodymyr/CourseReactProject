@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './NotfoundPage.module.scss';
-import {Link} from 'react-router-dom';
-import {Helmet} from "react-helmet";
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const NotfoundPage = () => {
   return (

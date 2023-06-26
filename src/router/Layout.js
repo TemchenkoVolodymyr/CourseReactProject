@@ -4,7 +4,6 @@ import { Outlet } from 'react-router';
 import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
-import SectionNavigation from './Navigations/SectionNavigation';
 import ScrollButton from './ScrollButton';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
@@ -14,7 +13,9 @@ import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
-import MyHamburger from '../Components/Home/MyHamburger';
+import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
+import Navigations from './Navigations/Navigations';
+import { itemMovies } from '../constants/data';
 
 
 const Layout = () => {
@@ -24,9 +25,9 @@ const Layout = () => {
   const userId = useSelector((state) => state.user.id);
   const favorites = useSelector((state) => state.favorites.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
-
   const loading = useSelector((store) => store.loading);
   const dispatch = useDispatch();
+
   const getPopMovies = async () => {
     dispatch(fetchMovies({ type: 'popularMovie' }));
   };
@@ -56,7 +57,6 @@ const Layout = () => {
   const [theme, setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-
   };
   useEffect(() => {
 
@@ -67,7 +67,7 @@ const Layout = () => {
     window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
 
-    const components = ['body-background','components-background','text-color','btn-color-hover','color-header'];
+    const components = ['body-background','components-background','text-color','btn-color-hover','color-header','color-input'];
     components.forEach((component) => {
       root.style.setProperty(
         `--${component}-default`,
@@ -78,41 +78,19 @@ const Layout = () => {
     return () => window.removeEventListener('resize', handleResize);
   },[theme]);
 
-  const itemMovies = [
-    {
-      to: '/discovery',
-      name: 'Discovery',
-    },
-    {
-      to: '/fresh',
-      name: 'Fresh movies',
-    },
-    {
-      to: '/trending',
-      name: 'Trending now',
-    },
-    {
-      to: '/popMovies',
-      name: 'Popular Movie',
-    },
-  ];
-
   return (
     <>
       {windowWidth >= 768 ?
       loading ? <Loader></Loader> : <>
-        <div id={'mainContent'} className={'containerTopLayout'}>
-          <div className={'containerNav'}>
-            <SectionNavigation></SectionNavigation>
-          </div>
-
-          <div className={'containerMain'}>
+        <section id={'mainContent'} className={'containerTopLayout'}>
+          <nav className={'containerNav'}>
+            <Navigations/>
+          </nav>
+          <main className={'containerMain'}>
             <Outlet/>
             {showButton && <ScrollButton></ScrollButton>}
-          </div>
-
-
-          <div className={'containerSideBar'}>
+          </main>
+          <section className={'containerSideBar'}>
             <Search/>
             <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
             <PopularMovies/>
@@ -121,24 +99,24 @@ const Layout = () => {
               favorites={favorites}
               isLoading={isLoading}
             />
-          </div>
+          </section>
 
-        </div>
+        </section>
         {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>
-        :  <div className={'containerMain'}>
+        :  <main className={'containerMain'}>
           <div className={style.header + ' ' + style.headerMain}>
             {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
                 <Search></Search>
                 <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
-                <MyHamburger title={'Movies'} items={itemMovies}></MyHamburger>
+                <BurgerMenu title={'Movies'} items={itemMovies}></BurgerMenu>
               </div>
               :
               <h1>watch movies online</h1>}
             {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
           </div>
           <Outlet/>
-        </div>}
+        </main>}
     </>
   );
 };

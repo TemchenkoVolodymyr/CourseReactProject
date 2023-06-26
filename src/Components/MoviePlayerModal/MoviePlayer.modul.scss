@@ -5,11 +5,18 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    @media (min-width: 360px) and (max-width: 768px) {
+
+    }
 
     .modal-content{
       margin: auto;
       width: 70%;
       height: 100%;
+      @media (min-width: 360px) and (max-width: 768px) {
+        margin: 0;
+        width: 375px;
+      }
     }
   }
 

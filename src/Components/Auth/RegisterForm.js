@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './AuthForm.module.scss';
 
 
-const RegisterForm = ({handleSubmit, register, errors, error, registerHandler, toggleFormMode, watch}) => {
+const RegisterForm = ({ handleSubmit, register, errors, error, registerHandler, toggleFormMode, watch }) => {
 
   const password = watch('password');
   const confirmPassword = watch('confirmPassword');
