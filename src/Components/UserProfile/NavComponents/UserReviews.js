@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchUserReviews} from '../../../redux/slices/userReviewsSlice';
 import {useAuth} from '../../../hooks/useAuth';
 import styles from '../UserProfile.module.scss'
+import {BiEdit} from "react-icons/bi";
+import {CiSquareRemove} from "react-icons/ci";
 
 const UserReviews = () => {
   const dispatch = useDispatch()
@@ -24,6 +26,11 @@ const UserReviews = () => {
                <p>{review.text}</p>
                <p>{review.date}</p>
              </div>
+          <div className={styles.actions}>
+           <BiEdit size={30}/>
+            <CiSquareRemove size={30}/>
+
+          </div>
         </div>)}
     </div>
   );
