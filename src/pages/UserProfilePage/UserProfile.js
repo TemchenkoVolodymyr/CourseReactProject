@@ -16,6 +16,7 @@ const UserProfile = () => {
         <NavLink to={`/u/${userName}/favorites`}>Favorites</NavLink>
         <NavLink to={`/u/${userName}/watchlist`}>Watchlist</NavLink>
         <NavLink to={`/u/${userName}/ratings`}>Ratings</NavLink>
+        <NavLink to={`/u/${userName}/reviews`}>Reviews</NavLink>
       </nav>
       <div className={styles.outlet}>
         <Outlet />

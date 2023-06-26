@@ -16,6 +16,7 @@ import UserWatchList from '../../Components/UserProfile/NavComponents/UserWatchL
 import UserRatings from '../../Components/UserProfile/NavComponents/UserRatings';
 import UserFavorites from '../../Components/UserProfile/NavComponents/UserFavorites';
 import UserProfileComponent from '../../Components/UserProfile/NavComponents/UserProfileComponent';
+import UserReviews from "../../Components/UserProfile/NavComponents/UserReviews";
 
 const RoutersCollection = () => {
 
@@ -39,6 +40,7 @@ const RoutersCollection = () => {
             <Route path="/u/:userName/favorites" element={<UserFavorites/>}/>
             <Route path="/u/:userName/watchlist" element={<UserWatchList/>}/>
             <Route path="/u/:userName/ratings" element={<UserRatings/>}/>
+            <Route path="/u/:userName/reviews" element={<UserReviews/>}/>
           </Route>
         </Route>
       </Routes>

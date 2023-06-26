@@ -31,7 +31,7 @@ const ProfileSection = () => {
       console.log(error);
     }
   };
-
+  console.log(isAuth);
   return (
     <>
       <p>Profile</p>
