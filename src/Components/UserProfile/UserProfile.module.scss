@@ -30,6 +30,34 @@
   margin-top: 20px;
   opacity: .9;
 
+  .reviews {
+
+    .block{
+      display: flex;
+      justify-content: flex-start;
+
+
+      img{
+        width: 200px;
+        border-radius: 20px;
+      }
+
+      .reviews{
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px;
+
+        p{
+          display: block;
+        }
+
+      }
+    }
+
+  }
+
   .profile {
 
     h2 {

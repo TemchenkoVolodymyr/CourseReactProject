@@ -6,6 +6,7 @@ import watchList from './slices/watchListSlice';
 import ratings from './slices/userRatingsSlice';
 import reviews from './slices/reviewsSlice';
 import credits from './slices/actorCreditsSlice';
+import userReviews from './slices/userReviewsSlice';
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
 import { loaderReducer } from '../Loader/LoaderReducer';
@@ -23,7 +24,8 @@ export default combineReducers({
     loading: loaderReducer,
     filters,
     reviews,
-    credits
+    credits,
+  userReviews
 
 
   },

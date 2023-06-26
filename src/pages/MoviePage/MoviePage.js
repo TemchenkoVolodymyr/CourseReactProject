@@ -14,7 +14,6 @@ import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
 import ModalForReviews from './ModalForReviews';
-import {useAuth} from "../../hooks/useAuth";
 
 
 const MoviePage = () => {
@@ -25,7 +24,6 @@ const MoviePage = () => {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews.reviews);
   const status = useSelector((state) => state.reviews.status);
-  console.log(reviews);
   const [openModal, setOpenModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

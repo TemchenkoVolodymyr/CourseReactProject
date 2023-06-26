@@ -13,7 +13,6 @@ const ProfileSection = () => {
   const { isAuth, isAdmin } = useAuth();
   const { id } = useAuth();
   const [ userData, setUserData] = useState(null);
-
   const userName = userData && userData.userName;
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const ProfileSection = () => {
       console.log(error);
     }
   };
-  console.log(isAuth);
   return (
     <>
       <p>Profile</p>
