@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {get, ref, remove} from "firebase/database";
+import {get, ref, remove, update} from "firebase/database";
 import {dbRealTime} from "../../firebase";
 import axios from "axios";
 
@@ -58,7 +58,21 @@ export const deleteUserReviews = createAsyncThunk(
       console.error("Error removing user review: ", error);
       return thunkAPI.rejectWithValue(error);
     }
+  }
+)
 
+export const updateUserReview = createAsyncThunk(
+  'userReviewsSlice/updateUserReview',
+  async ({ reviewId, movieId, updatedText, updatedDate }, thunkAPI) => {
+    try {
+      const reviewRef = ref(dbRealTime, `reviews/${movieId}/${reviewId}`);
+      return update(reviewRef, { text: updatedText, date: updatedDate});
+
+    } catch (error) {
+
+      console.error("Error updating user review: ", error);
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 )
 
@@ -81,6 +95,17 @@ const userReviewsSlice = createSlice({
       })
       .addCase(deleteUserReviews.fulfilled, (state, action) => {
         state.userReviews = state.userReviews.filter(review => review.id !== action.meta.arg.reviewId);
+      })
+      .addCase(updateUserReview.fulfilled, (state, action) => {
+        const { reviewId, updatedText, updatedDate } = action.meta.arg;
+        const reviewToUpdateIndex = state.userReviews.findIndex(review => review.id === reviewId);
+        if (reviewToUpdateIndex !== -1) {
+          state.userReviews[reviewToUpdateIndex] = {
+            ...state.userReviews[reviewToUpdateIndex],
+            text: updatedText,
+            date: updatedDate
+          };
+        }
       })
   }
 });

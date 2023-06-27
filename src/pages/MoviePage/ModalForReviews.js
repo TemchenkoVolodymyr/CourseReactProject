@@ -34,7 +34,7 @@ const stylePhoneModal = {
   overflowY: 'scroll',
 };
 
-export default function ModalForReviews(props) {
+export default function ModalForReviews({ callback, open, value, setValue, placeholder, movie, reviews, sendReview }) {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -47,8 +47,6 @@ export default function ModalForReviews(props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
-  const { callback, open, value, setValue, placeholder, movie, reviews, sendReview } = props;
 
   return (
     <div className={style.modal}>

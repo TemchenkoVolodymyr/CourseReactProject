@@ -20,7 +20,6 @@
     padding: 20px;
     opacity: .9;
   }
-
 }
 
 .outlet {
@@ -30,29 +29,53 @@
   margin-top: 20px;
   opacity: .9;
 
-  .reviews {
+  .wrapper {
 
-    .block{
+    .block {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
+      margin-top: 20px;
 
+        img {
+          width: 200px;
+          border-radius: 20px;
+          height: 100%;
+        }
 
-      img{
-        width: 200px;
-        border-radius: 20px;
-      }
-
-      .reviews{
-        width: 60%;
+      .reviews {
+        width: 70%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 20px;
 
-        p{
-          display: block;
+        .review{
+          display: flex;
+          width: 80%;
+          align-items: center;
+          justify-content: space-between;
+
+          p {
+            display: block;
+            padding-left: 10px;
+
+            span{
+              color: red;
+            }
+          }
+
+          textarea{
+            background-color: inherit;
+            font-size: 18px;
+            padding: 10px;
+            color: inherit;
+            width: 100%;
+            height: 90px;
+            border-radius: 20px;
+
+          }
         }
+
 
       }
     }
@@ -106,7 +129,6 @@
             flex-direction: column;
             align-items: center;
           }
-
 
 
           .name {
@@ -224,12 +246,14 @@
           }
         }
       }
+
       @media (min-width: 360px) and (max-width: 600px) {
         font-size: 12px;
       }
     }
+
     @media (min-width: 360px) and (max-width: 768px) {
-     background-color: #424c43;
+      background-color: #424c43;
       border-radius: 0;
       font-size: 15px;
     }
@@ -245,7 +269,7 @@
       justify-content: center;
 
 
-      p{
+      p {
         margin: 50px;
         font-size: 24px;
       }
@@ -283,7 +307,7 @@
           min-width: 260px;
         }
         @media (min-width: 360px) and (max-width: 768px) {
-          padding:0;
+          padding: 0;
         }
 
         .movieTitle {
@@ -311,8 +335,9 @@
           p {
             opacity: .5;
           }
+
           @media (min-width: 360px) and (max-width: 768px) {
-            width:200px;
+            width: 200px;
           }
         }
 
@@ -334,12 +359,13 @@
                 font-size: 12px;
               }
               @media (min-width: 768px) and (max-width: 1024px) {
-               font-size: 12px;
+                font-size: 12px;
               }
               @media (min-width: 360px) and (max-width: 600px) {
                 font-size: 12px;
               }
             }
+
             @media (min-width: 360px) and (max-width: 768px) {
               margin: 0;
             }
@@ -356,17 +382,19 @@
             @media (min-width: 768px) and (max-width: 1024px) {
               display: block;
             }
-            p{
+
+            p {
               @media (min-width: 1024px) and (max-width: 1280px) {
                 font-size: 13px;
               }
               @media (min-width: 768px) and (max-width: 1024px) {
-               font-size: 13px;
+                font-size: 13px;
                 line-height: 1em;
               }
             }
+
             @media (min-width: 360px) and (max-width: 768px) {
-             font-size: 13px;
+              font-size: 13px;
               width: 186px;
             }
           }

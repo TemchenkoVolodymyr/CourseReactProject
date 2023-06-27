@@ -1,39 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteUserReviews, fetchUserReviews} from '../../../redux/slices/userReviewsSlice';
+import {fetchUserReviews} from '../../../redux/slices/userReviewsSlice';
 import {useAuth} from '../../../hooks/useAuth';
 import styles from '../UserProfile.module.scss';
-import {BiEdit} from 'react-icons/bi';
-import {CiSquareRemove} from 'react-icons/ci';
+import ReviewActionsComponent from "../ReviewActionsComponent";
 
 const UserReviews = () => {
   const dispatch = useDispatch();
   const userReviews = useSelector((state) => state.userReviews.userReviews);
-  const { email } = useAuth();
+  const {email} = useAuth();
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     dispatch(fetchUserReviews(email));
   }, [])
-  console.log(userReviews);
-  const removeRevieHandler = (reviewId, movieId) => {
-    dispatch(deleteUserReviews(reviewId, movieId))
-  }
 
   return (
-    <div className={styles.reviews}>
+    <div className={styles.wrapper}>
       {userReviews?.map((review) =>
         <div key={review.id} className={styles.block}>
-            <div>
-              <img src={`https://image.tmdb.org/t/p/original${review.movieInfo.backdrop_path}`} alt=""/>
-            </div>
-             <div className={styles.reviews}>
-               <p>{review.text}</p>
-               <p>{review.date}</p>
-             </div>
-          <div className={styles.actions}>
-           <BiEdit size={30}/>
-            <CiSquareRemove size={30} onClick={()=> removeRevieHandler({reviewId: review.id, movieId: review.movieId})} />
-          </div>
+            <img
+              src={`https://image.tmdb.org/t/p/original${review.movieInfo.backdrop_path}`}
+              alt={review.movieInfo.title}/>
+          <ReviewActionsComponent review={review}/>
         </div>)}
     </div>
   );
