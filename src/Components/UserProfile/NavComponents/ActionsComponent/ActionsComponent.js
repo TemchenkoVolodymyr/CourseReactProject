@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {deleteFavorite} from '../../../../redux/slices/favoriteSlice';
 import {deleteFromWatchList} from '../../../../redux/slices/watchListSlice';
 import RatingComponent from '../../../RatingComponent/RatingComponent';
-import {addRating, deleteRatings} from '../../../../redux/slices/userRatingsSlice';
-import {handleToggleFavorite} from '../../../../utils/helperFunctions/ActionsFn';
+import {deleteRatings} from '../../../../redux/slices/userRatingsSlice';
+import {handleRatingChanged, handleToggleFavorite} from '../../../../utils/helperFunctions/ActionsFn';
 
 
 const ActionsComponent = ({movieId, source}) => {
@@ -17,14 +17,15 @@ const ActionsComponent = ({movieId, source}) => {
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
   const [showRating, setShowRating] = useState(false);
 
+
   const removeButtonHandle = () => {
     if (userId) {
       if (source === 'favorites') {
-        dispatch(deleteFavorite({userId, movieId}));
+        dispatch(deleteFavorite({ userId, movieId }));
       } else if (source === 'watchlist') {
-        dispatch(deleteFromWatchList({userId, movieId}));
+        dispatch(deleteFromWatchList({ userId, movieId }));
       } else if (source === 'ratings') {
-        dispatch(deleteRatings({userId, movieId}));
+        dispatch(deleteRatings({ userId, movieId }));
       }
     } else {
       alert('User data has not loaded yet');
@@ -32,17 +33,6 @@ const ActionsComponent = ({movieId, source}) => {
   };
   const handleRateClick = () => {
     setShowRating(!showRating);
-  };
-
-  const handleRatingChanged = (rating) => {
-    const movieIdStr = movieId.toString();
-    dispatch(addRating({userId, movieId: movieIdStr, rating}))
-      .then(() => {
-        setShowRating(false);
-      })
-      .catch((error) => {
-        console.error('Error adding rating:', error);
-      });
   };
 
   return (
@@ -58,7 +48,7 @@ const ActionsComponent = ({movieId, source}) => {
         <p>Rate It</p>
         {showRating && (
           <RatingComponent
-            onChange={handleRatingChanged}
+            onChange={(rating) => handleRatingChanged(movieId, userId, dispatch, setShowRating, rating)}
             movieId={movieId}
           />
         )}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ActionButton from './ActionButton';
 import { AiFillHeart, AiFillStar, AiOutlinePlaySquare, AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsFillBookmarkFill } from 'react-icons/bs';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
 import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
+
 
 const ActionBar = ({ movieId, movie }) => {
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ const ActionBar = ({ movieId, movie }) => {
         {showRating &&  <RatingComponent
           onChange={(rating) => handleRatingChanged(movieId, userId, dispatch, setShowRating, rating)}
           movieId={movieId}
+
         />}
       </div>
 

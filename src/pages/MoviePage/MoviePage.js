@@ -26,12 +26,10 @@ const MoviePage = () => {
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-  const reviews = useSelector((state) => state.reviews.reviews);
-  const status = useSelector((state) => state.reviews.status);
+  const {reviews, status} = useSelector((state) => state.reviews);
   const [openModal, setOpenModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-
+  const ratings = useSelector((state) => state.ratings.ratings);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
@@ -55,7 +53,7 @@ const MoviePage = () => {
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [movieId]);
+  }, [movieId, ratings]);
 
   const sendReviewHandler = (review) => {
     if (review) {
@@ -72,7 +70,7 @@ const MoviePage = () => {
       <Helmet>
         <title>{movie.title} | Overview, Ratings and Trailer </title>
       </Helmet>
-      <ActionBar movie={movie} movieId={movie.id}/>
+      <ActionBar movie={movie} movieId={movie.id} />
       <div className={style.wrapper}>
         <MainBanner movie={movie}/>
         <h2>Overview</h2>

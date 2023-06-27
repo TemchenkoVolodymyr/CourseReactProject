@@ -5,6 +5,7 @@ import { Outlet, useParams } from 'react-router';
 import { HelmetWrapper } from './HelmetWrapper';
 import {fetchWatchList} from "../../redux/slices/watchListSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {fetchRatings} from "../../redux/slices/userRatingsSlice";
 
 
 const UserProfile = () => {
@@ -12,6 +13,7 @@ const UserProfile = () => {
   const userId = useSelector((state) => state.user.id);
   const isLoading = useSelector((state) => state.watchList.isLoading);
 
+  const { ratings, isRatingLoading }  = useSelector((state) => state.ratings);
   const { userName } = useParams();
 
   useEffect(() => {
@@ -19,6 +21,10 @@ const UserProfile = () => {
       dispatch(fetchWatchList(userId));
     }
   }, [isLoading, userId]);
+
+  useEffect(() => {
+      dispatch(fetchRatings(userId));
+  }, [userId, ratings]);
 
   return (
     <>

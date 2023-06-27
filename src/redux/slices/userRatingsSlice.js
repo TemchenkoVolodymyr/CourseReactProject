@@ -11,7 +11,7 @@ import axios from 'axios';
 
 const initialState = {
   ratings: [],
-  isLoading: 'idle',
+  isRatingLoading: 'idle',
   error: null,
   isRated: {}
 };
@@ -85,7 +85,6 @@ export const deleteRatings = createAsyncThunk(
   }
 );
 
-
 export const ratingsSlice = createSlice({
   name: 'ratings',
   initialState,
@@ -93,28 +92,35 @@ export const ratingsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addRating.fulfilled, (state, action) => {
-        const { movieId } = action.payload;
-        state.ratings.push(action.payload);
+        const { movieId, userId, rating } = action.payload;
+        const existingRatingIndex = state.ratings.findIndex(
+          (rating) => rating.movieId === movieId && rating.userId === userId
+        );
+
+        if (existingRatingIndex >= 0) {
+          state.ratings[existingRatingIndex].rating = rating;
+        } else {
+          state.ratings.push(action.payload);
+        }
         state.isRated = { ...state.isRated, [movieId]: true };
       })
       .addCase(deleteRatings.fulfilled, (state, action) => {
         const movieId = action.payload.movieId;
         state.isRated = { ...state.isRated, [movieId]: false };
         state.ratings = state.ratings.filter((rating) => rating.movieId !== movieId);
-
       })
       .addCase(fetchRatings.pending, (state) => {
-        state.isLoading = 'loading';
+        state.isRatingLoading = 'loading';
       })
       .addCase(fetchRatings.fulfilled, (state, action) => {
-        state.isLoading = 'succeeded';
+        state.isRatingLoading = 'succeeded';
         state.ratings = action.payload;
         action.payload.forEach((rated) => {
           state.isRated = { ...state.isRated, [rated.movieId]: true };
         });
       })
       .addCase(fetchRatings.rejected, (state, action) => {
-        state.isLoading = 'failed';
+        state.isRatingLoading = 'failed';
         state.error = action.payload;
       });
   },
