@@ -43,12 +43,13 @@ const UserWatchList = () => {
                 film.movieInfo &&
                 <div key={film.movieId}>
                   <FilmComponent
-                    image={film.movieInfo.backdrop_path}
+                    image={film.movieInfo.backdrop_path ? film.movieInfo.backdrop_path : film.movieInfo.poster_path}
                     rating={film.movieInfo.vote_average * 10}
                     title={film.movieInfo.title}
                     overview={film.movieInfo.overview}
                     release={film.movieInfo.release_date}
                     id={film.movieInfo.id}
+                    source={'watchlist'}
                   />
                 </div>
               ))}

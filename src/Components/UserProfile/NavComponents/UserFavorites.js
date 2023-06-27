@@ -42,12 +42,13 @@ const UserFavorites = () => {
                  favorite.movieInfo &&
                  <div key={favorite.movieId}>
                    <FilmComponent
-                     image={favorite.movieInfo.backdrop_path}
+                     image={favorite.movieInfo.backdrop_path ? favorite.movieInfo.backdrop_path : favorite.movieInfo.poster_path}
                      rating={favorite.movieInfo.vote_average * 10}
                      title={favorite.movieInfo.title}
                      overview={favorite.movieInfo.overview}
                      release={favorite.movieInfo.release_date}
                      id={favorite.movieInfo.id}
+                     source={'favorites'}
                    />
                  </div>
                ))}

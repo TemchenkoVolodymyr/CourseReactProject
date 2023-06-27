@@ -3,9 +3,6 @@ import {get, ref, remove, update} from "firebase/database";
 import {dbRealTime} from "../../firebase";
 import axios from "axios";
 
-
-
-
 const initialState = {
   userReviews: [],
   status: 'idle',

@@ -4,7 +4,7 @@ import CircleRating from '../../../CircleRating/CircleRating';
 import ActionsComponent from '../ActionsComponent/ActionsComponent';
 import { NavLink } from 'react-router-dom';
 
-const FilmComponent = ({ id, image, title, rating, overview, release }) => {
+const FilmComponent = ({ id, image, title, rating, overview, release, source }) => {
 
   const date = new Date(release);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -36,6 +36,7 @@ const FilmComponent = ({ id, image, title, rating, overview, release }) => {
         </div>
          <ActionsComponent
            movieId={id}
+           source={source}
          />
        </div>
      </div>
