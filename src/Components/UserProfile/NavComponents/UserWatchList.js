@@ -9,23 +9,12 @@ import { filterProfileMovies } from '../../../utils/helperFunctions/filterProfie
 
 const UserWatchList = () => {
 
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.id);
   const watchList = useSelector((state) => state.watchList.watchList);
   const error = useSelector((state) => state.watchList.error);
   const isLoading = useSelector((state) => state.watchList.isLoading);
   const filterBy = useSelector((state) => state.filters.filterBy);
 
-
-  useEffect(() => {
-    if (isLoading === 'idle' && userId) {
-      dispatch(fetchWatchList(userId));
-    }
-
-  }, [isLoading, userId]);
-
   const sortedWatchList = filterProfileMovies(watchList, filterBy);
-
 
   return (
     <>

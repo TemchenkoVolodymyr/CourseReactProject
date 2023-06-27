@@ -8,7 +8,6 @@ import {loadData} from '../../../utils/helperFunctions/loadUserDataFromFB';
 import FilmComponent from "./FilmComponent/FilmComponent";
 
 const UserProfileComponent = () => {
-
   const favorites = useSelector((state) => state.favorites.favorites);
   const watchList = useSelector((state) => state.watchList.watchList);
   const ratings = useSelector((state) => state.ratings.ratings);
@@ -41,7 +40,6 @@ const UserProfileComponent = () => {
     const options = {year: 'numeric', month: 'long', day: 'numeric'};
     return dateObject.toLocaleDateString('en-US', options);
   };
-
 
   return (
     <div className={styles.profile}>
