@@ -35,4 +35,15 @@ export const handleToggleWatchList = async (event, userId, movieId, isListed, di
   }
 };
 
+export  const handleRatingChanged = (movieId, userId, dispatch, setShowRating, rating) => {
+  const movieIdStr = movieId.toString();
+  dispatch(addRating({ userId, movieId: movieIdStr, rating }))
+    .then(() => {
+      setShowRating(false);
+    })
+    .catch((error) => {
+      console.error('Error adding rating:', error);
+    });
+};
+
 

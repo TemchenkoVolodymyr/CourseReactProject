@@ -14,10 +14,14 @@ import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
 import ModalForReviews from './ModalForReviews';
+import {fetchWatchList} from "../../redux/slices/watchListSlice";
+import {useAuth} from "../../hooks/useAuth";
+import {fetchRatings} from "../../redux/slices/userRatingsSlice";
 
 
 const MoviePage = () => {
   const { title } = useParams();
+  const {id : userId} = useAuth()
   const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
@@ -27,9 +31,9 @@ const MoviePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
-
 
   useEffect(() => {
     async function fetchMovie() {
@@ -41,6 +45,9 @@ const MoviePage = () => {
       }
     }
     dispatch(fetchReviews(movieId));
+    dispatch(fetchWatchList(userId));
+    dispatch(fetchRatings(userId));
+
     fetchMovie();
 
     function handleResize() {

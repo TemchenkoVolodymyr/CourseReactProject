@@ -7,9 +7,8 @@ import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import RatingComponent from '../RatingComponent/RatingComponent';
-import { addRating } from '../../redux/slices/userRatingsSlice';
 import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
-import { handleToggleFavorite, handleToggleWatchList } from '../../utils/helperFunctions/ActionsFn';
+import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
 
 const ActionBar = ({ movieId, movie }) => {
   const dispatch = useDispatch();
@@ -25,16 +24,6 @@ const ActionBar = ({ movieId, movie }) => {
   };
   const handlePlayerClick = () => {
     setIsPlayerOpen(!isPlayerOpen);
-  };
-  const handleRatingChanged = (rating) => {
-    const movieIdStr = movieId.toString();
-    dispatch(addRating({ userId, movieId: movieIdStr, rating }))
-      .then(() => {
-        setShowRating(false);
-      })
-      .catch((error) => {
-        console.error('Error adding rating:', error);
-      });
   };
 
   return (
@@ -77,7 +66,7 @@ const ActionBar = ({ movieId, movie }) => {
             data-tooltip-content="Rate it"
           />}/>
         {showRating &&  <RatingComponent
-          onChange={handleRatingChanged}
+          onChange={(rating) => handleRatingChanged(movieId, userId, dispatch, setShowRating, rating)}
           movieId={movieId}
         />}
       </div>

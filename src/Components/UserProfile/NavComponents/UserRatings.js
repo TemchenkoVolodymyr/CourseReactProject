@@ -21,7 +21,6 @@ const UserRatings = () => {
     if (isLoading === 'idle' && userId) {
       dispatch(fetchRatings(userId));
     }
-
   }, [isLoading, userId]);
 
   const selectSortOptionForPage = (state, page) => {
