@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import CircleRating from '../CircleRating/CircleRating';
 
 const OverviewSection = ({ movie,windowWidth }) => {
+
   return (
     <section className={style.overview}>
       <div className={style.rating}>
@@ -13,7 +14,7 @@ const OverviewSection = ({ movie,windowWidth }) => {
             displayAsPercentage={true}
           /> :
           <CircleRating
-            rating={movie.vote_average * 10}
+            rating={(movie.vote_average) * 10}
             size={110}
             displayAsPercentage={true}
           /> }

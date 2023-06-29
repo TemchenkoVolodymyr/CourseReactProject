@@ -45,7 +45,6 @@ const MoviePage = () => {
     dispatch(fetchReviews(movieId));
     dispatch(fetchWatchList(userId));
     dispatch(fetchRatings(userId));
-
     fetchMovie();
 
     function handleResize() {

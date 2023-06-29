@@ -14,10 +14,10 @@ function App() {
     useEffect(() => {
 
         const auth = getAuth();
-        unsubscribe(auth, dispatch);
+      const unsubscribeFromAuth = unsubscribe(auth, dispatch);
 
         // Cleanup subscription on unmount
-        return () => unsubscribe();
+      return () => unsubscribeFromAuth();
     }, [dispatch]);
 
 

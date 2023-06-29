@@ -1,16 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 
 const CircleRating = ({ rating, size, displayAsPercentage }) => {
+  rating = Number(rating)
   const canvasRef = useRef(null);
   const radius = size * 0.4;
   const center = size / 2;
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
 
-    const text = displayAsPercentage ? `${rating}%` : `${rating}`;
-
+    const text = displayAsPercentage ? `${rating.toFixed(2)}%` : `${rating.toFixed(2)}`;
     const percent = rating / 100;
     const startAngle = Math.PI * -0.5;
     const endAngle = startAngle + percent * Math.PI * 2;
