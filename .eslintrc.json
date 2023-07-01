@@ -36,7 +36,7 @@
       "warn",
       "prefer-double"
     ],
-    "prefer-const": "error",
+    "prefer-const": "off",
     "max-len": [
       "warn",
       120
