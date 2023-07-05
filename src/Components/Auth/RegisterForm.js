@@ -1,19 +1,16 @@
 import React from 'react';
 import styles from './AuthForm.module.scss';
+import {useNavigate} from "react-router";
 
 
-const RegisterForm = ({ handleSubmit, register, errors, error, registerHandler, toggleFormMode, watch }) => {
-
+const RegisterForm = ({ onSubmit, handleSubmit, register, errors, error, watch }) => {
+ const navigate = useNavigate()
   const password = watch('password');
   const confirmPassword = watch('confirmPassword');
 
 
-  const handleRegisterClick = (e) => {
-    e.preventDefault();
-    handleSubmit(registerHandler)();
-  };
   return (
-    <form onSubmit={handleSubmit(registerHandler)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="userName">User Name</label>
       <input
         {...register('userName', {
@@ -75,8 +72,8 @@ const RegisterForm = ({ handleSubmit, register, errors, error, registerHandler, 
         <div className={styles.errorMessage}>{errors.confirmPassword.message}</div>}
       {error && <div className={styles.errorMessage}>{error}</div>}
       <div className={styles.btnContainer}>
-        <button type="button" onClick={toggleFormMode}>Login</button>
-        <button type="button" className={styles.active} onClick={handleRegisterClick}>Register</button>
+        <button type="button" onClick={() => navigate('/login')}>Login</button>
+        <button type="submit" className={styles.active}>Register</button>
       </div>
     </form>
   );

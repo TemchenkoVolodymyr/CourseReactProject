@@ -20,8 +20,6 @@ import UserReviews from "../../Components/UserProfile/NavComponents/UserReviews"
 
 const RoutersCollection = () => {
 
-
-
   return (
     <>
       <Routes>
@@ -31,7 +29,8 @@ const RoutersCollection = () => {
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
           <Route path="/genre/:genre" element={<CurrentGenre/>}/>
-          <Route path="auth" element={<AuthPage/>}/>
+          <Route path="/login" element={<AuthPage/>}/>
+          <Route path="/register" element={<AuthPage/>}/>
           <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/movie/:title" element={<MoviePage/>}/>
           <Route path="/person/:name" element={<ActorPage/>}/>

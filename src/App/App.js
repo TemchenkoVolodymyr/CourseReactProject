@@ -1,31 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import { useDispatch, } from 'react-redux';
-import { useEffect } from 'react';
-import { getAuth } from 'firebase/auth';
+import {useDispatch,} from 'react-redux';
+import {useEffect} from 'react';
 import RoutersCollection from './RoutersCollection/RoutersCollection';
-
-import { unsubscribe } from './SetAuthUsers/setAuthUsers';
+import {setIsAuth, setUser} from "../redux/backend/userBackendSlice";
+import {check} from "../http/userAPI";
 
 function App() {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    check().then(data => {
+        dispatch(setUser(data))
+        dispatch(setIsAuth(true))
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
-    useEffect(() => {
+  if (loading) {
+    return <>Loading</>
+  }
 
-        const auth = getAuth();
-        unsubscribe(auth, dispatch);
-
-        // Cleanup subscription on unmount
-        return () => unsubscribe();
-    }, [dispatch]);
-
-
-    return (
-        <>
-            <RoutersCollection/>
-        </>
-    );
+  return (
+    <>
+      <RoutersCollection/>
+    </>
+  );
 }
 
 

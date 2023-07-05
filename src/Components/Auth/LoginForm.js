@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './AuthForm.module.scss';
+import {useNavigate} from "react-router";
 
-const LoginForm = (props) => {
-  const { handleSubmit, register, errors, error, loginHandler, toggleFormMode } = props;
+const LoginForm = ({handleSubmit, register, errors, error, onSubmit}) => {
+  const navigate = useNavigate()
 
   return (
-    <form onSubmit={handleSubmit(loginHandler)}>
-      <label htmlFor="userName">e-mail</label>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="email">e-mail</label>
       <input
         {...register('email', {
             required: 'Email is required',
@@ -20,7 +21,7 @@ const LoginForm = (props) => {
         placeholder="Enter your email"
       />
       {errors.email && <div className={styles.errorMessage}>{errors.email.message}</div>}
-      <label htmlFor="userName">password</label>
+      <label htmlFor="password">password</label>
       <input
         {...register('password', {
             required: 'Password is required',
@@ -43,11 +44,10 @@ const LoginForm = (props) => {
       <div className={styles.btnContainer}>
         <button
           className={styles.active}
-          type="button"
-          onClick={handleSubmit(loginHandler)}
+          type="submit"
         >Login
         </button>
-        <button type="button" onClick={toggleFormMode}>Register</button>
+        <button type="button" onClick={() => navigate('/register')}>Register</button>
       </div>
     </form>
   );

@@ -7,6 +7,8 @@ import ratings from './slices/userRatingsSlice';
 import reviews from './slices/reviewsSlice';
 import credits from './slices/actorCreditsSlice';
 import userReviews from './slices/userReviewsSlice';
+import userLists from './slices/userListsSlice';
+import userBackend from './backend/userBackendSlice'
 import { searchReducer } from '../Components/Search/SearchReducer';
 import { authReducer } from '../Components/Auth/AuthReducer';
 import { loaderReducer } from '../Loader/LoaderReducer';
@@ -25,7 +27,9 @@ export default combineReducers({
     filters,
     reviews,
     credits,
-  userReviews
+  userReviews,
+  userLists,
+  userBackend
 
 
   },

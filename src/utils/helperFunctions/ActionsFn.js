@@ -1,6 +1,7 @@
 import { addFavorite, deleteFavorite, fetchFavorites } from '../../redux/slices/favoriteSlice';
 import { addToWatchList, deleteFromWatchList, fetchWatchList } from '../../redux/slices/watchListSlice';
 import { addRating } from '../../redux/slices/userRatingsSlice';
+import {addToList} from "../../redux/slices/userListsSlice";
 
 export const handleToggleFavorite = async (event, userId, movieId, isFavorite, dispatch) => {
 event.preventDefault();
@@ -46,4 +47,17 @@ export  const handleRatingChanged = (movieId, userId, dispatch, setShowRating, r
     });
 };
 
+
+export const handleToggleList = async (event, userId, movieId, dispatch,listName, isInList) => {
+  event.preventDefault();
+  if (userId) {
+    try {
+      if (!isInList) {
+        await dispatch(addToList({ userId, movieId, listName }));
+      }
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  }
+};
 

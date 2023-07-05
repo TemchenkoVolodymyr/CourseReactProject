@@ -8,7 +8,12 @@ import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import RatingComponent from '../RatingComponent/RatingComponent';
 import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
-import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
+import {
+  handleRatingChanged,
+  handleToggleFavorite,
+  handleToggleList,
+  handleToggleWatchList
+} from '../../utils/helperFunctions/ActionsFn';
 
 
 const ActionBar = ({ movieId, movie }) => {
@@ -20,6 +25,7 @@ const ActionBar = ({ movieId, movie }) => {
   const [showRating, setShowRating] = useState(false);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
+
   const handleRateClick = () => {
     setShowRating(!showRating);
   };
@@ -30,7 +36,8 @@ const ActionBar = ({ movieId, movie }) => {
   return (
     <div className={styles.actionBar}>
       <div>
-        <ActionButton icon={<AiOutlineUnorderedList
+        <ActionButton
+          icon={<AiOutlineUnorderedList
           size={30}
           data-tooltip-id="list"
           data-tooltip-content="Add to list"
