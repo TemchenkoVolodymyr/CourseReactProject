@@ -11,12 +11,46 @@ export const User = sequelize.define('user', {
 
 export const Rating = sequelize.define('rating', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-  rate: {type: DataTypes.INTEGER, allowNull: false},
+  rate: {type: DataTypes.FLOAT, allowNull: false},
+  userId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',},
+  movieId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',}
 } )
 
+export const Favorite = sequelize.define('favorite', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  userId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',},
+  movieId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',}
+})
 
-User.hasMany(Rating)
-Rating.belongsTo(User)
+export const Watchlist = sequelize.define('watchlist', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  userId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',},
+  movieId: {type: DataTypes.INTEGER, allowNull: false, unique: 'user_movie',}
+})
+
+export const Review = sequelize.define('review', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  text: {type: DataTypes.STRING, allowNull: false},
+  userId: {type: DataTypes.INTEGER, allowNull: false},
+  movieId: {type: DataTypes.INTEGER, allowNull: false}
+})
+
+
+User.hasMany(Rating, {foreignKey: 'userId', onDelete: 'CASCADE'});
+Rating.belongsTo(User, {foreignKey: 'userId'});
+
+User.hasMany(Favorite, {foreignKey: 'userId', onDelete: 'CASCADE'})
+Favorite.belongsTo(User, {foreignKey: 'userId'});
+
+User.hasMany(Watchlist, {foreignKey: 'userId', onDelete: 'CASCADE'})
+Watchlist.belongsTo(User, {foreignKey: 'userId'});
+
+User.hasMany(Review, {foreignKey: 'userId', onDelete: 'CASCADE'})
+Review.belongsTo(User, {foreignKey: 'userId'});
+
+
+
+
 
 
 
