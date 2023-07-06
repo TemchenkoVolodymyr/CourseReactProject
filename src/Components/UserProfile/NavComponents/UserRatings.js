@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import FilmComponent from './FilmComponent/FilmComponent';
-import {useDispatch, useSelector} from 'react-redux';
-import {filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
-import {loadUserWatchList} from "../../../redux/backend/watchListBackEndSlice";
-import {loadUserRatings} from "../../../redux/backend/ratingBackendSlice";
-
+import {useSelector} from 'react-redux';
+import {applySortOrder, filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
 
 
 const UserRatings = () => {
   const { ratings } = useSelector((state) => state.ratings);
-  const filterBy = useSelector((state) => state.filters.filterBy);
+  const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
   const selectSortOptionForPage = (state, page) => {
     return state.filters.sortOptions[page];
@@ -20,7 +17,7 @@ const UserRatings = () => {
 
   const ratingSortOption = useSelector((state) => selectSortOptionForPage(state, 'page2'));
 
-  const sortedRatingList = Array.isArray(ratings) ? filterProfileMovies(ratings, filterBy, ratingSortOption) : [];
+  const sortedRatingList = applySortOrder(filterProfileMovies(ratings, filterBy, ratingSortOption) , isOrderOpen)
 
   return (
     <>

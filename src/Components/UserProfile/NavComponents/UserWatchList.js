@@ -4,17 +4,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import styles from '../UserProfile.module.scss';
 import FilmComponent from './FilmComponent/FilmComponent';
 import NoInfoComponent from './NoInfoComponent';
-import {filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
+import {applySortOrder, filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
 
 
 const UserWatchList = () => {
 
   const {watchList, error, isLoading} = useSelector((state) => state.watchList);
-  const filterBy = useSelector((state) => state.filters.filterBy);
+  const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
 
-  const sortedWatchList = filterProfileMovies(watchList, filterBy);
-
+  const sortedWatchList = applySortOrder(filterProfileMovies(watchList, filterBy) , isOrderOpen)
   return (
     <>
       <NavComponentsHeader

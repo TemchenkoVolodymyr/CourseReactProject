@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './BurgerMenu.module.scss';
-import { useAuth } from '../../../hooks/useAuth';
 import ProfileSection from '../../../router/Navigations/ProfileSection';
-import { itemGenres } from '../../../constants/data';
-import { loadData } from '../../../utils/helperFunctions/loadUserDataFromFB';
 
 
 const BurgerMenu = ({ items }) => {
@@ -12,7 +9,6 @@ const BurgerMenu = ({ items }) => {
   const [modal, setModal] = useState(false);
   const [styleModal, setStyleModal] = useState();
   const [isActive, setIsActive] = useState(false);
-  const { id } = useAuth();
 
   useEffect(() => {
     if (modal === false) {
@@ -36,8 +32,7 @@ const BurgerMenu = ({ items }) => {
       });
     }
 
-    // if (id) loadData({ setUserData, id });
-  }, [modal,id]);
+  }, [modal]);
 
   // const userName = userData && userData.userName;
 
