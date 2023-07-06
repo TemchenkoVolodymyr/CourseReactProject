@@ -38,7 +38,7 @@ export default class UserController {
       return next(ApiError.internal('Wrong Password'))
     }
 
-    const token = generateJwt(user.id, user.email, user.role)
+    const token = generateJwt(user.id, user.email, user.role, user.userName)
     return res.json({token})
   }
 
