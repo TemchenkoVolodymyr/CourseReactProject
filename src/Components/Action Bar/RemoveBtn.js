@@ -1,23 +1,20 @@
 import React from 'react';
 import ActionButton from "./ActionButton";
 import {AiOutlineDelete} from "react-icons/ai";
-import {deleteFavoriteFromDatabase} from "../../http/favoriteAPI";
-import {deleteFromWatchList} from "../../redux/slices/watchListSlice";
-import {removeRating} from "../../redux/backend/ratingBackendSlice";
-import {deleteRatingFromDatabase} from "../../http/ratingAPI";
+import {deleteUserRating} from "../../redux/backend/ratingBackendSlice";
+import {deleteUserWatchList} from "../../redux/backend/watchListBackEndSlice";
+import {deleteUserFavorites} from "../../redux/backend/favoriteBackendSLice";
 
 const RemoveBtn = ({movieId, userId, dispatch, source}) => {
-
 
   const removeButtonHandle = () => {
     if (userId) {
       if (source === 'favorites') {
-        deleteFavoriteFromDatabase(movieId);
+        dispatch(deleteUserFavorites({movieId, userId}))
       } else if (source === 'watchlist') {
-        dispatch(deleteFromWatchList({ userId, movieId }));
+        dispatch(deleteUserWatchList({movieId, userId}))
       } else if (source === 'ratings') {
-        dispatch(removeRating({ userId, movieId }));
-        deleteRatingFromDatabase(movieId);
+        dispatch(deleteUserRating({movieId, userId}))
       }
     } else {
       alert('User data has not loaded yet');

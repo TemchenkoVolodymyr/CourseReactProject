@@ -4,7 +4,8 @@ import style from '../Outline.module.scss';
 import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
 import { useDispatch } from 'react-redux';
-import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
+import {fetchUserFavorites} from "../../../http/favoriteAPI";
+
 
 const FavoriteMovies = ({ userId, isLoading, favorites }) => {
 
@@ -12,10 +13,9 @@ const FavoriteMovies = ({ userId, isLoading, favorites }) => {
 
   useEffect(() => {
     if (isLoading === 'idle' && userId) {
-      dispatch(fetchFavorites(userId));
+      dispatch(fetchUserFavorites(userId));
     }
   }, [userId, isLoading, favorites]);
-
 
 
     return (

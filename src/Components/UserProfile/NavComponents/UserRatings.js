@@ -1,15 +1,16 @@
-import React  from 'react';
+import React, {useEffect} from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import FilmComponent from './FilmComponent/FilmComponent';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
+import {loadUserWatchList} from "../../../redux/backend/watchListBackEndSlice";
+import {loadUserRatings} from "../../../redux/backend/ratingBackendSlice";
 
 
 
 const UserRatings = () => {
-
   const { ratings } = useSelector((state) => state.ratings);
   const filterBy = useSelector((state) => state.filters.filterBy);
 

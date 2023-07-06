@@ -1,18 +1,34 @@
 import React from 'react';
 import ActionButton from "./ActionButton";
-import {handleToggleWatchList} from "../../utils/helperFunctions/ActionsFn";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import {Tooltip} from "react-tooltip";
 import styles from "./ActionBar.module.scss";
 import {useSelector} from "react-redux";
+import {createWatchList} from "../../http/watchListAPI";
+import {deleteUserWatchList, loadUserWatchList} from "../../redux/backend/watchListBackEndSlice";
 
 const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
-  const isListed = useSelector((state) => state.watchList.isListed[movieId]);
+
+  const isListed = useSelector(state => state.watchList.isListed[movieId])
+
+  const handleToggleWatchList = async () => {
+    if (!isListed) {
+      createWatchList(userId, movieId)
+        .then(data => {
+          dispatch(loadUserWatchList(userId))
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    } else {
+      dispatch(deleteUserWatchList({movieId, userId}))
+    }
+  };
 
   return (
     <div>
       <ActionButton
-        onClick={(event) => handleToggleWatchList(event, userId, movieId, isListed, dispatch)}
+        onClick={handleToggleWatchList}
         icon={<BsFillBookmarkFill
           size={25}
           color={isListed ? 'red' : null}

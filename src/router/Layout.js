@@ -22,7 +22,7 @@ const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
   const popMovie = useSelector((state) => state.movies.popularMovie);
-  const userId = useSelector((state) => state.user.id);
+  const {userId} = useSelector((state) => state.users.user.id);
   const favorites = useSelector((state) => state.favorites.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const loading = useSelector((store) => store.loading);

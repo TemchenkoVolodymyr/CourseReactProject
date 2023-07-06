@@ -1,24 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import FilmComponent from './FilmComponent/FilmComponent';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import { applySortOrder, filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
-import {loadUserFavorites} from "../../../redux/backend/favoriteBackendSLice";
 
 const UserFavorites = () => {
 
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.users.user.id);
   const {favorites } = useSelector((state) => state.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const error = useSelector((state) => state.favorites.error);
   const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
-  useEffect(() => {
-    dispatch(loadUserFavorites(userId))
-  }, [userId])
 
   const sortedFavorites = applySortOrder(filterProfileMovies(favorites, filterBy), isOrderOpen );
 

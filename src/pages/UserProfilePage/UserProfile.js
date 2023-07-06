@@ -3,28 +3,22 @@ import styles from '../../Components/UserProfile/UserProfile.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Outlet, useParams } from 'react-router';
 import { HelmetWrapper } from './HelmetWrapper';
-import {fetchWatchList} from "../../redux/slices/watchListSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchRatings} from "../../redux/slices/userRatingsSlice";
+import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
+import {loadUserWatchList} from "../../redux/backend/watchListBackEndSlice";
+import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
 
 
 const UserProfile = () => {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.id);
-  const isLoading = useSelector((state) => state.watchList.isLoading);
-
-  const { ratings, isRatingLoading }  = useSelector((state) => state.ratings);
   const { userName } = useParams();
+  const dispatch = useDispatch()
+  const userId = useSelector((state) => state.users.user.id);
 
   useEffect(() => {
-    if (isLoading === 'idle' && userId) {
-      dispatch(fetchWatchList(userId));
-    }
-  }, [isLoading, userId]);
-
-  useEffect(() => {
-      dispatch(fetchRatings(userId));
-  }, [userId, ratings]);
+    dispatch(loadUserRatings(userId))
+    dispatch(loadUserWatchList(userId))
+    dispatch(loadUserFavorites(userId))
+  }, [userId])
 
   return (
     <>
