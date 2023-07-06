@@ -1,28 +1,24 @@
 import React, { useEffect } from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 import FilmComponent from './FilmComponent/FilmComponent';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import { applySortOrder, filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
+import {loadUserFavorites} from "../../../redux/backend/favoriteBackendSLice";
 
 const UserFavorites = () => {
 
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.id);
-  const favorites = useSelector((state) => state.favorites.favorites);
+  const userId = useSelector((state) => state.users.user.id);
+  const {favorites } = useSelector((state) => state.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const error = useSelector((state) => state.favorites.error);
   const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
-
   useEffect(() => {
-    if (isLoading === 'idle' && userId) {
-      dispatch(fetchFavorites(userId));
-    }
-
-  }, [isLoading, userId]);
+    dispatch(loadUserFavorites(userId))
+  }, [userId])
 
   const sortedFavorites = applySortOrder(filterProfileMovies(favorites, filterBy), isOrderOpen );
 
@@ -31,12 +27,11 @@ const UserFavorites = () => {
      <NavComponentsHeader
        title={'My Favorites'}
        showFilters={true}/>
-
       <section className={styles.pageInfo}>
         {favorites.length === 0 ? <NoInfoComponent/> :
          <>
-           {isLoading === 'loading' && <div>Loading...</div>}
-           {isLoading === 'succeeded' && (
+           {isLoading && <div>Loading...</div>}
+           {!isLoading && (
              <div>
                {sortedFavorites?.map((favorite) => (
                  favorite.movieInfo &&
@@ -54,7 +49,7 @@ const UserFavorites = () => {
                ))}
              </div>
            )}
-           {isLoading === 'failed' && <div>Error: {error}</div>}</>
+           {error && <div>Error: {error}</div>}</>
         }
 
       </section>

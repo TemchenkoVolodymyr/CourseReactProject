@@ -7,21 +7,19 @@ import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviews, setReview } from '../../redux/slices/reviewsSlice';
+import { setReview } from '../../redux/slices/reviewsSlice';
 import MainBanner from '../../Components/MoviePage Components/MainBanner';
 import OverviewSection from '../../Components/MoviePage Components/OverviewSection';
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
 import ModalForReviews from './ModalForReviews';
-import {fetchWatchList} from "../../redux/slices/watchListSlice";
-import {useAuth} from "../../hooks/useAuth";
-import {fetchRatings} from "../../redux/slices/userRatingsSlice";
+import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
+import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
 
 
 const MoviePage = () => {
   const { title } = useParams();
-  const {id : userId} = useAuth()
   const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const [value, setValue] = useState('');
@@ -30,6 +28,8 @@ const MoviePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const ratings = useSelector((state) => state.ratings.ratings);
+  const {user} = useSelector(state => state.users)
+  const userId = user.id
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
@@ -42,10 +42,10 @@ const MoviePage = () => {
         alert('Error');
       }
     }
-    dispatch(fetchReviews(movieId));
-    dispatch(fetchWatchList(userId));
-    dispatch(fetchRatings(userId));
-
+    if (userId) {
+      dispatch(loadUserRatings(userId));
+      dispatch(loadUserFavorites(userId))
+    }
     fetchMovie();
 
     function handleResize() {
@@ -70,7 +70,7 @@ const MoviePage = () => {
       <Helmet>
         <title>{movie.title} | Overview, Ratings and Trailer </title>
       </Helmet>
-      <ActionBar movie={movie} movieId={movie.id} />
+      <ActionBar movie={movie} movieId={movie.id} source="moviePage" />
       <div className={style.wrapper}>
         <MainBanner movie={movie}/>
         <h2>Overview</h2>

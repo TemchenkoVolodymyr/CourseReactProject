@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './MovieBlock.module.scss';
-import CircleRating from '../CircleRating/CircleRating';
+import CircleRating from '../Ratings/CircleRating/CircleRating';
 
 const MovieBlock = ({ image, title, rating, displayAsPercentage, canvasShow }) => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
-import CircleRating from '../CircleRating/CircleRating';
+import CircleRating from '../Ratings/CircleRating/CircleRating';
 
 const OverviewSection = ({ movie,windowWidth }) => {
   return (

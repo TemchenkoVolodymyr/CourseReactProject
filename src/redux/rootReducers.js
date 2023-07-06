@@ -1,17 +1,17 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import user from './slices/userSlice';
 import movies from './slices/movieSlice';
-import favorites from './slices/favoriteSlice';
+import favorites from './backend/favoriteBackendSLice';
 import watchList from './slices/watchListSlice';
-import ratings from './slices/userRatingsSlice';
 import reviews from './slices/reviewsSlice';
 import credits from './slices/actorCreditsSlice';
 import userReviews from './slices/userReviewsSlice';
 import userLists from './slices/userListsSlice';
-import userBackend from './backend/userBackendSlice'
-import { searchReducer } from '../Components/Search/SearchReducer';
-import { authReducer } from '../Components/Auth/AuthReducer';
-import { loaderReducer } from '../Loader/LoaderReducer';
+import users from './backend/userBackendSlice'
+import ratings from './backend/ratingBackendSlice'
+import {searchReducer} from '../Components/Search/SearchReducer';
+import {authReducer} from '../Components/Auth/AuthReducer';
+import {loaderReducer} from '../Loader/LoaderReducer';
 import filters from './slices/filtersSlice';
 
 
@@ -27,10 +27,9 @@ export default combineReducers({
     filters,
     reviews,
     credits,
-  userReviews,
-  userLists,
-  userBackend
-
+    userReviews,
+    userLists,
+    users,
 
   },
 );

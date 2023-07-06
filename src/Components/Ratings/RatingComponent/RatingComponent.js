@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
 import styles from './RatingComponent.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {createRating} from "../../http/ratingAPI";
-import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
+import {createRating} from "../../../http/ratingAPI";
+import {loadUserRatings} from "../../../redux/backend/ratingBackendSlice";
 
 
-const RatingComponent = ({ movieId }) => {
+const RatingComponent = ({ movieId, setShowRating }) => {
 const dispatch = useDispatch()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const {ratings}  = useSelector((state) => state.ratings);
@@ -26,6 +26,8 @@ const dispatch = useDispatch()
       .catch((error) => {
         console.log(error)
       });
+
+    setShowRating(false)
   };
 
   useEffect(() => {

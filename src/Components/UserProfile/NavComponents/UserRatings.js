@@ -1,15 +1,16 @@
-import React from 'react';
+import React  from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import FilmComponent from './FilmComponent/FilmComponent';
-import { useSelector } from 'react-redux';
-import { filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
+import {useSelector} from 'react-redux';
+import {filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
+
 
 
 const UserRatings = () => {
 
-  const ratings = useSelector((state) => state.ratings.ratings);
+  const { ratings } = useSelector((state) => state.ratings);
   const filterBy = useSelector((state) => state.filters.filterBy);
 
   const selectSortOptionForPage = (state, page) => {
@@ -18,7 +19,7 @@ const UserRatings = () => {
 
   const ratingSortOption = useSelector((state) => selectSortOptionForPage(state, 'page2'));
 
-  const sortedRatingList = filterProfileMovies(ratings, filterBy, ratingSortOption);
+  const sortedRatingList = Array.isArray(ratings) ? filterProfileMovies(ratings, filterBy, ratingSortOption) : [];
 
   return (
     <>
@@ -45,9 +46,7 @@ const UserRatings = () => {
             ))}
           </div>
         }
-
       </section>
-
     </>
 
   );

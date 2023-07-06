@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from '../../UserProfile.module.scss';
-import CircleRating from '../../../CircleRating/CircleRating';
-import ActionsComponent from '../ActionsComponent/ActionsComponent';
+import CircleRating from '../../../Ratings/CircleRating/CircleRating';
 import { NavLink } from 'react-router-dom';
+import ActionBar from "../../../Action Bar/ActionBar";
 
 const FilmComponent = ({ id, image, title, rating, overview, release, source }) => {
 
   const date = new Date(release);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
   const formattedDate = date.toLocaleDateString('en-US', options);
-
 
   return (
     <div className={styles.movieBlock}>
@@ -34,7 +33,7 @@ const FilmComponent = ({ id, image, title, rating, overview, release, source }) 
         <div className={styles.overview}>
           <p>{overview}</p>
         </div>
-         <ActionsComponent
+         <ActionBar
            movieId={id}
            source={source}
          />

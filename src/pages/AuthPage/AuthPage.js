@@ -45,7 +45,6 @@ const AuthPage = () => {
     }
   };
 
-
   return (
     <>
       <Helmet>

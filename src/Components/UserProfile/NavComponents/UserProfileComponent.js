@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../UserProfile.module.scss';
-import CircleRating from '../../CircleRating/CircleRating';
+import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import Avatar from 'react-avatar';
 import {useSelector} from 'react-redux';
 import FilmComponent from "./FilmComponent/FilmComponent";
 import {fetchOneUser} from "../../../http/userAPI";
-import {useParams} from "react-router";
 
 const UserProfileComponent = () => {
 
@@ -19,7 +18,8 @@ const UserProfileComponent = () => {
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
   const averageRating = totalRating / ratings.length;
 
-  const {userName : id} = useParams()
+  const {user} = useSelector(state => state.users)
+  const id = user.id
 
   useEffect(() => {
     fetchOneUser(id).then(data => setUserData(data))

@@ -7,7 +7,7 @@ import {setIsAuth, setUser} from "../../redux/backend/userBackendSlice";
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
-  const {isAuth, user} = useSelector(state => state.userBackend)
+  const {isAuth, user} = useSelector(state => state.users)
 
   const logOut = () => {
     dispatch(setUser({}))
@@ -27,7 +27,7 @@ const ProfileSection = () => {
               style={{ cursor: 'pointer' }}
             ><BiLogOut size={25}/>Logout</NavLink>
             <NavLink
-              to={`/u/${user.id}`}
+              to={`/u/${user.userName}`}
               style={{ cursor: 'pointer' }}
             ><CgProfile size={25} color={'#E30914'}/>View Profile</NavLink>
           </>

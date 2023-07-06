@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CircleRating from '../CircleRating/CircleRating';
+import CircleRating from '../Ratings/CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
 import styles from '../Button/CustomButton.module.scss';
 

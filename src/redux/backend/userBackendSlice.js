@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const userBackendSlice = createSlice({
-    name: 'userBackend',
+    name: 'users',
     initialState,
     reducers: {
       setIsAuth: (state,action) => {

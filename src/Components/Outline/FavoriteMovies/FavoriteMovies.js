@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
-import CircleRating from '../../CircleRating/CircleRating';
+import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
 import { useDispatch } from 'react-redux';
 import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
