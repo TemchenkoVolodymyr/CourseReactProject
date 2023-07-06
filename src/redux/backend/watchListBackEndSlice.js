@@ -1,13 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {fetchUserFavorites} from "../../http/favoriteAPI";
 import axios from "axios";
-import {deleteWatchListFromDatabase} from "../../http/watchListAPI";
+import {deleteWatchListFromDatabase, fetchUserWatchList} from "../../http/watchListAPI";
 
 export const loadUserWatchList = createAsyncThunk(
   'watchList/loadUserWatchList',
   async (userId) => {
     try {
-      const watchList = await fetchUserFavorites(userId);
+      const watchList = await fetchUserWatchList(userId);
       const watchListFilms = watchList.map(async (movie) => {
         const response = await axios(`https://api.themoviedb.org/3/movie/${movie.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const movieInfo = response.data;
