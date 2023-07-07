@@ -2,7 +2,6 @@ import {combineReducers} from 'redux';
 import movies from './slices/movieSlice';
 import reviews from './backend/reviewBackendSlice';
 import credits from './slices/actorCreditsSlice';
-import userReviews from './slices/userReviewsSlice';
 import userLists from './slices/userListsSlice';
 import users from './backend/userBackendSlice'
 import favorites from './backend/favoriteBackendSLice';
@@ -24,7 +23,6 @@ export default combineReducers({
     filters,
     reviews,
     credits,
-    userReviews,
     userLists,
     users,
     watchList

@@ -9,7 +9,8 @@ const reviewController = new ReviewController();
 router.post('/', authMiddleware, reviewController.create)
 router.get('/user/:userId', reviewController.getUserReviews);
 router.get('/movie/:movieId', reviewController.getMovieReviews);
-router.delete('/:movieId', reviewController.deleteUserReview);
+router.put('/edit/:reviewId', reviewController.updateReview);
+router.delete('/remove/:reviewId', reviewController.removeReview);
 
 
 export default router

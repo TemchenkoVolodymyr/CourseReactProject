@@ -1,25 +1,31 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
-import {deleteUserReviews, updateUserReview} from "../../redux/slices/userReviewsSlice";
+import {useDispatch, useSelector} from "react-redux";
 import {CiSquareRemove} from "react-icons/ci";
 import {BiEdit} from "react-icons/bi";
 import {RiSave3Fill} from "react-icons/ri";
 import styles from "./UserProfile.module.scss";
+import {deleteUserReviews, loadUserReviews, updateUsersReviews} from "../../redux/backend/reviewBackendSlice";
 
 const ReviewActionsComponent = ({review}) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(review.text);
   const [text, setText] = useState('');
-
+  const userId= useSelector(state => state.users.user.id)
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString()
-    dispatch(updateUserReview({reviewId: review.id, movieId: review.movieId, updatedText: editText, updatedDate: formattedDate }));
+    dispatch(updateUsersReviews(
+      {
+        reviewId: review.id,
+        userId,
+        movieId: review.movieId,
+        text: editText
+      }))
+      .then(() => dispatch(loadUserReviews(userId)))
+      .catch((error) => console.error('Error updating user reviews:', error));
     setIsEditing(false);
   };
 
@@ -28,8 +34,9 @@ const ReviewActionsComponent = ({review}) => {
     setText(event.target.value);
   };
 
-  const removeReviewHandler = (reviewId, movieId) => {
-    dispatch(deleteUserReviews(reviewId, movieId))
+  const removeReviewHandler = () => {
+    const reviewId = review.id
+    dispatch(deleteUserReviews( reviewId))
   }
 
   return (
@@ -59,7 +66,7 @@ const ReviewActionsComponent = ({review}) => {
           <>
             <div className={styles.review}>
               <p>{review.text}</p>
-              <p>{review.date}</p>
+              <p>{new Date(review.updatedAt).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             </div>
 
             <BiEdit
@@ -71,7 +78,7 @@ const ReviewActionsComponent = ({review}) => {
         )}
 
       <CiSquareRemove
-        onClick={() => removeReviewHandler({reviewId: review.id, movieId: review.movieId})}
+        onClick={removeReviewHandler}
         size={30}
         style={{cursor: 'pointer'}}
         color={'rgba(152, 4, 4, 0.9)'}/>
