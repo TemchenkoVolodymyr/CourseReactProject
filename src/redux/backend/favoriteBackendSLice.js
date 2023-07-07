@@ -6,14 +6,14 @@ export const loadUserFavorites = createAsyncThunk(
   'favorites/loadUserFavorites',
   async (userId) => {
     try {
-      const favorites = await fetchUserFavorites(userId);
-      const favoritesList = favorites.map(async (favorite) => {
-        const response = await axios(`https://api.themoviedb.org/3/movie/${favorite.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
-        const movieInfo = response.data;
-        return {...favorite, movieInfo};
-      });
-      const updatedFavorites = await Promise.all(favoritesList);
-      return updatedFavorites;
+        const favorites = await fetchUserFavorites(userId);
+        const favoritesList = favorites.map(async (favorite) => {
+          const response = await axios(`https://api.themoviedb.org/3/movie/${favorite.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
+          const movieInfo = response.data;
+          return {...favorite, movieInfo};
+        });
+        const updatedFavorites = await Promise.all(favoritesList);
+        return updatedFavorites;
     } catch (error) {
       console.log(error);
       throw error;

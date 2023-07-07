@@ -12,6 +12,7 @@ const ProfileSection = () => {
   const logOut = () => {
     dispatch(setUser({}))
     dispatch(setIsAuth(false))
+    localStorage.removeItem('token');
   }
 
   return (

@@ -13,7 +13,6 @@ const UserFavorites = () => {
   const error = useSelector((state) => state.favorites.error);
   const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
-
   const sortedFavorites = applySortOrder(filterProfileMovies(favorites, filterBy), isOrderOpen );
 
   return (

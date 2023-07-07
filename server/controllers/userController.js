@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 const generateJwt = (id, email, role, userName) => {
   return jwt.sign(
-    {id, email, role, userName},
+    { id, email, role, userName },
     process.env.SECRET_KEY,
     {expiresIn: '24h'}
   )
@@ -41,10 +41,20 @@ export default class UserController {
     const token = generateJwt(user.id, user.email, user.role, user.userName)
     return res.json({token})
   }
-
   async check(req, res, next) {
-    const token = generateJwt(req.user.id, req.user.email, req.user.role, req.user.userName)
-    return res.json({token})
+    const token = generateJwt(
+      req.user.id,
+      req.user.email,
+      req.user.role,
+      req.user.userName
+    );
+
+    const createdAt = await getUserCreatedAt(req.user.id);
+
+    return res.json({
+      token,
+      createdAt
+    });
   }
 
   async getAll(req, res) {
@@ -58,4 +68,12 @@ export default class UserController {
     return res.json(user);
   }
 
+}
+
+async function getUserCreatedAt(userId) {
+  const user = await User.findByPk(userId);
+  if (user) {
+    return user.createdAt;
+  }
+  return null;
 }

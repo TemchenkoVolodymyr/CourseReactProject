@@ -15,7 +15,9 @@ const AddToFavoriteBtn = ({movieId, userId, dispatch}) => {
     if (!isFavorite) {
       createFavorite(userId, movieId)
         .then(data => {
-          dispatch(loadUserFavorites(userId))
+          if(userId){
+            dispatch(loadUserFavorites(userId))
+          }
         })
         .catch((error) => {
           console.log(error)

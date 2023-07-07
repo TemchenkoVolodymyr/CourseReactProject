@@ -13,7 +13,10 @@ const FavoriteMovies = ({userId}) => {
     const {favorites, isLoading} = useSelector((state) => state.favorites);
 
     useEffect(() => {
-      dispatch(loadUserFavorites(userId));
+      if(userId) {
+        dispatch(loadUserFavorites(userId));
+      }
+
     }, [userId, dispatch]);
 
     return (

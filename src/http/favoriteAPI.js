@@ -17,6 +17,7 @@ export const createFavorite = async (userId, movieId) => {
 export const fetchUserFavorites = async(userId) => {
   const {data} = await $host.get('api/favorite/' + userId)
   return data
+
 }
 
 export const deleteFavoriteFromDatabase = async (movieId) => {

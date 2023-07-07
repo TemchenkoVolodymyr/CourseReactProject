@@ -4,26 +4,20 @@ import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import Avatar from 'react-avatar';
 import {useSelector} from 'react-redux';
 import FilmComponent from "./FilmComponent/FilmComponent";
-import {fetchOneUser} from "../../../http/userAPI";
 
 const UserProfileComponent = () => {
 
   const favorites = useSelector((state) => state.favorites.favorites);
   const watchList = useSelector((state) => state.watchList.watchList);
   const ratings = useSelector((state) => state.ratings.ratings);
-  const [userData, setUserData] = useState(null);
   const [latestFavoriteMovie, setLatestFavoriteMovie] = useState([]);
   const [latestFromWatchList, setLatestFromWatchList] = useState([]);
+  const {user} = useSelector(state => state.users)
 
-  const totalRating = ratings.reduce((sum, rating) => sum + (rating.rating * 2), 0);
+
+  const totalRating = ratings.reduce((sum, rating) => sum + (rating.rate * 2), 0);
   const averageRating = totalRating / ratings.length;
 
-  const {user} = useSelector(state => state.users)
-  const id = user.id
-
-  useEffect(() => {
-    fetchOneUser(id).then(data => setUserData(data))
-  }, [id])
 
   useEffect(() => {
     const favoritesCopy = [...favorites]
@@ -46,10 +40,10 @@ const UserProfileComponent = () => {
     <div className={styles.profile}>
       <div className={styles.header}>
         <div className={styles.userInfo}>
-          <Avatar className={styles.avatar} name={userData && userData.userName} size={100} round={true}/>
+          <Avatar className={styles.avatar} name={user && user.userName} size={100} round={true}/>
           <div className={styles.main}>
-            <p className={styles.name}>{userData && userData.userName}</p>
-            <p className={styles.membership}>Member since {userData && formatDate(userData.createdAt)}</p>
+            <p className={styles.name}>{user && user.userName}</p>
+            <p className={styles.membership}>Member since {user && formatDate(user.createdAt)}</p>
           </div>
         </div>
         <div className={styles.stats}>
