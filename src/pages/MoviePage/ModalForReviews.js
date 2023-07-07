@@ -7,6 +7,8 @@ import {useEffect, useState} from 'react';
 import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
 import {createReview} from "../../http/reviewAPI";
+import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
+import {useDispatch} from "react-redux";
 
 const styleModal = {
   position: 'absolute',
@@ -40,12 +42,12 @@ export default function ModalForReviews({
                                           open,
                                           movie,
                                           movieId,
-                                          reviews,
                                           userId
                                         }) {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [value, setValue] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     function handleResize() {
@@ -60,10 +62,10 @@ export default function ModalForReviews({
   const sendReviewHandler = (value) => {
     if (value) {
       createReview(userId, movieId, value)
+        .then(data => dispatch(loadMovieReviews(movieId)))
       setValue('');
     }
   };
-
 
   return (
     <div className={style.modal}>
@@ -89,15 +91,6 @@ export default function ModalForReviews({
               placeholder="write your review"/>
             <Button
               onClick={() => sendReviewHandler(value)} >SEND</Button>
-            <div>
-              {reviews && reviews.map((review, i) => <div className={style.reviews} key={i}>
-                <div className={style.headerReview}>
-                  <p className={style.headerInfo}>{review.user}</p>
-                  <p className={style.headerInfo}>{review.date}</p>
-                </div>
-                <p className={style.text}>{review.text}</p>
-              </div>)}
-            </div>
           </Typography>
         </Box>
       </Modal>

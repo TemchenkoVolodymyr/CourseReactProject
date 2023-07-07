@@ -16,7 +16,7 @@ import ModalForReviews from './ModalForReviews';
 import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
 import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
 import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
-import {fetchMovieReviews} from "../../http/reviewAPI";
+
 
 
 const MoviePage = () => {
@@ -24,7 +24,6 @@ const MoviePage = () => {
   const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const dispatch = useDispatch();
-  const {reviews, status} = useSelector((state) => state.reviews);
   const [openModal, setOpenModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const userId = useSelector(state => state.users.user.id)
@@ -54,7 +53,7 @@ const MoviePage = () => {
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [dispatch, userId]);
+  }, [dispatch, userId, movieId]);
 
   if (!movie) {
     return <Loader/>;
@@ -80,17 +79,11 @@ const MoviePage = () => {
           <p>{`About film "${movie.original_title}"`}</p>
         </div>
         </section>
-
-        {status === 'loading' ? <p>...Loading</p> :
-          <>
-            <SliderForReview  reviews={reviews}/>
-
-          </>}
+        <SliderForReview/>
         <h2>Similar</h2>
         <SimilarBlock movie={movie} windowWidth={windowWidth}/>
       </div>
       <ModalForReviews
-        reviews={reviews}
         movie={movie}
         open={openModal}
         callback={handleClose}
