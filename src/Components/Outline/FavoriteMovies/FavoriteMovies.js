@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
 import style from '../Outline.module.scss';
 import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
-import { useDispatch } from 'react-redux';
-import {fetchUserFavorites} from "../../../http/favoriteAPI";
+import {useDispatch, useSelector} from 'react-redux';
+import {loadUserFavorites} from "../../../redux/backend/favoriteBackendSLice";
 
 
-const FavoriteMovies = ({ userId, isLoading, favorites }) => {
+const FavoriteMovies = ({userId}) => {
 
     const dispatch = useDispatch();
+    const {favorites, isLoading} = useSelector((state) => state.favorites);
 
-  useEffect(() => {
-    if (isLoading === 'idle' && userId) {
-      dispatch(fetchUserFavorites(userId));
-    }
-  }, [userId, isLoading, favorites]);
-
+    useEffect(() => {
+      dispatch(loadUserFavorites(userId));
+    }, [userId, dispatch]);
 
     return (
       <section>

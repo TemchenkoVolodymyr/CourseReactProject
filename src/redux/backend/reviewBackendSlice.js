@@ -3,7 +3,6 @@ import axios from "axios";
 import {deleteReviewFromDatabase, fetchMovieReviews, fetchUserReviews, updateReview} from "../../http/reviewAPI";
 
 
-
 export const loadMovieReviews = createAsyncThunk(
   'reviews/loadMovieReviews',
   async (movieId) => {
@@ -103,7 +102,6 @@ const reviewSlice = createSlice({
         const {reviewId} = action.payload;
         state.userReviews = state.userReviews.filter(review => review.id !== reviewId);
       })
-
   },
 });
 
