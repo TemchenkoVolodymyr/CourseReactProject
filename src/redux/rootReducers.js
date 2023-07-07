@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import movies from './slices/movieSlice';
-import reviews from './slices/reviewsSlice';
+import reviews from './backend/reviewBackendSlice';
 import credits from './slices/actorCreditsSlice';
 import userReviews from './slices/userReviewsSlice';
 import userLists from './slices/userListsSlice';

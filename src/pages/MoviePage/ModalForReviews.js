@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
+import {createReview} from "../../http/reviewAPI";
 
 const styleModal = {
   position: 'absolute',
@@ -34,18 +35,34 @@ const stylePhoneModal = {
   overflowY: 'scroll',
 };
 
-export default function ModalForReviews({ callback, open, value, setValue, placeholder, movie, reviews, sendReview }) {
+export default function ModalForReviews({
+                                          callback,
+                                          open,
+                                          movie,
+                                          movieId,
+                                          reviews,
+                                          userId
+                                        }) {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [value, setValue] = useState('')
 
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
+
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const sendReviewHandler = (value) => {
+    if (value) {
+      createReview(userId, movieId, value)
+      setValue('');
+    }
+  };
 
 
   return (
@@ -56,30 +73,22 @@ export default function ModalForReviews({ callback, open, value, setValue, place
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}>
+        <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}
+             style={{width: '100vh', height: '60vh'}}>
           <div className={style.wrapperCloseModalBtn}>
-            {windowWidth >= 360 && windowWidth < 768 ? <CustomButton callback={callback} name={'Close the modal'}></CustomButton> : null}
+            {windowWidth >= 360 && windowWidth < 768 ?
+              <CustomButton callback={callback} name={'Close the modal'}></CustomButton> : null}
           </div>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            <div className={style.container}>
-              <h1>{`Leave your review for "${movie.original_title}"`}</h1>
-              <div className={style.description}>
-                <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}/>
-                <p>Language : {movie.original_language}</p>
-                <p>Release date : {movie.release_date}</p>
-                <p>Rating : {Math.round(movie.vote_average * 10 / 10)}</p>
-              </div>
-            </div>
-
+          <Typography id="modal-modal-title" variant="h6" component="div">
+            <h1>{`Leave your review for "${movie.original_title}"`}</h1>
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <div className={style.wrapperInput}>
-              <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder={placeholder}/>
-              <CustomButton value={value} callback={sendReview} name={'Send'}></CustomButton>
-            </div>
+          <Typography id="modal-modal-description" sx={{mt: 2}} component="div" className={style.wrapperInput}>
+            <textarea
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder="write your review"/>
+            <Button
+              onClick={() => sendReviewHandler(value)} >SEND</Button>
             <div>
               {reviews && reviews.map((review, i) => <div className={style.reviews} key={i}>
                 <div className={style.headerReview}>

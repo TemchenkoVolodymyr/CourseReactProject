@@ -18,7 +18,7 @@ const UserProfile = () => {
     dispatch(loadUserRatings(userId))
     dispatch(loadUserWatchList(userId))
     dispatch(loadUserFavorites(userId))
-  }, [userId])
+  }, [dispatch])
 
   return (
     <>

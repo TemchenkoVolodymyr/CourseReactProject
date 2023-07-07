@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './SliderForReview.scss';
-import style from '../../Components/Home/HomeLayout.module.scss';
+import {useSelector} from "react-redux";
 
 
-const SliderForReview = (props) => {
+const SliderForReview = ({ reviews }) => {
 
-  const { reviews } = props;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const {movieReviews, loading} = useSelector(state => state.reviews)
+
   useEffect(() => {
+    console.log(movieReviews);
+
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
+
   }, []);
 
   return (  <>
@@ -28,11 +32,11 @@ const SliderForReview = (props) => {
           wrapperTag="ul"
           navigation slidesPerView={2}
           spaceBetween={2}>
-          {reviews?.map((item, i) => <SwiperSlide key={i} >
+          {movieReviews?.map((item, i) => <SwiperSlide key={i} >
             <div className={'wrapper__slider-item'}>
-              <p className={'name'}>{item.user}</p>
+              <p className={'name'}>{item.user.userName}</p>
               <p className={'content'}>{item.text}</p>
-              <p className={'date'}>{item.date}</p>
+              <p className={'date'}>{item.createdAt}</p>
             </div>
           </SwiperSlide>)}
 
@@ -43,13 +47,13 @@ const SliderForReview = (props) => {
           id="review"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={4}
+          navigation slidesPerView={2}
           spaceBetween={2}>
-          {reviews?.map((item, i) => <SwiperSlide key={i}>
+          {movieReviews?.map((item, i) => <SwiperSlide key={i}>
             <div className={'wrapper__slider-item'}>
-              <p className={'name'}>{item.user}</p>
+              <p className={'name'}>{item.user.userName}</p>
               <p className={'content'}>{item.text}</p>
-              <p className={'date'}>{item.date}</p>
+              <p className={'date'}>{item.createdAt}</p>
             </div>
           </SwiperSlide>)}
 
