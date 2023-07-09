@@ -1,14 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import style from '../Outline.module.scss';
 import { NavLink } from 'react-router-dom';
 import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import CustomButton from '../../Button/CustomButton';
+import {fetchPopularMovies} from "../../../redux/slices/popMoviesSlice";
 
 
 const PopularMovies = () => {
 
-  const popMovie = useSelector((state) => state.movies.popularMovie);
+  const popMovie = useSelector((state) => state.popMovies.popularMovies);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPopularMovies());
+  }, [])
 
   return (
     <>
@@ -42,7 +48,7 @@ const PopularMovies = () => {
           </NavLink>)}
       </div>
       <div className={style.btn}>
-        <CustomButton name={'see more'} path={'popMovies'}></CustomButton>
+        <CustomButton name={'see more'} path={'popular'}/>
       </div>
 
     </>

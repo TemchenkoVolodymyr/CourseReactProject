@@ -1,26 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchMovies } from '../../redux/slices/movieSlice';
 import styles from '../Pages.module.scss';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import { Helmet } from 'react-helmet';
+import Loader from "../../Loader/Loader";
 
 
 const PopularMoviesPage = () => {
 
-
-  const dataMovies = useSelector((state) => state.movies.popularMovie);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const getPopMovies = async () => {
-      dispatch(fetchMovies({ type: 'popularMovie' }));
-    };
-    if (dataMovies.length < 2) {
-      getPopMovies();
-    }
-  }, [dataMovies.length]);
+  const {popularMovies, isLoading, error} = useSelector((state) => state.popMovies);
 
   return (
 
@@ -34,23 +23,28 @@ const PopularMoviesPage = () => {
         <p>Curated collection of popular movies: high-rated, diverse genres, captivating stories. Explore beloved
           films!</p>
         <div className={styles.wrapper}>
-          {
-            dataMovies?.map((film) =>
-              <NavLink
-                to={`/movie/${encodeURIComponent(film.title.replace(/[\s:]/g, '-').toLowerCase())}`}
-                onClick={() => localStorage.setItem('movieId', film.id)}
-                key={film.id}
-              >
-                <MovieBlock
-                  image={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
-                  title={film.title}
-                  rating={(film.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                  canvasShow={true}
-                />
-              </NavLink>
-            )
+          {isLoading ? <Loader/> :
+          <>
+            {
+              popularMovies?.map((film) =>
+                <NavLink
+                  to={`/movie/${encodeURIComponent(film.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                  onClick={() => localStorage.setItem('movieId', film.id)}
+                  key={film.id}
+                >
+                  <MovieBlock
+                    image={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
+                    title={film.title}
+                    rating={(film.vote_average * 10).toFixed(1)}
+                    displayAsPercentage={true}
+                    canvasShow={true}
+                  />
+                </NavLink>
+              )
+            }</>
           }
+          {error && <p>{error}</p>}
+
         </div>
       </div>
     </>

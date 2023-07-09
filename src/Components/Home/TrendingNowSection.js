@@ -1,20 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
-const TrendingNowSection = ({ trendingMovies,windowWidth }) => {
+const TrendingNowSection = ({ windowWidth }) => {
+
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const moviesData = await fetchAPIDataWithOutOptions('trending/movie/day')
+      setMovies(moviesData.results)
+    }
+    fetchData()
+  }, [])
+
   return (
     <>
-      {windowWidth >= 360 && windowWidth < 768 ? <Swiper
+      <Swiper
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={3}
+          navigation slidesPerView={windowWidth >= 360 && windowWidth < 768 ? 3 : 7}
           spaceBetween={10}>
           {
-            trendingMovies?.map((movie) =>
+            movies?.map((movie) =>
               <SwiperSlide key={movie.id}>
                 <NavLink
                   to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
@@ -33,34 +45,7 @@ const TrendingNowSection = ({ trendingMovies,windowWidth }) => {
               </SwiperSlide>
             )
           }
-        </Swiper> :
-        <Swiper
-          id="main"
-          tag="section"
-          wrapperTag="ul"
-          navigation slidesPerView={7}
-          spaceBetween={10}>
-          {
-            trendingMovies?.map((movie) =>
-              <SwiperSlide key={movie.id}>
-                <NavLink
-                  to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
-                  className={style.swiperSlide}
-                  onClick={() => localStorage.setItem('movieId', movie.id )}>
-                  <SliderItem
-                    title={movie.title}
-                    img={movie.poster_path}
-                    rating={(movie.vote_average * 10).toFixed(1)}
-                    displayAsPercentage={true}
-                    canvasShow={true}
-                    movieId={movie.id}
-                    showActionBadge={true}
-                  />
-                </NavLink>
-              </SwiperSlide>
-            )
-          }
-        </Swiper>}
+        </Swiper>
     </>
   );
 };

@@ -33,8 +33,6 @@ const ActionBar = ({movieId, movie, source}) => {
           <RemoveBtn movieId={movieId} userId={userId} dispatch={dispatch} source={source}/>
         </>
       }
-
-
     </div>
   );
 };

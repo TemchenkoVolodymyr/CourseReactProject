@@ -24,17 +24,16 @@ const RoutersCollection = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route path="/" element={<Home/>} />
+          <Route index element={<Home/>} />
           <Route path="discovery" element={<DiscoveryPage/>}/>
           <Route path="fresh" element={<FreshMoviePage/>}/>
           <Route path="trending" element={<TrendingMovie/>}/>
           <Route path="/genre/:genre" element={<CurrentGenre/>}/>
           <Route path="/login" element={<AuthPage/>}/>
           <Route path="/register" element={<AuthPage/>}/>
-          <Route path="*" element={<NotfoundPage/>}/>
           <Route path="/movie/:title" element={<MoviePage/>}/>
           <Route path="/person/:name" element={<ActorPage/>}/>
-          <Route path="/popMovies" element={<PopularMoviesPage/>}/>
+          <Route path="/popular" element={<PopularMoviesPage/>}/>
           <Route path="/favoriteMovies" element={<FreshMoviePage/>}/>
           <Route path="/u/:userName" element={<UserProfile/>}>
             <Route index element={<UserProfileComponent/>} />
@@ -43,6 +42,7 @@ const RoutersCollection = () => {
             <Route path="/u/:userName/ratings" element={<UserRatings/>}/>
             <Route path="/u/:userName/reviews" element={<UserReviews/>}/>
           </Route>
+          <Route path="*" element={<NotfoundPage/>}/>
         </Route>
       </Routes>
     </>

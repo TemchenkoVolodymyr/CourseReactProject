@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
-const MainBannerSection = ({ discover, windowWidth }) => {
+const MainBannerSection = ({ windowWidth }) => {
+
+  const [discover, setDiscover] = useState([])
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const moviesData = await fetchAPIDataWithOutOptions('discover/movie')
+      setDiscover(moviesData.results)
+    }
+    fetchData()
+  }, [])
+
+
   return (
     <>
       <Swiper

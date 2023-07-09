@@ -24,8 +24,4 @@ export const check = async () => {
   }
 }
 
-export const fetchOneUser = async (id) => {
-  const { data } = await $host.get('api/user/' + id);
-  return data;
-}
 

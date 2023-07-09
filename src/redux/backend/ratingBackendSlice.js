@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {deleteRatingFromDatabase, fetchUserRatings} from "../../http/ratingAPI";
-import axios from "axios";
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 
 export const loadUserRatings = createAsyncThunk(
@@ -9,8 +9,7 @@ export const loadUserRatings = createAsyncThunk(
     try {
       const ratings = await fetchUserRatings(userId);
       const ratingList = ratings.map(async (rating) => {
-        const response = await axios(`https://api.themoviedb.org/3/movie/${rating.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
-        const movieInfo = response.data;
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${rating.movieId}`)
         return { ...rating, movieInfo };
       });
       const updatedRatings = await Promise.all(ratingList);

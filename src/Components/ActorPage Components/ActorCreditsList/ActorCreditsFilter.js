@@ -15,7 +15,7 @@ const ActorCreditsFilter = ({ actors }) => {
     creatorCredits,
     crewCredits,
     selectedDepartment
-  } = useSelector((state) => state.credits);
+  } = useSelector((state) => state.actors);
 
   useEffect(() => {
     fetchActorCredits(actors, dispatch);

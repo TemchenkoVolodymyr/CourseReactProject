@@ -62,12 +62,6 @@ export default class UserController {
     return res.json(users);
   }
 
-  async getOne(req, res) {
-    const id = req.params.id;
-    const user = await User.findOne({ where: { id: id } });
-    return res.json(user);
-  }
-
 }
 
 async function getUserCreatedAt(userId) {

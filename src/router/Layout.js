@@ -5,10 +5,7 @@ import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
 import ScrollButton from './ScrollButton';
-import {useDispatch, useSelector} from 'react-redux';
-import Loader from '../Loader/Loader';
-import {loaderAction} from '../Loader/loaderAction';
-import {fetchMovies} from '../redux/slices/movieSlice';
+import {useSelector} from 'react-redux';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
 import {NavLink} from 'react-router-dom';
@@ -21,29 +18,13 @@ import {itemMovies} from '../constants/data';
 const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
-  const popMovie = useSelector((state) => state.movies.popularMovie);
   const userId = useSelector((state) => state.users.user.id);
-  const loading = useSelector((store) => store.loading);
-  const dispatch = useDispatch();
-
-  const getPopMovies = async () => {
-    dispatch(fetchMovies({type: 'popularMovie'}));
-  };
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    getPopMovies();
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
-  if (popMovie.length > 1) {
-    setTimeout(() => {
-      dispatch(loaderAction());
-    }, 2000);
-  }
 
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
@@ -79,7 +60,7 @@ const Layout = () => {
   return (
     <>
       {windowWidth >= 768 ?
-        loading ? <Loader></Loader> : <>
+        <>
           <section id={'mainContent'} className={'containerTopLayout'}>
             <nav className={'containerNav'}>
               <Navigations/>

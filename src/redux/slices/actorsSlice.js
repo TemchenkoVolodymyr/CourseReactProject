@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
-const initialState = {
-  actingCredits: [],
-  productionCredits: [],
-  directingCredits: [],
-  writingCredits: [],
-  creatorCredits: [],
-  crewCredits: [],
-  selectedDepartment: 'Acting',
-};
-
-const actorCreditsSlice = createSlice({
-  name: 'credits',
-  initialState,
+const actorsSlice = createSlice({
+  name: 'actors',
+  initialState: {
+    actingCredits: [],
+    productionCredits: [],
+    directingCredits: [],
+    writingCredits: [],
+    creatorCredits: [],
+    crewCredits: [],
+    selectedDepartment: 'Acting',
+    bestActors: []
+  },
   reducers: {
     addActingCredits: (state, action) => {
       action.payload.forEach((credit) => {
@@ -46,6 +46,18 @@ const actorCreditsSlice = createSlice({
       state.crewCredits= [];
     },
   },
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(loadBestActors.pending, (state) => {
+  //
+  //     })
+  //     .addCase(loadBestActors.fulfilled, (state) => {
+  //
+  //     })
+  //     .addCase(loadBestActors.rejected, (state) => {
+  //
+  //     })
+  // }
 });
 
 export const {
@@ -56,7 +68,6 @@ export const {
   addCreatorCreditsCredits,
   addCrewCreditsCredits,
   clearCredits,
+  setSelectedDepartment } = actorsSlice.actions;
 
-  setSelectedDepartment } = actorCreditsSlice.actions;
-
-export default actorCreditsSlice.reducer;
+export default actorsSlice.reducer;

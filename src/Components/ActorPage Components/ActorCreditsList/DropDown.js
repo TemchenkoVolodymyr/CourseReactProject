@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import style from './DropDown.module.scss';
-import { setSelectedDepartment } from '../../../redux/slices/actorCreditsSlice';
+import { setSelectedDepartment } from '../../../redux/slices/actorsSlice';
 import { useDispatch } from 'react-redux';
 
 const DropDown = ({

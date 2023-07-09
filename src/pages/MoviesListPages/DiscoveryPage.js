@@ -1,30 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import { Helmet } from 'react-helmet';
 import { genreImages } from '../../constants/data';
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 
 const DiscoveryPage = () => {
   const [genres, setGenres] = useState();
 
   useEffect(() => {
-    async function fetchMovie() {
-      try {
-        const { data } = await axios
-          .get(
-            `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
-        setGenres(data);
-      } catch (err) {
-        alert('Error');
-      }
+
+    const fetchGenres = async () => {
+      const genresData = await fetchAPIDataWithOutOptions('genre/movie/list')
+      setGenres(genresData)
     }
 
-    fetchMovie();
-  }, []);
+    fetchGenres()
 
+  }, []);
   return (
     <>
       <Helmet>
@@ -46,7 +41,6 @@ const DiscoveryPage = () => {
                 <MovieBlock
                   image={genreImages[genre.id]}
                   title={genre.name}
-
                 />
               </NavLink>
             )

@@ -1,19 +1,18 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {deleteFavoriteFromDatabase, fetchUserFavorites} from "../../http/favoriteAPI";
-import axios from "axios";
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 export const loadUserFavorites = createAsyncThunk(
   'favorites/loadUserFavorites',
   async (userId) => {
     try {
-        const favorites = await fetchUserFavorites(userId);
-        const favoritesList = favorites.map(async (favorite) => {
-          const response = await axios(`https://api.themoviedb.org/3/movie/${favorite.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
-          const movieInfo = response.data;
-          return {...favorite, movieInfo};
-        });
-        const updatedFavorites = await Promise.all(favoritesList);
-        return updatedFavorites;
+      const favorites = await fetchUserFavorites(userId);
+      const favoritesList = favorites.map(async (favorite) => {
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${favorite.movieId}`)
+        return {...favorite, movieInfo};
+      });
+      const updatedFavorites = await Promise.all(favoritesList);
+      return updatedFavorites;
     } catch (error) {
       console.log(error);
       throw error;
@@ -26,7 +25,7 @@ export const deleteUserFavorites = createAsyncThunk(
   async ({movieId, userId}, {dispatch, rejectWithValue}) => {
     try {
       await deleteFavoriteFromDatabase(movieId);
-      return { movieId, userId }
+      return {movieId, userId}
     } catch (error) {
       return rejectWithValue(error);
     }

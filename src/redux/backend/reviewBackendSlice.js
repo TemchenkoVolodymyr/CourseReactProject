@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
 import {deleteReviewFromDatabase, fetchMovieReviews, fetchUserReviews, updateReview} from "../../http/reviewAPI";
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 
 export const loadMovieReviews = createAsyncThunk(
@@ -19,19 +19,13 @@ export const loadMovieReviews = createAsyncThunk(
 export const loadUserReviews = createAsyncThunk(
   'reviews/loadUserReviews',
   async (userId) => {
-    try {
       const userReviews = await fetchUserReviews(userId);
       const reviewsList = userReviews.map(async (review) => {
-        const response = await axios(`https://api.themoviedb.org/3/movie/${review.movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
-        const movieInfo = response.data;
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${review.movieId}`)
         return {...review, movieInfo};
       });
       const updatedReviews = await Promise.all(reviewsList);
       return updatedReviews;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
   }
 );
 

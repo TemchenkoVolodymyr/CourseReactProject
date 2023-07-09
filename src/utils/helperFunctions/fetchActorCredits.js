@@ -3,7 +3,7 @@ import {
   addDirectingCredits,
   addProductionCredits,
   addWritingCredits, clearCredits
-} from '../../redux/slices/actorCreditsSlice';
+} from '../../redux/slices/actorsSlice';
 
 export const fetchActorCredits = (actors, dispatch) => {
   dispatch(clearCredits());

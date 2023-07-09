@@ -4,21 +4,18 @@ import axios from 'axios';
 import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 const FreshMoviePage = () => {
   const [movies, setMovies] = useState();
 
   useEffect(() => {
-    async function fetchMovie() {
-      try {
-        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos,credits,similar`);
-        setMovies(data);
-      } catch (err) {
-        alert('Error');
-      }
+    const fetchData = async () => {
+      const movieData = await fetchAPIDataWithOutOptions(`movie/upcoming`);
+      setMovies(movieData);
     }
+    fetchData()
 
-    fetchMovie();
   }, []);
 
   return (
