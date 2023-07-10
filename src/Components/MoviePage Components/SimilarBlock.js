@@ -8,18 +8,20 @@ import SliderItem from '../SliderItems/SliderItem';
 const SimilarBlock = ({ movie, windowWidth }) => {
   return (
     <>
-      {windowWidth >= 360 && windowWidth < 768 ? <Swiper
+      <Swiper
           modules={[Navigation]}
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={3}
+          navigation slidesPerView={windowWidth >= 360 && windowWidth < 768 ? 2 : 5}
           spaceBetween={10}>
 
           {movie?.similar.results.map((similar) =>
             similar.poster_path &&
             <SwiperSlide key={similar.id}>
-              <NavLink to={`/movie/${similar.id}`} className={style.swiperSlide}>
+              <NavLink to={`/movie/${encodeURIComponent(similar.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+                       className={style.swiperSlide}
+                       onClick={() => localStorage.setItem('movieId', similar.id)}>
                 <SliderItem
                   img={similar.poster_path ? similar.poster_path : similar.backdrop_path}
                   rating={(similar.vote_average * 10).toFixed(1)}
@@ -27,38 +29,13 @@ const SimilarBlock = ({ movie, windowWidth }) => {
                   canvasShow={true}
                   movieId={similar.id}
                   showActionBadge={true}
+                  windowWidth={windowWidth}
                 />
               </NavLink>
             </SwiperSlide>
           )}
-        </Swiper> :
-        <Swiper
-          modules={[Navigation]}
-          id="main"
-          tag="section"
-          wrapperTag="ul"
-          navigation slidesPerView={5}
-          spaceBetween={10}>
+        </Swiper>
 
-          {movie?.similar.results.map((similar) =>
-            similar.poster_path &&
-            <SwiperSlide key={similar.id}>
-              <NavLink
-                to={`/movie/${encodeURIComponent(similar.title.replace(/[\s:]/g, '-').toLowerCase())}`}
-                onClick={() => localStorage.setItem('movieId', similar.id)}
-                >
-                <SliderItem
-                  img={similar.poster_path ? similar.poster_path : similar.backdrop_path}
-                  rating={(similar.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                  canvasShow={true}
-                  movieId={similar.id}
-                  showActionBadge={true}
-                />
-              </NavLink>
-            </SwiperSlide>
-          )}
-        </Swiper>}
     </>
   );
 };

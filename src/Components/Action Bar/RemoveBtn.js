@@ -22,13 +22,13 @@ const RemoveBtn = ({movieId, userId, dispatch, source}) => {
   };
 
   return (
-    <div>
+    <>
       <ActionButton
         onClick={removeButtonHandle}
         icon={<AiOutlineDelete
           size={30}
         />}/>
-    </div>
+    </>
   );
 };
 

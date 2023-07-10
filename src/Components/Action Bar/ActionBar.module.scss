@@ -9,26 +9,26 @@
   display: flex;
   justify-content: center;
   border-radius: 20px;
+
   @media (min-width: 360px) and (max-width: 768px) {
     z-index: 2;
     position: absolute;
-    display: block;
+    flex-direction: column;
     top: 50px;
     right: 4px;
     background: transparent;
   }
+
 
   .tooltip {
     font-size: 18px;
     margin-top: 12px;
   }
 
-  .ratingButton {
-
     .rating {
       position: relative;
 
     }
-  }
 
 }
+

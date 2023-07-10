@@ -28,7 +28,7 @@ const AddToFavoriteBtn = ({movieId, userId, dispatch}) => {
   };
 
   return (
-    <div>
+    <>
       <ActionButton
         onClick={handleToggleFavorite}
         icon={<AiFillHeart
@@ -41,7 +41,7 @@ const AddToFavoriteBtn = ({movieId, userId, dispatch}) => {
         id="like"
         className={styles.tooltip}
         place="bottom"/>
-    </div>
+    </>
   );
 };
 

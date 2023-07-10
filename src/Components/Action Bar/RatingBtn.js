@@ -13,7 +13,7 @@ const RatingBtn = ({movieId}) => {
     setShowRating(!showRating);
   };
   return (
-    <div className={styles.ratingButton}>
+    <>
       <ActionButton
         onClick={handleRateClick}
         className={styles.rating}
@@ -28,7 +28,7 @@ const RatingBtn = ({movieId}) => {
         id="rate"
         className={styles.tooltip}
         place="bottom"/>
-    </div>
+    </>
   );
 };
 

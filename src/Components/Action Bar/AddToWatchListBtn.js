@@ -26,7 +26,7 @@ const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
   };
 
   return (
-    <div>
+    <>
       <ActionButton
         onClick={handleToggleWatchList}
         icon={<BsFillBookmarkFill
@@ -39,7 +39,7 @@ const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
         id="watchlist"
         className={styles.tooltip}
         place="bottom"/>
-    </div>
+    </>
   );
 };
 
