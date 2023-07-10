@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { GiCastle, GiDramaMasks, GiGhost, GiPistolGun, GiRainbowStar } from 'react-icons/gi';
 import { SiOpenstreetmap } from 'react-icons/si';
@@ -6,19 +6,11 @@ import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } fro
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 import { MdFlutterDash } from 'react-icons/md';
 import ProfileSection from './ProfileSection';
+import {useMediaQuery} from "@mui/material";
 
 const Navigations = () => {
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth,);
-
-  useEffect(() => {
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
     <>
@@ -28,7 +20,7 @@ const Navigations = () => {
       <NavLink to="/discovery"><AiOutlineCompass size={'24'}/>Discovery</NavLink>
       <NavLink to="/fresh"><BsArrowClockwise size={'24'}/>Fresh movies</NavLink>
       <NavLink to="/trending"><BsFire size={'24'}/>Trending now</NavLink>
-      {windowWidth > 768 && windowWidth < 1024 ?
+      {!isMobile ?
         <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
       <p>popular genders</p>
       <p>menu</p>

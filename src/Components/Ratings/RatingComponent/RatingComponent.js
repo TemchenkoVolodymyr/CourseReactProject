@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
 import styles from './RatingComponent.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
@@ -6,13 +6,10 @@ import {createRating} from "../../../http/ratingAPI";
 import {loadUserRatings} from "../../../redux/backend/ratingBackendSlice";
 
 
-const RatingComponent = ({ movieId, setShowRating }) => {
-const dispatch = useDispatch()
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const {ratings}  = useSelector((state) => state.ratings);
-  const {user} = useSelector(state => state.users)
-
-  const userId = user.id
+const RatingComponent = ({movieId, setShowRating}) => {
+  const dispatch = useDispatch()
+  const {ratings} = useSelector((state) => state.ratings);
+  const userId = useSelector(state => state.users.user.id)
 
   const userRatingForThisMovie = ratings?.find(
     (rating) => parseInt(rating.movieId) === parseInt(movieId)
@@ -30,30 +27,20 @@ const dispatch = useDispatch()
     setShowRating(false)
   };
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () =>  window.addEventListener('resize', handleResize);
-  });
 
   return (
     <div className={styles.stars}>
       <ReactStars
-          count={5}
-          onChange={handleRatingChange}
-          value={userRatingForThisMovie}
-          size={45}
-          isHalf={true}
-          emptyIcon={<i className="far fa-star" style={{ color: 'white' }}></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
-          activeColor="#ffd700"
-        />
-
-
+        count={5}
+        onChange={handleRatingChange}
+        value={userRatingForThisMovie}
+        size={45}
+        isHalf={true}
+        emptyIcon={<i className="far fa-star" style={{color: 'white'}}></i>}
+        halfIcon={<i className="fa fa-star-half-alt"></i>}
+        fullIcon={<i className="fa fa-star"></i>}
+        activeColor="#ffd700"
+      />
     </div>
   );
 };

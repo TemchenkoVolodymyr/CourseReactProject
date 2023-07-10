@@ -3,12 +3,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
 import {createReview} from "../../http/reviewAPI";
 import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
 import {useDispatch} from "react-redux";
+import {useMediaQuery} from "@mui/material";
 
 const styleModal = {
   position: 'absolute',
@@ -45,19 +46,9 @@ export default function ModalForReviews({
                                           userId
                                         }) {
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const sendReviewHandler = (value) => {
     if (value) {
@@ -75,10 +66,10 @@ export default function ModalForReviews({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={windowWidth >= 360 && windowWidth < 768 ? stylePhoneModal : styleModal}
+        <Box sx={isMobile ? stylePhoneModal : styleModal}
              style={{width: '100vh', height: '60vh'}}>
           <div className={style.wrapperCloseModalBtn}>
-            {windowWidth >= 360 && windowWidth < 768 ?
+            {isMobile ?
               <CustomButton callback={callback} name={'Close the modal'}></CustomButton> : null}
           </div>
           <Typography id="modal-modal-title" variant="h6" component="div">

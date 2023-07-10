@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
 import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import {useMediaQuery} from "@mui/material";
 
-const TrendingNowSection = ({ windowWidth }) => {
+const TrendingNowSection = () => {
 
   const [movies, setMovies] = useState([])
+  const isMobile = useMediaQuery('(max-width: 780px)');
 
   useEffect(() => {
     const fetchData = async() => {
@@ -23,7 +25,7 @@ const TrendingNowSection = ({ windowWidth }) => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={windowWidth >= 360 && windowWidth < 768 ? 3 : 7}
+          navigation slidesPerView={isMobile ? 2 : 4}
           spaceBetween={10}>
           {
             movies?.map((movie) =>

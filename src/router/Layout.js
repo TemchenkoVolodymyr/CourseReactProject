@@ -13,13 +13,14 @@ import {BsFilm} from 'react-icons/bs';
 import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
 import {itemMovies} from '../constants/data';
+import {useMediaQuery} from "@mui/material";
 
 
 const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
   const userId = useSelector((state) => state.users.user.id);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -37,15 +38,9 @@ const Layout = () => {
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
+
   useEffect(() => {
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
-
     const components = ['body-background', 'components-background', 'text-color', 'btn-color-hover', 'color-header', 'color-input'];
     components.forEach((component) => {
       root.style.setProperty(
@@ -53,45 +48,46 @@ const Layout = () => {
         `var(--${component}-${theme})`,
       );
     });
-
-    return () => window.removeEventListener('resize', handleResize);
   }, [theme]);
 
   return (
     <>
-      {windowWidth >= 768 ?
+      {!isMobile ?
         <>
           <section id={'mainContent'} className={'containerTopLayout'}>
+            {/*right sidebar*/}
             <nav className={'containerNav'}>
               <Navigations/>
             </nav>
+            {/*main content*/}
             <main className={'containerMain'}>
               <Outlet/>
-              {showButton && <ScrollButton></ScrollButton>}
+              {showButton && <ScrollButton/>}
             </main>
+            {/*left sidebar*/}
             <section className={'containerSideBar'}>
               <Search/>
-              <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
+              <CustomizedSwitches callback={changeTheme}/>
               <PopularMovies/>
               <FavoriteMovies userId={userId}/>
             </section>
-
           </section>
           {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
         </>
         : <main className={'containerMain'}>
           <div className={style.header + ' ' + style.headerMain}>
-            {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
-                <Search></Search>
-                <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
+            <div className={style.logo}>
+                <Search/>
+                <NavLink className={style.logoHeader} to="/">
+                  <BsFilm size={'20'}/>
+                  <h1>MovieMagic</h1>
+                </NavLink>
                 <BurgerMenu title={'Movies'} items={itemMovies}></BurgerMenu>
               </div>
-              :
-              <h1>watch movies online</h1>}
-            {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
           </div>
           <Outlet/>
-        </main>}
+        </main>
+      }
     </>
   );
 };

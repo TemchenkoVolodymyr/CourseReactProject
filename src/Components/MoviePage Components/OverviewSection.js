@@ -1,22 +1,21 @@
 import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
+import {useMediaQuery} from "@mui/material";
 
-const OverviewSection = ({ movie,windowWidth }) => {
+const OverviewSection = ({ movie }) => {
+
+  const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <section className={style.overview}>
       <div className={style.rating}>
         <p>User Score</p>
-        {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
+        <CircleRating
             rating={movie.vote_average * 10}
-            size={90}
+            size={isMobile ? 80 : 110}
             displayAsPercentage={true}
-          /> :
-          <CircleRating
-            rating={movie.vote_average * 10}
-            size={110}
-            displayAsPercentage={true}
-          /> }
+          />
       </div>
       <div className={style.about}>
         <p>{movie.overview}

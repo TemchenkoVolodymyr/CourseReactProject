@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
 import styles from '../Button/CustomButton.module.scss';
+import {useMediaQuery} from "@mui/material";
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
   const navigate = useNavigate();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  });
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   const watchOnClickHandler = () => {
     navigate(`/movie/${id}`);
@@ -27,14 +19,10 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
       }}>
       <div className="userScore">
         <p>User Score</p>
-        {windowWidth >= 360 && windowWidth < 600 ? <CircleRating
+        <CircleRating
             rating={rating}
             displayAsPercentage={displayAsPercentage}
-            size={60}/> :
-          <CircleRating
-            rating={rating}
-            displayAsPercentage={displayAsPercentage}
-            size={100}/>}
+            size={isMobile ?  60 : 100}/>
       </div>
       <div>
         <h2>{name}</h2>

@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
 import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import {useMediaQuery} from "@mui/material";
 
-const BestActorsSection = ({ windowWidth }) => {
+const BestActorsSection = () => {
 
   const [bestActors, setBestActors] = useState([])
+  const isMobile = useMediaQuery('(max-width: 780px)');
 
   useEffect(() => {
     const fetchData = async() => {
@@ -24,7 +26,7 @@ const BestActorsSection = ({ windowWidth }) => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={ windowWidth >= 360 && windowWidth < 768 ? 3 : 7 }
+          navigation slidesPerView={ isMobile ? 2 : 3 }
           spaceBetween={10}>
           {
             bestActors?.map((actor) =>

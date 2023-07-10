@@ -3,12 +3,13 @@ import CircleRating from '../Ratings/CircleRating/CircleRating';
 import { useDispatch, useSelector } from 'react-redux';
 import AddToWatchListBtn from '../Action Bar/AddToWatchListBtn';
 import AddToFavoriteBtn from '../Action Bar/AddToFavoriteBtn';
+import {useMediaQuery} from "@mui/material";
 
 
-const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movieId, showActionBadge, windowWidth }) => {
+const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movieId, showActionBadge }) => {
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.users)
-  const userId = user.id
+  const userId = useSelector(state => state.users.user.id)
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   return (
   <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w300${img})`}}>
@@ -16,7 +17,7 @@ const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movie
       {canvasShow && <CircleRating
         rating={rating}
         displayAsPercentage={displayAsPercentage}
-        size={windowWidth >= 360 && windowWidth < 768 ? 80 : 60}
+        size={isMobile ? 80 : 60}
       /> }
       {showActionBadge && <>
         <div>

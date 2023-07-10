@@ -4,8 +4,10 @@ import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
+import {useMediaQuery} from "@mui/material";
 
-const SimilarBlock = ({ movie, windowWidth }) => {
+const SimilarBlock = ({ movie }) => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   return (
     <>
       <Swiper
@@ -13,7 +15,7 @@ const SimilarBlock = ({ movie, windowWidth }) => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={windowWidth >= 360 && windowWidth < 768 ? 2 : 5}
+          navigation slidesPerView={isMobile ? 2 : 5}
           spaceBetween={10}>
 
           {movie?.similar.results.map((similar) =>
@@ -29,7 +31,6 @@ const SimilarBlock = ({ movie, windowWidth }) => {
                   canvasShow={true}
                   movieId={similar.id}
                   showActionBadge={true}
-                  windowWidth={windowWidth}
                 />
               </NavLink>
             </SwiperSlide>

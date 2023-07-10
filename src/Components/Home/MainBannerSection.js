@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
 import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import {useMediaQuery} from "@mui/material";
 
-const MainBannerSection = ({ windowWidth }) => {
+const MainBannerSection = () => {
 
   const [discover, setDiscover] = useState([])
 
@@ -35,12 +36,11 @@ const MainBannerSection = ({ windowWidth }) => {
               onClick={() => localStorage.setItem('movieId', movie.id )}>
 
               <SliderWithWatchBtn
-                windowWidth={windowWidth}
                 rating={(movie.vote_average * 10).toFixed(1)}
                 displayAsPercentage={true}
                 name={movie.title}
                 bg={movie.backdrop_path}
-                id={movie.id}></SliderWithWatchBtn>
+                id={movie.id}/>
             </NavLink>
           </SwiperSlide>
         )}

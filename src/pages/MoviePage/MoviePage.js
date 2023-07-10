@@ -18,15 +18,14 @@ import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
 import {fetchAPIDataWithOptions} from "../../utils/helperFunctions/fetchAPIData";
 
 
-
 const MoviePage = () => {
   const { title } = useParams();
   const movieId = localStorage.getItem('movieId');
   const [movie, setMovie] = useState();
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const userId = useSelector(state => state.users.user.id)
+
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
@@ -44,12 +43,6 @@ const MoviePage = () => {
       dispatch(loadUserFavorites(userId))
     }
     dispatch(loadMovieReviews(movieId))
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, [dispatch, userId, movieId]);
 
   if (!movie) {
@@ -64,9 +57,9 @@ const MoviePage = () => {
       <div className={style.wrapper}>
         <MainBanner movie={movie}/>
         <h2>Overview</h2>
-        <OverviewSection movie={movie} windowWidth={windowWidth}/>
+        <OverviewSection movie={movie}/>
         <h2>Top Billed Cast</h2>
-        <TopBilledCast movie={movie} windowWidth={windowWidth}/>
+        <TopBilledCast movie={movie}/>
         <section >
         <div className={style.reviewsContainer}>
           <div className={style.headerReviews}>
@@ -78,7 +71,7 @@ const MoviePage = () => {
         </section>
         <SliderForReview/>
         <h2>Similar</h2>
-        <SimilarBlock movie={movie} windowWidth={windowWidth}/>
+        <SimilarBlock movie={movie}/>
       </div>
       <ModalForReviews
         movie={movie}
