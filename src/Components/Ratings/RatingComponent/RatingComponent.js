@@ -41,28 +41,18 @@ const dispatch = useDispatch()
 
   return (
     <div className={styles.stars}>
-      {windowWidth >= 360 && windowWidth < 768 ?  <ReactStars
+      <ReactStars
           count={5}
           onChange={handleRatingChange}
           value={userRatingForThisMovie}
-          size={25}
+          size={45}
           isHalf={true}
           emptyIcon={<i className="far fa-star" style={{ color: 'white' }}></i>}
           halfIcon={<i className="fa fa-star-half-alt"></i>}
           fullIcon={<i className="fa fa-star"></i>}
           activeColor="#ffd700"
-        /> :
-        <ReactStars
-          count={5}
-          onChange={handleRatingChange}
-          value={userRatingForThisMovie}
-          size={44}
-          isHalf={true}
-          emptyIcon={<i className="far fa-star" style={{ color: 'white' }}></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
-          activeColor="#ffd700"
-        /> }
+        />
+
 
     </div>
   );

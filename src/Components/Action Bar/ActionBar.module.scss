@@ -13,13 +13,9 @@
     z-index: 2;
     position: absolute;
     display: block;
-    top: 17px;
+    top: 50px;
     right: 4px;
     background: transparent;
-  }
-
-  & > div {
-
   }
 
   .tooltip {
@@ -29,9 +25,9 @@
 
   .ratingButton {
 
-
     .rating {
       position: relative;
+
     }
   }
 

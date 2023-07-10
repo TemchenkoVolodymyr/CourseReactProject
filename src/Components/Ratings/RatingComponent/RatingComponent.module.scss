@@ -4,15 +4,13 @@
   position: absolute;
   padding: 20px;
   top: 80px;
+
+
   @media (min-width: 360px) and (max-width: 768px) {
     padding: 5px;
-    top: 188px;
-    right: 48px;
-  }
-
-  & > div {
-    & > div {
-      display: flex;
-    }
+    top: 189px;
+    right: 90px;
+    height: 60px;
+    width: 200px;
   }
 }
