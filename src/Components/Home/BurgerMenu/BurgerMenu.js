@@ -1,97 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import style from './BurgerMenu.module.scss';
-import ProfileSection from '../../../router/Navigations/ProfileSection';
+import {itemGenres, itemMovies} from "../../../constants/data";
+import {CgProfile} from "react-icons/cg";
+import {BiDownArrow, BiLogIn, BiLogOut, BiUpArrow} from "react-icons/bi";
+import {useDispatch, useSelector} from "react-redux";
+import {setIsAuth, setUser} from "../../../redux/backend/userBackendSlice";
+import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 
 
-const BurgerMenu = ({ items }) => {
+const BurgerMenu = () => {
 
-  const [modal, setModal] = useState(false);
-  const [styleModal, setStyleModal] = useState();
   const [isActive, setIsActive] = useState(false);
+  const {isAuth, user} = useSelector(state => state.users)
+  const dispatch = useDispatch()
+  const [isMoviesOpen, setIsMoviesOpen] = useState(false);
+  const [isGenreOpen, setIsGenreOpen] = useState(false);
 
-  useEffect(() => {
-    if (modal === false) {
-      setStyleModal({
-        // backgroundColor: '#219132',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'absolute',
-        zIndex: '1001',
-        // top:-1000,
-        top: 0,
-      });
-    } else {
-      setStyleModal({
-        backgroundColor: '#7c1d1d',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'absolute',
-        zIndex: '1001',
-
-      });
-    }
-
-  }, [modal]);
-
-  // const userName = userData && userData.userName;
-
-  const itemGenres = [{
-    to: '/genre/action',
-    name: 'Action',
-  },
-    {
-      to: '/genre/adventure',
-      name: 'Adventure',
-    },
-
-    {
-      to: '/genre/comedy',
-      name: 'Comedy',
-    },
-    {
-      to: '/genre/drama',
-      name: 'Drama',
-    },
-    {
-      to: '/genre/animation',
-      name: 'Animation',
-    },
-    {
-      to: '/genre/fantasy',
-      name: 'Fantasy',
-    },
-    {
-      to: '/genre/documentary',
-      name: 'Documentary',
-    },
-    {
-      to: '/genre/horror',
-      name: 'Horror',
-    },
-  ];
+  const logOut = () => {
+    dispatch(setUser({}))
+    dispatch(setIsAuth(false))
+    localStorage.removeItem('token');
+  }
 
   const changeActive = () => {
     document.body.classList.toggle('lock');
     setIsActive(!isActive);
   };
-  const links = items.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
-  const genres = itemGenres.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
 
+  const onClickMovieHandler = (event) => {
+    event.stopPropagation()
+    setIsMoviesOpen(!isMoviesOpen)
+  }
+
+  const onClickGenreHandler = (event) => {
+    event.stopPropagation()
+    setIsGenreOpen(!isGenreOpen)
+  }
+
+  const links = itemMovies.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
+  const genres = itemGenres.map((item, i) => <NavLink key={i} to={item.to}>{item.name}</NavLink>);
 
   return (
     <div className={style.container}>
+
+
       <div className={`${style.headerBurger} ${isActive ? style.active : null}`} onClick={changeActive}>
         <span></span>
         <div className={style.menu}>
-          <ul className={style.items} style={styleModal}>
-            <NavLink to={'/'} >Home</NavLink>
-            <p>Movies</p>
-            {links}
-            <p>Genres</p>
-            {genres}
-            <ProfileSection/>
-          </ul>
+          <div className={style.userInfo}>
+            {isAuth ?
+              <div className={style.login}>
+                <NavLink
+                  to={`/u/${user.userName}`}
+                  style={{cursor: 'pointer'}}
+                ><CgProfile size={35} color={'#E30914'}/>
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  onClick={() => logOut()}
+                  style={{cursor: 'pointer'}}
+                ><BiLogOut size={35}
+                           color={'#E30914'}/></NavLink>
+              </div>
+              :
+              <div>
+                <NavLink
+                  to={'/login'}
+                  style={{cursor: 'pointer'}}
+                ><BiLogIn size={35}
+                          color={'#E30914'}/></NavLink>
+              </div>
+            }
+
+            <div className={style.items}>
+              <NavLink to={'/'}>Home</NavLink>
+
+              <p
+                onClick={onClickMovieHandler}>Movies {isMoviesOpen ? <AiOutlineEyeInvisible size={20} /> :
+                <AiOutlineEye size={20}/>} </p>
+              <div>
+                {isMoviesOpen && <div>{links}</div>}
+              </div>
+
+              <p
+                onClick={onClickGenreHandler}>Genres {isGenreOpen ? <AiOutlineEyeInvisible size={20}/> :
+                <AiOutlineEye size={20}/>}</p>
+              <div>
+                {isGenreOpen && <div>{genres}</div>}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

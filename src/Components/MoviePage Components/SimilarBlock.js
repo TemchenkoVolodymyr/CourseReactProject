@@ -15,7 +15,7 @@ const SimilarBlock = ({ movie }) => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={isMobile ? 2 : 5}
+          navigation slidesPerView={isMobile ? 2 : 4}
           spaceBetween={10}>
 
           {movie?.similar.results.map((similar) =>

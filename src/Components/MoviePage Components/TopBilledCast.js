@@ -18,7 +18,7 @@ const TopBilledCast = ({ movie }) => {
           tag="section"
           wrapperTag="ul"
           navigation
-          slidesPerView={isMobile ? 2 : 5}
+          slidesPerView={isMobile ? 2 : 4}
           spaceBetween={10}>
 
           {movie?.credits.cast.slice(0, 20).map((actor) =>

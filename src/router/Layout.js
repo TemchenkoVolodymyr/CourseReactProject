@@ -1,19 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import './Layout.scss';
-import {Outlet} from 'react-router';
+import {Outlet, useNavigate} from 'react-router';
 import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
 import ScrollButton from './ScrollButton';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
 import {NavLink} from 'react-router-dom';
-import {BsFilm} from 'react-icons/bs';
+import {BsFilm, BsSearch} from 'react-icons/bs';
 import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
-import {itemMovies} from '../constants/data';
 import {useMediaQuery} from "@mui/material";
+import {CgProfile} from "react-icons/cg";
+import {BiLogIn, BiLogOut} from "react-icons/bi";
+import {setIsAuth, setUser} from "../redux/backend/userBackendSlice";
 
 
 const Layout = () => {
@@ -21,6 +23,7 @@ const Layout = () => {
   const [showButton, setShowButton] = useState(false);
   const userId = useSelector((state) => state.users.user.id);
   const isMobile = useMediaQuery('(max-width: 767px)');
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -75,15 +78,14 @@ const Layout = () => {
           {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
         </>
         : <main className={'containerMain'}>
-          <div className={style.header + ' ' + style.headerMain}>
-            <div className={style.logo}>
-                <Search/>
-                <NavLink className={style.logoHeader} to="/">
-                  <BsFilm size={'20'}/>
-                  <h1>MovieMagic</h1>
-                </NavLink>
-                <BurgerMenu title={'Movies'} items={itemMovies}></BurgerMenu>
-              </div>
+          <div className={style.logo}>
+              <BsSearch size={27}/>
+              <NavLink className={style.logoHeader} to="/">
+                <BsFilm size={'20'}/>
+                MovieMagic
+              </NavLink>
+              <BurgerMenu title={'Movies'}/>
+
           </div>
           <Outlet/>
         </main>
