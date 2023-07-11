@@ -56,8 +56,6 @@ const MoviePage = () => {
       <ActionBar movie={movie} movieId={movie.id} source="moviePage" />
       <div className={style.wrapper}>
         <MainBanner movie={movie}/>
-        <h2>Overview</h2>
-        <OverviewSection movie={movie}/>
         <h2>Top Billed Cast</h2>
         <TopBilledCast movie={movie}/>
         <section >

@@ -12,20 +12,10 @@ const OverviewSection = ({ movie }) => {
       <div className={style.rating}>
         <p>User Score</p>
         <CircleRating
-            rating={movie.vote_average * 10}
-            size={isMobile ? 80 : 110}
+            rating={movie.vote_average.toFixed(2) * 10}
+            size={isMobile ? 80 : 100}
             displayAsPercentage={true}
           />
-      </div>
-      <div className={style.about}>
-        <p>{movie.overview}
-        </p>
-      </div>
-      <div className={style.data}>
-        <p><strong>Release Date:</strong> {movie.release_date}</p>
-        <p><strong>Original Language:</strong> {movie.original_language.toUpperCase()}</p>
-        <p><strong>Budget:</strong> $ {movie.budget}</p>
-        <p><strong>Revenue:</strong> $ {movie.revenue}</p>
       </div>
     </section>
   );

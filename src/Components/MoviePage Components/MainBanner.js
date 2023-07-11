@@ -1,16 +1,20 @@
 import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import { NavLink } from 'react-router-dom';
+import CircleRating from "../Ratings/CircleRating/CircleRating";
+import {useMediaQuery} from "@mui/material";
 
 const MainBanner = ({ movie }) => {
   const image = movie.poster_path ? movie.poster_path : movie.backdrop_path;
+  const isMobile = useMediaQuery('(max-width: 767px)');
   return (
-    <section
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}
-      className={style.banner}>
-      <div className={style.info}>
+
+    <section className={style.main}>
+      <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}
+           className={style.main__banner}></div>
+      <div className={style.main__info}>
         <h1>{movie.title}</h1>
-        <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
+        <p className={style.data}>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
         <p>
           <span>Genres: </span>
           {movie.genres.map((genre, index) => (
@@ -31,10 +35,23 @@ const MainBanner = ({ movie }) => {
               {index !== movie.credits.cast.slice(0, 5).length - 1 && ', '}
             </React.Fragment>
           ))}
-
         </p>
+          <p>{movie.overview}</p>
+        <div className={style.additional}>
+          <div>
+            <p>Original Language: {movie.original_language.toUpperCase()}</p>
+            <p>Budget: $ {movie.budget}</p>
+            <p>Revenue: $ {movie.revenue}</p>
+          </div>
+            <CircleRating
+              rating={(movie.vote_average).toFixed(1) * 10}
+              size={isMobile ? 80 : 90}
+              displayAsPercentage={true}
+            />
+        </div>
       </div>
     </section>
+
   );
 };
 

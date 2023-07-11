@@ -19,121 +19,11 @@
   h2, h3 {
     color: var(--color-header-default);
   }
-
-  .banner {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    border-radius: 15px;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-      border-radius: 15px;
-    }
-
-
-    .info {
-      margin-left: 30px;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      @media (min-width: 360px) and (max-width: 768px) {
-        margin-left: 0;
-        max-width: 300px;
-      }
-
-      h1 {
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: white;
-        @media (min-width: 360px) and (max-width: 768px) {
-          font-size: 16px;
-        }
-      }
-
-      p {
-        padding: 5px 0;
-        font-size: 14px;
-        opacity: .9;
-        color: white;
-
-        span {
-          opacity: .7;
-          color: white;
-        }
-      }
-
-    }
-  }
-
-  .overview {
-    display: flex;
-    justify-content: space-between;
-    opacity: .8;
-    line-height: 25px;
-    font-size: 18px;
-    color: white;
-    @media (min-width: 360px) and (max-width: 768px) {
-      font-size: 13px;
-    }
-  }
-
-  .rating {
-    p {
-      text-align: center;
-      text-transform: uppercase;
-    }
-  }
-
-  .about {
-    width: 60%;
-  }
-
-  .data {
-    padding-right: 80px;
-    @media (min-width: 360px) and (max-width: 768px) {
-      padding-right: 0;
-      strong {
-        color: #fcfcfc;
-      }
-    }
-  }
 }
 
 .swiper-slide {
   width: 250px !important;
 
-
-}
-
-
-.genres {
-  background-color: #050505;
-  border-radius: 5px;
-
-  a {
-    color: firebrick;
-    text-decoration: none;
-    padding: 0 5px;
-
-    &:hover {
-      color: #ea6615;;
-    }
-  }
 }
 
 .reviewsContainer {
@@ -156,10 +46,6 @@
   }
 }
 
-.wrapperReview {
-  background-color: #ececec;
-  margin-bottom: 10px;
-}
 
 .reviews {
   color: #E30914 !important;
@@ -186,5 +72,63 @@
 
   a {
     margin-right: 5px;
+  }
+}
+
+.main{
+  display: flex;
+  align-items: center;
+
+  &__banner {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    width: 45%;
+    border-radius: 15px;
+    margin: 5px;
+  }
+
+  &__info {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+
+    @media (min-width: 360px) and (max-width: 768px) {
+      margin-left: 0;
+      max-width: 300px;
+    }
+
+    .data{
+      text-align: center;
+    }
+    h1 {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+      text-align: center;
+      @media (min-width: 360px) and (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    p {
+      padding: 5px 0;
+      font-size: 16px;
+
+      span {
+        opacity: .7;
+        color: white;
+      }
+    }
+
+    .additional{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+
+    }
+
   }
 }
