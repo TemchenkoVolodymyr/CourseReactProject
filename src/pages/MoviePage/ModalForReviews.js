@@ -26,16 +26,17 @@ const styleModal = {
 };
 const stylePhoneModal = {
   position: 'absolute',
-  top: '50%',
+  top: '59%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '100%',
+  width: '60%',
   bgcolor: 'rgb(0 0 0 / 83%)',
   boxShadow: 24,
   p: 4,
   color: 'white',
   maxHeight: '600px',
   overflowY: 'scroll',
+  fontSize: '18px'
 };
 
 export default function ModalForReviews({
@@ -66,12 +67,7 @@ export default function ModalForReviews({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={isMobile ? stylePhoneModal : styleModal}
-             style={{width: '100vh', height: '60vh'}}>
-          <div className={style.wrapperCloseModalBtn}>
-            {isMobile ?
-              <CustomButton callback={callback} name={'Close the modal'}></CustomButton> : null}
-          </div>
+        <Box sx={isMobile ? stylePhoneModal : styleModal}>
           <Typography id="modal-modal-title" variant="h6" component="div">
             <h1>{`Leave your review for "${movie.original_title}"`}</h1>
           </Typography>
