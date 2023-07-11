@@ -25,7 +25,7 @@ const TrendingNowSection = () => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={isMobile ? 2 : 4}
+          navigation slidesPerView={isMobile ? 2 : 3}
           spaceBetween={10}>
           {
             movies?.map((movie) =>
@@ -41,7 +41,6 @@ const TrendingNowSection = () => {
                     displayAsPercentage={true}
                     canvasShow={true}
                     movieId={movie.id}
-                    showActionBadge={true}
                   />
                 </NavLink>
               </SwiperSlide>

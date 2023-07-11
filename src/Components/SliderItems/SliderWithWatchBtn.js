@@ -17,12 +17,11 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
         backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), 
         rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/original${bg})`
       }}>
-      <div className="userScore">
-        <p>User Score</p>
+      <div>
         <CircleRating
             rating={rating}
             displayAsPercentage={displayAsPercentage}
-            size={isMobile ?  60 : 100}/>
+            size={isMobile ?  80 : 90}/>
       </div>
       <div>
         <h2>{name}</h2>

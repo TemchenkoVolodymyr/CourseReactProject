@@ -1,7 +1,7 @@
 .container {
   max-height: 500px;
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 20px;
 
   a{
     text-decoration: none;
@@ -15,8 +15,9 @@
   }
 
   .wrapperBox {
-    width: 200px;
-    height: 100px;
+
+    width: 90%;
+    height: 350px;
     margin: 10px;
     border-radius: 15px;
     display: flex;

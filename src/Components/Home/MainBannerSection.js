@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
 import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
-import {useMediaQuery} from "@mui/material";
+
 
 const MainBannerSection = () => {
 

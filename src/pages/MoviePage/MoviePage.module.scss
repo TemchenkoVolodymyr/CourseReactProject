@@ -88,14 +88,14 @@
   &__banner {
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 550px;
     width: 45%;
     border-radius: 15px;
     margin: 5px;
     position: relative;
 
     @media (max-width: 768px) {
-      width: 80%;
+      width: 85%;
     }
   }
 
@@ -109,6 +109,7 @@
     @media (max-width: 768px) {
       margin-left: 0;
       width: 92%;
+      margin-top: 5px;
     }
 
     .data{

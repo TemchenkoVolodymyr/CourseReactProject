@@ -29,6 +29,8 @@ const MainBanner = ({ movie }) => {
             </React.Fragment>
           ))}
         </p>
+
+          <p>{movie.overview}</p>
         <p><span>Actors: </span>
           {movie.credits.cast.slice(0, 5).map((actor, index) => (
             <React.Fragment key={actor.id}>
@@ -40,7 +42,6 @@ const MainBanner = ({ movie }) => {
             </React.Fragment>
           ))}
         </p>
-          <p>{movie.overview}</p>
         <div className={style.additional}>
           <div>
             <p>Original Language: {movie.original_language.toUpperCase()}</p>
