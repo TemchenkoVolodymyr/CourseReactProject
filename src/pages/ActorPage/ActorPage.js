@@ -22,6 +22,7 @@ const ActorPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
+        // eslint-disable-next-line max-len
         const { data } = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
         setActors(data);
       } catch (err) {

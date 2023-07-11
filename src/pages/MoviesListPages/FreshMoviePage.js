@@ -3,17 +3,17 @@ import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 const FreshMoviePage = () => {
   const [movies, setMovies] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieData = await fetchAPIDataWithOutOptions(`movie/upcoming`);
+      const movieData = await fetchAPIDataWithOutOptions('movie/upcoming');
       setMovies(movieData);
-    }
-    fetchData()
+    };
+    fetchData();
 
   }, []);
 

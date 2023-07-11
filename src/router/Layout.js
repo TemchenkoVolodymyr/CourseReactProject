@@ -1,20 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import {Outlet, useNavigate} from 'react-router';
+import { Outlet } from 'react-router';
 import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies';
 import ScrollButton from './ScrollButton';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
-import {NavLink} from 'react-router-dom';
-import {BsFilm, BsSearch} from 'react-icons/bs';
+import { NavLink } from 'react-router-dom';
+import { BsFilm, BsSearch } from 'react-icons/bs';
 import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 import { animated, useSpring } from '@react-spring/web';
-import ActionBar from "../Components/Action Bar/ActionBar";
 
 const Layout = () => {
 
@@ -24,9 +23,9 @@ const Layout = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const onCLickSearchHandler = (event) => {
-    event.stopPropagation()
-    setIsSearchOpen(!isSearchOpen)
-  }
+    event.stopPropagation();
+    setIsSearchOpen(!isSearchOpen);
+  };
 
   const styles = useSpring({
     width: isSearchOpen ? 320 : 0,

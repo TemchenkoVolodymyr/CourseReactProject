@@ -7,7 +7,7 @@ import MainBannerSection from './MainBannerSection';
 import TrendingNowSection from './TrendingNowSection';
 import BestActorsSection from './BestActorsSection';
 import Search from '../Search/Search';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
 
 const HomeLayout = () => {

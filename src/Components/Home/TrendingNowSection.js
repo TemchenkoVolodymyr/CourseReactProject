@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
-import {useMediaQuery} from "@mui/material";
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
+import { useMediaQuery } from '@mui/material';
 
 const TrendingNowSection = () => {
 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
   const isMobile = useMediaQuery('(max-width: 500px)');
 
   useEffect(() => {
     const fetchData = async() => {
-      const moviesData = await fetchAPIDataWithOutOptions('trending/movie/day')
-      setMovies(moviesData.results)
-    }
-    fetchData()
-  }, [])
+      const moviesData = await fetchAPIDataWithOutOptions('trending/movie/day');
+      setMovies(moviesData.results);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>

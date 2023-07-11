@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {useState} from 'react';
-import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
 import {createReview} from "../../http/reviewAPI";
 import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";

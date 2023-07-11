@@ -6,7 +6,7 @@ import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } fro
 import { AiOutlineCompass, AiOutlineHome } from 'react-icons/ai';
 import { MdFlutterDash } from 'react-icons/md';
 import ProfileSection from './ProfileSection';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
 const Navigations = () => {
 

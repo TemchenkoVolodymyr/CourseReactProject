@@ -1,6 +1,6 @@
 import React from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import FilmComponent from './FilmComponent/FilmComponent';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
@@ -8,7 +8,7 @@ import { applySortOrder, filterProfileMovies } from '../../../utils/helperFuncti
 
 const UserFavorites = () => {
 
-  const {favorites } = useSelector((state) => state.favorites);
+  const { favorites } = useSelector((state) => state.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const error = useSelector((state) => state.favorites.error);
   const { filterBy, isOrderOpen } = useSelector((state) => state.filters);

@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 import styles from '../Pages.module.scss';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import { Helmet } from 'react-helmet';
-import Loader from "../../Loader/Loader";
+import Loader from '../../Loader/Loader';
 
 
 const PopularMoviesPage = () => {
 
-  const {popularMovies, isLoading, error} = useSelector((state) => state.popMovies);
+  const { popularMovies, isLoading, error } = useSelector((state) => state.popMovies);
 
   return (
 

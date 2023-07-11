@@ -17,6 +17,7 @@ const CurrentGenre = () => {
     async function fetchMovie() {
       try {
         const { data } = await axios
+          // eslint-disable-next-line max-len
           .get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=${currentGenre}`);
         setCurrGenre(data);
       } catch (err) {

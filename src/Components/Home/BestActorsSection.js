@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
-import {useMediaQuery} from "@mui/material";
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
+import { useMediaQuery } from '@mui/material';
 
 const BestActorsSection = () => {
 
-  const [bestActors, setBestActors] = useState([])
+  const [bestActors, setBestActors] = useState([]);
   const isMobile = useMediaQuery('(max-width: 500px)');
 
   useEffect(() => {
     const fetchData = async() => {
-      const actorsData = await fetchAPIDataWithOutOptions('person/popular')
-      setBestActors(actorsData.results)
-    }
-    fetchData()
-  }, [])
+      const actorsData = await fetchAPIDataWithOutOptions('person/popular');
+      setBestActors(actorsData.results);
+    };
+    fetchData();
+  }, []);
 
 
   return (
@@ -26,7 +26,7 @@ const BestActorsSection = () => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={ isMobile ? 1 : 3 }
+          navigation slidesPerView={isMobile ? 1 : 3}
           spaceBetween={10}>
           {
             bestActors?.map((actor) =>

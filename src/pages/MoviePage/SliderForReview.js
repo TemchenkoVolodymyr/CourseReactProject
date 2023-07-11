@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './SliderForReview.scss';
-import {useSelector} from "react-redux";
+import { useSelector } from 'react-redux';
 
 
 const SliderForReview = () => {
-  const {movieReviews} = useSelector(state => state.reviews)
+  const { movieReviews } = useSelector((state) => state.reviews);
 
   return (
       <div className={'container'}>

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../UserProfile.module.scss';
 import { FaRegSadCry } from 'react-icons/fa';
 
-const NoInfoComponent = ({review}) => {
+const NoInfoComponent = ({ review }) => {
   return (
     <div className={styles.emptyList}>
       <FaRegSadCry size={50} color="#215064"/>

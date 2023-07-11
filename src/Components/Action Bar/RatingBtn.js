@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import styles from "./ActionBar.module.scss";
-import ActionButton from "./ActionButton";
-import {AiFillStar} from "react-icons/ai";
-import RatingComponent from "../Ratings/RatingComponent/RatingComponent";
-import {Tooltip} from "react-tooltip";
-import {useSelector} from "react-redux";
+import React, { useState } from 'react';
+import styles from './ActionBar.module.scss';
+import ActionButton from './ActionButton';
+import { AiFillStar } from 'react-icons/ai';
+import RatingComponent from '../Ratings/RatingComponent/RatingComponent';
+import { Tooltip } from 'react-tooltip';
+import { useSelector } from 'react-redux';
 
-const RatingBtn = ({movieId}) => {
+const RatingBtn = ({ movieId }) => {
   const isRated = useSelector((state) => state.ratings.isRated[movieId]);
   const [showRating, setShowRating] = useState(false);
   const handleRateClick = () => {

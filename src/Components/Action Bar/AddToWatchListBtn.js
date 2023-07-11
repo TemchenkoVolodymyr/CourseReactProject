@@ -1,28 +1,28 @@
 import React from 'react';
-import ActionButton from "./ActionButton";
-import {BsFillBookmarkFill} from "react-icons/bs";
-import {Tooltip} from "react-tooltip";
-import styles from "./ActionBar.module.scss";
-import {useSelector} from "react-redux";
-import {createWatchList} from "../../http/watchListAPI";
-import {deleteUserWatchList, loadUserWatchList} from "../../redux/backend/watchListBackEndSlice";
-import {useMediaQuery} from "@mui/material";
+import ActionButton from './ActionButton';
+import { BsFillBookmarkFill } from 'react-icons/bs';
+import { Tooltip } from 'react-tooltip';
+import styles from './ActionBar.module.scss';
+import { useSelector } from 'react-redux';
+import { createWatchList } from '../../http/watchListAPI';
+import { deleteUserWatchList, loadUserWatchList } from '../../redux/backend/watchListBackEndSlice';
+import { useMediaQuery } from '@mui/material';
 
-const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
+const AddToWatchListBtn = ({ movieId, userId, dispatch }) => {
 
-  const isListed = useSelector(state => state.watchList.isListed[movieId])
+  const isListed = useSelector((state) => state.watchList.isListed[movieId]);
 
   const handleToggleWatchList = async () => {
     if (!isListed) {
       createWatchList(userId, movieId)
-        .then(data => {
-          dispatch(loadUserWatchList(userId))
+        .then((data) => {
+          dispatch(loadUserWatchList(userId));
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error);
         });
     } else {
-      dispatch(deleteUserWatchList({movieId, userId}))
+      dispatch(deleteUserWatchList({ movieId, userId }));
     }
   };
 

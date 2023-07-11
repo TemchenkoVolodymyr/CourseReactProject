@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {CiSquareRemove} from "react-icons/ci";
-import {BiEdit} from "react-icons/bi";
-import {RiSave3Fill} from "react-icons/ri";
-import styles from "./UserProfile.module.scss";
-import {deleteUserReviews, loadUserReviews, updateUsersReviews} from "../../redux/backend/reviewBackendSlice";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CiSquareRemove } from 'react-icons/ci';
+import { BiEdit } from 'react-icons/bi';
+import { RiSave3Fill } from 'react-icons/ri';
+import styles from './UserProfile.module.scss';
+import { deleteUserReviews, loadUserReviews, updateUsersReviews } from '../../redux/backend/reviewBackendSlice';
 
-const ReviewActionsComponent = ({review}) => {
+const ReviewActionsComponent = ({ review }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(review.text);
   const [text, setText] = useState('');
-  const userId= useSelector(state => state.users.user.id)
+  const userId= useSelector((state) => state.users.user.id);
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -35,9 +35,9 @@ const ReviewActionsComponent = ({review}) => {
   };
 
   const removeReviewHandler = () => {
-    const reviewId = review.id
-    dispatch(deleteUserReviews( reviewId))
-  }
+    const reviewId = review.id;
+    dispatch(deleteUserReviews( reviewId));
+  };
 
   return (
     <div className={styles.reviews}>
@@ -58,7 +58,7 @@ const ReviewActionsComponent = ({review}) => {
             <RiSave3Fill
               onClick={handleSaveClick}
               size={30}
-              style={{cursor: 'pointer'}}
+              style={{ cursor: 'pointer' }}
               color={'#1d891d91'}
             />
           </>
@@ -72,7 +72,7 @@ const ReviewActionsComponent = ({review}) => {
             <BiEdit
               onClick={handleEditClick}
               size={30}
-              style={{cursor: 'pointer'}}
+              style={{ cursor: 'pointer' }}
             />
           </>
         )}
@@ -80,7 +80,7 @@ const ReviewActionsComponent = ({review}) => {
       <CiSquareRemove
         onClick={removeReviewHandler}
         size={30}
-        style={{cursor: 'pointer'}}
+        style={{ cursor: 'pointer' }}
         color={'rgba(152, 4, 4, 0.9)'}/>
     </div>
   );

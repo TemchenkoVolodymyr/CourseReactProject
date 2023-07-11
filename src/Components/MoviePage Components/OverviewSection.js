@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
 const OverviewSection = ({ movie }) => {
 

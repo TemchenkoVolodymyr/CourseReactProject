@@ -1,25 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Search.module.scss';
-import {useDispatch, useSelector} from "react-redux";
-import {updateQuery, updateResults} from "../../redux/slices/searchSlice";
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
-import {BsSearch} from "react-icons/bs";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuery, updateResults } from '../../redux/slices/searchSlice';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
+import { BsSearch } from 'react-icons/bs';
 
 const Search = () => {
-  const dispatch = useDispatch()
-  const {query} = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const { query } = useSelector((state) => state.search);
   const [movies, setMovies ] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const discoverData = await fetchAPIDataWithOutOptions('discover/movie')
-      setMovies(discoverData.results)
-    }
-    fetchData()
-  }, [])
+      const discoverData = await fetchAPIDataWithOutOptions('discover/movie');
+      setMovies(discoverData.results);
+    };
+    fetchData();
+  }, []);
 
   const handleSearch = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     const searchValue = e.target.value;
     dispatch(updateQuery(searchValue));
 

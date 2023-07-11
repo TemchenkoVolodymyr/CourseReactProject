@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Outline.module.scss';
 import { NavLink } from 'react-router-dom';
-import {fetchPopularMovies} from "../../redux/slices/popMoviesSlice";
-import {Swiper, SwiperSlide} from "swiper/react";
+import { fetchPopularMovies } from '../../redux/slices/popMoviesSlice';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 const PopularMovies = () => {
@@ -13,7 +13,7 @@ const PopularMovies = () => {
 
   useEffect(() => {
     dispatch(fetchPopularMovies());
-  }, [])
+  }, []);
 
   return (
     <>

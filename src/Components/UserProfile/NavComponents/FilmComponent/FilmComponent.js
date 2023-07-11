@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../UserProfile.module.scss';
 import CircleRating from '../../../Ratings/CircleRating/CircleRating';
 import { NavLink } from 'react-router-dom';
-import ActionBar from "../../../Action Bar/ActionBar";
+import ActionBar from '../../../Action Bar/ActionBar';
 
 const FilmComponent = ({ id, image, title, rating, overview, release, source }) => {
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import ActionButton from "./ActionButton";
-import {AiOutlineUnorderedList} from "react-icons/ai";
-import styles from "./ActionBar.module.scss";
-import {Tooltip} from "react-tooltip";
+import ActionButton from './ActionButton';
+import { AiOutlineUnorderedList } from 'react-icons/ai';
+import styles from './ActionBar.module.scss';
+import { Tooltip } from 'react-tooltip';
 
 const AddToListBtn = () => {
   return (

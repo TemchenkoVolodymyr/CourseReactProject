@@ -3,8 +3,8 @@ import NavComponentsHeader from './NavComponentsHeader';
 import styles from '../UserProfile.module.scss';
 import NoInfoComponent from './NoInfoComponent';
 import FilmComponent from './FilmComponent/FilmComponent';
-import {useSelector} from 'react-redux';
-import {applySortOrder, filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
+import { useSelector } from 'react-redux';
+import { applySortOrder, filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
 
 
 const UserRatings = () => {
@@ -17,7 +17,7 @@ const UserRatings = () => {
 
   const ratingSortOption = useSelector((state) => selectSortOptionForPage(state, 'page2'));
 
-  const sortedRatingList = applySortOrder(filterProfileMovies(ratings, filterBy, ratingSortOption) , isOrderOpen)
+  const sortedRatingList = applySortOrder(filterProfileMovies(ratings, filterBy, ratingSortOption) , isOrderOpen);
 
   return (
     <>

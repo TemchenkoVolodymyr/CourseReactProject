@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../UserProfile.module.scss';
-import ReviewActionsComponent from "../ReviewActionsComponent";
-import {loadUserReviews} from "../../../redux/backend/reviewBackendSlice";
-import NoInfoComponent from "./NoInfoComponent";
+import ReviewActionsComponent from '../ReviewActionsComponent';
+import { loadUserReviews } from '../../../redux/backend/reviewBackendSlice';
+import NoInfoComponent from './NoInfoComponent';
 
 const UserReviews = () => {
   const dispatch = useDispatch();
-  const {userReviews, userReviewsLoading, userReviewsError} = useSelector((state) => state.reviews);
+  const { userReviews, userReviewsLoading, userReviewsError } = useSelector((state) => state.reviews);
   const userId = useSelector((state) => state.users.user.id);
 
   useEffect(() => {
     dispatch(loadUserReviews(userId));
-  }, [userId])
+  }, [userId]);
 
   return (
 <section className={styles.pageInfo}>

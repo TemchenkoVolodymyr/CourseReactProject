@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
-import {useDispatch, useSelector} from 'react-redux';
-import {setIsAuth, setUser} from "../../redux/backend/userBackendSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsAuth, setUser } from '../../redux/backend/userBackendSlice';
 
 const ProfileSection = () => {
   const dispatch = useDispatch();
-  const {isAuth, user} = useSelector(state => state.users)
+  const { isAuth, user } = useSelector((state) => state.users);
 
   const logOut = () => {
-    dispatch(setUser({}))
-    dispatch(setIsAuth(false))
+    dispatch(setUser({}));
+    dispatch(setIsAuth(false));
     localStorage.removeItem('token');
-  }
+  };
 
   return (
     <>

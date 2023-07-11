@@ -1,16 +1,15 @@
-import React, {useEffect} from 'react';
-import {NavLink} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import style from './Outline.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
-import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
-import {Swiper, SwiperSlide} from "swiper/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUserFavorites } from '../../redux/backend/favoriteBackendSLice';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
-const FavoriteMovies = ({userId}) => {
+const FavoriteMovies = ({ userId }) => {
 
     const dispatch = useDispatch();
-    const {favorites, isLoading} = useSelector((state) => state.favorites);
-  console.log(favorites);
+    const { favorites} = useSelector((state) => state.favorites);
   useEffect(() => {
       if(userId) {
         dispatch(loadUserFavorites(userId));

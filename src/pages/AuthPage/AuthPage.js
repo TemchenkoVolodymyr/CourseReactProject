@@ -1,20 +1,20 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import {useDispatch} from "react-redux";
-import {useLocation, useNavigate} from "react-router";
-import {setIsAuth, setUser} from "../../redux/backend/userBackendSlice";
-import {login, registration} from "../../http/userAPI";
-import {useForm} from "react-hook-form";
-import styles from "../../Components/Auth/AuthForm.module.scss";
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router';
+import { setIsAuth, setUser } from '../../redux/backend/userBackendSlice';
+import { login, registration } from '../../http/userAPI';
+import { useForm } from 'react-hook-form';
+import styles from '../../Components/Auth/AuthForm.module.scss';
 import RegisterForm from '../../Components/Auth/RegisterForm';
 import LoginForm from '../../Components/Auth/LoginForm';
 
 
 const AuthPage = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const isLogin = location.pathname === '/login'
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
 
   const {
     register,
@@ -35,7 +35,7 @@ const AuthPage = () => {
       if (isLogin) {
         user = await login(email, password);
       } else {
-        user = await registration(email, password, userName)
+        user = await registration(email, password, userName);
       }
       dispatch(setUser(user));
       dispatch(setIsAuth(true));

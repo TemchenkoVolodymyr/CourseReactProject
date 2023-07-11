@@ -2,7 +2,7 @@ import React from 'react';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
 import styles from '../Button/CustomButton.module.scss';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
   const navigate = useNavigate();

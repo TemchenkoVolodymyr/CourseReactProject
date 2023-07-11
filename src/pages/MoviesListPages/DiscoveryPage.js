@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import { Helmet } from 'react-helmet';
 import { genreImages } from '../../constants/data';
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 
 const DiscoveryPage = () => {
@@ -13,11 +13,11 @@ const DiscoveryPage = () => {
   useEffect(() => {
 
     const fetchGenres = async () => {
-      const genresData = await fetchAPIDataWithOutOptions('genre/movie/list')
-      setGenres(genresData)
-    }
+      const genresData = await fetchAPIDataWithOutOptions('genre/movie/list');
+      setGenres(genresData);
+    };
 
-    fetchGenres()
+    fetchGenres();
 
   }, []);
   return (

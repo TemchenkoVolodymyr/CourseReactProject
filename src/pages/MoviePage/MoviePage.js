@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import style from './MoviePage.module.scss';
-import ActionBar from '../../Components/Action Bar/ActionBar';
 import CustomButton from '../../Components/Button/CustomButton';
 import Loader from '../../Loader/Loader';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import MainBanner from '../../Components/MoviePage Components/MainBanner';
-import OverviewSection from '../../Components/MoviePage Components/OverviewSection';
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
 import ModalForReviews from './ModalForReviews';
-import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
-import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
-import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
-import {fetchAPIDataWithOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { loadUserRatings } from '../../redux/backend/ratingBackendSlice';
+import { loadUserFavorites } from '../../redux/backend/favoriteBackendSLice';
+import { loadMovieReviews } from '../../redux/backend/reviewBackendSlice';
+import { fetchAPIDataWithOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 
 const MoviePage = () => {
@@ -24,7 +22,7 @@ const MoviePage = () => {
   const [movie, setMovie] = useState();
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
-  const userId = useSelector(state => state.users.user.id)
+  const userId = useSelector((state) => state.users.user.id);
 
 
   const handleOpen = () => setOpenModal(true);
@@ -33,16 +31,17 @@ const MoviePage = () => {
   useEffect(() => {
 
     const fetchData = async () => {
+      // eslint-disable-next-line max-len
       const movieData = await fetchAPIDataWithOptions(`movie/${movieId}`, { videos: true, credits: true, similar: true });
       setMovie(movieData);
-    }
-    fetchData()
+    };
+    fetchData();
 
     if (userId) {
       dispatch(loadUserRatings(userId));
-      dispatch(loadUserFavorites(userId))
+      dispatch(loadUserFavorites(userId));
     }
-    dispatch(loadMovieReviews(movieId))
+    dispatch(loadMovieReviews(movieId));
   }, [dispatch, userId, movieId]);
 
   if (!movie) {

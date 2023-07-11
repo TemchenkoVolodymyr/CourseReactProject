@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../UserProfile.module.scss';
 import CircleRating from '../../Ratings/CircleRating/CircleRating';
 import Avatar from 'react-avatar';
-import {useSelector} from 'react-redux';
-import FilmComponent from "./FilmComponent/FilmComponent";
+import { useSelector } from 'react-redux';
+import FilmComponent from './FilmComponent/FilmComponent';
 
 const UserProfileComponent = () => {
 
@@ -12,7 +12,7 @@ const UserProfileComponent = () => {
   const ratings = useSelector((state) => state.ratings.ratings);
   const [latestFavoriteMovie, setLatestFavoriteMovie] = useState([]);
   const [latestFromWatchList, setLatestFromWatchList] = useState([]);
-  const {user} = useSelector(state => state.users)
+  const { user } = useSelector((state) => state.users);
 
 
   const totalRating = ratings.reduce((sum, rating) => sum + (rating.rate * 2), 0);
@@ -20,19 +20,19 @@ const UserProfileComponent = () => {
 
 
   useEffect(() => {
-    const favoritesCopy = [...favorites]
-    const latestFavoriteMovie = favoritesCopy.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt))
-    setLatestFavoriteMovie(latestFavoriteMovie)
+    const favoritesCopy = [...favorites];
+    const latestFavoriteMovie = favoritesCopy.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt));
+    setLatestFavoriteMovie(latestFavoriteMovie);
 
-    const watchListCopy = [...watchList]
-    const latestFromWatchList = watchListCopy.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt))
-    setLatestFromWatchList(latestFromWatchList)
+    const watchListCopy = [...watchList];
+    const latestFromWatchList = watchListCopy.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt));
+    setLatestFromWatchList(latestFromWatchList);
 
   }, [favorites, watchList]);
 
   const formatDate = (dateStr) => {
     const dateObject = new Date(dateStr);
-    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return dateObject.toLocaleDateString('en-US', options);
   };
 

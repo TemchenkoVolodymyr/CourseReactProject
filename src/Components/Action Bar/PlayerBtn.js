@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import ActionButton from "./ActionButton";
-import {AiOutlinePlaySquare} from "react-icons/ai";
-import MoviePlayerModal from "../MoviePlayerModal/MoviePlayerModal";
-import {Tooltip} from "react-tooltip";
-import styles from "./ActionBar.module.scss";
+import React, { useState } from 'react';
+import ActionButton from './ActionButton';
+import { AiOutlinePlaySquare } from 'react-icons/ai';
+import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
+import { Tooltip } from 'react-tooltip';
+import styles from './ActionBar.module.scss';
 
-const PlayerBtn = ({movie}) => {
+const PlayerBtn = ({ movie }) => {
 
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const handlePlayerClick = () => {

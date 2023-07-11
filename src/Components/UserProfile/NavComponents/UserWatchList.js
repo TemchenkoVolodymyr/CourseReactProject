@@ -1,19 +1,19 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import NavComponentsHeader from './NavComponentsHeader';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../UserProfile.module.scss';
 import FilmComponent from './FilmComponent/FilmComponent';
 import NoInfoComponent from './NoInfoComponent';
-import {applySortOrder, filterProfileMovies} from '../../../utils/helperFunctions/filterProfieMovies';
+import { applySortOrder, filterProfileMovies } from '../../../utils/helperFunctions/filterProfieMovies';
 
 
 const UserWatchList = () => {
 
-  const {watchList, error, isLoading} = useSelector((state) => state.watchList);
+  const { watchList, error, isLoading } = useSelector((state) => state.watchList);
   const { filterBy, isOrderOpen } = useSelector((state) => state.filters);
 
 
-  const sortedWatchList = applySortOrder(filterProfileMovies(watchList, filterBy) , isOrderOpen)
+  const sortedWatchList = applySortOrder(filterProfileMovies(watchList, filterBy) , isOrderOpen);
   return (
     <>
       <NavComponentsHeader

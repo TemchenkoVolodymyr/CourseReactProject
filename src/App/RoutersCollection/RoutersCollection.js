@@ -16,7 +16,7 @@ import UserWatchList from '../../Components/UserProfile/NavComponents/UserWatchL
 import UserRatings from '../../Components/UserProfile/NavComponents/UserRatings';
 import UserFavorites from '../../Components/UserProfile/NavComponents/UserFavorites';
 import UserProfileComponent from '../../Components/UserProfile/NavComponents/UserProfileComponent';
-import UserReviews from "../../Components/UserProfile/NavComponents/UserReviews";
+import UserReviews from '../../Components/UserProfile/NavComponents/UserReviews';
 
 const RoutersCollection = () => {
 

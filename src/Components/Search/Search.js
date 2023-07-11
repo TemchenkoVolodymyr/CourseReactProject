@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Search.module.scss';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UniversalSearch from './UniversalSearch';
-import {NavLink} from 'react-router-dom';
-import {updateQuery, updateResults} from "../../redux/slices/searchSlice";
+import { NavLink } from 'react-router-dom';
+import { updateQuery, updateResults } from '../../redux/slices/searchSlice';
 
-const Search = ({setIsSearchOpen}) => {
-  const dispatch = useDispatch()
+const Search = ({ setIsSearchOpen }) => {
+  const dispatch = useDispatch();
   const [isModal, setIsModal] = useState(false);
-  const {results} = useSelector((state) => state.search);
+  const { results } = useSelector((state) => state.search);
 
   const resetSearchInput = (id) => {
     localStorage.setItem('movieId', id);
-    setIsModal(false)
-    setIsSearchOpen(false)
+    setIsModal(false);
+    setIsSearchOpen(false);
     dispatch(updateQuery(''));
     dispatch(updateResults([]));
   };
@@ -28,7 +28,7 @@ const Search = ({setIsSearchOpen}) => {
 
   const formatDate = (dateStr) => {
     const dateObject = new Date(dateStr);
-    const options = {year: 'numeric'};
+    const options = { year: 'numeric' };
     return dateObject.toLocaleDateString('en-US', options);
   };
 
