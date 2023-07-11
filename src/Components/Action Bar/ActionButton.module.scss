@@ -1,27 +1,23 @@
 .actionButton{
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   background-color: #032541;
   border: none;
   cursor: pointer;
   margin: 10px 5px;
+
+
   @media (min-width: 1024px) and (max-width: 1280px) {
     width: 40px;
     height: 40px;
     margin: 10px 3px;
   }
-  @media (min-width: 360px) and (max-width: 768px) {
-    width: 70px;
-    height: 70px;
-
-  }
-
 
   svg {
     color: white;
 
-    @media (min-width: 360px) and (max-width: 768px) {
+    @media (max-width: 768px) {
       width: 40px;
       height: 40px;
     }

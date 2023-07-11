@@ -26,11 +26,7 @@ const SimilarBlock = ({ movie }) => {
                        onClick={() => localStorage.setItem('movieId', similar.id)}>
                 <SliderItem
                   img={similar.poster_path ? similar.poster_path : similar.backdrop_path}
-                  rating={(similar.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                  canvasShow={true}
                   movieId={similar.id}
-                  showActionBadge={true}
                 />
               </NavLink>
             </SwiperSlide>

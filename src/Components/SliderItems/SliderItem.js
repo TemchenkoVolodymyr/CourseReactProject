@@ -20,10 +20,8 @@ const SliderItem = ({ img, title, rating, displayAsPercentage, canvasShow, movie
         size={isMobile ? 80 : 60}
       /> }
       {showActionBadge && <>
-        <div>
           <AddToWatchListBtn movieId={movieId} userId={userId} dispatch={dispatch}/>
           <AddToFavoriteBtn movieId={movieId} userId={userId} dispatch={dispatch}/>
-        </div>
       </> }
     </div>
 

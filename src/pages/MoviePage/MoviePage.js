@@ -53,7 +53,6 @@ const MoviePage = () => {
       <Helmet>
         <title>{movie.title} | Overview, Ratings and Trailer </title>
       </Helmet>
-      <ActionBar movie={movie} movieId={movie.id} source="moviePage" />
       <div className={style.wrapper}>
         <MainBanner movie={movie}/>
         <h2>Top Billed Cast</h2>
@@ -78,6 +77,7 @@ const MoviePage = () => {
         movieId={movieId}
         userId={userId}
         />
+
     </>
   );
 };

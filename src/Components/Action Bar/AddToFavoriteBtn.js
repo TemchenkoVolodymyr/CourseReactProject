@@ -6,11 +6,13 @@ import {Tooltip} from "react-tooltip";
 import {useSelector} from "react-redux";
 import {createFavorite} from "../../http/favoriteAPI";
 import {deleteUserFavorites, loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
+import {useMediaQuery} from "@mui/material";
 
 const AddToFavoriteBtn = ({movieId, userId, dispatch}) => {
 
   const isFavorite = useSelector((state) => state.favorites.isFavorite[movieId]);
-
+  const isMobile = useMediaQuery('(max-width: 767px) ');
+  console.log(isMobile);
   const handleToggleFavorite = async () => {
     if (!isFavorite) {
       createFavorite(userId, movieId)
@@ -32,7 +34,7 @@ const AddToFavoriteBtn = ({movieId, userId, dispatch}) => {
       <ActionButton
         onClick={handleToggleFavorite}
         icon={<AiFillHeart
-          size={30}
+          size={isMobile ? 20: 30}
           data-tooltip-id="like"
           data-tooltip-content="Mark as favorite"
           color={isFavorite ? 'red' : null}

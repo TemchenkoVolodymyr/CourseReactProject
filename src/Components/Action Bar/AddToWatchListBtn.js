@@ -6,6 +6,7 @@ import styles from "./ActionBar.module.scss";
 import {useSelector} from "react-redux";
 import {createWatchList} from "../../http/watchListAPI";
 import {deleteUserWatchList, loadUserWatchList} from "../../redux/backend/watchListBackEndSlice";
+import {useMediaQuery} from "@mui/material";
 
 const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
 
@@ -27,6 +28,7 @@ const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
 
   return (
     <>
+
       <ActionButton
         onClick={handleToggleWatchList}
         icon={<BsFillBookmarkFill
@@ -35,6 +37,7 @@ const AddToWatchListBtn = ({movieId, userId, dispatch}) => {
           data-tooltip-id="watchlist"
           data-tooltip-content="Add to your watchlist"
         />}/>
+
       <Tooltip
         id="watchlist"
         className={styles.tooltip}

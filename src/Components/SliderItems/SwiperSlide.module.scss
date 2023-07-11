@@ -37,11 +37,10 @@
       opacity: 0;
       width: 50%;
 
-      @media (min-width: 360px) and (max-width: 768px) {
+      @media (max-width: 768px) {
         opacity: 1;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+
+
       }
     }
     &:hover > div:first-child {

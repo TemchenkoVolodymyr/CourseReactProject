@@ -2,6 +2,7 @@
 
 .wrapper {
   font-family: Arial, sans-serif;
+  line-height: 1.5em;
 
 
   a {
@@ -79,6 +80,11 @@
   display: flex;
   align-items: center;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 80px;
+  }
+
   &__banner {
     background-size: cover;
     background-position: center;
@@ -86,6 +92,11 @@
     width: 45%;
     border-radius: 15px;
     margin: 5px;
+    position: relative;
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
   }
 
   &__info {
@@ -95,9 +106,9 @@
     flex-direction: column;
     width: 60%;
 
-    @media (min-width: 360px) and (max-width: 768px) {
+    @media (max-width: 768px) {
       margin-left: 0;
-      max-width: 300px;
+      width: 92%;
     }
 
     .data{

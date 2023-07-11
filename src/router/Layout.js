@@ -14,6 +14,7 @@ import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
 import {useMediaQuery} from "@mui/material";
 import { animated, useSpring } from '@react-spring/web';
+import ActionBar from "../Components/Action Bar/ActionBar";
 
 const Layout = () => {
 
