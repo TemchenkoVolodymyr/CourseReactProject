@@ -2,20 +2,18 @@
 
 .autocompleted {
   position: absolute;
-  background-color: #1f2126;
-  box-shadow: 9px 27px 67px 40px #000000;
+  background-color: #10161d;
   overflow: scroll;
   display: none;
   flex-direction: column;
   z-index: 1000;
+  padding-top: 24px;
 
-  padding-top: 20px;
 
   @media (max-width: 768px) {
     background-color: #10161d;
     top: 70px;
     box-shadow: none;
-    height: 84vh;
   }
 
   h3 {
@@ -36,11 +34,17 @@
 
 .openModal {
   display: flex;
-  top: 50px;
-  width: 327px;
+  top: 0;
+  left: 144px;
+  width: 655px;
+  height: 100vh;
 
 
-
+  @media (max-width:  768px) {
+    width: 325px;
+    left: 0;
+    top: 50px;
+  }
 }
 
 .wrapper {
