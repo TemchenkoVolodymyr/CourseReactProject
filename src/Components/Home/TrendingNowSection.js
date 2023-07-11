@@ -9,7 +9,7 @@ import {useMediaQuery} from "@mui/material";
 const TrendingNowSection = () => {
 
   const [movies, setMovies] = useState([])
-  const isMobile = useMediaQuery('(max-width: 780px)');
+  const isMobile = useMediaQuery('(max-width: 500px)');
 
   useEffect(() => {
     const fetchData = async() => {
@@ -25,7 +25,7 @@ const TrendingNowSection = () => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={isMobile ? 2 : 3}
+          navigation slidesPerView={isMobile ? 1 : 3}
           spaceBetween={10}>
           {
             movies?.map((movie) =>

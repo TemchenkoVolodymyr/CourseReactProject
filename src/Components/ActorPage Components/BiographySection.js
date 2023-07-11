@@ -4,12 +4,11 @@ import CustomButton from '../Button/CustomButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
-import SliderItem from '../SliderItems/SliderItem';
 
 const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
   let words = [];
   let displayedWords = [];
-
+  console.log(actors);
   if (actors && actors.biography) {
     words = actors.biography.split(' ');
     displayedWords = isExpanded ? words : words.slice(0, 100);
@@ -33,23 +32,20 @@ const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
           tag="section"
           wrapperTag="ul"
           navigation
-          slidesPerView={1} // 6  // Что бы добавить адаптив к слайдеру , иначе не получается
+          slidesPerView={2} // 6  // Что бы добавить адаптив к слайдеру , иначе не получается
           spaceBetween={10}>
 
           {actors.movie_credits.cast.map((movie) =>
+          movie.poster_path &&
+          <SwiperSlide key={movie.id}>
+            <NavLink
+              to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
+              onClick={() => localStorage.setItem('movieId', movie.id)} className={style.swiperSlide}>
+                <img src={`https://image.tmdb.org/t/p/original${movie.poster_path }`} alt={movie.title}/>
+              <p className={style.nameOfMovie}>{movie.title}</p>
+            </NavLink>
+          </SwiperSlide>
 
-            <SwiperSlide key={movie.id}>
-              <NavLink
-                to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
-                onClick={() => localStorage.setItem('movieId', movie.id)} className={style.swiperSlide}>
-                <SliderItem
-                  img={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
-                  rating={(movie.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                />
-                <p className={style.nameOfMovie}>{movie.title}</p>
-              </NavLink>
-            </SwiperSlide>
           )}
         </Swiper>
       </div>

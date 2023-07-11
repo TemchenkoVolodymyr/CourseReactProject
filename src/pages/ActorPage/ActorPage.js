@@ -47,11 +47,9 @@ const ActorPage = () => {
         <PersonalInfoSection actors={actors}/>
         <section className={style.right}>
           <BiographySection actors={actors} handleReadMoreClick={handleReadMoreClick} isExpanded={isExpanded}/>
-          <section>
-            <ActorCreditsFilter actors={actors}/>
-          </section>
         </section>
       </div>
+        <ActorCreditsFilter actors={actors}/>
     </>
   );
 };

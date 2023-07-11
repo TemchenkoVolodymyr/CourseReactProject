@@ -9,7 +9,7 @@ import {useMediaQuery} from "@mui/material";
 const BestActorsSection = () => {
 
   const [bestActors, setBestActors] = useState([])
-  const isMobile = useMediaQuery('(max-width: 780px)');
+  const isMobile = useMediaQuery('(max-width: 500px)');
 
   useEffect(() => {
     const fetchData = async() => {
@@ -26,7 +26,7 @@ const BestActorsSection = () => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={ isMobile ? 2 : 3 }
+          navigation slidesPerView={ isMobile ? 1 : 3 }
           spaceBetween={10}>
           {
             bestActors?.map((actor) =>

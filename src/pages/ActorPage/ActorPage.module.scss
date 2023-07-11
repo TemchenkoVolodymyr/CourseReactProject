@@ -1,8 +1,13 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  //color: white;
   opacity: .8;
+
+  @media (max-width: 768px) {
+    margin-top: 80px;
+    flex-direction: column;
+    width: 90%;
+  }
 
   .left,
   .right {
@@ -14,17 +19,23 @@
 
   .left {
 
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+
     img {
       width: 350px;
       border-radius: 20px;
+
       @media (min-width: 1024px) and (max-width: 1280px) {
         width: 250px;
       }
       @media (min-width: 768px) and (max-width: 1024px) {
         width: 200px;
       }
-      @media (min-width: 360px) and (max-width: 600px) {
-        width: 100px;
+      @media (max-width: 768px) {
+        width: 100%;
+
       }
     }
 
@@ -59,28 +70,34 @@
     .biography {
       margin-top: 10px;
       font-size: 20px;
+
       @media (min-width: 768px) and (max-width: 1024px) {
         font-size: 15px;
       }
-      @media (min-width: 360px) and (max-width: 600px) {
-        p {
-          font-size: 13px;
+
+      p {
+        font-size: 18px;
+
+        @media (max-width: 768px) {
+          font-size: 18px;
         }
-        h1 {
-          color: #fdfdfd;
+
+      }
+
+      a {
+        @media (max-width: 768px) {
+          font-size: 16px;
         }
       }
-      a{
-        max-width: 90px;
-      }
+
     }
 
     .knowFor {
-      width: 100%;
 
       h2 {
         margin: 20px 0;
-        @media (min-width: 360px) and (max-width: 600px) {
+
+        @media (max-width: 600px) {
           color: #f8f8f8;
         }
       }
@@ -89,43 +106,35 @@
         text-decoration: none;
         color: white;
 
-        & > div {
-          background-size: cover;
-          background-position: center;
-          height: 200px;
-          border-radius: 25px;
-          position: relative;
 
-          & > canvas {
-            position: absolute;
-            top: 0;
-            right: 0;
+        img{
+          width: 90%;
+          border-radius: 20px;
+
+          @media (max-width: 767px) {
+            width: 100%;
+            border-radius: 20px;
           }
-
-          &:hover {
-            box-shadow: 0 0 0 128px rgba(0, 0, 0, 0.33) inset;
-            transform: scale(1.05);
-          }
-
         }
+
+      }
+
+      a{
+        text-decoration: none;
+        color: #f8f8f8;
       }
     }
   }
 
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (max-width: 600px) {
     h1 {
       color: #f8f8f8;
     }
   }
 }
 
-.knowFor p {
-  color: var(--text-color-default);
-}
-
 .nameOfMovie {
   font-size: 20px;
   font-weight: 900;
-  color: #9b1010 !important;
   padding: 10px;
 }
