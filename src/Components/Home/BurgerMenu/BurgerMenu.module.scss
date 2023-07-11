@@ -1,8 +1,9 @@
 .container {
   align-items: center;
   display: flex;
+
   @media (min-width: 360px) and (max-width: 768px) {
-    padding-right: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -16,7 +17,7 @@ body .lock{
 .headerBurger{
   display: block;
   position: fixed;
-  right: 10px;
+  right: 25px;
   width: 30px;
   height: 20px;
   z-index: 3;

@@ -3,6 +3,7 @@ import style from './Search.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {updateQuery, updateResults} from "../../redux/slices/searchSlice";
 import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import {BsSearch} from "react-icons/bs";
 
 const Search = () => {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const Search = () => {
   }, [])
 
   const handleSearch = (e) => {
+    e.stopPropagation()
     const searchValue = e.target.value;
     dispatch(updateQuery(searchValue));
 
@@ -32,11 +34,11 @@ const Search = () => {
   };
 
   return (
-    <div className={style.container}>
+    <div className={style.search}>
+      <BsSearch/>
       <input
         type="search"
-        placeholder={'Search'}
-        className={style.search}
+        placeholder={'Search for movies'}
         value={query}
         onChange={(e) => handleSearch(e)}
       />

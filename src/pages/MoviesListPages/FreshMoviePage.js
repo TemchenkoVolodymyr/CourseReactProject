@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
-import axios from 'axios';
 import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -36,10 +35,6 @@ const FreshMoviePage = () => {
               >
                 <MovieBlock
                   image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                  title={movie.title}
-                  rating={(movie.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                  canvasShow={true}
                 />
               </NavLink>
             )

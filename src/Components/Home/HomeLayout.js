@@ -13,7 +13,7 @@ import {useMediaQuery} from "@mui/material";
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
 
-  const isMobile = useMediaQuery('(min-width: 767px)');
+  const isMobile = useMediaQuery('(min-width: 767px; max-width: 1024px)');
 
   return (
     <>

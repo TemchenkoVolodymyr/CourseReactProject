@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import style from './CurrentGenre.module.scss';
 import styles from '../Pages.module.scss';
 import { Helmet } from 'react-helmet';
 import { genreIds, genreTitles } from '../../constants/data';
@@ -43,7 +42,7 @@ const CurrentGenre = () => {
       <div className={styles.container}>
         <h1>{pageTitle}</h1>
         {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        <div className={style.wrapper}>
+        <div className={styles.wrapper}>
           {
             currGenre?.results.map((genre) =>
               <NavLink
@@ -52,10 +51,6 @@ const CurrentGenre = () => {
                 onClick={() => localStorage.setItem('movieId', genre.id)}>
                 <MovieBlock
                   image={`https://image.tmdb.org/t/p/w200/${genre.poster_path}`}
-                  title={genre.title}
-                  rating={(genre.vote_average * 10).toFixed(1)}
-                  displayAsPercentage={true}
-                  canvasShow={true}
                 />
               </NavLink>
             )

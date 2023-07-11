@@ -43,8 +43,6 @@ const BurgerMenu = () => {
 
   return (
     <div className={style.container}>
-
-
       <div className={`${style.headerBurger} ${isActive ? style.active : null}`} onClick={changeActive}>
         <span></span>
         <div className={style.menu}>

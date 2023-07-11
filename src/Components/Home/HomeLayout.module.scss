@@ -1,6 +1,7 @@
 @import "/src/index";
 @import 'src/Components/SliderItems/SwiperSlide.module';
 
+
 .wrapper {
 
   h1, h2, h3 {
@@ -77,18 +78,18 @@
 
 }
 
+
 .logo {
   display: flex;
   justify-content: space-between;
-  padding: 0 5px;
-  background-color: #151f23;
-
-
-
-  @media (min-width: 360px) and (max-width: 768px) {
-    height: 70px;
-    align-items: center;
-  }
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #10161d;
+  position: fixed;
+  z-index: 1001;
+  width: 100%;
+  top: 0;
+  padding: 20px 5px;
 
   p {
     font-size: 22px;

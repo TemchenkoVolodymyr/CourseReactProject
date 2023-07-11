@@ -21,7 +21,7 @@ const Navigations = () => {
       <NavLink to="/fresh"><BsArrowClockwise size={'24'}/>Fresh movies</NavLink>
       <NavLink to="/trending"><BsFire size={'24'}/>Trending now</NavLink>
       {!isMobile ?
-        <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
+        <NavLink to="/popular"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
       <p>popular genders</p>
       <p>menu</p>
       <NavLink to="/genre/action"><GiPistolGun size={'24'}/>Action</NavLink>

@@ -5,7 +5,7 @@ import Search from '../Components/Search/Search';
 import PopularMovies from '../Components/Outline/PopularMovies/PopularMovies';
 import FavoriteMovies from '../Components/Outline/FavoriteMovies/FavoriteMovies';
 import ScrollButton from './ScrollButton';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import CustomizedSwitches from '../Components/Button/switchThemeBtn';
 import style from '../Components/Home/HomeLayout.module.scss';
 import {NavLink} from 'react-router-dom';
@@ -13,17 +13,27 @@ import {BsFilm, BsSearch} from 'react-icons/bs';
 import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
 import {useMediaQuery} from "@mui/material";
-import {CgProfile} from "react-icons/cg";
-import {BiLogIn, BiLogOut} from "react-icons/bi";
-import {setIsAuth, setUser} from "../redux/backend/userBackendSlice";
-
+import { animated, useSpring } from '@react-spring/web';
 
 const Layout = () => {
 
   const [showButton, setShowButton] = useState(false);
   const userId = useSelector((state) => state.users.user.id);
-  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isMobile = useMediaQuery('(max-width: 767px) ');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const onCLickSearchHandler = (event) => {
+    event.stopPropagation()
+    setIsSearchOpen(!isSearchOpen)
+  }
+
+  const styles = useSpring({
+    width: isSearchOpen ? 320 : 0,
+    opacity: isSearchOpen ? 1 : 0,
+    position: isSearchOpen ? 'absolute' : 'none',
+    top: isSearchOpen ? 66 : 65,
+    left: isSearchOpen ? 1: 0,
+  });
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -53,9 +63,35 @@ const Layout = () => {
     });
   }, [theme]);
 
+  useEffect(() => {
+    if (isSearchOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isSearchOpen]);
+
   return (
     <>
-      {!isMobile ?
+
+      {isMobile ?
+        <main className={'containerMain'}>
+          <div className={style.logo}>
+            <BsSearch onClick={onCLickSearchHandler} size={27}/>
+            { isSearchOpen &&
+              <animated.div style={styles}><Search setIsSearchOpen={setIsSearchOpen} /></animated.div> }
+            <NavLink className={style.logoHeader} to="/">
+              <BsFilm size={'20'}/>
+              MovieMagic
+            </NavLink>
+            <BurgerMenu title={'Movies'}/>
+          </div>
+          <Outlet/>
+        </main> :
         <>
           <section id={'mainContent'} className={'containerTopLayout'}>
             {/*right sidebar*/}
@@ -69,7 +105,7 @@ const Layout = () => {
             </main>
             {/*left sidebar*/}
             <section className={'containerSideBar'}>
-              <Search/>
+              <Search setIsSearchOpen={setIsSearchOpen} />
               <CustomizedSwitches callback={changeTheme}/>
               <PopularMovies/>
               <FavoriteMovies userId={userId}/>
@@ -77,18 +113,6 @@ const Layout = () => {
           </section>
           {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
         </>
-        : <main className={'containerMain'}>
-          <div className={style.logo}>
-              <BsSearch size={27}/>
-              <NavLink className={style.logoHeader} to="/">
-                <BsFilm size={'20'}/>
-                MovieMagic
-              </NavLink>
-              <BurgerMenu title={'Movies'}/>
-
-          </div>
-          <Outlet/>
-        </main>
       }
     </>
   );

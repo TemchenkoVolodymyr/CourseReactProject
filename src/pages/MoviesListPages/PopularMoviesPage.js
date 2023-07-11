@@ -34,10 +34,6 @@ const PopularMoviesPage = () => {
                 >
                   <MovieBlock
                     image={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
-                    title={film.title}
-                    rating={(film.vote_average * 10).toFixed(1)}
-                    displayAsPercentage={true}
-                    canvasShow={true}
                   />
                 </NavLink>
               )
