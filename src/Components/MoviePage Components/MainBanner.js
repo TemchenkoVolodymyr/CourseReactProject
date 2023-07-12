@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import { NavLink } from 'react-router-dom';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
@@ -6,6 +6,8 @@ import { useMediaQuery } from '@mui/material';
 import ActionBar from '../Action Bar/ActionBar';
 
 const MainBanner = ({ movie }) => {
+
+
   const image = movie.poster_path ? movie.poster_path : movie.backdrop_path;
   const isMobile = useMediaQuery('(max-width: 767px)');
   return (

@@ -4,7 +4,7 @@ import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
-import {useMediaQuery} from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
 const TopBilledCast = ({ movie }) => {
 

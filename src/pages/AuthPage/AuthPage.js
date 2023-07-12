@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
@@ -11,6 +11,7 @@ import LoginForm from '../../Components/Auth/LoginForm';
 
 
 const AuthPage = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +24,7 @@ const AuthPage = () => {
     reset,
     watch,
   } = useForm({
-    mode: 'onChange'
+    mode: 'onSubmit'
   });
 
   const onSubmit = async (data) => {

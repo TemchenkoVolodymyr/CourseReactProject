@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './ActorPage.module.scss';
@@ -13,16 +13,11 @@ const ActorPage = () => {
   const { name } = useParams();
   const [actors, setActors] = useState();
   const actorId = localStorage.getItem('actorId');
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleReadMoreClick = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // eslint-disable-next-line max-len
         const { data } = await axios.get(`https://api.themoviedb.org/3/person/${actorId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=movie_credits, credits`);
         setActors(data);
       } catch (err) {
@@ -47,7 +42,7 @@ const ActorPage = () => {
       <div className={style.wrapper}>
         <PersonalInfoSection actors={actors}/>
         <section className={style.right}>
-          <BiographySection actors={actors} handleReadMoreClick={handleReadMoreClick} isExpanded={isExpanded}/>
+          <BiographySection actors={actors}/>
         </section>
       </div>
         <ActorCreditsFilter actors={actors}/>

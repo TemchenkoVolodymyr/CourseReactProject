@@ -1,24 +1,24 @@
-import {$authHost, $host} from "./index";
+import { $authHost, $host } from './index';
 
 
 export const createFavorite = async (userId, movieId) => {
   try {
-    const {data} = await $authHost.post('api/favorite', {
+    const { data } = await $authHost.post('api/favorite', {
       userId,
       movieId
     });
-    return [data]
+    return [data];
   } catch (e) {
-    console.error("Error creating rating:", e);
+    console.error('Error creating rating:', e);
     return null;
   }
-}
+};
 
 export const fetchUserFavorites = async(userId) => {
-  const {data} = await $host.get('api/favorite/' + userId)
-  return data
+  const { data } = await $host.get('api/favorite/' + userId);
+  return data;
 
-}
+};
 
 export const deleteFavoriteFromDatabase = async (movieId) => {
   try {

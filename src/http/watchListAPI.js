@@ -1,22 +1,22 @@
-import {$authHost, $host} from "./index";
+import { $authHost, $host } from './index';
 
 export const createWatchList = async (userId, movieId) => {
   try {
-    const {data} = await $authHost.post('api/watchlist', {
+    const { data } = await $authHost.post('api/watchlist', {
       userId,
       movieId
     });
-    return [data]
+    return [data];
   } catch (e) {
-    console.error("Error creating rating:", e);
+    console.error('Error creating rating:', e);
     return null;
   }
-}
+};
 
 export const fetchUserWatchList = async(userId) => {
-  const {data} = await $host.get('api/watchlist/' + userId)
-  return data
-}
+  const { data } = await $host.get('api/watchlist/' + userId);
+  return data;
+};
 
 export const deleteWatchListFromDatabase = async (movieId) => {
   try {

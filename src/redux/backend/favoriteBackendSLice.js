@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {deleteFavoriteFromDatabase, fetchUserFavorites} from "../../http/favoriteAPI";
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { deleteFavoriteFromDatabase, fetchUserFavorites } from '../../http/favoriteAPI';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 export const loadUserFavorites = createAsyncThunk(
   'favorites/loadUserFavorites',
@@ -8,8 +8,8 @@ export const loadUserFavorites = createAsyncThunk(
     try {
       const favorites = await fetchUserFavorites(userId);
       const favoritesList = favorites.map(async (favorite) => {
-        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${favorite.movieId}`)
-        return {...favorite, movieInfo};
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${favorite.movieId}`);
+        return { ...favorite, movieInfo };
       });
       const updatedFavorites = await Promise.all(favoritesList);
       return updatedFavorites;
@@ -22,10 +22,10 @@ export const loadUserFavorites = createAsyncThunk(
 
 export const deleteUserFavorites = createAsyncThunk(
   'favorites/deleteUserFavorites',
-  async ({movieId, userId}, {dispatch, rejectWithValue}) => {
+  async ({ movieId, userId }, { dispatch, rejectWithValue }) => {
     try {
       await deleteFavoriteFromDatabase(movieId);
-      return {movieId, userId}
+      return { movieId, userId };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -59,8 +59,8 @@ const favoriteSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteUserFavorites.fulfilled, (state, action) => {
-        const {movieId, userId} = action.payload;
-        state.favorites = state.favorites.filter(favorite => favorite.movieId !== movieId || favorite.userId !== userId);
+        const { movieId, userId } = action.payload;
+        state.favorites = state.favorites.filter((favorite) => favorite.movieId !== movieId || favorite.userId !== userId);
         state.isFavorite[movieId] = false;
       });
   },

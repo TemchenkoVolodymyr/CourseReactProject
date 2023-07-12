@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {useState} from 'react';
+import { useState } from 'react';
 import style from './ModalForReviews.module.scss';
-import {createReview} from "../../http/reviewAPI";
-import {loadMovieReviews} from "../../redux/backend/reviewBackendSlice";
-import {useDispatch} from "react-redux";
-import {useMediaQuery} from "@mui/material";
+import { createReview } from '../../http/reviewAPI';
+import { loadMovieReviews } from '../../redux/backend/reviewBackendSlice';
+import { useDispatch } from 'react-redux';
+import { useMediaQuery } from '@mui/material';
 
 const styleModal = {
   position: 'absolute',
@@ -46,14 +46,14 @@ export default function ModalForReviews({
                                           userId
                                         }) {
 
-  const [value, setValue] = useState('')
-  const dispatch = useDispatch()
+  const [value, setValue] = useState('');
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const sendReviewHandler = (value) => {
     if (value) {
       createReview(userId, movieId, value)
-        .then(() => dispatch(loadMovieReviews(movieId)))
+        .then((data) => dispatch(loadMovieReviews(movieId)));
       setValue('');
     }
   };
@@ -70,7 +70,7 @@ export default function ModalForReviews({
           <Typography id="modal-modal-title" variant="h6" component="div">
             <h1>{`Leave your review for "${movie.original_title}"`}</h1>
           </Typography>
-          <Typography id="modal-modal-description" sx={{mt: 2}} component="div" className={style.wrapperInput}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} component="div" className={style.wrapperInput}>
             <textarea
               value={value}
               onChange={(e) => setValue(e.target.value)}

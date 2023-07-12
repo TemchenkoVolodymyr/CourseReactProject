@@ -1,5 +1,5 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 const actorsSlice = createSlice({
   name: 'actors',

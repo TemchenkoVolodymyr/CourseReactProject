@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './MovieBlock.module.scss';
 import CircleRating from '../Ratings/CircleRating/CircleRating';
 

@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {deleteReviewFromDatabase, fetchMovieReviews, fetchUserReviews, updateReview} from "../../http/reviewAPI";
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { deleteReviewFromDatabase, fetchMovieReviews, fetchUserReviews, updateReview } from '../../http/reviewAPI';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 
 export const loadMovieReviews = createAsyncThunk(
@@ -21,8 +21,8 @@ export const loadUserReviews = createAsyncThunk(
   async (userId) => {
       const userReviews = await fetchUserReviews(userId);
       const reviewsList = userReviews.map(async (review) => {
-        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${review.movieId}`)
-        return {...review, movieInfo};
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${review.movieId}`);
+        return { ...review, movieInfo };
       });
       const updatedReviews = await Promise.all(reviewsList);
       return updatedReviews;
@@ -31,10 +31,10 @@ export const loadUserReviews = createAsyncThunk(
 
 export const updateUsersReviews = createAsyncThunk(
   'reviews/updateUserReviews',
-  async ({reviewId, userId, movieId, text}, thunkAPI) => {
+  async ({ reviewId, userId, movieId, text }, thunkAPI) => {
 
     try {
-      const updatedReview = await updateReview(reviewId, userId, movieId, text)
+      const updatedReview = await updateReview(reviewId, userId, movieId, text);
       return updatedReview;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -44,10 +44,10 @@ export const updateUsersReviews = createAsyncThunk(
 
 export const deleteUserReviews = createAsyncThunk(
   'reviews/deleteUserReviews',
-  async (reviewId, {rejectWithValue}) => {
+  async (reviewId, { rejectWithValue }) => {
     try {
       await deleteReviewFromDatabase(reviewId);
-      return {reviewId}
+      return { reviewId };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -75,27 +75,27 @@ const reviewSlice = createSlice({
         state.moviesError = action.error.message;
       })
       .addCase(loadUserReviews.pending, (state, action) => {
-        state.userReviewsLoading = true
+        state.userReviewsLoading = true;
       })
       .addCase(loadUserReviews.fulfilled, (state, action) => {
         state.userReviews = action.payload;
-        state.userReviewsLoading = false
+        state.userReviewsLoading = false;
       })
       .addCase(loadUserReviews.rejected, (state, action) => {
-        state.userReviewsLoading = false
+        state.userReviewsLoading = false;
         state.userReviewsError = action.error.message;
       })
       .addCase(updateUsersReviews.fulfilled, (state, action) => {
-        const index = state.userReviews.findIndex(review => review.id === action.payload.id);
+        const index = state.userReviews.findIndex((review) => review.id === action.payload.id);
 
         if (index !== -1) {
           state.userReviews[index] = action.payload;
         }
       })
       .addCase(deleteUserReviews.fulfilled, (state, action) => {
-        const {reviewId} = action.payload;
-        state.userReviews = state.userReviews.filter(review => review.id !== reviewId);
-      })
+        const { reviewId } = action.payload;
+        state.userReviews = state.userReviews.filter((review) => review.id !== reviewId);
+      });
   },
 });
 

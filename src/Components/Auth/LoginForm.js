@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './AuthForm.module.scss';
-import {useNavigate} from "react-router";
+import { useNavigate } from 'react-router';
 
-const LoginForm = ({handleSubmit, register, errors, error, onSubmit}) => {
-  const navigate = useNavigate()
+const LoginForm = ({ handleSubmit, register, errors, error, onSubmit }) => {
+  const navigate = useNavigate();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

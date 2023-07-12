@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 const ScrollButton = () => {
   const [isVisible, setIsVisible] = useState(false);

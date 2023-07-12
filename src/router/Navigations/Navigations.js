@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { GiCastle, GiDramaMasks, GiGhost, GiPistolGun, GiRainbowStar } from 'react-icons/gi';
 import { SiOpenstreetmap } from 'react-icons/si';
 import { BsArrowClockwise, BsCameraReelsFill, BsEmojiSmile, BsFilm, BsFire } from 'react-icons/bs';
@@ -14,7 +14,7 @@ const Navigations = () => {
 
   return (
     <>
-      <NavLink className={'active logo'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></NavLink>
+      <Link className={'active logo'} to="/"><BsFilm size={'30'}/><h1>MovieMagic</h1></Link>
       <p>menu</p>
       <NavLink to="/"> <AiOutlineHome size={'24'}/>Home</NavLink>
       <NavLink to="/discovery"><AiOutlineCompass size={'24'}/>Discovery</NavLink>

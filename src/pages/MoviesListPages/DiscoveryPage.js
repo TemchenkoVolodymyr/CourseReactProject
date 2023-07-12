@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../Pages.module.scss';
 import { NavLink } from 'react-router-dom';
 import MovieBlock from '../../Components/MovieBlock/MovieBlock';

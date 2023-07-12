@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import style from '../../pages/ActorPage/ActorPage.module.scss';
-import CustomButton from '../Button/CustomButton';
+import styles from '../Button/CustomButton.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 
-const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
+const BiographySection = ({ actors }) => {
+
+
+  const [isExpanded, setIsExpanded] = useState(false);
   let words = [];
   let displayedWords = [];
   if (actors && actors.biography) {
@@ -14,14 +18,19 @@ const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
     displayedWords = isExpanded ? words : words.slice(0, 100);
   }
 
+  const handleReadMoreClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <>
       <h1>{actors?.name}</h1>
       <div className={style.biography}>
         <p>{displayedWords.join(' ')}</p>
         {words.length > 100 && (
-          <CustomButton callback={handleReadMoreClick} name={isExpanded ? 'Read Less' : 'Read More'}>
-          </CustomButton>
+          <Button
+            className={styles.link}
+            onClick={handleReadMoreClick}>{isExpanded ? 'Read Less' : 'Read More'}</Button>
         )}
       </div>
       <div className={style.knowFor}>

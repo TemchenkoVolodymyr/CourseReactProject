@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 
 export const fetchAPIDataWithOptions = async (arg, options) => {
@@ -10,7 +10,7 @@ export const fetchAPIDataWithOptions = async (arg, options) => {
     const { data } = await axios.get(`https://api.themoviedb.org/3/${arg}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=${appendValues}`);
     return data;
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 

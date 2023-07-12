@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import style from './MoviePage.module.scss';
 import CustomButton from '../../Components/Button/CustomButton';
@@ -9,11 +9,11 @@ import MainBanner from '../../Components/MoviePage Components/MainBanner';
 import TopBilledCast from '../../Components/MoviePage Components/TopBilledCast';
 import SimilarBlock from '../../Components/MoviePage Components/SimilarBlock';
 import SliderForReview from './SliderForReview';
-import ModalForReviews from './ModalForReviews';
 import { loadUserRatings } from '../../redux/backend/ratingBackendSlice';
 import { loadUserFavorites } from '../../redux/backend/favoriteBackendSLice';
 import { loadMovieReviews } from '../../redux/backend/reviewBackendSlice';
 import { fetchAPIDataWithOptions } from '../../utils/helperFunctions/fetchAPIData';
+import ModalForReviews from './ModalForReviews';
 
 
 const MoviePage = () => {

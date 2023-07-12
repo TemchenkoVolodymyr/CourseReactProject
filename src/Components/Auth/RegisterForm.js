@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './AuthForm.module.scss';
-import {useNavigate} from "react-router";
+import { useNavigate } from 'react-router';
 
 
 const RegisterForm = ({ onSubmit, handleSubmit, register, errors, error, watch }) => {
- const navigate = useNavigate()
+ const navigate = useNavigate();
   const password = watch('password');
   const confirmPassword = watch('confirmPassword');
 

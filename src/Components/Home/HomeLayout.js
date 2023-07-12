@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from './HomeLayout.module.scss';
 import 'swiper/swiper-bundle.css';
 import SwiperCore, { Navigation } from 'swiper';

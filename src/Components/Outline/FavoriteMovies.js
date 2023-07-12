@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const FavoriteMovies = ({ userId }) => {
 
     const dispatch = useDispatch();
-    const { favorites} = useSelector((state) => state.favorites);
+    const { favorites } = useSelector((state) => state.favorites);
   useEffect(() => {
       if(userId) {
         dispatch(loadUserFavorites(userId));

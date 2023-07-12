@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {deleteRatingFromDatabase, fetchUserRatings} from "../../http/ratingAPI";
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { deleteRatingFromDatabase, fetchUserRatings } from '../../http/ratingAPI';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 
 export const loadUserRatings = createAsyncThunk(
@@ -9,11 +9,11 @@ export const loadUserRatings = createAsyncThunk(
     try {
       const ratings = await fetchUserRatings(userId);
       const ratingList = ratings.map(async (rating) => {
-        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${rating.movieId}`)
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${rating.movieId}`);
         return { ...rating, movieInfo };
       });
       const updatedRatings = await Promise.all(ratingList);
-      return updatedRatings
+      return updatedRatings;
     } catch (error) {
       console.log(error);
     }
@@ -22,10 +22,10 @@ export const loadUserRatings = createAsyncThunk(
 
 export const deleteUserRating = createAsyncThunk(
   'ratings/deleteUserRating',
-  async ({movieId, userId}, {dispatch, rejectWithValue}) => {
+  async ({ movieId, userId }, { dispatch, rejectWithValue }) => {
     try {
       await deleteRatingFromDatabase(movieId);
-      return { movieId, userId }
+      return { movieId, userId };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -60,8 +60,8 @@ const ratingsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteUserRating.fulfilled, (state, action) => {
-        const {movieId, userId} = action.payload;
-        state.ratings = state.ratings.filter( rating => rating.movieId !== movieId || rating.userId !== userId);
+        const { movieId, userId } = action.payload;
+        state.ratings = state.ratings.filter( (rating) => rating.movieId !== movieId || rating.userId !== userId);
         state.isRated[movieId] = false;
       });
   },

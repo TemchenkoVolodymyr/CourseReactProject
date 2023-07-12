@@ -1,24 +1,24 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from '../../Components/UserProfile/UserProfile.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Outlet, useParams } from 'react-router';
 import { HelmetWrapper } from './HelmetWrapper';
-import {useDispatch, useSelector} from "react-redux";
-import {loadUserRatings} from "../../redux/backend/ratingBackendSlice";
-import {loadUserWatchList} from "../../redux/backend/watchListBackEndSlice";
-import {loadUserFavorites} from "../../redux/backend/favoriteBackendSLice";
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUserRatings } from '../../redux/backend/ratingBackendSlice';
+import { loadUserWatchList } from '../../redux/backend/watchListBackEndSlice';
+import { loadUserFavorites } from '../../redux/backend/favoriteBackendSLice';
 
 
 const UserProfile = () => {
   const { userName } = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const userId = useSelector((state) => state.users.user.id);
 
   useEffect(() => {
-    dispatch(loadUserRatings(userId))
-    dispatch(loadUserWatchList(userId))
-    dispatch(loadUserFavorites(userId))
-  }, [dispatch])
+    dispatch(loadUserRatings(userId));
+    dispatch(loadUserWatchList(userId));
+    dispatch(loadUserFavorites(userId));
+  }, [dispatch]);
 
   return (
     <>

@@ -1,14 +1,14 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {deleteWatchListFromDatabase, fetchUserWatchList} from "../../http/watchListAPI";
-import {fetchAPIDataWithOutOptions} from "../../utils/helperFunctions/fetchAPIData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { deleteWatchListFromDatabase, fetchUserWatchList } from '../../http/watchListAPI';
+import { fetchAPIDataWithOutOptions } from '../../utils/helperFunctions/fetchAPIData';
 
 export const loadUserWatchList = createAsyncThunk(
   'watchList/loadUserWatchList',
   async (userId) => {
       const watchList = await fetchUserWatchList(userId);
       const watchListFilms = watchList.map(async (movie) => {
-        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${movie.movieId}`)
-        return {...movie, movieInfo};
+        const movieInfo = await fetchAPIDataWithOutOptions(`movie/${movie.movieId}`);
+        return { ...movie, movieInfo };
       });
       const updatedWatchList = await Promise.all(watchListFilms);
       return updatedWatchList;
@@ -17,10 +17,10 @@ export const loadUserWatchList = createAsyncThunk(
 
 export const deleteUserWatchList = createAsyncThunk(
   'watchList/deleteUserWatchList',
-  async ({movieId, userId}, {dispatch, rejectWithValue}) => {
+  async ({ movieId, userId }, { dispatch, rejectWithValue }) => {
     try {
       await deleteWatchListFromDatabase(movieId);
-      return { movieId, userId }
+      return { movieId, userId };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -54,8 +54,8 @@ const watchListSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteUserWatchList.fulfilled, (state, action) => {
-        const {movieId, userId} = action.payload;
-        state.watchList = state.watchList.filter( movie => movie.movieId !== movieId || movie.userId !== userId);
+        const { movieId, userId } = action.payload;
+        state.watchList = state.watchList.filter( (movie) => movie.movieId !== movieId || movie.userId !== userId);
         state.isListed[movieId] = false;
       });
   },

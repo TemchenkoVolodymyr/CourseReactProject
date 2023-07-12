@@ -2,7 +2,6 @@
 
 export const filterProfileMovies = (arr, filterBy, page) => {
   const arrCopy = [...arr];
-  console.log(arrCopy);
   switch (filterBy) {
     case 'Release Date':
       return arrCopy.sort((a, b) => new Date(b.movieInfo.release_date) - new Date(a.movieInfo.release_date));

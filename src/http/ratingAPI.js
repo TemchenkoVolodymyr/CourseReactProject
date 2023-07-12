@@ -1,24 +1,24 @@
-import {$authHost, $host} from "./index";
+import { $authHost, $host } from './index';
 
 
 export const createRating = async (userId, movieId, rate) => {
   try {
-    const {data} = await $authHost.post('api/rating', {
+    const { data } = await $authHost.post('api/rating', {
       userId,
       movieId,
       rate
     });
-    return [data]
+    return [data];
   } catch (e) {
-    console.error("Error creating rating:", e);
+    console.error('Error creating rating:', e);
     return null;
   }
-}
+};
 
 export const fetchUserRatings = async(userId) => {
-  const {data} = await $host.get('api/rating/' + userId)
-  return data
-}
+  const { data } = await $host.get('api/rating/' + userId);
+  return data;
+};
 
 export const deleteRatingFromDatabase = async (movieId) => {
   try {
