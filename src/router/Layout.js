@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Layout.scss';
 import { Outlet } from 'react-router';
 import Search from '../Components/Search/Search';
@@ -16,8 +16,11 @@ import { useMediaQuery } from '@mui/material';
 import { animated, useSpring } from '@react-spring/web';
 
 const Layout = () => {
-
-  const [showButton, setShowButton] = useState(false);
+  const renderCount = useRef(0);
+  useEffect(() => {
+    renderCount.current += 1;
+    console.log(`MyComponent was rendered ${renderCount.current} times.`);
+  });
   const userId = useSelector((state) => state.users.user.id);
   const isMobile = useMediaQuery('(max-width: 767px) ');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -35,18 +38,6 @@ const Layout = () => {
     left: isSearchOpen ? 1: 0,
   });
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    if (window.pageYOffset > 300) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
-  };
   const [theme, setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -101,7 +92,7 @@ const Layout = () => {
             {/*main content*/}
             <main className={'containerMain'}>
               <Outlet/>
-              {showButton && <ScrollButton/>}
+              <ScrollButton/>
             </main>
             {/*left sidebar*/}
             <section className={'containerSideBar'}>

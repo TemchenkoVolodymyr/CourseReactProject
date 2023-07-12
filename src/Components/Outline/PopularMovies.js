@@ -29,20 +29,21 @@ const PopularMovies = () => {
           {
             popMovie?.map((movie) =>
               <SwiperSlide key={movie.id}>
-                <div
-                  style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover'
-                  }}
-                  className={style.wrapperBox}
-                >
+
                 <NavLink
                   key={movie.id}
                   to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
                   onClick={() => localStorage.setItem('movieId', movie.id)}>
+                  <div
+                    style={{
+                      backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover'
+                    }}
+                    className={style.wrapperBox}
+                  />
                 </NavLink>
-                </div>
+
               </SwiperSlide>
             )
           }

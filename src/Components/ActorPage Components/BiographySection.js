@@ -5,10 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
 
+
 const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
   let words = [];
   let displayedWords = [];
-  console.log(actors);
   if (actors && actors.biography) {
     words = actors.biography.split(' ');
     displayedWords = isExpanded ? words : words.slice(0, 100);
@@ -32,7 +32,7 @@ const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
           tag="section"
           wrapperTag="ul"
           navigation
-          slidesPerView={2} // 6  // Что бы добавить адаптив к слайдеру , иначе не получается
+          slidesPerView={2}
           spaceBetween={10}>
 
           {actors.movie_credits.cast.map((movie) =>

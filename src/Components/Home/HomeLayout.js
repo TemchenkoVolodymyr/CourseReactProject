@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import style from './HomeLayout.module.scss';
 import 'swiper/swiper-bundle.css';
 import SwiperCore, { Navigation } from 'swiper';
@@ -11,11 +11,13 @@ import { useMediaQuery } from '@mui/material';
 
 
 const HomeLayout = () => {
+
   SwiperCore.use([Navigation]);
 
   const isMobile = useMediaQuery('(min-width: 767px; max-width: 1024px)');
 
   return (
+
     <>
       <Helmet>
         <title>Latest Movie Trailers, Reviews & Overviews | Ultimate Cinema Guide</title>
@@ -32,6 +34,7 @@ const HomeLayout = () => {
           <BestActorsSection/>
         </div>
     </>
+
   );
 };
 
