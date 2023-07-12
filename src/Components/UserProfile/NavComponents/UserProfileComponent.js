@@ -51,7 +51,7 @@ const UserProfileComponent = () => {
             <h3>Total Ratings</h3>
             <div className={styles.ratings}>
               <CircleRating
-                rating={isNaN(averageRating) ? 0 : averageRating * 10}
+                rating={isNaN(averageRating) ? 0 : (averageRating).toFixed(1) * 10}
                 size={70}
                 displayAsPercentage={true}
               />

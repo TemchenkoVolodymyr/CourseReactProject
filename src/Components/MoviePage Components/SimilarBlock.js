@@ -8,6 +8,7 @@ import { useMediaQuery } from '@mui/material';
 
 const SimilarBlock = ({ movie }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <>
       <Swiper
@@ -15,7 +16,7 @@ const SimilarBlock = ({ movie }) => {
           id="main"
           tag="section"
           wrapperTag="ul"
-          navigation slidesPerView={isMobile ? 2 : 3}
+          navigation slidesPerView={isMobile ? 1 : 3}
           spaceBetween={10}>
 
           {movie?.similar.results.map((similar) =>

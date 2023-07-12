@@ -53,7 +53,7 @@ export default function ModalForReviews({
   const sendReviewHandler = (value) => {
     if (value) {
       createReview(userId, movieId, value)
-        .then(data => dispatch(loadMovieReviews(movieId)))
+        .then(() => dispatch(loadMovieReviews(movieId)))
       setValue('');
     }
   };

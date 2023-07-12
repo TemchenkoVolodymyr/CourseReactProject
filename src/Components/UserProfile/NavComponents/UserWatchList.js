@@ -31,7 +31,7 @@ const UserWatchList = () => {
                   <div key={film.movieId}>
                     <FilmComponent
                       image={film.movieInfo.backdrop_path ? film.movieInfo.backdrop_path : film.movieInfo.poster_path}
-                      rating={film.movieInfo.vote_average * 10}
+                      rating={(film.movieInfo.vote_average).toFixed(1) * 10}
                       title={film.movieInfo.title}
                       overview={film.movieInfo.overview}
                       release={film.movieInfo.release_date}

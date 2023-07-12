@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import style from './BurgerMenu.module.scss';
-import { itemGenres, itemMovies } from '../../../constants/data';
-import { CgProfile } from 'react-icons/cg';
-import { BiLogIn, BiLogOut} from 'react-icons/bi';
-import { useDispatch, useSelector } from 'react-redux';
-import { setIsAuth, setUser } from '../../../redux/backend/userBackendSlice';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import {itemGenres, itemMovies} from '../../../constants/data';
+import {CgProfile} from 'react-icons/cg';
+import {BiLogIn, BiLogOut} from 'react-icons/bi';
+import {useDispatch, useSelector} from 'react-redux';
+import {setIsAuth, setUser} from '../../../redux/backend/userBackendSlice';
+import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai';
 
 
 const BurgerMenu = () => {
 
   const [isActive, setIsActive] = useState(false);
-  const { isAuth, user } = useSelector((state) => state.users);
+  const {isAuth, user} = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [isMoviesOpen, setIsMoviesOpen] = useState(false);
   const [isGenreOpen, setIsGenreOpen] = useState(false);
@@ -51,13 +51,13 @@ const BurgerMenu = () => {
               <div className={style.login}>
                 <NavLink
                   to={`/u/${user.userName}`}
-                  style={{ cursor: 'pointer' }}
+                  style={{cursor: 'pointer'}}
                 ><CgProfile size={35} color={'#E30914'}/>
                 </NavLink>
                 <NavLink
                   to="/login"
                   onClick={() => logOut()}
-                  style={{ cursor: 'pointer' }}
+                  style={{cursor: 'pointer'}}
                 ><BiLogOut size={35}
                            color={'#E30914'}/></NavLink>
               </div>
@@ -65,28 +65,21 @@ const BurgerMenu = () => {
               <div>
                 <NavLink
                   to={'/login'}
-                  style={{ cursor: 'pointer' }}
+                  style={{cursor: 'pointer'}}
                 ><BiLogIn size={35}
                           color={'#E30914'}/></NavLink>
               </div>
             }
-
             <div className={style.items}>
               <NavLink to={'/'}>Home</NavLink>
-
               <p
-                onClick={onClickMovieHandler}>Movies {isMoviesOpen ? <AiOutlineEyeInvisible size={20} /> :
+                onClick={onClickMovieHandler}>Movies {isMoviesOpen ? <AiOutlineEyeInvisible size={20}/> :
                 <AiOutlineEye size={20}/>} </p>
-              <div>
-                {isMoviesOpen && <div>{links}</div>}
-              </div>
-
+              {isMoviesOpen && <div>{links}</div>}
               <p
                 onClick={onClickGenreHandler}>Genres {isGenreOpen ? <AiOutlineEyeInvisible size={20}/> :
                 <AiOutlineEye size={20}/>}</p>
-              <div>
-                {isGenreOpen && <div>{genres}</div>}
-              </div>
+              {isGenreOpen && <div>{genres}</div>}
             </div>
           </div>
         </div>

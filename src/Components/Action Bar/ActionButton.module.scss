@@ -14,6 +14,12 @@
     margin: 10px 3px;
   }
 
+  @media (max-width: 767px) {
+    width: 47px;
+    height: 47px;
+    margin: 5px;
+  }
+
   svg {
     color: white;
 

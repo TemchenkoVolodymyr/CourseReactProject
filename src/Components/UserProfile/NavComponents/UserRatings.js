@@ -33,7 +33,7 @@ const UserRatings = () => {
               <div key={rating.id}>
                 <FilmComponent
                   image={rating.movieInfo.backdrop_path ? rating.movieInfo.backdrop_path : rating.movieInfo.poster_path}
-                  rating={rating.movieInfo.vote_average * 10}
+                  rating={(rating.movieInfo.vote_average).toFixed(1) * 10}
                   title={rating.movieInfo.title}
                   overview={rating.movieInfo.overview}
                   release={rating.movieInfo.release_date}
