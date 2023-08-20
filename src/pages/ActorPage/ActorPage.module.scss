@@ -23,7 +23,7 @@
       @media (min-width: 768px) and (max-width: 1024px) {
         width: 200px;
       }
-      @media (min-width: 360px) and (max-width: 600px) {
+      @media (min-width: 320px) and (max-width: 600px) {
         width: 100px;
       }
     }
@@ -31,7 +31,7 @@
     .personalInfo {
       display: flex;
       flex-direction: column;
-      @media (min-width: 360px) and (max-width: 600px) {
+      @media (min-width: 320px) and (max-width: 600px) {
         h3 {
           color: #f8f8f8;
         }
@@ -62,7 +62,7 @@
       @media (min-width: 768px) and (max-width: 1024px) {
         font-size: 15px;
       }
-      @media (min-width: 360px) and (max-width: 600px) {
+      @media (min-width: 320px) and (max-width: 600px) {
         p {
           font-size: 13px;
         }
@@ -80,7 +80,7 @@
 
       h2 {
         margin: 20px 0;
-        @media (min-width: 360px) and (max-width: 600px) {
+        @media (min-width: 320px) and (max-width: 600px) {
           color: #f8f8f8;
         }
       }
@@ -112,7 +112,7 @@
     }
   }
 
-  @media (min-width: 360px) and (max-width: 600px) {
+  @media (min-width: 320px) and (max-width: 600px) {
     h1 {
       color: #f8f8f8;
     }

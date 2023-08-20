@@ -29,7 +29,7 @@ body {
     width: 150px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .containerNav {
     opacity: 0;
     width: 0;
@@ -131,7 +131,7 @@ body {
     width: 575px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .containerMain {
     width: 100%;
     padding: 0;
@@ -163,7 +163,7 @@ body {
     overflow: hidden;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .containerSideBar {
     opacity: 0;
     width: 0;

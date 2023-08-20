@@ -7,7 +7,7 @@
   box-shadow: 0 0 5px 5px rgba(34, 80, 80, 0.9);
   color: var(--text-color-default);
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .container {
     font-size: 15px;
     background-color: #424c43;
@@ -178,12 +178,12 @@
   cursor: pointer;
   padding: 5px;
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 600px) {
   .outlet .titleHeader .filters {
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .titleHeader {
     background-color: #424c43;
     border-radius: 0;
@@ -218,7 +218,7 @@
     min-width: 280px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .image {
     min-width: 138px;
   }
@@ -238,7 +238,7 @@
     min-width: 260px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info {
     padding: 0;
   }
@@ -260,7 +260,7 @@
     font-size: 14px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieTitle h2, .outlet .pageInfo .movieBlock .info .movieTitle p {
     font-size: 13px;
   }
@@ -268,7 +268,7 @@
 .outlet .pageInfo .movieBlock .info .movieTitle p {
   opacity: 0.5;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieTitle {
     width: 200px;
   }
@@ -297,12 +297,12 @@
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 600px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .actionBar p {
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .actionBar {
     margin: 0;
   }
@@ -331,7 +331,7 @@
     line-height: 1em;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .outlet .pageInfo .movieBlock .info .movieInfo .overview {
     font-size: 13px;
     width: 186px;

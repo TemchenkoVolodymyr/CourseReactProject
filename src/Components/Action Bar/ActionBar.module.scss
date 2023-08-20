@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   border-radius: 20px;
-  @media (min-width: 360px) and (max-width: 768px) {
+  @media (min-width: 320px) and (max-width: 768px) {
     z-index: 2;
     position: absolute;
     display: block;

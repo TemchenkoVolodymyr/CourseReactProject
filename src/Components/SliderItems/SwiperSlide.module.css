@@ -29,7 +29,7 @@
   opacity: 0;
   width: 50%;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .swiperSlide > div > div:first-child {
     opacity: 1;
   }
@@ -55,7 +55,7 @@
     font-size: 12px;
   }
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .swiperSlide > div p {
     font-size: 14px;
     opacity: 1;
@@ -66,7 +66,7 @@
 .swiperSlide > div:hover p {
   opacity: 1;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .swiperSlide {
     width: 200px;
   }

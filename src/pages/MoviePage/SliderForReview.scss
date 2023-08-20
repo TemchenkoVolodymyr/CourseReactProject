@@ -10,7 +10,7 @@
   border-radius: 10px;
   padding: 15px 50px;
   margin-right: 10px;
-  @media (min-width: 360px) and (max-width: 768px) {
+  @media (min-width: 320px) and (max-width: 768px) {
     height: 70px;
     max-height: 150px;
     overflow: hidden;
@@ -20,7 +20,7 @@
   .name{
     font-size: 12px;
     color:#939993;
-    @media (min-width: 360px) and (max-width: 768px) {
+    @media (min-width: 320px) and (max-width: 768px) {
       font-size: 10px;
     }
   }
@@ -28,12 +28,12 @@
     font-size: 20px;
     padding: 15px 0;
     color: #f6f6f6;
-    @media (min-width: 360px) and (max-width: 768px) {
+    @media (min-width: 320px) and (max-width: 768px) {
      font-size: 12px;
     }
   }
   .date{
-    @media (min-width: 360px) and (max-width: 768px) {
+    @media (min-width: 320px) and (max-width: 768px) {
       font-size: 10px;
     }
   }

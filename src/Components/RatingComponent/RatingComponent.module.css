@@ -5,7 +5,7 @@
   padding: 20px;
   top: 80px;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .stars {
     padding: 5px;
     top: 188px;

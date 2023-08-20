@@ -28,7 +28,7 @@
   max-width: 100px;
   border-radius: 10px;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .container img {
     max-height: 125px;
   }
@@ -36,7 +36,7 @@
 .container h1 {
   font-size: 30px;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .container h1 {
     font-size: 15px;
   }
@@ -46,7 +46,7 @@
   max-width: 100px;
   font-size: 13px;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .description {
     font-size: 10px;
   }
@@ -79,7 +79,7 @@
 .wrapperCloseModalBtn {
   max-width: 119px;
 }
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .wrapperCloseModalBtn a {
     font-size: 12px;
   }
