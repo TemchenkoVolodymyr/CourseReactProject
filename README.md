@@ -2,16 +2,19 @@
 
 ## Objectives of this project :
 
-- Improve the React && JavaScript experience.
-- Understand how to use React-redux correctly.
+- Improve the React-redux && JavaScript && HTML5 + CSS3 experience.
 - Learn how to properly build a data architecture.
-- The study of such libraries is as follows:
+- Improve knowledge in these technologies and technologies:
     - redux
     - react-router-dom
     - redux-thunk
+    - MongoDB
+    - Heroku
     - firebase/firestore
     - firebase/realtime
     - Mui
+    - redux-form
+    - 
 - Improve fetch understanding (POST,PUT,DELETE,GET)
 - Learn to work in a team
 - Learn to work in a team with git (GitHub)
@@ -19,6 +22,9 @@
 ## Technologies that were use in this project :
 
 - React
+- Node.js(Express)
+- MongoDB
+- WebSocket.io
 - JSX
 - React-Redux
 - Redux-Thunk
